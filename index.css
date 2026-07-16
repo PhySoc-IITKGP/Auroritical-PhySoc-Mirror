@@ -2130,3 +2130,54 @@ body.light-theme .theme-toggle-btn {
   from { opacity: 0; max-height: 0; overflow: hidden; }
   to { opacity: 1; max-height: 200px; }
 }
+/* ==========================================================================
+   OFFICER CARD SPECIFIC MODIFICATIONS (WASIM PROFILE)
+   ========================================================================== */
+
+/* Container adjustments to allow positioning inside Wasim's card */
+.officer-card.wasim-card {
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+/* 1. The dark top header block strip */
+.dark-header-bg {
+  background-color: #000000;
+  height: 120px;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+}
+
+/* 2. Overlapping avatar wrapper positioning */
+.officer-card.wasim-card .absolute-avatar {
+  position: relative;
+  z-index: 2;
+  margin: 40px auto 0 auto; /* Pulls image up into the black space */
+  width: 140px; 
+  height: 140px;
+  /* Bypasses the global border-radius: 0 reset */
+  border-radius: 50% !important; 
+}
+
+/* 3. The crisp white border & true circular crop mapping */
+.avatar-img.circular-crop {
+  width: 100%;
+  height: 100%;
+  border-radius: 50% !important; /* Forces it into a perfect circle */
+  border: 5px solid #ffffff;    /* The bold white frame */
+  object-fit: cover;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+}
+
+/* 4. Shifts the name and descriptions downward beneath the absolute elements */
+.card-content-shift {
+  position: relative;
+  z-index: 2;
+  margin-top: 15px;
+  padding: 0 15px;
+}
