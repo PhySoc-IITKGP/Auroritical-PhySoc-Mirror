@@ -12,10 +12,12 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Inter:wght@400;500;600&family=Fira+Code&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous" />
+  <link rel="preload" as="image" href="bg-nightsky.webp" />
   <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.2/anime.min.js"></script>
   <link rel="stylesheet" href="shared.css" />
 </head>
 <body class="dark-theme">
+  <div id="parallax-bg"></div>
   <canvas id="particle-canvas"></canvas>
   <div id="physoc-header"></div>
 
@@ -61,12 +63,6 @@
               <a href="https://wa.me/919887078617?text=Hi%20Neeraj%2C%20I%27m%20very%20interested%20to%20join%20PhySoc.%20I%20got%20your%20number%20from%20the%20website." target="_blank" class="btn btn-primary" style="padding:7px 12px;font-size:12px"><i class="fa-brands fa-whatsapp"></i> Apply Now</a>
             </div>
           </div>
-          <div style="background:rgba(167,139,250,0.04);border:1px solid var(--border);border-radius:12px;padding:18px" data-stagger="events">
-            <span class="tag tag-research" style="margin-bottom:10px;display:inline-block">Lecture Series</span>
-            <h3 style="font-size:15px;margin-bottom:6px">FeynmanLecture Series</h3>
-            <p style="font-size:12px;color:var(--text-muted);margin-bottom:10px;line-height:1.5">Path Integrals &amp; the Quantum World · LT-1 · Every Friday 6 PM</p>
-            <a href="announcements/" class="btn btn-ghost" style="padding:7px 12px;font-size:12px">Details <i class="fa-solid fa-arrow-right"></i></a>
-          </div>
         </div>
       </section>
     </div>
@@ -75,9 +71,9 @@
       <div class="widget">
         <h3 class="widget-title"><i class="fa-solid fa-chart-bar" style="font-size:12px;margin-right:4px"></i> Society Stats</h3>
         <div class="stats-grid">
-          <div><span class="stat-num" data-target="20" data-suffix="+">0+</span><span class="stat-lbl">Members</span></div>
-          <div><span class="stat-num" data-target="35" data-suffix="+">0+</span><span class="stat-lbl">Events</span></div>
-          <div><span class="stat-num" data-target="18" data-suffix="+">0+</span><span class="stat-lbl">Projects</span></div>
+          <div><span class="stat-num" data-target="10" data-suffix="+">0+</span><span class="stat-lbl">Members</span></div>
+          <div><span class="stat-num" data-target="15" data-suffix="+">0+</span><span class="stat-lbl">Events / Year</span></div>
+          <div><span class="stat-num" data-target="5" data-suffix="+">0+</span><span class="stat-lbl">Research Projects</span></div>
         </div>
       </div>
 
@@ -124,6 +120,9 @@
   </main>
 
   <div id="physoc-footer"></div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/gh/studio-freight/lenis@1.0.19/bundled/lenis.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <script src="supabase-config.js"></script>
   <script src="components.js"></script>
