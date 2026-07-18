@@ -1,51 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-<style>
-  /* Container layout */
-  .term-selector-container {
-    display: flex;
-    gap: 10px;
-    padding: 10px;
-  }
 
-  /* BASE STYLE: This makes BOTH buttons dark by default */
-  .term-tab {
-    background-color: #222222; 
-    color: #ffffff;            
-    border: 1px solid #111111;
-    padding: 10px 16px;
-    font-size: 14px;
-    border-radius: 6px;
-    cursor: pointer;
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;                 
-  }
-
-  /* HOVER: What happens when you mouse over them */
-  .term-tab:hover {
-    background-color: #333333; /* Slightly lighter dark color on hover */
-  }
-
-  /* ACTIVE STATE: How to make the active button look different */
-  .term-tab.active {
-    background-color: #444444; /* A distinct dark gray, or change to a color like #0d6efd (blue) */
-    border-color: #000000;
-    font-weight: bold;
-  }
-</style>
-
-<!-- 2. Your Original HTML Code stays the same -->
-<!-- Term Selector Tab Controller -->
-<div class="term-selector-container">
-  <button class="term-tab active" data-term="current">
-    <i class="fa-solid fa-calendar-days"></i> 2026–27 (Current Term)
-  </button>
-  <button class="term-tab" data-term="past">
-    <i class="fa-solid fa-clock-rotate-left"></i> 2025–26 (Past Officers)
-  </button>
-</div>
-  
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -128,13 +83,12 @@
       background: rgba(255, 255, 255, 0.04);
     }
 
-    .term-tab.active {
-      color: #ffffff;
-      background: linear-gradient(135deg, rgba(0, 242, 254, 0.15), rgba(0, 242, 254, 0.03));
-      border: 1px solid rgba(0, 242, 254, 0.3);
-      box-shadow: 0 0 12px rgba(0, 242, 254, 0.1);
+      .term-tab.active {
+      color: #0b1a30; /* Dark text */
+      background: rgba(0, 242, 254, 0.8); /* Semi-transparent but bright cyan background */
+      border: 1px solid rgba(0, 242, 254, 0.9);
+      box-shadow: 0 0 12px rgba(0, 242, 254, 0.2);
     }
-
     /* Term view content layout switches */
     .term-content {
       display: none;
