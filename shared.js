@@ -323,8 +323,35 @@ function initPuzzle() {
   const fb = $('#puzzle-feedback');
   if (!form) return;
 
-  form.addEventListener('submit', e => {
+  let currentPuzzle = null;
+  
+  if (typeof supabaseClient !== 'undefined' && supabaseClient) {
+    supabaseClient
+      .from('physoc-weekly_puzzles')
+      .select('*')
+      .eq('active', true)
+      .limit(1)
+      .single()
+      .then(({ data, error }) => {
+        if (data) {
+          currentPuzzle = data;
+          $('#puzzle-widget').style.display = 'block';
+          $('#puzzle-tag').innerText = data.week_label;
+          $('#puzzle-question').innerText = data.question;
+          
+          let optionsHtml = '';
+          data.options.forEach((opt, idx) => {
+            optionsHtml += `<label class="option-label"><input type="radio" name="puzzle-ans" value="${idx}" /> ${opt}</label>`;
+          });
+          $('#puzzle-options').innerHTML = optionsHtml;
+        }
+      });
+  }
+
+  form.addEventListener('submit', async e => {
     e.preventDefault();
+    if (!currentPuzzle) return;
+    
     const sel = form.querySelector('input[name="puzzle-ans"]:checked');
 
     if (!sel) {
@@ -334,16 +361,34 @@ function initPuzzle() {
       return;
     }
 
-    if (sel.value === 'correct') {
+    const selectedIdx = parseInt(sel.value, 10);
+    let isCorrect = (selectedIdx === currentPuzzle.correct_answer_index);
+
+    if (isCorrect) {
       fb.className = 'puzzle-feedback success';
-      fb.innerText = '✓ Correct! Gluons are the gauge bosons of Quantum Chromodynamics (QCD), mediating the strong nuclear force.';
+      fb.innerText = '✓ Correct! Awesome job.';
     } else {
       fb.className = 'puzzle-feedback error';
-      fb.innerText = '✗ Not quite. Hint: think about which boson mediates the strong force between quarks.';
+      fb.innerText = '✗ Not quite. Keep trying!';
     }
+    
+    $('#puzzle-submit').disabled = true;
 
     if (window.anime) {
       anime({ targets: fb, scale: [0.92, 1], opacity: [0, 1], duration: 280, easing: 'easeOutBack' });
+    }
+    
+    if (typeof supabaseClient !== 'undefined' && supabaseClient) {
+      const fieldToUpdate = isCorrect ? 'correct_count' : 'wrong_count';
+      const newValue = isCorrect ? (currentPuzzle.correct_count || 0) + 1 : (currentPuzzle.wrong_count || 0) + 1;
+      
+      const updateData = {};
+      updateData[fieldToUpdate] = newValue;
+      
+      await supabaseClient
+        .from('physoc-weekly_puzzles')
+        .update(updateData)
+        .eq('id', currentPuzzle.id);
     }
   });
 }

@@ -56,7 +56,10 @@
             <span class="tag tag-events" style="margin-bottom:10px;display:inline-block">Event</span>
             <h3 style="font-size:15px;margin-bottom:6px">2nd Year Executive Selections</h3>
             <p style="font-size:12px;color:var(--text-muted);margin-bottom:10px;line-height:1.5">Physics Dept. H.N Bose Seminar Room · July 25, 2026 · 10 AM IST</p>
-            <a href="announcements/" class="btn btn-ghost" style="padding:7px 12px;font-size:12px">Details <i class="fa-solid fa-arrow-right"></i></a>
+            <div style="display:flex; gap: 8px;">
+              <a href="announcements/" class="btn btn-ghost" style="padding:7px 12px;font-size:12px">Details <i class="fa-solid fa-arrow-right"></i></a>
+              <a href="https://wa.me/919887078617?text=Hi%20Neeraj%2C%20I%27m%20very%20interested%20to%20join%20PhySoc.%20I%20got%20your%20number%20from%20the%20website." target="_blank" class="btn btn-primary" style="padding:7px 12px;font-size:12px"><i class="fa-brands fa-whatsapp"></i> Apply Now</a>
+            </div>
           </div>
           <div style="background:rgba(167,139,250,0.04);border:1px solid var(--border);border-radius:12px;padding:18px" data-stagger="events">
             <span class="tag tag-research" style="margin-bottom:10px;display:inline-block">Lecture Series</span>
@@ -103,20 +106,17 @@
         <div class="event-display" id="event-display"><span style="font-size:12px;color:var(--text-muted)">Tap a highlighted date.</span></div>
       </div>
 
-      <div class="widget" aria-label="Weekly physics puzzle">
+      <div class="widget" aria-label="Weekly physics puzzle" id="puzzle-widget" style="display:none;">
         <div class="widget-header">
           <h3 class="widget-title" style="margin-bottom:0;border:none;padding:0">⚛️ Weekly Puzzle</h3>
-          <span class="puzzle-tag">Week 1</span>
+          <span class="puzzle-tag" id="puzzle-tag">Loading...</span>
         </div>
-        <p class="puzzle-q">"How do we classify and detect emergent anyonic braiding statistics in Kitaev-type quantum spin liquids to build fault-tolerant topological qubits?</p>
+        <p class="puzzle-q" id="puzzle-question">Loading puzzle...</p>
         <form id="puzzle-form" novalidate>
-          <div class="puzzle-options">
-            <label class="option-label"><input type="radio" name="puzzle-ans" value="photon" />Unbound itinerant Majorana fermions </label>
-            <label class="option-label"><input type="radio" name="puzzle-ans" value="correct" /> Holon-spinon bound states</label>
-            <label class="option-label"><input type="radio" name="puzzle-ans" value="w-boson" /> Conventional Magnon excitations</label>
-            <label class="option-label"><input type="radio" name="puzzle-ans" value="higgs" /> Holon-spinon bound states</label>
+          <div class="puzzle-options" id="puzzle-options">
+            <!-- Options will be injected here -->
           </div>
-          <button type="submit" class="puzzle-submit">Submit Answer</button>
+          <button type="submit" class="puzzle-submit" id="puzzle-submit">Submit Answer</button>
         </form>
         <div class="puzzle-feedback" id="puzzle-feedback"></div>
       </div>
@@ -124,6 +124,8 @@
   </main>
 
   <div id="physoc-footer"></div>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="supabase-config.js"></script>
   <script src="components.js"></script>
   <script src="shared.js"></script>
 </body>

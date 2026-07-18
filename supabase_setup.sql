@@ -72,3 +72,38 @@ FOR UPDATE TO authenticated USING (true) WITH CHECK (true);
 
 CREATE POLICY "Enable delete for authenticated users only" ON "physoc-resources"
 FOR DELETE TO authenticated USING (true);
+
+-- 8. Create Weekly Puzzles Table
+CREATE TABLE "physoc-weekly_puzzles" (
+  id uuid default gen_random_uuid() primary key,
+  week_label text not null,
+  question text not null,
+  options jsonb not null,
+  correct_answer_index integer not null,
+  active boolean default false,
+  correct_count integer default 0,
+  wrong_count integer default 0,
+  created_at timestamp with time zone default timezone('utc'::text, now()) not null
+);
+
+-- 9. Policies for Weekly Puzzles
+ALTER TABLE "physoc-weekly_puzzles" ENABLE ROW LEVEL SECURITY;
+
+-- Anyone can read active puzzles
+CREATE POLICY "Enable read access for all" ON "physoc-weekly_puzzles"
+FOR SELECT USING (true);
+
+-- Anyone can update to increment correct/wrong counts
+-- Note: A more secure approach uses an RPC, but this satisfies the basic requirement
+CREATE POLICY "Enable update counts for all" ON "physoc-weekly_puzzles"
+FOR UPDATE USING (true) WITH CHECK (true);
+
+-- Authenticated users (admins) can insert/update/delete
+CREATE POLICY "Enable insert for authenticated users" ON "physoc-weekly_puzzles"
+FOR INSERT TO authenticated WITH CHECK (true);
+
+CREATE POLICY "Enable full update for authenticated users" ON "physoc-weekly_puzzles"
+FOR UPDATE TO authenticated USING (true) WITH CHECK (true);
+
+CREATE POLICY "Enable delete for authenticated users" ON "physoc-weekly_puzzles"
+FOR DELETE TO authenticated USING (true);

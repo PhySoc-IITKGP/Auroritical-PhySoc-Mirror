@@ -173,6 +173,7 @@
         <a class="sidebar-link" data-page="announcements"><i class="fa-solid fa-bullhorn" style="width:16px"></i> Announcements</a>
         <a class="sidebar-link" data-page="resources"><i class="fa-solid fa-book-open-reader" style="width:16px"></i> Resources</a>
         <a class="sidebar-link" data-page="submissions"><i class="fa-solid fa-inbox" style="width:16px"></i> Contact Inbox</a>
+        <a class="sidebar-link" data-page="puzzles"><i class="fa-solid fa-puzzle-piece" style="width:16px"></i> Weekly Puzzles</a>
         <div class="sidebar-section">Database</div>
         <a class="sidebar-link" data-page="supabase"><i class="fa-solid fa-database" style="width:16px"></i> Supabase Setup</a>
         <div class="sidebar-sep" style="margin:16px 0;border-top:1px solid var(--border)"></div>
@@ -273,6 +274,39 @@
           </div>
         </div>
 
+        <!-- ── WEEKLY PUZZLES ── -->
+        <div class="admin-page" id="page-puzzles">
+          <h2 style="font-family:var(--font-heading);margin-bottom:22px">🧩 Manage Weekly Puzzles</h2>
+
+          <div class="ann-form">
+            <h4 style="font-family:var(--font-heading);margin-bottom:18px">New Puzzle</h4>
+            <div class="form-row" style="display:flex;gap:14px;margin-bottom:14px">
+              <div class="form-group" style="width:160px;margin-bottom:0">
+                <label for="puz-week">Week Label <span style="color:var(--danger)">*</span></label>
+                <input type="text" id="puz-week" placeholder="e.g. Week 1" />
+              </div>
+              <div class="form-group" style="flex:1;margin-bottom:0">
+                <label for="puz-correct">Correct Option Index (0-based) <span style="color:var(--danger)">*</span></label>
+                <input type="number" id="puz-correct" placeholder="e.g. 1" min="0" />
+              </div>
+            </div>
+            <div class="form-group" style="margin-bottom:14px">
+              <label for="puz-q">Question Text</label>
+              <textarea id="puz-q" rows="3" placeholder="Enter puzzle question..." style="resize:vertical"></textarea>
+            </div>
+            <div class="form-group" style="margin-bottom:18px">
+              <label for="puz-opts">Options (JSON Array) <span style="color:var(--danger)">*</span></label>
+              <textarea id="puz-opts" rows="3" placeholder='["Option 1", "Option 2", "Option 3"]' style="resize:vertical"></textarea>
+            </div>
+            <button class="btn btn-primary" id="publish-puz-btn"><i class="fa-solid fa-paper-plane"></i> Publish Puzzle</button>
+          </div>
+
+          <h3 style="font-family:var(--font-heading);margin-bottom:14px">Existing Puzzles</h3>
+          <div id="puz-list">
+            <p style="font-size:13px;color:var(--text-muted)">Loading puzzles...</p>
+          </div>
+        </div>
+
         <!-- ── CONTACT INBOX ── -->
         <div class="admin-page" id="page-submissions">
           <h2 style="font-family:var(--font-heading);margin-bottom:22px">📨 Contact Inbox</h2>
@@ -352,6 +386,8 @@ const SUPABASE_ANON = 'YOUR_ANON_PUBLIC_KEY';
     </div><!-- /admin-body -->
   </div><!-- /admin-shell -->
 
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="../supabase-config.js"></script>
   <script>
   /* ────────────────────────────────────────────────────────────
      ADMIN PANEL — runs entirely from localStorage for now.
@@ -407,6 +443,7 @@ const SUPABASE_ANON = 'YOUR_ANON_PUBLIC_KEY';
     renderAnns();
     renderRes();
     renderDashSubs();
+    if (typeof renderPuzzles === 'function') renderPuzzles();
   }
 
   // ── NAVIGATION ───────────────────────────────────────────────
@@ -560,6 +597,73 @@ const SUPABASE_ANON = 'YOUR_ANON_PUBLIC_KEY';
     $('#res-link').value  = '';
     $('#res-desc').value  = '';
     anime({ targets: '#publish-res-btn', scale: [1, 0.95, 1], duration: 200 });
+  });
+
+  // ── PUZZLES ──────────────────────────────────────────────────
+  async function renderPuzzles() {
+    if (typeof supabaseClient === 'undefined' || !supabaseClient) return;
+    const { data: puzzles, error } = await supabaseClient.from('physoc-weekly_puzzles').select('*').order('created_at', { ascending: false });
+    const el = $('#puz-list');
+    if (error || !puzzles || !puzzles.length) {
+      el.innerHTML = '<p style="font-size:13px;color:var(--text-muted)">No puzzles yet.</p>';
+      return;
+    }
+    el.innerHTML = puzzles.map((p) => `
+      <div class="ann-list-item">
+        <div class="ann-meta">
+          <div class="ann-title">${p.week_label} ${p.active ? '<span class="tag tag-events" style="margin-left:8px;font-size:10px">ACTIVE</span>' : ''}</div>
+          <div class="ann-body">${p.question.substring(0, 100)}...</div>
+          <div style="margin-top:6px;font-size:11px;color:var(--text-muted)">
+            Correct: <span style="color:#3fd273">${p.correct_count || 0}</span> &nbsp;|&nbsp; 
+            Wrong: <span style="color:var(--danger)">${p.wrong_count || 0}</span>
+          </div>
+        </div>
+        <div style="display:flex; flex-direction:column; gap:6px;">
+          ${!p.active ? `<button class="btn btn-ghost" style="padding:4px 10px;font-size:11px;border:1px solid var(--border)" onclick="setActivePuzzle('${p.id}')">Make Active</button>` : ''}
+          <button class="del-btn" onclick="deletePuzzle('${p.id}')">Delete</button>
+        </div>
+      </div>`).join('');
+  }
+
+  window.setActivePuzzle = async function(id) {
+    if (!confirm('Make this puzzle active?')) return;
+    await supabaseClient.from('physoc-weekly_puzzles').update({ active: false }).neq('id', '00000000-0000-0000-0000-000000000000');
+    await supabaseClient.from('physoc-weekly_puzzles').update({ active: true }).eq('id', id);
+    renderPuzzles();
+  };
+
+  window.deletePuzzle = async function(id) {
+    if (!confirm('Delete this puzzle?')) return;
+    await supabaseClient.from('physoc-weekly_puzzles').delete().eq('id', id);
+    renderPuzzles();
+  };
+
+  $('#publish-puz-btn')?.addEventListener('click', async () => {
+    const week = $('#puz-week').value.trim();
+    const correctIdx = parseInt($('#puz-correct').value.trim(), 10);
+    const question = $('#puz-q').value.trim();
+    let options = [];
+    try { options = JSON.parse($('#puz-opts').value.trim()); } catch (e) { alert('Invalid JSON options'); return; }
+
+    if (!week || !question || isNaN(correctIdx) || !options.length) {
+      alert('Please fill all fields properly.');
+      return;
+    }
+    
+    await supabaseClient.from('physoc-weekly_puzzles').insert([{
+      week_label: week,
+      question: question,
+      options: options,
+      correct_answer_index: correctIdx,
+      active: false
+    }]);
+
+    $('#puz-week').value = '';
+    $('#puz-correct').value = '';
+    $('#puz-q').value = '';
+    $('#puz-opts').value = '';
+    renderPuzzles();
+    anime({ targets: '#publish-puz-btn', scale: [1, 0.95, 1], duration: 200 });
   });
 
   // ── INIT ─────────────────────────────────────────────────────
