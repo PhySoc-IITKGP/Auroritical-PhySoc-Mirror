@@ -406,21 +406,70 @@ function initCalendar() {
 }
 
 /* -------------------------------------------------------
-   SEARCH TOGGLE
+   SEARCH TOGGLE & FUNCTIONALITY
    ------------------------------------------------------- */
 function initSearch() {
   const trigger = $('#search-trigger');
   const wrapper = $('#search-wrapper');
-  if (!trigger || !wrapper) return;
+  const input = $('#search-input');
+  const resultsEl = $('#search-results');
+  if (!trigger || !wrapper || !input || !resultsEl) return;
+
+  const cssLink = document.querySelector('link[href*="shared.css"]');
+  const base = cssLink ? cssLink.getAttribute('href').replace('shared.css', '') : './';
+
+  const SEARCH_INDEX = [
+    { title: 'Home', url: '', type: 'Page' },
+    { title: 'About Us', url: 'about/', type: 'Page' },
+    { title: 'Announcements', url: 'announcements/', type: 'Page' },
+    { title: 'Resources', url: 'resources/', type: 'Page' },
+    { title: 'Officers', url: 'officers/', type: 'Page' },
+    { title: 'Sandbox', url: 'sandbox/', type: 'Page' },
+    { title: 'Contact Us', url: 'contact/', type: 'Page' },
+    { title: 'Neeraj Laikara - President', url: 'officers/', type: 'Officer' },
+    { title: 'Wasim - Vice President', url: 'officers/', type: 'Officer' },
+    { title: 'Bhoomik Modi - Advisor', url: 'officers/', type: 'Officer' },
+    { title: 'Academic Chair', url: 'officers/', type: 'Chair' },
+    { title: 'Social Chair', url: 'officers/', type: 'Chair' },
+    { title: 'Outreach Chair', url: 'officers/', type: 'Chair' },
+    { title: 'Feynman Lecture Series', url: 'announcements/', type: 'Event' },
+    { title: 'Physics Puzzle', url: 'sandbox/', type: 'Sandbox' }
+  ];
 
   trigger.addEventListener('click', e => {
     e.stopPropagation();
     wrapper.classList.toggle('active');
-    if (wrapper.classList.contains('active')) wrapper.querySelector('input')?.focus();
+    if (wrapper.classList.contains('active')) input.focus();
+    else { resultsEl.classList.remove('active'); input.value = ''; }
+  });
+
+  input.addEventListener('input', e => {
+    const q = e.target.value.toLowerCase().trim();
+    if (!q) {
+      resultsEl.classList.remove('active');
+      return;
+    }
+    const matches = SEARCH_INDEX.filter(item => item.title.toLowerCase().includes(q) || item.type.toLowerCase().includes(q));
+    
+    if (matches.length > 0) {
+      resultsEl.innerHTML = matches.map(m => `
+        <a href="${base}${m.url}" class="search-result-item">
+          <span class="search-result-type">${m.type}</span>
+          ${m.title}
+        </a>
+      `).join('');
+    } else {
+      resultsEl.innerHTML = `<div class="search-result-item" style="color:var(--text-muted)">No results found.</div>`;
+    }
+    resultsEl.classList.add('active');
   });
 
   document.addEventListener('click', e => {
-    if (!wrapper.contains(e.target)) wrapper.classList.remove('active');
+    if (!wrapper.contains(e.target)) {
+      wrapper.classList.remove('active');
+      resultsEl.classList.remove('active');
+      input.value = '';
+    }
   });
 }
 

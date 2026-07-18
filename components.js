@@ -86,6 +86,7 @@
           <button class="icon-btn" id="search-trigger" aria-label="Search">
             <i class="fa-solid fa-magnifying-glass"></i>
           </button>
+          <div id="search-results" class="search-results"></div>
         </div>
         <button class="icon-btn" id="theme-toggle" aria-label="Toggle theme">
           <i class="fa-solid fa-moon moon-icon"></i>
