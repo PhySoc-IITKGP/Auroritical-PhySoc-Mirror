@@ -549,6 +549,7 @@ body.light-theme .theme-toggle-btn {
   font-weight: 800;
   background: linear-gradient(90deg, #fff, var(--color-primary));
   -webkit-background-clip: text;
+  background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 

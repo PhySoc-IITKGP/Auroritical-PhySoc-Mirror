@@ -533,7 +533,6 @@ function initResTabs() {
         if (window.anime) anime({ targets: pane, opacity: [0, 1], translateY: [8, 0], duration: 280, easing: 'easeOutCubic' });
       }
     });
-    });
   });
 }
 
