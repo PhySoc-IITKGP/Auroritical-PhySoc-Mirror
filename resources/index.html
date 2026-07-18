@@ -27,7 +27,7 @@
       <p>Curated resources by Physics studetns for IIT KGP students. From standard textbooks to UROP roadmaps, everything you need to navigate your physics degree.</p>
     </section>
 
-    <div class="card" aria-label="Resources browser">
+    <div class="card" aria-label="Resources browser" style="margin-top: 40px;">
       <div class="filter-bar" style="margin-bottom:22px;border-bottom:1px solid var(--border);padding-bottom:0;border-radius:0;background:none" role="tablist">
         <button class="filter-btn res-tab active" data-target="books" role="tab" aria-selected="true">📚 Textbooks</button>
         <button class="filter-btn res-tab" data-target="courses" role="tab" aria-selected="false">📖 Course Notes</button>
@@ -38,54 +38,9 @@
       <div class="res-pane active" id="pane-books" role="tabpanel">
         <h3 style="font-family:var(--font-heading);margin-bottom:18px">Standard Textbooks</h3>
         <div class="grid-2" id="books-container">
-          
-          <div style="background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:18px;display:flex;gap:16px" data-stagger="res">
-            <div style="font-size:32px;flex-shrink:0;opacity:0.8">📘</div>
-            <div>
-              <h4 style="font-family:var(--font-heading);color:var(--text-bright);margin-bottom:4px;font-size:15px">Classical Mechanics</h4>
-              <p style="font-size:12px;color:var(--text-muted);margin-bottom:10px">Goldstein, Poole, and Safko. The absolute standard for Lagrangian and Hamiltonian mechanics.</p>
-              <div style="display:flex;gap:8px">
-                <a href="https://example.com/goldstein.pdf" target="_blank" class="btn btn-primary" style="padding:6px 10px;font-size:11px"><i class="fa-solid fa-file-pdf"></i> PDF</a>
-                <span class="tag tag-academic">2nd Year</span>
-              </div>
-            </div>
-          </div>
+          <!-- Textbooks will be dynamically loaded here -->
+        </div>
 
-          <div style="background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:18px;display:flex;gap:16px" data-stagger="res">
-            <div style="font-size:32px;flex-shrink:0;opacity:0.8">📕</div>
-            <div>
-              <h4 style="font-family:var(--font-heading);color:var(--text-bright);margin-bottom:4px;font-size:15px">Quantum Mechanics</h4>
-              <p style="font-size:12px;color:var(--text-muted);margin-bottom:10px">J.J. Sakurai. Modern Quantum Mechanics. Essential for advanced UG and PG courses.</p>
-              <div style="display:flex;gap:8px">
-                <a href="https://example.com/sakurai.pdf" target="_blank" class="btn btn-primary" style="padding:6px 10px;font-size:11px"><i class="fa-solid fa-file-pdf"></i> PDF</a>
-                <span class="tag tag-academic">3rd Year</span>
-              </div>
-            </div>
-          </div>
-
-          <div style="background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:18px;display:flex;gap:16px" data-stagger="res">
-            <div style="font-size:32px;flex-shrink:0;opacity:0.8">📗</div>
-            <div>
-              <h4 style="font-family:var(--font-heading);color:var(--text-bright);margin-bottom:4px;font-size:15px">Electrodynamics</h4>
-              <p style="font-size:12px;color:var(--text-muted);margin-bottom:10px">David J. Griffiths. Introduction to Electrodynamics. Highly readable, great problems.</p>
-              <div style="display:flex;gap:8px">
-                <a href="https://example.com/griffiths.pdf" target="_blank" class="btn btn-primary" style="padding:6px 10px;font-size:11px"><i class="fa-solid fa-file-pdf"></i> PDF</a>
-                <span class="tag tag-academic">2nd Year</span>
-              </div>
-            </div>
-          </div>
-
-          <div style="background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:18px;display:flex;gap:16px" data-stagger="res">
-            <div style="font-size:32px;flex-shrink:0;opacity:0.8">📙</div>
-            <div>
-              <h4 style="font-family:var(--font-heading);color:var(--text-bright);margin-bottom:4px;font-size:15px">Statistical Mechanics</h4>
-              <p style="font-size:12px;color:var(--text-muted);margin-bottom:10px">R.K. Pathria. A rigorous approach to statistical physics and thermodynamics.</p>
-              <div style="display:flex;gap:8px">
-                <a href="https://example.com/pathria.pdf" target="_blank" class="btn btn-primary" style="padding:6px 10px;font-size:11px"><i class="fa-solid fa-file-pdf"></i> PDF</a>
-                <span class="tag tag-academic">3rd Year</span>
-              </div>
-            </div>
-          </div>
 
         </div>
       </div>
@@ -105,24 +60,7 @@
               </tr>
             </thead>
             <tbody id="courses-tbody">
-              <tr style="border-bottom:1px solid rgba(255,255,255,0.05)">
-                <td style="padding:12px 16px;color:var(--text-bright)">Quantum Mechanics I</td>
-                <td style="padding:12px 16px;font-family:var(--font-code);font-size:12px">PH41011</td>
-                <td style="padding:12px 16px">Autumn</td>
-                <td style="padding:12px 16px"><a href="#" style="color:var(--cyan)"><i class="fa-solid fa-download"></i> Download</a></td>
-              </tr>
-              <tr style="border-bottom:1px solid rgba(255,255,255,0.05)">
-                <td style="padding:12px 16px;color:var(--text-bright)">Solid State Physics</td>
-                <td style="padding:12px 16px;font-family:var(--font-code);font-size:12px">PH41013</td>
-                <td style="padding:12px 16px">Autumn</td>
-                <td style="padding:12px 16px"><a href="#" style="color:var(--cyan)"><i class="fa-solid fa-download"></i> Download</a></td>
-              </tr>
-              <tr>
-                <td style="padding:12px 16px;color:var(--text-bright)">General Relativity</td>
-                <td style="padding:12px 16px;font-family:var(--font-code);font-size:12px">PH51015</td>
-                <td style="padding:12px 16px">Spring (Elective)</td>
-                <td style="padding:12px 16px"><a href="#" style="color:var(--cyan)"><i class="fa-solid fa-download"></i> Download</a></td>
-              </tr>
+              <!-- Courses will be dynamically loaded here -->
             </tbody>
           </table>
         </div>

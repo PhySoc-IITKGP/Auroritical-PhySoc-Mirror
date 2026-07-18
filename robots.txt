@@ -2,4 +2,4 @@ User-agent: *
 Allow: /
 Disallow: /admin/
 
-Sitemap: https://physoc.iitkgp.ac.in/sitemap.xml
+Sitemap: https://physoc-iitkgp.vercel.app/sitemap.xml

@@ -295,8 +295,7 @@ function initCountdown() {
   if (!dEl) return;
 
   const now = new Date();
-  const sat = 6 - now.getDay();
-  const nextEvent = new Date(now.getFullYear(), now.getMonth(), now.getDate() + (sat <= 0 ? sat + 14 : sat + 7), 10, 0, 0);
+  const nextEvent = new Date(2026, 6, 25, 10, 0, 0);
 
   const timeEl = $('#next-event-time');
   if (timeEl) {
@@ -471,14 +470,13 @@ function initSearch() {
     { title: 'Officers', url: 'officers/', type: 'Page' },
     { title: 'Sandbox', url: 'sandbox/', type: 'Page' },
     { title: 'Contact Us', url: 'contact/', type: 'Page' },
-    { title: 'Neeraj Laikara - President', url: 'officers/', type: 'Officer' },
-    { title: 'Wasim - Vice President', url: 'officers/', type: 'Officer' },
-    { title: 'Bhoomik Modi - Advisor', url: 'officers/', type: 'Officer' },
-    { title: 'Academic Chair', url: 'officers/', type: 'Chair' },
-    { title: 'Social Chair', url: 'officers/', type: 'Chair' },
+    { title: 'Bhoomik Modi - President', url: 'officers/', type: 'Officer' },
+    { title: 'Wasim - Academic Chair', url: 'officers/', type: 'Chair' },
+    { title: 'Neeraj Laikara - Social Chair', url: 'officers/', type: 'Chair' },
+    { title: 'Debdut Adhikari - Outreach Chair', url: 'officers/', type: 'Chair' },
+    { title: 'Neelabh Priyam Jha - Technical Chair', url: 'officers/', type: 'Chair' },
     { title: 'Sayak Moulic - Technical & Growth Chair', url: 'officers/', type: 'Chair' },
-    { title: 'Feynman Lecture Series', url: 'announcements/', type: 'Event' },
-    { title: 'Physics Puzzle', url: 'sandbox/', type: 'Sandbox' }
+    { title: 'Lab Visit', url: 'announcements/', type: 'Event' }
   ];
 
   trigger.addEventListener('click', e => {
@@ -537,27 +535,15 @@ function initAnnouncements() {
     ...adminFormatted,
     {
       title: '2nd Year Executive Selections — July 25, 2026',
-      date: 'July 10, 2026',
+      date: 'July 18, 2026',
       tag: 'events',
       desc: 'Selections for 2nd year student executives will be held on July 25, 2026 in the Physics Department Seminar Room. Interested students should prepare a brief Statement of Purpose.'
     },
     {
-      title: 'PH Course Wiki & Resource Database Updated',
-      date: 'July 12, 2026',
-      tag: 'academic',
-      desc: 'Our student-maintained resource wiki has been updated with mapped semester syllabi, standard textbooks, and lab guides sourced from the kgp-phy24 course database. See the Resources page for full access.'
-    },
-    {
-      title: 'UROP Project Opportunities — Autumn 2026',
-      date: 'June 28, 2026',
-      tag: 'research',
-      desc: 'String theory and quantum condensed matter groups at the Physics Department are accepting project students for the upcoming term. Use our UROP email template (Resources → UROP) to contact faculty directly.'
-    },
-    {
-      title: 'Feynman Lecture Series: Kickoff Next Friday',
-      date: 'June 22, 2026',
+      title: 'PhySoc Official Website Launch',
+      date: 'July 18, 2026',
       tag: 'events',
-      desc: 'The PhySoc Feynman Lecture Series begins next Friday at 6 PM in LT-1. Topic: "Path Integrals and the Quantum World." No prerequisites. Open to all departments. Light refreshments will be served.'
+      desc: 'Welcome to the official digital home of Physics Society, IIT Kharagpur! Explore our events, resources, and meet the team.'
     }
   ];
 
@@ -673,16 +659,22 @@ function initDynamicResources() {
    COPY EMAIL TEMPLATE
    ------------------------------------------------------- */
 function initCopyBtn() {
-  const btn = $('#copy-template-btn');
-  if (!btn) return;
-  btn.addEventListener('click', () => {
-    const pre = btn.closest('.email-template-box')?.querySelector('pre');
-    if (!pre) return;
-    navigator.clipboard.writeText(pre.innerText).then(() => {
-      btn.innerHTML = '<i class="fa-solid fa-check"></i> Copied!';
-      btn.style.background = 'var(--success)';
-      btn.style.color = '#fff';
-      setTimeout(() => { btn.innerHTML = '<i class="fa-regular fa-copy"></i> Copy'; btn.style.background = ''; btn.style.color = ''; }, 2200);
+  const btns = document.querySelectorAll('.copy-btn');
+  btns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const targetId = btn.getAttribute('data-copy');
+      const targetEl = document.getElementById(targetId);
+      if (!targetEl) return;
+      navigator.clipboard.writeText(targetEl.innerText).then(() => {
+        btn.innerHTML = '<i class="fa-solid fa-check"></i> Copied!';
+        btn.style.background = 'var(--success)';
+        btn.style.color = '#fff';
+        setTimeout(() => { 
+          btn.innerHTML = '<i class="fa-regular fa-copy"></i> Copy'; 
+          btn.style.background = 'var(--surface)'; 
+          btn.style.color = ''; 
+        }, 2200);
+      });
     });
   });
 }
@@ -877,17 +869,102 @@ document.addEventListener('DOMContentLoaded', () => {
   initDrawer();
   initNav();
   initParticles();
-  initSearch();
   initPageAnim();
   initScrollAnim();
   initCounters();
   initCountdown();
   initPuzzle();
   initCalendar();
+  initSearch();
   initAnnouncements();
   initResTabs();
   initDynamicResources();
   initCopyBtn();
   initContact();
   initSandboxPreviews();
+  initSmoothScrolling();
+  initCursor();
 });
+
+
+function initSmoothScrolling() {
+  if (typeof Lenis === 'undefined' || typeof gsap === 'undefined') return;
+
+  const lenis = new Lenis({
+    duration: 1.8,
+    easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), 
+    direction: 'vertical',
+    gestureDirection: 'vertical',
+    smooth: true,
+    smoothTouch: false,
+    touchMultiplier: 2,
+    wheelMultiplier: 1.2
+  });
+
+  lenis.on('scroll', ScrollTrigger.update);
+  gsap.ticker.add((time) => { lenis.raf(time * 1000); });
+  gsap.ticker.lagSmoothing(0);
+
+  const parallaxBg = document.getElementById('parallax-bg');
+  if (parallaxBg) {
+    gsap.to(parallaxBg, {
+      yPercent: -15,
+      ease: "none",
+      scrollTrigger: {
+        trigger: document.body,
+        start: "top top",
+        end: "bottom bottom",
+        scrub: true
+      }
+    });
+    setTimeout(() => { parallaxBg.style.opacity = '0.65'; }, 500);
+  }
+}
+
+function initCursor() {
+  const blob = document.createElement('div');
+  blob.className = 'cursor-blob';
+  document.body.appendChild(blob);
+  
+  const trails = [];
+  const numTrails = 8;
+  for (let i = 0; i < numTrails; i++) {
+    const t = document.createElement('div');
+    t.className = 'cursor-trail';
+    document.body.appendChild(t);
+    trails.push({ el: t, x: window.innerWidth/2, y: window.innerHeight/2 });
+  }
+
+  let mouseX = window.innerWidth / 2;
+  let mouseY = window.innerHeight / 2;
+  let blobX = mouseX;
+  let blobY = mouseY;
+
+  window.addEventListener('mousemove', (e) => {
+    mouseX = e.clientX;
+    mouseY = e.clientY;
+  });
+
+  function animateCursor() {
+    blobX += (mouseX - blobX) * 0.4;
+    blobY += (mouseY - blobY) * 0.4;
+    blob.style.left = blobX + 'px';
+    blob.style.top = blobY + 'px';
+
+    let tx = blobX;
+    let ty = blobY;
+    trails.forEach((trail, i) => {
+      trail.x += (tx - trail.x) * 0.3;
+      trail.y += (ty - trail.y) * 0.3;
+      trail.el.style.left = trail.x + 'px';
+      trail.el.style.top = trail.y + 'px';
+      const scale = 1 - (i / numTrails);
+      trail.el.style.transform = 'translate(-50%, -50%) scale(' + scale + ')';
+      tx = trail.x;
+      ty = trail.y;
+    });
+
+    requestAnimationFrame(animateCursor);
+  }
+  animateCursor();
+}

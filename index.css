@@ -141,6 +141,25 @@ a:hover {
   pointer-events: none;
 }
 
+/* Parallax Background */
+#parallax-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 120vh; /* Taller than viewport for parallax travel */
+  background: url('bg-nightsky.webp') center center no-repeat;
+  background-size: cover;
+  z-index: -2;
+  opacity: 0; /* Hidden by default */
+  pointer-events: none;
+  transition: opacity var(--transition-slow);
+}
+
+body.dark-theme #parallax-bg {
+  opacity: 0.65; /* Slightly faded so text remains legible */
+}
+
 /* App Container */
 .app-container {
   display: flex;

@@ -12,6 +12,7 @@ document.addEventListener("DOMContentLoaded", () => {
   initEventCountdown();
   initPuzzle();
   initContactForm();
+  initSmoothScrolling();
 });
 
 /* =========================================================================
@@ -1172,4 +1173,55 @@ function initContactForm() {
   window.closeModal = function() {
     modal.classList.remove("active");
   };
+}
+
+/* =========================================================================
+   9. SMOOTH SCROLLING & PARALLAX
+   ========================================================================= */
+function initSmoothScrolling() {
+  // Check if Lenis and GSAP are loaded
+  if (typeof Lenis === 'undefined' || typeof gsap === 'undefined') return;
+
+  // Initialize Lenis
+  const lenis = new Lenis({
+    duration: 1.2,
+    easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), // https://www.desmos.com/calculator/brs54l4xou
+    direction: 'vertical',
+    gestureDirection: 'vertical',
+    smooth: true,
+    mouseMultiplier: 1,
+    smoothTouch: false,
+    touchMultiplier: 2,
+    infinite: false,
+  });
+
+  // Sync Lenis with GSAP ScrollTrigger
+  lenis.on('scroll', ScrollTrigger.update);
+
+  gsap.ticker.add((time) => {
+    lenis.raf(time * 1000);
+  });
+
+  gsap.ticker.lagSmoothing(0);
+
+  // Parallax Effect for Background Image
+  const parallaxBg = document.getElementById('parallax-bg');
+  if (parallaxBg) {
+    // We move the background image upwards slowly as we scroll down
+    gsap.to(parallaxBg, {
+      yPercent: -15, // Moves up by 15% of its height
+      ease: "none",
+      scrollTrigger: {
+        trigger: document.body,
+        start: "top top",
+        end: "bottom bottom",
+        scrub: true
+      }
+    });
+
+    // Fade in after load
+    setTimeout(() => {
+      parallaxBg.style.opacity = '0.65';
+    }, 500);
+  }
 }
