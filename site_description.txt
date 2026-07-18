@@ -1,0 +1,11 @@
+# PhySoc IIT Kharagpur Official Website
+
+## Features
+- **Responsive Design**: Mobile-first approach with fluid layouts and scalable typography.
+- **Dark/Light Theme**: Toggleable themes adapting to user preference with smooth transitions.
+- **Dynamic Routing**: Single-page application feel with modular components.
+- **Particle Canvas Background**: Interactive, physics-inspired animated backgrounds.
+- **Glassmorphism & Neumorphism**: Modern UI touches with frosted glass effects and soft shadows.
+- **Officers Page**: Structured directory of the society's leadership, chairs, and fellows.
+- **Announcements**: Dynamic timeline for upcoming events and news.
+- **Interactive UI**: Micro-interactions, hover effects, and staggered animations (Anime.js).
