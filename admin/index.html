@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin — PhySoc | IIT Kharagpur</title>
+  <meta name="robots" content="noindex, nofollow" />
+  <link rel="icon" href="../logo.svg" type="image/svg+xml" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Inter:wght@400;500;600&family=Fira+Code&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.2/anime.min.js"></script>
+  <link rel="stylesheet" href="../shared.css" />
+  <style>
+    /* ─────────────────────────── Admin Layout ─────────────────────────── */
+    body { margin: 0; font-family: var(--font-body); background: var(--bg); color: var(--text); }
+
+    /* Login Screen */
+    #login-screen {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: radial-gradient(ellipse at 60% 40%, rgba(0,242,254,0.08) 0%, transparent 60%),
+                  radial-gradient(ellipse at 20% 70%, rgba(167,139,250,0.06) 0%, transparent 50%),
+                  var(--bg);
+    }
+    .login-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 40px;
+      width: min(400px, 90vw);
+      text-align: center;
+    }
+    .login-card .logo-circle {
+      width: 64px; height: 64px; border-radius: 50%;
+      background: var(--gradient-brand);
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 20px;
+      font-size: 28px;
+    }
+    .login-card h1 { font-family: var(--font-heading); font-size: 22px; margin-bottom: 6px; }
+    .login-card p  { font-size: 13px; color: var(--text-muted); margin-bottom: 28px; }
+    .login-err { color: var(--danger); font-size: 12px; margin-top: 10px; display: none; }
+
+    /* Admin Shell */
+    #admin-shell { display: none; min-height: 100vh; }
+
+    .admin-topbar {
+      height: 56px;
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      padding: 0 24px;
+      gap: 16px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .admin-topbar .brand { font-family: var(--font-heading); font-weight: 700; font-size: 16px; color: var(--text-bright); }
+    .admin-topbar .badge { background: rgba(0,242,254,0.12); color: var(--cyan); border: 1px solid rgba(0,242,254,0.25); border-radius: 20px; padding: 2px 10px; font-size: 11px; font-weight: 600; letter-spacing: 0.5px; }
+    .admin-topbar .spacer { flex: 1; }
+    .logout-btn { background: rgba(239,68,68,0.1); border: 1px solid rgba(239,68,68,0.25); color: #ef4444; border-radius: 8px; padding: 6px 14px; font-size: 12px; font-family: var(--font-body); cursor: pointer; transition: all var(--transition-fast); }
+    .logout-btn:hover { background: rgba(239,68,68,0.2); }
+
+    .admin-body { display: flex; min-height: calc(100vh - 56px); }
+
+    /* Sidebar */
+    .admin-sidebar {
+      width: 220px;
+      background: var(--surface);
+      border-right: 1px solid var(--border);
+      padding: 20px 0;
+      flex-shrink: 0;
+      position: sticky;
+      top: 56px;
+      height: calc(100vh - 56px);
+      overflow-y: auto;
+    }
+    .sidebar-link {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 11px 20px;
+      font-size: 13px;
+      color: var(--text-muted);
+      cursor: pointer;
+      transition: all var(--transition-fast);
+      border-left: 3px solid transparent;
+      text-decoration: none;
+    }
+    .sidebar-link:hover { background: rgba(0,242,254,0.04); color: var(--text-bright); }
+    .sidebar-link.active { background: rgba(0,242,254,0.07); color: var(--cyan); border-left-color: var(--cyan); }
+    .sidebar-section { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; color: var(--text-muted); padding: 16px 20px 6px; }
+
+    /* Main content */
+    .admin-main { flex: 1; padding: 28px; overflow-x: hidden; }
+    .admin-page { display: none; }
+    .admin-page.active { display: block; }
+
+    /* Stat cards */
+    .admin-stats { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 16px; margin-bottom: 28px; }
+    .stat-card { background: var(--surface); border: 1px solid var(--border); border-radius: 14px; padding: 20px; }
+    .stat-card .s-icon { font-size: 22px; margin-bottom: 10px; }
+    .stat-card .s-val { font-family: var(--font-heading); font-size: 28px; font-weight: 800; color: var(--text-bright); }
+    .stat-card .s-lbl { font-size: 12px; color: var(--text-muted); margin-top: 4px; }
+
+    /* Table */
+    .admin-table-wrap { overflow-x: auto; border-radius: 12px; border: 1px solid var(--border); }
+    .admin-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+    .admin-table th { background: rgba(0,0,0,0.3); padding: 12px 16px; text-align: left; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: var(--text-muted); border-bottom: 1px solid var(--border); }
+    .admin-table td { padding: 12px 16px; border-bottom: 1px solid rgba(255,255,255,0.04); vertical-align: top; max-width: 260px; word-break: break-word; }
+    .admin-table tr:last-child td { border-bottom: none; }
+    .admin-table tr:hover td { background: rgba(0,242,254,0.02); }
+
+    /* Announcement form */
+    .ann-form { background: var(--surface); border: 1px solid var(--border); border-radius: 14px; padding: 24px; margin-bottom: 24px; }
+    .ann-list-item { display: flex; align-items: flex-start; justify-content: space-between; gap: 14px; padding: 14px; background: rgba(0,0,0,0.2); border: 1px solid var(--border); border-radius: 10px; margin-bottom: 10px; }
+    .ann-list-item .ann-meta { flex: 1; }
+    .ann-list-item .ann-title { font-weight: 600; font-size: 14px; color: var(--text-bright); margin-bottom: 4px; }
+    .ann-list-item .ann-body  { font-size: 12px; color: var(--text-muted); line-height: 1.5; }
+    .del-btn { background: rgba(239,68,68,0.1); border: 1px solid rgba(239,68,68,0.2); color: #ef4444; border-radius: 6px; padding: 4px 10px; font-size: 12px; cursor: pointer; white-space: nowrap; flex-shrink: 0; transition: all var(--transition-fast); }
+    .del-btn:hover { background: rgba(239,68,68,0.2); }
+
+    /* Supabase note */
+    .supabase-note { background: rgba(63,210,115,0.06); border: 1px solid rgba(63,210,115,0.2); border-radius: 12px; padding: 18px; margin-bottom: 24px; font-size: 13px; line-height: 1.7; }
+    .supabase-note strong { color: #3fd273; }
+  </style>
+</head>
+<body class="dark-theme">
+  <canvas id="particle-canvas"></canvas>
+
+  <!-- ═══════════════════ LOGIN SCREEN ═══════════════════ -->
+  <div id="login-screen">
+    <div class="login-card">
+      <div class="logo-circle">🔒</div>
+      <h1>PhySoc Admin</h1>
+      <p>Restricted area. Officers only.</p>
+      <div class="form-group" style="text-align:left">
+        <label for="admin-pass">Password</label>
+        <input type="password" id="admin-pass" placeholder="Enter admin password" autocomplete="current-password" />
+      </div>
+      <button class="btn btn-primary" id="login-btn" style="width:100%;justify-content:center;margin-top:6px">
+        <i class="fa-solid fa-lock-open"></i> Sign In
+      </button>
+      <p class="login-err" id="login-err"><i class="fa-solid fa-circle-exclamation"></i> Incorrect password.</p>
+      <p style="font-size:11px;color:var(--text-muted);margin-top:22px">
+        <a href="../" style="color:var(--cyan)">← Back to PhySoc</a>
+      </p>
+    </div>
+  </div>
+
+  <!-- ═══════════════════ ADMIN SHELL ═══════════════════ -->
+  <div id="admin-shell">
+    <div class="admin-topbar">
+      <div class="logo-wrap" style="width:28px;height:28px"><img src="../logo.svg" alt="PhySoc" /></div>
+      <span class="brand">PhySoc Admin</span>
+      <span class="badge">Officer Panel</span>
+      <div class="spacer"></div>
+      <span style="font-size:12px;color:var(--text-muted);margin-right:10px" id="admin-date"></span>
+      <button class="logout-btn" onclick="adminLogout()"><i class="fa-solid fa-right-from-bracket"></i> Logout</button>
+    </div>
+
+    <div class="admin-body">
+      <!-- Sidebar -->
+      <nav class="admin-sidebar" aria-label="Admin navigation">
+        <div class="sidebar-section">Overview</div>
+        <a class="sidebar-link active" data-page="dashboard"><i class="fa-solid fa-gauge-high" style="width:16px"></i> Dashboard</a>
+        <div class="sidebar-section">Content</div>
+        <a class="sidebar-link" data-page="announcements"><i class="fa-solid fa-bullhorn" style="width:16px"></i> Announcements</a>
+        <a class="sidebar-link" data-page="resources"><i class="fa-solid fa-book-open-reader" style="width:16px"></i> Resources</a>
+        <a class="sidebar-link" data-page="submissions"><i class="fa-solid fa-inbox" style="width:16px"></i> Contact Inbox</a>
+        <div class="sidebar-section">Database</div>
+        <a class="sidebar-link" data-page="supabase"><i class="fa-solid fa-database" style="width:16px"></i> Supabase Setup</a>
+        <div class="sidebar-sep" style="margin:16px 0;border-top:1px solid var(--border)"></div>
+        <a class="sidebar-link" href="../" target="_blank"><i class="fa-solid fa-arrow-up-right-from-square" style="width:16px"></i> View Site</a>
+      </nav>
+
+      <!-- Main -->
+      <div class="admin-main">
+
+        <!-- ── DASHBOARD ── -->
+        <div class="admin-page active" id="page-dashboard">
+          <h2 style="font-family:var(--font-heading);margin-bottom:22px">👋 Dashboard</h2>
+          <div class="admin-stats">
+            <div class="stat-card"><div class="s-icon">📨</div><div class="s-val" id="stat-submissions">0</div><div class="s-lbl">Contact Submissions</div></div>
+            <div class="stat-card"><div class="s-icon">📢</div><div class="s-val" id="stat-announcements">0</div><div class="s-lbl">Announcements</div></div>
+            <div class="stat-card"><div class="s-icon">👥</div><div class="s-val">100+</div><div class="s-lbl">Members</div></div>
+            <div class="stat-card"><div class="s-icon">🗓</div><div class="s-val">35+</div><div class="s-lbl">Events This Year</div></div>
+          </div>
+
+          <div style="background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:24px">
+            <h3 style="font-family:var(--font-heading);margin-bottom:16px">Recent Contact Submissions</h3>
+            <div id="dash-submissions">
+              <p style="font-size:13px;color:var(--text-muted)">No submissions yet.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- ── ANNOUNCEMENTS ── -->
+        <div class="admin-page" id="page-announcements">
+          <h2 style="font-family:var(--font-heading);margin-bottom:22px">📢 Manage Announcements</h2>
+
+          <div class="ann-form">
+            <h4 style="font-family:var(--font-heading);margin-bottom:18px">New Announcement</h4>
+            <div class="form-row" style="display:flex;gap:14px;margin-bottom:14px">
+              <div class="form-group" style="flex:1;margin-bottom:0">
+                <label for="ann-title">Title <span style="color:var(--danger)">*</span></label>
+                <input type="text" id="ann-title" placeholder="Announcement title" />
+              </div>
+              <div class="form-group" style="width:160px;margin-bottom:0">
+                <label for="ann-date">Event/Display Date</label>
+                <input type="date" id="ann-date" style="background:var(--input-bg);border:1px solid var(--border);border-radius:8px;padding:10px 14px;color:var(--text);font-family:var(--font-body);font-size:14px;width:100%;outline:none" />
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="ann-cat">Category</label>
+              <select id="ann-cat" style="background:var(--input-bg);border:1px solid var(--border);border-radius:8px;padding:10px 14px;color:var(--text);font-family:var(--font-body);font-size:14px;width:100%;outline:none">
+                <option value="events">Events</option>
+                <option value="academic">Academic</option>
+                <option value="research">Research</option>
+              </select>
+            </div>
+            <div class="form-group" style="margin-bottom:18px">
+              <label for="ann-body">Content</label>
+              <textarea id="ann-body" rows="4" placeholder="Announcement body text…" style="resize:vertical"></textarea>
+            </div>
+            <button class="btn btn-primary" id="publish-ann-btn"><i class="fa-solid fa-paper-plane"></i> Publish</button>
+          </div>
+
+          <h3 style="font-family:var(--font-heading);margin-bottom:14px">Published Announcements</h3>
+          <div id="ann-list">
+            <p style="font-size:13px;color:var(--text-muted)">No announcements yet. Add one above.</p>
+          </div>
+        </div>
+
+        <!-- ── RESOURCES ── -->
+        <div class="admin-page" id="page-resources">
+          <h2 style="font-family:var(--font-heading);margin-bottom:22px">📚 Manage Resources</h2>
+
+          <div class="ann-form">
+            <h4 style="font-family:var(--font-heading);margin-bottom:18px">Add New Resource</h4>
+            <div class="form-row" style="display:flex;gap:14px;margin-bottom:14px">
+              <div class="form-group" style="flex:1;margin-bottom:0">
+                <label for="res-title">Resource Title <span style="color:var(--danger)">*</span></label>
+                <input type="text" id="res-title" placeholder="e.g. Classical Mechanics - Goldstein" />
+              </div>
+              <div class="form-group" style="width:160px;margin-bottom:0">
+                <label for="res-cat">Category</label>
+                <select id="res-cat" style="background:var(--input-bg);border:1px solid var(--border);border-radius:8px;padding:10px 14px;color:var(--text);font-family:var(--font-body);font-size:14px;width:100%;outline:none">
+                  <option value="books">Textbooks</option>
+                  <option value="courses">Course Notes</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-group" style="margin-bottom:14px">
+              <label for="res-link">PDF / Link URL <span style="color:var(--danger)">*</span></label>
+              <input type="url" id="res-link" placeholder="https://..." />
+            </div>
+            <div class="form-group" style="margin-bottom:18px">
+              <label for="res-desc">Description (Optional)</label>
+              <input type="text" id="res-desc" placeholder="Brief description..." />
+            </div>
+            <button class="btn btn-primary" id="publish-res-btn"><i class="fa-solid fa-plus"></i> Add Resource</button>
+          </div>
+
+          <h3 style="font-family:var(--font-heading);margin-bottom:14px">Published Resources</h3>
+          <div id="res-list">
+            <p style="font-size:13px;color:var(--text-muted)">No resources yet. Add one above.</p>
+          </div>
+        </div>
+
+        <!-- ── CONTACT INBOX ── -->
+        <div class="admin-page" id="page-submissions">
+          <h2 style="font-family:var(--font-heading);margin-bottom:22px">📨 Contact Inbox</h2>
+          <div class="admin-table-wrap">
+            <table class="admin-table">
+              <thead>
+                <tr>
+                  <th>Name</th>
+                  <th>Email</th>
+                  <th>Subject</th>
+                  <th>Message</th>
+                  <th>Date</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody id="submissions-tbody">
+                <tr><td colspan="6" style="text-align:center;color:var(--text-muted);padding:32px">No submissions yet.</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- ── SUPABASE SETUP ── -->
+        <div class="admin-page" id="page-supabase">
+          <h2 style="font-family:var(--font-heading);margin-bottom:22px">🗄️ Supabase Setup Guide</h2>
+
+          <div class="supabase-note">
+            <strong>Why Supabase?</strong> Right now, announcements and contact submissions are stored in
+            <code>localStorage</code> (browser-only, lost on refresh). To make them persistent across devices and
+            sessions — and to make the admin panel actually useful — you need a backend database.
+            <strong>Supabase is free</strong> for small projects and requires zero server setup.
+          </div>
+
+          <div class="card" style="margin-bottom:16px">
+            <h4 style="font-family:var(--font-heading);margin-bottom:14px">📋 What to do (step by step)</h4>
+            <ol style="display:flex;flex-direction:column;gap:12px;font-size:13px;color:var(--text-muted);padding-left:18px;line-height:1.7">
+              <li>Go to <a href="https://supabase.com" target="_blank" rel="noopener" style="color:var(--cyan)">supabase.com</a> → Create a free account → New project.</li>
+              <li>Create two tables in the Table Editor:
+                <ul style="margin-top:6px;display:flex;flex-direction:column;gap:4px">
+                  <li><code style="color:var(--cyan)">contact_submissions</code>: id, name, email, year, subject, message, created_at</li>
+                  <li><code style="color:var(--cyan)">announcements</code>: id, title, category, body, event_date, created_at</li>
+                  <li><code style="color:var(--cyan)">resources</code>: id, title, category, link_url, description, created_at</li>
+                </ul>
+              </li>
+              <li>Go to Settings → API → copy your <strong style="color:#3fd273">Project URL</strong> and <strong style="color:#3fd273">anon public key</strong>.</li>
+              <li>Paste them into <code style="color:var(--cyan)">supabase-config.js</code> (create this file in the root).</li>
+              <li>In <code>shared.js</code>, uncomment the Supabase blocks for contact form submission and announcement loading.</li>
+              <li>In <code>admin/index.html</code>, uncomment the Supabase query blocks.</li>
+            </ol>
+          </div>
+
+          <div class="card" style="margin-bottom:16px">
+            <h4 style="font-family:var(--font-heading);margin-bottom:12px">📄 supabase-config.js (create this file)</h4>
+            <pre style="background:rgba(0,0,0,0.4);border:1px solid var(--border);border-radius:8px;padding:16px;font-family:var(--font-code);font-size:12px;overflow-x:auto;color:var(--text)">
+// supabase-config.js — place in project root
+// Include via: &lt;script src="supabase-config.js"&gt;&lt;/script&gt;
+
+const SUPABASE_URL  = 'https://YOUR_PROJECT_ID.supabase.co';
+const SUPABASE_ANON = 'YOUR_ANON_PUBLIC_KEY';
+
+// Then in any page that needs DB access:
+// const db = supabase.createClient(SUPABASE_URL, SUPABASE_ANON);
+            </pre>
+          </div>
+
+          <div class="card">
+            <h4 style="font-family:var(--font-heading);margin-bottom:12px">🔐 Auth / Row Level Security</h4>
+            <p style="font-size:13px;color:var(--text-muted);line-height:1.7">
+              Enable RLS on both tables in Supabase.<br>
+              • <strong>contact_submissions</strong>: Allow anonymous INSERT (so the form works without login). Restrict SELECT to authenticated users only (admin).<br>
+              • <strong>announcements</strong>: Allow anonymous SELECT (so the public site can read them). Restrict INSERT/DELETE to authenticated users only.
+            </p>
+          </div>
+        </div>
+
+      </div><!-- /admin-main -->
+    </div><!-- /admin-body -->
+  </div><!-- /admin-shell -->
+
+  <script>
+  /* ────────────────────────────────────────────────────────────
+     ADMIN PANEL — runs entirely from localStorage for now.
+     When Supabase is connected, replace localStorage reads/writes
+     with Supabase queries (see the Supabase Setup tab for guide).
+  ──────────────────────────────────────────────────────────── */
+
+  // ── CONFIG ──────────────────────────────────────────────────
+  const ADMIN_PASSWORD = 'physoc2026'; // Change this!
+  const SESSION_KEY    = 'physoc_admin_session';
+  const SUBS_KEY       = 'physoc_contact_submissions';
+  const ANN_KEY        = 'physoc_announcements';
+  const RES_KEY        = 'physoc_resources';
+
+  // ── HELPERS ─────────────────────────────────────────────────
+  const $  = (sel) => document.querySelector(sel);
+  const $$ = (sel) => document.querySelectorAll(sel);
+  const getSubs = () => JSON.parse(localStorage.getItem(SUBS_KEY) || '[]');
+  const getAnns = () => JSON.parse(localStorage.getItem(ANN_KEY) || '[]');
+  const setAnns = (arr) => { localStorage.setItem(ANN_KEY, JSON.stringify(arr)); renderAnns(); };
+  const getRes  = () => JSON.parse(localStorage.getItem(RES_KEY) || '[]');
+  const setRes  = (arr) => { localStorage.setItem(RES_KEY, JSON.stringify(arr)); renderRes(); };
+
+  // ── AUTH ────────────────────────────────────────────────────
+  function checkSession() {
+    return sessionStorage.getItem(SESSION_KEY) === 'ok';
+  }
+
+  function adminLogin() {
+    const pass = $('#admin-pass').value.trim();
+    if (pass === ADMIN_PASSWORD) {
+      sessionStorage.setItem(SESSION_KEY, 'ok');
+      showAdmin();
+    } else {
+      const err = $('#login-err');
+      err.style.display = 'block';
+      anime({ targets: '#login-err', translateX: [0, -6, 6, -4, 4, 0], duration: 400, easing: 'easeInOutSine' });
+    }
+  }
+
+  function adminLogout() {
+    sessionStorage.removeItem(SESSION_KEY);
+    location.reload();
+  }
+
+  // ── SHOW ADMIN ───────────────────────────────────────────────
+  function showAdmin() {
+    $('#login-screen').style.display = 'none';
+    $('#admin-shell').style.display = 'block';
+    $('#admin-date').textContent = new Date().toLocaleDateString('en-IN', { day:'numeric', month:'long', year:'numeric' });
+    refreshStats();
+    renderSubmissionsTable();
+    renderAnns();
+    renderRes();
+    renderDashSubs();
+  }
+
+  // ── NAVIGATION ───────────────────────────────────────────────
+  $$('.sidebar-link[data-page]').forEach(link => {
+    link.addEventListener('click', () => {
+      $$('.sidebar-link').forEach(l => l.classList.remove('active'));
+      $$('.admin-page').forEach(p => p.classList.remove('active'));
+      link.classList.add('active');
+      const page = $('#page-' + link.dataset.page);
+      if (page) page.classList.add('active');
+    });
+  });
+
+  // ── STATS ────────────────────────────────────────────────────
+  function refreshStats() {
+    $('#stat-submissions').textContent  = getSubs().length;
+    $('#stat-announcements').textContent = getAnns().length;
+  }
+
+  // ── SUBMISSIONS TABLE ────────────────────────────────────────
+  function renderSubmissionsTable() {
+    const subs = getSubs();
+    const tbody = $('#submissions-tbody');
+    if (!subs.length) {
+      tbody.innerHTML = '<tr><td colspan="6" style="text-align:center;color:var(--text-muted);padding:32px">No submissions yet.</td></tr>';
+      return;
+    }
+    tbody.innerHTML = subs.slice().reverse().map((s, i) => `
+      <tr>
+        <td><strong>${s.name}</strong></td>
+        <td><a href="mailto:${s.email}" style="color:var(--cyan)">${s.email}</a></td>
+        <td>${s.subject || '—'}</td>
+        <td>${(s.message||'').slice(0,100)}${s.message?.length > 100 ? '…' : ''}</td>
+        <td style="white-space:nowrap;font-size:11px;color:var(--text-muted)">${s.date || '—'}</td>
+        <td><button class="del-btn" onclick="deleteSub(${subs.length - 1 - i})">Delete</button></td>
+      </tr>`).join('');
+  }
+
+  function deleteSub(idx) {
+    if (!confirm('Delete this submission?')) return;
+    const subs = getSubs();
+    subs.splice(idx, 1);
+    localStorage.setItem(SUBS_KEY, JSON.stringify(subs));
+    renderSubmissionsTable();
+    renderDashSubs();
+    refreshStats();
+  }
+
+  // ── DASHBOARD SUBS ───────────────────────────────────────────
+  function renderDashSubs() {
+    const subs = getSubs();
+    const el = $('#dash-submissions');
+    if (!subs.length) { el.innerHTML = '<p style="font-size:13px;color:var(--text-muted)">No submissions yet.</p>'; return; }
+    el.innerHTML = subs.slice(-3).reverse().map(s => `
+      <div style="padding:12px;border:1px solid var(--border);border-radius:8px;margin-bottom:8px">
+        <strong style="font-size:13px">${s.name}</strong>
+        <span style="font-size:11px;color:var(--text-muted);margin-left:8px">${s.email}</span>
+        <p style="font-size:12px;color:var(--text-muted);margin:4px 0 0">${(s.message||'').slice(0,80)}…</p>
+      </div>`).join('');
+  }
+
+  // ── ANNOUNCEMENTS ────────────────────────────────────────────
+  function renderAnns() {
+    const anns = getAnns();
+    const el = $('#ann-list');
+    refreshStats();
+    if (!anns.length) { el.innerHTML = '<p style="font-size:13px;color:var(--text-muted)">No announcements yet. Add one above.</p>'; return; }
+    el.innerHTML = anns.slice().reverse().map((a, i) => `
+      <div class="ann-list-item">
+        <div class="ann-meta">
+          <div class="ann-title">${a.title}</div>
+          <div style="margin-bottom:4px">
+            <span class="tag tag-${a.category}" style="font-size:10px;padding:2px 8px">${a.category}</span>
+            <span style="font-size:11px;color:var(--text-muted);margin-left:8px">${a.event_date || a.date}</span>
+          </div>
+          <div class="ann-body">${a.body}</div>
+        </div>
+        <button class="del-btn" onclick="deleteAnn(${anns.length - 1 - i})">Delete</button>
+      </div>`).join('');
+  }
+
+  function deleteAnn(idx) {
+    if (!confirm('Delete this announcement?')) return;
+    const anns = getAnns();
+    anns.splice(idx, 1);
+    setAnns(anns);
+  }
+
+  $('#publish-ann-btn')?.addEventListener('click', () => {
+    const title = $('#ann-title').value.trim();
+    const body  = $('#ann-body').value.trim();
+    const cat   = $('#ann-cat').value;
+    const evDt  = $('#ann-date').value;
+    if (!title) { $('#ann-title').style.borderColor = 'var(--danger)'; return; }
+    const anns = getAnns();
+    anns.push({ 
+      title, body, category: cat, 
+      event_date: evDt ? new Date(evDt).toLocaleDateString('en-IN', { day:'numeric', month:'short', year:'numeric' }) : null,
+      date: new Date().toLocaleDateString('en-IN', { day:'numeric', month:'short', year:'numeric' }) 
+    });
+    setAnns(anns);
+    $('#ann-title').value = '';
+    $('#ann-body').value  = '';
+    $('#ann-date').value  = '';
+    $('#ann-title').style.borderColor = '';
+    anime({ targets: '#publish-ann-btn', scale: [1, 0.95, 1], duration: 200 });
+  });
+
+  // ── RESOURCES ────────────────────────────────────────────────
+  function renderRes() {
+    const res = getRes();
+    const el = $('#res-list');
+    if (!res.length) { el.innerHTML = '<p style="font-size:13px;color:var(--text-muted)">No resources yet. Add one above.</p>'; return; }
+    el.innerHTML = res.slice().reverse().map((r, i) => `
+      <div class="ann-list-item">
+        <div class="ann-meta">
+          <div class="ann-title">${r.title}</div>
+          <div style="margin-bottom:4px">
+            <span class="tag tag-${r.category}" style="font-size:10px;padding:2px 8px">${r.category}</span>
+            <a href="${r.link_url}" target="_blank" style="font-size:11px;color:var(--cyan);margin-left:8px"><i class="fa-solid fa-link"></i> Link</a>
+          </div>
+          <div class="ann-body">${r.description || ''}</div>
+        </div>
+        <button class="del-btn" onclick="deleteRes(${res.length - 1 - i})">Delete</button>
+      </div>`).join('');
+  }
+
+  function deleteRes(idx) {
+    if (!confirm('Delete this resource?')) return;
+    const res = getRes();
+    res.splice(idx, 1);
+    setRes(res);
+  }
+
+  $('#publish-res-btn')?.addEventListener('click', () => {
+    const title = $('#res-title').value.trim();
+    const link  = $('#res-link').value.trim();
+    const desc  = $('#res-desc').value.trim();
+    const cat   = $('#res-cat').value;
+    
+    let ok = true;
+    if (!title) { $('#res-title').style.borderColor = 'var(--danger)'; ok = false; } else { $('#res-title').style.borderColor = ''; }
+    if (!link) { $('#res-link').style.borderColor = 'var(--danger)'; ok = false; } else { $('#res-link').style.borderColor = ''; }
+    if (!ok) return;
+
+    const res = getRes();
+    res.push({ title, link_url: link, description: desc, category: cat });
+    setRes(res);
+    
+    $('#res-title').value = '';
+    $('#res-link').value  = '';
+    $('#res-desc').value  = '';
+    anime({ targets: '#publish-res-btn', scale: [1, 0.95, 1], duration: 200 });
+  });
+
+  // ── INIT ─────────────────────────────────────────────────────
+  $('#login-btn')?.addEventListener('click', adminLogin);
+  $('#admin-pass')?.addEventListener('keydown', e => { if (e.key === 'Enter') adminLogin(); });
+
+  if (checkSession()) showAdmin();
+  </script>
+</body>
+</html>

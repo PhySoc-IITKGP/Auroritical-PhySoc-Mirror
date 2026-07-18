@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Announcements — PhySoc | IIT Kharagpur</title>
+  <meta name="description" content="Latest announcements, events, and news from Physics Society IIT Kharagpur." />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://physoc.iitkgp.ac.in/announcements/" />
+  <link rel="icon" href="../logo.svg" type="image/svg+xml" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Inter:wght@400;500;600&family=Fira+Code&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.2/anime.min.js"></script>
+  <link rel="stylesheet" href="../shared.css" />
+  <style>
+    .ann-search-bar { display:flex;align-items:center;gap:10px;background:var(--input-bg);border:1px solid var(--border);border-radius:10px;padding:10px 16px;margin-bottom:20px;transition:border-color var(--transition-fast); }
+    .ann-search-bar:focus-within { border-color:var(--cyan); }
+    .ann-search-bar i { color:var(--text-muted); }
+    .ann-search-bar input { flex:1;background:none;border:none;outline:none;font-family:var(--font-body);font-size:14px;color:var(--text); }
+    .ann-search-bar input::placeholder { color:var(--text-muted); }
+  </style>
+</head>
+<body class="dark-theme">
+  <canvas id="particle-canvas"></canvas>
+  <div id="physoc-header"></div>
+
+  <main class="page-main page-content" id="main-content">
+
+    <section class="card hero-card" style="margin-bottom:22px" aria-labelledby="ann-heading">
+      <span class="section-label"><i class="fa-solid fa-bullhorn"></i> Announcements</span>
+      <h1 id="ann-heading">News &amp; Updates</h1>
+      <p>Stay current with PhySoc events, academic opportunities, selection notices, and society news. Filter by category or search below.</p>
+    </section>
+
+    <div style="border-radius:14px;overflow:hidden;margin-bottom:22px;border:1px solid var(--border);height:150px;position:relative">
+      <img src="../anim_equations_reveal.png" alt="Physics equations glowing on dark background" style="width:100%;height:100%;object-fit:cover" />
+      <div style="position:absolute;inset:0;background:linear-gradient(90deg,rgba(3,10,26,0.92),rgba(3,10,26,0.65),rgba(3,10,26,0.92));display:flex;align-items:center;justify-content:center">
+        <p style="font-family:var(--font-heading);font-size:clamp(13px,2.5vw,20px);font-weight:700;color:#fff;letter-spacing:1px;text-align:center;padding:0 20px">"The most beautiful thing we can experience is the mysterious." — Albert Einstein</p>
+      </div>
+    </div>
+
+    <div class="card" aria-labelledby="feed-heading">
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:18px;flex-wrap:wrap;gap:10px">
+        <h2 id="feed-heading" style="margin-bottom:0">All Announcements</h2>
+        <span style="font-size:12px;color:var(--text-muted)">Sorted by date, most recent first</span>
+      </div>
+      <div class="ann-search-bar">
+        <i class="fa-solid fa-magnifying-glass"></i>
+        <input type="text" id="ann-search" placeholder="Search by title or description…" aria-label="Search announcements" />
+      </div>
+      <div class="filter-bar" role="group" aria-label="Filter announcements">
+        <button class="filter-btn active" data-filter="all">All</button>
+        <button class="filter-btn" data-filter="events"><i class="fa-solid fa-calendar-star"></i> Events</button>
+        <button class="filter-btn" data-filter="academic"><i class="fa-solid fa-graduation-cap"></i> Academic</button>
+        <button class="filter-btn" data-filter="research"><i class="fa-solid fa-microscope"></i> Research</button>
+      </div>
+      <div id="announcements-container" role="feed" aria-label="Announcements feed"></div>
+    </div>
+
+  </main>
+
+  <div id="physoc-footer"></div>
+  <script src="../components.js"></script>
+  <script src="../shared.js"></script>
+</body>
+</html>

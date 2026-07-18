@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Interactive Physics Orbit Simulator - Physics Society, IIT Kharagpur.">
+  <title>Orbit Simulator | PhySoc Sandbox</title>
+  
+  <link rel="icon" type="image/svg+xml" href="../../logo.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="../../index.css">
+  <style>
+    body {
+      padding: 0;
+      margin: 0;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    .sandbox-container {
+      max-width: 1200px;
+      margin: 40px auto;
+      padding: 0 20px;
+      width: 100%;
+      flex: 1;
+    }
+    .back-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 20px;
+      color: var(--color-primary);
+      font-weight: 600;
+    }
+    .back-btn:hover {
+      color: var(--color-secondary);
+      text-decoration: none;
+    }
+    .game-layout {
+      display: grid;
+      grid-template-columns: 1fr 280px;
+      gap: 30px;
+      align-items: start;
+    }
+    .canvas-card {
+      background-color: #03050a;
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      box-shadow: var(--box-shadow);
+    }
+    canvas {
+      width: 100%;
+      height: 500px;
+      display: block;
+      cursor: crosshair;
+    }
+    .instructions {
+      background-color: rgba(0, 0, 0, 0.6);
+      color: var(--color-primary);
+      font-size: 13px;
+      text-align: center;
+      padding: 12px;
+      border-top: 1px solid var(--border-color);
+      font-style: italic;
+    }
+    .controls-card {
+      background-color: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      padding: 24px;
+      box-shadow: var(--box-shadow);
+    }
+    .controls-card h3 {
+      font-family: var(--font-heading);
+      font-size: 18px;
+      color: var(--text-bright);
+      margin-bottom: 20px;
+      border-bottom: 1px solid var(--border-color);
+      padding-bottom: 10px;
+    }
+    @media screen and (max-width: 900px) {
+      .game-layout {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body class="dark-theme">
+  <!-- Particle Background -->
+  <canvas id="particle-canvas" style="position:fixed; z-index:-1; pointer-events:none;"></canvas>
+
+  <div class="sandbox-container">
+    <a href="../../index.html#sandbox" class="back-btn"><i class="fa-solid fa-arrow-left"></i> Back to PhySoc Home</a>
+    
+    <div class="info-card wide-card" style="margin-bottom: 30px; padding: 25px;">
+      <h2 style="font-family: var(--font-heading); margin-bottom: 10px; color: var(--text-bright);"><i class="fa-solid fa-earth-americas text-cyan"></i> Orbit Simulator</h2>
+      <p style="color: var(--text-muted); font-size: 14px; margin: 0;">Simulate planetary orbits around a massive central star. Click and drag on the canvas to set velocity vectors and launch planets into space.</p>
+    </div>
+
+    <div class="game-layout">
+      <!-- Game Canvas -->
+      <div class="canvas-card">
+        <canvas id="orbit-canvas"></canvas>
+        <div class="instructions">Click and drag inside the canvas to sling planets into orbits around the central gravity star.</div>
+      </div>
+
+      <!-- Controls -->
+      <div class="controls-card">
+        <h3>Orbit Controls</h3>
+        <div class="control-group">
+          <label for="orbit-mass" style="font-size: 13px; color: var(--text-main); font-weight: 500;">Central Star Mass</label>
+          <input type="range" id="orbit-mass" min="500" max="5000" step="100" value="2000" style="margin: 8px 0;">
+          <span id="orbit-mass-val" class="ctrl-val" style="font-family: var(--font-code); font-size: 12px; color: var(--color-primary);">2000</span>
+        </div>
+        <div class="control-group" style="margin-top: 20px;">
+          <label for="orbit-gravity" style="font-size: 13px; color: var(--text-main); font-weight: 500;">Gravity Strength (G)</label>
+          <input type="range" id="orbit-gravity" min="0.1" max="2" step="0.1" value="0.8" style="margin: 8px 0;">
+          <span id="orbit-gravity-val" class="ctrl-val" style="font-family: var(--font-code); font-size: 12px; color: var(--color-primary);">0.8</span>
+        </div>
+        <div class="control-group checkbox-group" style="margin-top: 25px; display: flex; align-items: center; gap: 8px;">
+          <input type="checkbox" id="show-traces" checked>
+          <label for="show-traces" style="font-size: 13px; color: var(--text-muted); cursor: pointer;">Show Orbit Traces</label>
+        </div>
+        <div class="control-actions" style="margin-top: 30px; display: flex; flex-direction: column; gap: 10px;">
+          <button class="primary-btn" id="clear-orbits" style="width: 100%; border-radius: 8px !important; justify-content: center; padding: 12px;"><i class="fa-solid fa-trash-can"></i> Clear Planets</button>
+          <button class="secondary-btn" id="reset-orbits" style="width: 100%; border-radius: 8px !important; justify-content: center; padding: 12px;"><i class="fa-solid fa-rotate-left"></i> Reset System</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="../../app.js"></script>
+  <script>
+    // Particle background initialization
+    document.addEventListener("DOMContentLoaded", () => {
+      const pCanvas = document.getElementById("particle-canvas");
+      if (pCanvas) {
+        const pCtx = pCanvas.getContext("2d");
+        let w = (pCanvas.width = window.innerWidth);
+        let h = (pCanvas.height = window.innerHeight);
+        const particles = [];
+        for (let i = 0; i < 40; i++) {
+          particles.push({
+            x: Math.random() * w,
+            y: Math.random() * h,
+            vx: (Math.random() - 0.5) * 0.4,
+            vy: (Math.random() - 0.5) * 0.4,
+            radius: Math.random() * 2 + 0.5,
+            color: "rgba(0, 242, 254, 0.15)"
+          });
+        }
+        function anim() {
+          pCtx.clearRect(0, 0, w, h);
+          particles.forEach(p => {
+            p.x += p.vx; p.y += p.vy;
+            if (p.x < 0 || p.x > w) p.vx *= -1;
+            if (p.y < 0 || p.y > h) p.vy *= -1;
+            pCtx.beginPath();
+            pCtx.arc(p.x, p.y, p.radius, 0, Math.PI*2);
+            pCtx.fillStyle = p.color;
+            pCtx.fill();
+          });
+          requestAnimationFrame(anim);
+        }
+        window.addEventListener("resize", () => {
+          w = pCanvas.width = window.innerWidth;
+          h = pCanvas.height = window.innerHeight;
+        });
+        anim();
+      }
+
+      // Game Physics logic
+      const canvas = document.getElementById("orbit-canvas");
+      const ctx = canvas.getContext("2d");
+      function resize() {
+        const rect = canvas.getBoundingClientRect();
+        canvas.width = rect.width;
+        canvas.height = rect.height;
+        star.x = canvas.width / 2;
+        star.y = canvas.height / 2;
+      }
+      
+      const star = { x: 0, y: 0, radius: 22 };
+      let planets = [];
+      let G = 0.8;
+      let M = 2000;
+      let showOrbitTraces = true;
+      let isDragging = false;
+      const dragStart = { x: 0, y: 0 };
+      const dragEnd = { x: 0, y: 0 };
+
+      // Bind HTML UI controls
+      const massSlider = document.getElementById("orbit-mass");
+      const gravitySlider = document.getElementById("orbit-gravity");
+      const tracesCheckbox = document.getElementById("show-traces");
+      const clearBtn = document.getElementById("clear-orbits");
+      const resetBtn = document.getElementById("reset-orbits");
+
+      if (massSlider) {
+        massSlider.addEventListener("input", (e) => {
+          M = parseFloat(e.target.value);
+          document.getElementById("orbit-mass-val").innerText = M;
+        });
+      }
+      if (gravitySlider) {
+        gravitySlider.addEventListener("input", (e) => {
+          G = parseFloat(e.target.value);
+          document.getElementById("orbit-gravity-val").innerText = G;
+        });
+      }
+      if (tracesCheckbox) {
+        tracesCheckbox.addEventListener("change", (e) => {
+          showOrbitTraces = e.target.checked;
+        });
+      }
+      if (clearBtn) {
+        clearBtn.addEventListener("click", () => { planets = []; });
+      }
+      if (resetBtn) {
+        resetBtn.addEventListener("click", () => {
+          planets = [];
+          M = 2000;
+          G = 0.8;
+          if (massSlider) massSlider.value = 2000;
+          if (gravitySlider) gravitySlider.value = 0.8;
+          document.getElementById("orbit-mass-val").innerText = 2000;
+          document.getElementById("orbit-gravity-val").innerText = 0.8;
+        });
+      }
+
+      // Drag features
+      canvas.addEventListener("mousedown", (e) => {
+        const rect = canvas.getBoundingClientRect();
+        dragStart.x = e.clientX - rect.left;
+        dragStart.y = e.clientY - rect.top;
+        dragEnd.x = dragStart.x;
+        dragEnd.y = dragStart.y;
+        isDragging = true;
+      });
+
+      canvas.addEventListener("mousemove", (e) => {
+        if (!isDragging) return;
+        const rect = canvas.getBoundingClientRect();
+        dragEnd.x = e.clientX - rect.left;
+        dragEnd.y = e.clientY - rect.top;
+      });
+
+      canvas.addEventListener("mouseup", () => {
+        if (!isDragging) return;
+        isDragging = false;
+        const vx = (dragStart.x - dragEnd.x) * 0.08;
+        const vy = (dragStart.y - dragEnd.y) * 0.08;
+        planets.push({
+          x: dragStart.x,
+          y: dragStart.y,
+          vx: vx,
+          vy: vy,
+          radius: Math.random() * 4 + 3,
+          color: `hsl(${Math.random() * 360}, 90%, 65%)`,
+          trace: []
+        });
+      });
+
+      function loop() {
+        ctx.fillStyle = "#03050a";
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+        // grid lines
+        ctx.strokeStyle = "rgba(255,255,255,0.02)";
+        ctx.lineWidth = 1;
+        for (let x = 0; x < canvas.width; x += 40) {
+          ctx.beginPath(); ctx.moveTo(x, 0); ctx.lineTo(x, canvas.height); ctx.stroke();
+        }
+        for (let y = 0; y < canvas.height; y += 40) {
+          ctx.beginPath(); ctx.moveTo(0, y); ctx.lineTo(canvas.width, y); ctx.stroke();
+        }
+
+        // Star glow
+        const grad = ctx.createRadialGradient(star.x, star.y, 2, star.x, star.y, star.radius);
+        grad.addColorStop(0, "#ffffff");
+        grad.addColorStop(0.2, "#ffe259");
+        grad.addColorStop(1, "rgba(255, 167, 81, 0)");
+        ctx.beginPath();
+        ctx.arc(star.x, star.y, star.radius * 2, 0, Math.PI * 2);
+        ctx.fillStyle = grad;
+        ctx.fill();
+
+        ctx.beginPath();
+        ctx.arc(star.x, star.y, star.radius, 0, Math.PI * 2);
+        ctx.fillStyle = "#ffe259";
+        ctx.shadowBlur = 15;
+        ctx.shadowColor = "#ffa751";
+        ctx.fill();
+        ctx.shadowBlur = 0;
+
+        // update orbits
+        planets.forEach((p, idx) => {
+          const dx = star.x - p.x;
+          const dy = star.y - p.y;
+          const dist = Math.hypot(dx, dy);
+
+          if (dist < star.radius + p.radius) {
+            planets.splice(idx, 1);
+            return;
+          }
+
+          const force = (G * M) / (dist * dist);
+          p.vx += (dx / dist) * force;
+          p.vy += (dy / dist) * force;
+          p.x += p.vx;
+          p.y += p.vy;
+
+          if (showOrbitTraces) {
+            p.trace.push({ x: p.x, y: p.y });
+            if (p.trace.length > 120) p.trace.shift();
+          } else {
+            p.trace = [];
+          }
+
+          // Draw planet trace
+          if (p.trace.length > 1) {
+            ctx.beginPath();
+            ctx.moveTo(p.trace[0].x, p.trace[0].y);
+            for (let i = 1; i < p.trace.length; i++) {
+              ctx.lineTo(p.trace[i].x, p.trace[i].y);
+            }
+            ctx.strokeStyle = p.color;
+            ctx.globalAlpha = 0.35;
+            ctx.lineWidth = 1;
+            ctx.stroke();
+            ctx.globalAlpha = 1.0;
+          }
+
+          ctx.beginPath();
+          ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+          ctx.fillStyle = p.color;
+          ctx.shadowBlur = 8;
+          ctx.shadowColor = p.color;
+          ctx.fill();
+          ctx.shadowBlur = 0;
+        });
+
+        // drag vector
+        if (isDragging) {
+          ctx.beginPath();
+          ctx.moveTo(dragStart.x, dragStart.y);
+          ctx.lineTo(dragEnd.x, dragEnd.y);
+          ctx.strokeStyle = "rgba(0, 242, 254, 0.8)";
+          ctx.lineWidth = 2;
+          ctx.stroke();
+
+          const vx = (dragStart.x - dragEnd.x) * 0.08;
+          const vy = (dragStart.y - dragEnd.y) * 0.08;
+          ctx.beginPath();
+          ctx.arc(dragStart.x + vx * 20, dragStart.y + vy * 20, 3, 0, Math.PI * 2);
+          ctx.fillStyle = "#00f2fe";
+          ctx.fill();
+        }
+
+        requestAnimationFrame(loop);
+      }
+
+      window.addEventListener("resize", resize);
+      resize();
+      loop();
+    });
+  </script>
+</body>
+</html>

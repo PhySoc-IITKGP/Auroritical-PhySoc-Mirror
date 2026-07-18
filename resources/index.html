@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Resources — PhySoc | IIT Kharagpur</title>
+  <meta name="description" content="Physics resources for IIT Kharagpur students — textbooks, lecture notes, roadmaps, and UROP guides." />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://physoc.iitkgp.ac.in/resources/" />
+  <link rel="icon" href="../logo.svg" type="image/svg+xml" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Inter:wght@400;500;600&family=Fira+Code&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.2/anime.min.js"></script>
+  <link rel="stylesheet" href="../shared.css" />
+</head>
+<body class="dark-theme">
+  <canvas id="particle-canvas"></canvas>
+  <div id="physoc-header"></div>
+
+  <main class="page-main page-content" id="main-content">
+
+    <section class="card hero-card" style="margin-bottom:22px" aria-labelledby="res-heading">
+      <span class="section-label"><i class="fa-solid fa-book-open-reader"></i> Resource Library</span>
+      <h1 id="res-heading">Study Materials &amp; Guides</h1>
+      <p>Curated resources by PhySoc for IIT KGP students. From standard textbooks to UROP roadmaps, everything you need to navigate your physics degree.</p>
+    </section>
+
+    <div class="card" aria-label="Resources browser">
+      <div class="filter-bar" style="margin-bottom:22px;border-bottom:1px solid var(--border);padding-bottom:0;border-radius:0;background:none" role="tablist">
+        <button class="filter-btn res-tab active" data-target="books" role="tab" aria-selected="true">📚 Textbooks</button>
+        <button class="filter-btn res-tab" data-target="courses" role="tab" aria-selected="false">📖 Course Notes</button>
+        <button class="filter-btn res-tab" data-target="urop" role="tab" aria-selected="false">🔬 UROP Guide</button>
+      </div>
+
+      <!-- TEXTBOOKS PANE -->
+      <div class="res-pane active" id="pane-books" role="tabpanel">
+        <h3 style="font-family:var(--font-heading);margin-bottom:18px">Standard Textbooks</h3>
+        <div class="grid-2" id="books-container">
+          
+          <div style="background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:18px;display:flex;gap:16px" data-stagger="res">
+            <div style="font-size:32px;flex-shrink:0;opacity:0.8">📘</div>
+            <div>
+              <h4 style="font-family:var(--font-heading);color:var(--text-bright);margin-bottom:4px;font-size:15px">Classical Mechanics</h4>
+              <p style="font-size:12px;color:var(--text-muted);margin-bottom:10px">Goldstein, Poole, and Safko. The absolute standard for Lagrangian and Hamiltonian mechanics.</p>
+              <div style="display:flex;gap:8px">
+                <a href="https://example.com/goldstein.pdf" target="_blank" class="btn btn-primary" style="padding:6px 10px;font-size:11px"><i class="fa-solid fa-file-pdf"></i> PDF</a>
+                <span class="tag tag-academic">2nd Year</span>
+              </div>
+            </div>
+          </div>
+
+          <div style="background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:18px;display:flex;gap:16px" data-stagger="res">
+            <div style="font-size:32px;flex-shrink:0;opacity:0.8">📕</div>
+            <div>
+              <h4 style="font-family:var(--font-heading);color:var(--text-bright);margin-bottom:4px;font-size:15px">Quantum Mechanics</h4>
+              <p style="font-size:12px;color:var(--text-muted);margin-bottom:10px">J.J. Sakurai. Modern Quantum Mechanics. Essential for advanced UG and PG courses.</p>
+              <div style="display:flex;gap:8px">
+                <a href="https://example.com/sakurai.pdf" target="_blank" class="btn btn-primary" style="padding:6px 10px;font-size:11px"><i class="fa-solid fa-file-pdf"></i> PDF</a>
+                <span class="tag tag-academic">3rd Year</span>
+              </div>
+            </div>
+          </div>
+
+          <div style="background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:18px;display:flex;gap:16px" data-stagger="res">
+            <div style="font-size:32px;flex-shrink:0;opacity:0.8">📗</div>
+            <div>
+              <h4 style="font-family:var(--font-heading);color:var(--text-bright);margin-bottom:4px;font-size:15px">Electrodynamics</h4>
+              <p style="font-size:12px;color:var(--text-muted);margin-bottom:10px">David J. Griffiths. Introduction to Electrodynamics. Highly readable, great problems.</p>
+              <div style="display:flex;gap:8px">
+                <a href="https://example.com/griffiths.pdf" target="_blank" class="btn btn-primary" style="padding:6px 10px;font-size:11px"><i class="fa-solid fa-file-pdf"></i> PDF</a>
+                <span class="tag tag-academic">2nd Year</span>
+              </div>
+            </div>
+          </div>
+
+          <div style="background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:18px;display:flex;gap:16px" data-stagger="res">
+            <div style="font-size:32px;flex-shrink:0;opacity:0.8">📙</div>
+            <div>
+              <h4 style="font-family:var(--font-heading);color:var(--text-bright);margin-bottom:4px;font-size:15px">Statistical Mechanics</h4>
+              <p style="font-size:12px;color:var(--text-muted);margin-bottom:10px">R.K. Pathria. A rigorous approach to statistical physics and thermodynamics.</p>
+              <div style="display:flex;gap:8px">
+                <a href="https://example.com/pathria.pdf" target="_blank" class="btn btn-primary" style="padding:6px 10px;font-size:11px"><i class="fa-solid fa-file-pdf"></i> PDF</a>
+                <span class="tag tag-academic">3rd Year</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- COURSE NOTES PANE -->
+      <div class="res-pane" id="pane-courses" role="tabpanel">
+        <h3 style="font-family:var(--font-heading);margin-bottom:18px">KGP Course Notes</h3>
+        <p style="font-size:13px;color:var(--text-muted);margin-bottom:20px;line-height:1.6">Student-compiled lecture notes from IIT KGP physics professors. Use these as a supplement to your own notes.</p>
+        <div style="overflow-x:auto;border-radius:12px;border:1px solid var(--border)">
+          <table style="width:100%;border-collapse:collapse;font-size:13px">
+            <thead>
+              <tr>
+                <th style="text-align:left;padding:12px 16px;background:rgba(0,0,0,0.3);border-bottom:1px solid var(--border);color:var(--text-muted);font-weight:600">Course</th>
+                <th style="text-align:left;padding:12px 16px;background:rgba(0,0,0,0.3);border-bottom:1px solid var(--border);color:var(--text-muted);font-weight:600">Code</th>
+                <th style="text-align:left;padding:12px 16px;background:rgba(0,0,0,0.3);border-bottom:1px solid var(--border);color:var(--text-muted);font-weight:600">Semester</th>
+                <th style="text-align:left;padding:12px 16px;background:rgba(0,0,0,0.3);border-bottom:1px solid var(--border);color:var(--text-muted);font-weight:600">Link</th>
+              </tr>
+            </thead>
+            <tbody id="courses-tbody">
+              <tr style="border-bottom:1px solid rgba(255,255,255,0.05)">
+                <td style="padding:12px 16px;color:var(--text-bright)">Quantum Mechanics I</td>
+                <td style="padding:12px 16px;font-family:var(--font-code);font-size:12px">PH41011</td>
+                <td style="padding:12px 16px">Autumn</td>
+                <td style="padding:12px 16px"><a href="#" style="color:var(--cyan)"><i class="fa-solid fa-download"></i> Download</a></td>
+              </tr>
+              <tr style="border-bottom:1px solid rgba(255,255,255,0.05)">
+                <td style="padding:12px 16px;color:var(--text-bright)">Solid State Physics</td>
+                <td style="padding:12px 16px;font-family:var(--font-code);font-size:12px">PH41013</td>
+                <td style="padding:12px 16px">Autumn</td>
+                <td style="padding:12px 16px"><a href="#" style="color:var(--cyan)"><i class="fa-solid fa-download"></i> Download</a></td>
+              </tr>
+              <tr>
+                <td style="padding:12px 16px;color:var(--text-bright)">General Relativity</td>
+                <td style="padding:12px 16px;font-family:var(--font-code);font-size:12px">PH51015</td>
+                <td style="padding:12px 16px">Spring (Elective)</td>
+                <td style="padding:12px 16px"><a href="#" style="color:var(--cyan)"><i class="fa-solid fa-download"></i> Download</a></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- UROP PANE -->
+      <div class="res-pane" id="pane-urop" role="tabpanel">
+        <h3 style="font-family:var(--font-heading);margin-bottom:14px">UROP Application Guide</h3>
+        <p style="font-size:13px;color:var(--text-muted);margin-bottom:20px;line-height:1.7">The Undergraduate Research Opportunities Programme (UROP) is your gateway to department research. Follow this roadmap to secure a project.</p>
+        
+        <div style="display:flex;flex-direction:column;gap:14px;margin-bottom:24px">
+          <div style="background:rgba(0,242,254,0.04);border:1px solid var(--border);border-radius:12px;padding:16px;display:flex;gap:14px">
+            <div style="width:24px;height:24px;border-radius:50%;background:rgba(0,242,254,0.15);color:var(--cyan);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:12px;flex-shrink:0">1</div>
+            <div>
+              <strong style="display:block;margin-bottom:4px;font-size:14px;color:var(--text-bright)">Identify Research Areas</strong>
+              <p style="font-size:12px;color:var(--text-muted)">Review the faculty profiles on the <a href="http://www.iitkgp.ac.in/department/PH" target="_blank" style="color:var(--cyan)">Physics Dept Site</a>. Look for recent publications.</p>
+            </div>
+          </div>
+          <div style="background:rgba(0,242,254,0.04);border:1px solid var(--border);border-radius:12px;padding:16px;display:flex;gap:14px">
+            <div style="width:24px;height:24px;border-radius:50%;background:rgba(0,242,254,0.15);color:var(--cyan);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:12px;flex-shrink:0">2</div>
+            <div>
+              <strong style="display:block;margin-bottom:4px;font-size:14px;color:var(--text-bright)">Read Their Papers</strong>
+              <p style="font-size:12px;color:var(--text-muted)">Don't cold email blindly. Skim their last 2-3 papers. You don't need to understand the math, just the goal.</p>
+            </div>
+          </div>
+          <div style="background:rgba(0,242,254,0.04);border:1px solid var(--border);border-radius:12px;padding:16px;display:flex;gap:14px">
+            <div style="width:24px;height:24px;border-radius:50%;background:rgba(0,242,254,0.15);color:var(--cyan);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:12px;flex-shrink:0">3</div>
+            <div>
+              <strong style="display:block;margin-bottom:4px;font-size:14px;color:var(--text-bright)">Send the Email</strong>
+              <p style="font-size:12px;color:var(--text-muted)">Keep it concise. State your year, course, interest in their specific paper, and attach your CV.</p>
+            </div>
+          </div>
+        </div>
+
+        <h4 style="font-family:var(--font-heading);color:var(--text-bright);margin-bottom:10px">Email Template</h4>
+        <div style="position:relative">
+          <pre id="urop-template" style="background:rgba(0,0,0,0.3);border:1px solid var(--border);border-radius:12px;padding:18px;font-family:var(--font-code);font-size:12px;color:var(--text-muted);white-space:pre-wrap;line-height:1.6">Dear Prof. [Name],
+
+I am a [Year] year student pursuing [Course] in the Physics Department. I am writing to express my interest in joining your research group for a UROP project this semester.
+
+I recently read your paper on "[Paper Title]" and was particularly fascinated by [1 specific thing about the paper]. I have background knowledge in [Relevant Subject/Skill, e.g., Statistical Mechanics, Python] and would love to contribute to your ongoing work in this area.
+
+I have attached my CV and transcript for your reference. Would it be possible to schedule a brief meeting this week to discuss potential projects?
+
+Thank you for your time and consideration.
+
+Sincerely,
+[Your Name]
+Roll Number: [Roll No]</pre>
+          <button class="btn btn-ghost copy-btn" data-copy="urop-template" style="position:absolute;top:10px;right:10px;padding:6px 10px;font-size:11px;background:var(--surface)"><i class="fa-regular fa-copy"></i> Copy</button>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <div id="physoc-footer"></div>
+  <script src="../components.js"></script>
+  <script src="../shared.js"></script>
+</body>
+</html>

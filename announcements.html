@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Announcements — PhySoc | IIT Kharagpur</title>
+  <meta name="description" content="Latest announcements, events, and news from Physics Society IIT Kharagpur." />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://physoc.iitkgp.ac.in/announcements.html" />
+  <link rel="icon" href="logo.svg" type="image/svg+xml" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Inter:wght@400;500;600&family=Fira+Code&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.2/anime.min.js"></script>
+  <link rel="stylesheet" href="shared.css" />
+  <style>
+    .ann-search-bar {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--input-bg);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 10px 16px;
+      margin-bottom: 20px;
+      transition: border-color var(--transition-fast);
+    }
+    .ann-search-bar:focus-within { border-color: var(--cyan); }
+    .ann-search-bar i { color: var(--text-muted); }
+    .ann-search-bar input { flex:1; background:none; border:none; outline:none; font-family:var(--font-body); font-size:14px; color:var(--text); }
+    .ann-search-bar input::placeholder { color: var(--text-muted); }
+  </style>
+</head>
+<body class="dark-theme">
+  <canvas id="particle-canvas"></canvas>
+
+  <div class="mobile-overlay" id="mobile-overlay"></div>
+  <nav class="mobile-drawer" id="mobile-drawer" aria-label="Mobile navigation">
+    <div class="mobile-drawer-header">
+      <div class="drawer-brand"><img src="logo.svg" alt="PhySoc Logo" /><span>PhySoc</span></div>
+      <button class="drawer-close" id="drawer-close" aria-label="Close menu"><i class="fa-solid fa-xmark"></i></button>
+    </div>
+    <a href="index.html" class="drawer-link"><i class="fa-solid fa-house-chimney"></i> Home</a>
+    <a href="about.html" class="drawer-link"><i class="fa-solid fa-circle-info"></i> About</a>
+    <a href="announcements.html" class="drawer-link"><i class="fa-solid fa-bullhorn"></i> Announcements</a>
+    <a href="resources.html" class="drawer-link"><i class="fa-solid fa-book-open-reader"></i> Resources</a>
+    <a href="officers.html" class="drawer-link"><i class="fa-solid fa-user-group"></i> Officers</a>
+    <a href="sandbox.html" class="drawer-link"><i class="fa-solid fa-atom"></i> Sandbox</a>
+    <a href="contact.html" class="drawer-link"><i class="fa-solid fa-envelope"></i> Contact</a>
+    <div class="drawer-sep"></div>
+    <div class="drawer-footer">Physics Society &middot; IIT Kharagpur<br><a href="mailto:phyiitkharagpur@gmail.com">phyiitkharagpur@gmail.com</a></div>
+  </nav>
+
+  <header class="main-header" role="banner">
+    <a href="index.html" class="header-brand" aria-label="PhySoc Home">
+      <div class="logo-wrap"><img src="logo.svg" alt="PhySoc Logo" /></div>
+      <div class="brand-text"><h1>PhySoc</h1><span class="sub">IIT Kharagpur</span></div>
+    </a>
+    <nav class="desktop-nav" aria-label="Primary navigation">
+      <a href="index.html"><i class="fa-solid fa-house-chimney"></i> Home</a>
+      <a href="about.html"><i class="fa-solid fa-circle-info"></i> About</a>
+      <a href="announcements.html"><i class="fa-solid fa-bullhorn"></i> Announcements</a>
+      <a href="resources.html"><i class="fa-solid fa-book-open-reader"></i> Resources</a>
+      <a href="officers.html"><i class="fa-solid fa-user-group"></i> Officers</a>
+      <a href="sandbox.html"><i class="fa-solid fa-atom"></i> Sandbox</a>
+      <a href="contact.html"><i class="fa-solid fa-envelope"></i> Contact</a>
+    </nav>
+    <div class="header-right">
+      <div class="search-container" id="search-wrapper">
+        <input type="text" placeholder="Search…" aria-label="Search" />
+        <button class="icon-btn" id="search-trigger" aria-label="Search"><i class="fa-solid fa-magnifying-glass"></i></button>
+      </div>
+      <button class="icon-btn" id="theme-toggle" aria-label="Toggle theme">
+        <i class="fa-solid fa-moon moon-icon"></i><i class="fa-solid fa-sun sun-icon"></i>
+      </button>
+      <a href="https://www.iitkgp.ac.in/" target="_blank" rel="noopener" class="kgp-btn">
+        <span class="kgp-text">IIT KGP</span><i class="fa-solid fa-arrow-up-right-from-square"></i>
+      </a>
+      <button class="hamburger-btn" id="hamburger-btn" aria-label="Open menu"><span></span><span></span><span></span></button>
+    </div>
+  </header>
+
+  <main class="page-main page-content" id="main-content">
+
+    <!-- Page hero -->
+    <section class="card hero-card" style="margin-bottom:22px" aria-labelledby="ann-heading">
+      <span class="section-label"><i class="fa-solid fa-bullhorn"></i> Announcements</span>
+      <h1 id="ann-heading">News &amp; Updates</h1>
+      <p>Stay up to date with PhySoc events, academic opportunities, and society news. Filter by category or search below.</p>
+    </section>
+
+    <!-- Equations banner (Animation D) -->
+    <div style="border-radius:14px;overflow:hidden;margin-bottom:22px;border:1px solid var(--border);height:160px;position:relative">
+      <img src="anim_equations_reveal.png" alt="Physics equations glowing on dark background" style="width:100%;height:100%;object-fit:cover" />
+      <div style="position:absolute;inset:0;background:linear-gradient(90deg,rgba(5,12,24,0.85),rgba(5,12,24,0.3),rgba(5,12,24,0.85));display:flex;align-items:center;justify-content:center">
+        <p style="font-family:var(--font-heading);font-size:clamp(14px,2.5vw,22px);font-weight:700;color:#fff;letter-spacing:1px;text-align:center">"The most beautiful thing we can experience is the mysterious." — Einstein</p>
+      </div>
+    </div>
+
+    <!-- Search + Filter + Feed -->
+    <div class="card" aria-labelledby="feed-heading">
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:18px;flex-wrap:wrap;gap:12px">
+        <h2 id="feed-heading" style="margin-bottom:0">All Announcements</h2>
+        <span style="font-size:12px;color:var(--text-muted)">Showing recent posts</span>
+      </div>
+
+      <!-- Search -->
+      <div class="ann-search-bar">
+        <i class="fa-solid fa-magnifying-glass"></i>
+        <input type="text" id="ann-search" placeholder="Search announcements…" aria-label="Search announcements" />
+      </div>
+
+      <!-- Filters -->
+      <div class="filter-bar" role="group" aria-label="Filter announcements">
+        <button class="filter-btn active" data-filter="all">All</button>
+        <button class="filter-btn" data-filter="events">Events</button>
+        <button class="filter-btn" data-filter="academic">Academic</button>
+        <button class="filter-btn" data-filter="research">Research</button>
+      </div>
+
+      <!-- Feed (populated by shared.js) -->
+      <div id="announcements-container" role="feed" aria-label="Announcements feed"></div>
+    </div>
+
+  </main>
+
+  <footer class="main-footer" role="contentinfo">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <img src="logo.svg" alt="PhySoc Logo" class="footer-logo" />
+        <div><strong>Physics Society (PhySoc)</strong><span>IIT Kharagpur, WB 721302</span></div>
+      </div>
+      <nav class="footer-links" aria-label="Footer navigation">
+        <a href="index.html">Home</a><a href="about.html">About</a><a href="announcements.html">Announcements</a>
+        <a href="resources.html">Resources</a><a href="officers.html">Officers</a>
+        <a href="sandbox.html">Sandbox</a><a href="contact.html">Contact</a>
+      </nav>
+    </div>
+    <div class="footer-bottom">&copy; 2026 Physics Society, IIT Kharagpur. Built with passion for science.</div>
+  </footer>
+
+  <script src="shared.js"></script>
+</body>
+</html>

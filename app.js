@@ -11,7 +11,6 @@ document.addEventListener("DOMContentLoaded", () => {
   initAnnouncements();
   initEventCountdown();
   initPuzzle();
-  initPhysicsSandbox();
   initContactForm();
 });
 

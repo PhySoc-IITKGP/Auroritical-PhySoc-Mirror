@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About — PhySoc | IIT Kharagpur</title>
+  <meta name="description" content="Learn about the Physics Society of IIT Kharagpur — our mission, history, values and what we do." />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://physoc.iitkgp.ac.in/about.html" />
+  <link rel="icon" href="logo.svg" type="image/svg+xml" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Inter:wght@400;500;600&family=Fira+Code&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.2/anime.min.js"></script>
+  <link rel="stylesheet" href="shared.css" />
+</head>
+<body class="dark-theme">
+  <canvas id="particle-canvas"></canvas>
+
+  <div class="mobile-overlay" id="mobile-overlay"></div>
+  <nav class="mobile-drawer" id="mobile-drawer" aria-label="Mobile navigation">
+    <div class="mobile-drawer-header">
+      <div class="drawer-brand">
+        <img src="logo.svg" alt="PhySoc Logo" />
+        <span>PhySoc</span>
+      </div>
+      <button class="drawer-close" id="drawer-close" aria-label="Close menu"><i class="fa-solid fa-xmark"></i></button>
+    </div>
+    <a href="index.html" class="drawer-link"><i class="fa-solid fa-house-chimney"></i> Home</a>
+    <a href="about.html" class="drawer-link"><i class="fa-solid fa-circle-info"></i> About</a>
+    <a href="announcements.html" class="drawer-link"><i class="fa-solid fa-bullhorn"></i> Announcements</a>
+    <a href="resources.html" class="drawer-link"><i class="fa-solid fa-book-open-reader"></i> Resources</a>
+    <a href="officers.html" class="drawer-link"><i class="fa-solid fa-user-group"></i> Officers</a>
+    <a href="sandbox.html" class="drawer-link"><i class="fa-solid fa-atom"></i> Sandbox</a>
+    <a href="contact.html" class="drawer-link"><i class="fa-solid fa-envelope"></i> Contact</a>
+    <div class="drawer-sep"></div>
+    <div class="drawer-footer">Physics Society &middot; IIT Kharagpur<br><a href="mailto:phyiitkharagpur@gmail.com">phyiitkharagpur@gmail.com</a></div>
+  </nav>
+
+  <header class="main-header" role="banner">
+    <a href="index.html" class="header-brand" aria-label="PhySoc Home">
+      <div class="logo-wrap"><img src="logo.svg" alt="PhySoc Logo" /></div>
+      <div class="brand-text"><h1>PhySoc</h1><span class="sub">IIT Kharagpur</span></div>
+    </a>
+    <nav class="desktop-nav" aria-label="Primary navigation">
+      <a href="index.html"><i class="fa-solid fa-house-chimney"></i> Home</a>
+      <a href="about.html"><i class="fa-solid fa-circle-info"></i> About</a>
+      <a href="announcements.html"><i class="fa-solid fa-bullhorn"></i> Announcements</a>
+      <a href="resources.html"><i class="fa-solid fa-book-open-reader"></i> Resources</a>
+      <a href="officers.html"><i class="fa-solid fa-user-group"></i> Officers</a>
+      <a href="sandbox.html"><i class="fa-solid fa-atom"></i> Sandbox</a>
+      <a href="contact.html"><i class="fa-solid fa-envelope"></i> Contact</a>
+    </nav>
+    <div class="header-right">
+      <div class="search-container" id="search-wrapper">
+        <input type="text" placeholder="Search…" aria-label="Search" />
+        <button class="icon-btn" id="search-trigger" aria-label="Search"><i class="fa-solid fa-magnifying-glass"></i></button>
+      </div>
+      <button class="icon-btn" id="theme-toggle" aria-label="Toggle theme">
+        <i class="fa-solid fa-moon moon-icon"></i><i class="fa-solid fa-sun sun-icon"></i>
+      </button>
+      <a href="https://www.iitkgp.ac.in/" target="_blank" rel="noopener" class="kgp-btn">
+        <span class="kgp-text">IIT KGP</span><i class="fa-solid fa-arrow-up-right-from-square"></i>
+      </a>
+      <button class="hamburger-btn" id="hamburger-btn" aria-label="Open menu"><span></span><span></span><span></span></button>
+    </div>
+  </header>
+
+  <main class="page-main page-content" id="main-content">
+
+    <!-- Hero with Constellation Image -->
+    <section class="card hero-card" style="min-height:340px;background-image:linear-gradient(135deg,rgba(5,16,38,0.94),rgba(8,18,50,0.88)),url('anim_kgp_constellation.png');background-size:cover;background-position:center;margin-bottom:22px" aria-labelledby="about-heading">
+      <span class="section-label"><i class="fa-solid fa-circle-info"></i> About Us</span>
+      <h1 id="about-heading">The Physics Society<br>of IIT Kharagpur</h1>
+      <p>Founded on the belief that curiosity is the cornerstone of discovery, PhySoc has been the heartbeat of physics culture at IIT KGP since its inception. We are students, researchers, and dreamers — united by a love for the universe.</p>
+      <div class="hero-actions">
+        <a href="officers.html" class="btn btn-primary"><i class="fa-solid fa-user-group"></i> Meet the Officers</a>
+        <a href="contact.html" class="btn btn-secondary"><i class="fa-solid fa-envelope"></i> Get in Touch</a>
+      </div>
+    </section>
+
+    <!-- Constellation Banner -->
+    <div style="border-radius:16px;overflow:hidden;margin-bottom:22px;border:1px solid var(--border);position:relative;height:240px">
+      <img src="anim_kgp_constellation.png" alt="IIT KGP campus as star constellation map" style="width:100%;height:100%;object-fit:cover;display:block" />
+      <div style="position:absolute;inset:0;background:linear-gradient(to right,rgba(5,12,24,0.7),transparent,rgba(5,12,24,0.7));display:flex;align-items:center;justify-content:center">
+        <div style="text-align:center">
+          <p style="font-family:var(--font-heading);font-size:clamp(14px,2vw,18px);color:var(--gold);letter-spacing:3px;text-transform:uppercase;font-weight:700">IIT Kharagpur Campus Constellation</p>
+          <p style="font-size:12px;color:var(--text-muted);margin-top:4px">Every great discovery begins with a map</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mission + Values -->
+    <div class="grid-2" style="margin-bottom:22px">
+      <div class="card anim-fade-up">
+        <h2><i class="fa-solid fa-bullseye text-cyan" style="font-size:20px;margin-right:10px"></i>Our Mission</h2>
+        <p style="color:var(--text-muted);font-size:14px;line-height:1.8">To cultivate a vibrant intellectual community where every student can explore physics beyond the classroom — through lectures, research, collaboration, and hands-on experimentation.</p>
+        <div class="divider"></div>
+        <ul style="list-style:none;display:flex;flex-direction:column;gap:10px">
+          <li style="display:flex;gap:10px;font-size:13px;color:var(--text-muted);align-items:flex-start"><i class="fa-solid fa-check-circle text-cyan" style="margin-top:2px;flex-shrink:0"></i>Host weekly talks, seminars, and reading groups on frontier physics</li>
+          <li style="display:flex;gap:10px;font-size:13px;color:var(--text-muted);align-items:flex-start"><i class="fa-solid fa-check-circle text-cyan" style="margin-top:2px;flex-shrink:0"></i>Facilitate student-faculty research connections (UROP)</li>
+          <li style="display:flex;gap:10px;font-size:13px;color:var(--text-muted);align-items:flex-start"><i class="fa-solid fa-check-circle text-cyan" style="margin-top:2px;flex-shrink:0"></i>Maintain shared study and resource repositories</li>
+          <li style="display:flex;gap:10px;font-size:13px;color:var(--text-muted);align-items:flex-start"><i class="fa-solid fa-check-circle text-cyan" style="margin-top:2px;flex-shrink:0"></i>Represent physics students on academic governance bodies</li>
+        </ul>
+      </div>
+      <div class="card anim-fade-up">
+        <h2><i class="fa-solid fa-atom text-purple" style="font-size:20px;margin-right:10px"></i>Our Values</h2>
+        <div style="display:flex;flex-direction:column;gap:14px">
+          <div style="display:flex;gap:12px;align-items:flex-start">
+            <div style="width:38px;height:38px;border-radius:50%;background:rgba(0,242,254,0.1);border:1px solid rgba(0,242,254,0.25);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:16px">🔭</div>
+            <div><strong style="display:block;font-size:14px;color:var(--text-bright);margin-bottom:3px">Curiosity First</strong><span style="font-size:13px;color:var(--text-muted)">No question is too small or too big. We celebrate wondering.</span></div>
+          </div>
+          <div style="display:flex;gap:12px;align-items:flex-start">
+            <div style="width:38px;height:38px;border-radius:50%;background:rgba(167,139,250,0.1);border:1px solid rgba(167,139,250,0.25);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:16px">🤝</div>
+            <div><strong style="display:block;font-size:14px;color:var(--text-bright);margin-bottom:3px">Inclusive Community</strong><span style="font-size:13px;color:var(--text-muted)">Physics belongs to everyone — any background, any year.</span></div>
+          </div>
+          <div style="display:flex;gap:12px;align-items:flex-start">
+            <div style="width:38px;height:38px;border-radius:50%;background:rgba(255,226,89,0.1);border:1px solid rgba(255,226,89,0.25);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:16px">⚗️</div>
+            <div><strong style="display:block;font-size:14px;color:var(--text-bright);margin-bottom:3px">Rigor with Joy</strong><span style="font-size:13px;color:var(--text-muted)">We take science seriously but keep it joyful and creative.</span></div>
+          </div>
+          <div style="display:flex;gap:12px;align-items:flex-start">
+            <div style="width:38px;height:38px;border-radius:50%;background:rgba(16,185,129,0.1);border:1px solid rgba(16,185,129,0.25);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:16px">🌱</div>
+            <div><strong style="display:block;font-size:14px;color:var(--text-bright);margin-bottom:3px">Student-Driven</strong><span style="font-size:13px;color:var(--text-muted)">Every activity, resource, and decision is shaped by students.</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Wave Function Banner (Animation C) -->
+    <div style="border-radius:16px;overflow:hidden;margin-bottom:22px;border:1px solid var(--border);position:relative;height:200px">
+      <img src="anim_wave_collapse.png" alt="Quantum wave function collapsing into a point" style="width:100%;height:100%;object-fit:cover;display:block" />
+      <div style="position:absolute;inset:0;background:linear-gradient(90deg,rgba(5,12,24,0.88),rgba(5,12,24,0.2));display:flex;align-items:center;padding:32px">
+        <div>
+          <p style="font-family:var(--font-heading);font-size:clamp(16px,3vw,26px);font-weight:800;color:#fff;margin-bottom:6px">"The observer and the observed are inseparable."</p>
+          <p style="font-size:13px;color:var(--text-muted)">— Quantum Mechanics, Copenhagen Interpretation</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- What We Do -->
+    <section class="card anim-fade-up">
+      <h2>What We Do</h2>
+      <div class="grid-3" style="gap:16px;margin-top:18px">
+        <div style="text-align:center;padding:20px;background:rgba(0,242,254,0.04);border:1px solid var(--border);border-radius:12px" data-stagger="what">
+          <div style="font-size:30px;margin-bottom:12px">📖</div>
+          <h4 style="font-family:var(--font-heading);font-size:15px;color:var(--text-bright);margin-bottom:8px">Feynman Lectures</h4>
+          <p style="font-size:12px;color:var(--text-muted);line-height:1.5">Weekly student-led talks on topics from condensed matter to cosmology. Anyone can present.</p>
+        </div>
+        <div style="text-align:center;padding:20px;background:rgba(167,139,250,0.04);border:1px solid var(--border);border-radius:12px" data-stagger="what">
+          <div style="font-size:30px;margin-bottom:12px">🔬</div>
+          <h4 style="font-family:var(--font-heading);font-size:15px;color:var(--text-bright);margin-bottom:8px">UROP Projects</h4>
+          <p style="font-size:12px;color:var(--text-muted);line-height:1.5">We connect undergraduates with department research groups for semester and summer projects.</p>
+        </div>
+        <div style="text-align:center;padding:20px;background:rgba(255,226,89,0.04);border:1px solid var(--border);border-radius:12px" data-stagger="what">
+          <div style="font-size:30px;margin-bottom:12px">💻</div>
+          <h4 style="font-family:var(--font-heading);font-size:15px;color:var(--text-bright);margin-bottom:8px">Physics Sandbox</h4>
+          <p style="font-size:12px;color:var(--text-muted);line-height:1.5">Interactive simulations of orbital mechanics, double pendulum chaos, and more built by our members.</p>
+        </div>
+        <div style="text-align:center;padding:20px;background:rgba(16,185,129,0.04);border:1px solid var(--border);border-radius:12px" data-stagger="what">
+          <div style="font-size:30px;margin-bottom:12px">📚</div>
+          <h4 style="font-family:var(--font-heading);font-size:15px;color:var(--text-bright);margin-bottom:8px">Resource Library</h4>
+          <p style="font-size:12px;color:var(--text-muted);line-height:1.5">Curated textbooks, lecture notes, and problem sets for every semester of the BSc/BTech Physics curriculum.</p>
+        </div>
+        <div style="text-align:center;padding:20px;background:rgba(0,242,254,0.03);border:1px solid var(--border);border-radius:12px" data-stagger="what">
+          <div style="font-size:30px;margin-bottom:12px">🧩</div>
+          <h4 style="font-family:var(--font-heading);font-size:15px;color:var(--text-bright);margin-bottom:8px">Weekly Puzzles</h4>
+          <p style="font-size:12px;color:var(--text-muted);line-height:1.5">Every week a new physics problem is posted — from olympiad-style to research-level curiosities.</p>
+        </div>
+        <div style="text-align:center;padding:20px;background:rgba(167,139,250,0.03);border:1px solid var(--border);border-radius:12px" data-stagger="what">
+          <div style="font-size:30px;margin-bottom:12px">🌌</div>
+          <h4 style="font-family:var(--font-heading);font-size:15px;color:var(--text-bright);margin-bottom:8px">Stargazing Nights</h4>
+          <p style="font-size:12px;color:var(--text-muted);line-height:1.5">Monthly telescope sessions at the KGP observatory rooftop, open to the whole campus.</p>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="main-footer" role="contentinfo">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <img src="logo.svg" alt="PhySoc Logo" class="footer-logo" />
+        <div><strong>Physics Society (PhySoc)</strong><span>IIT Kharagpur, WB 721302</span></div>
+      </div>
+      <nav class="footer-links" aria-label="Footer navigation">
+        <a href="index.html">Home</a><a href="about.html">About</a><a href="announcements.html">Announcements</a>
+        <a href="resources.html">Resources</a><a href="officers.html">Officers</a>
+        <a href="sandbox.html">Sandbox</a><a href="contact.html">Contact</a>
+      </nav>
+    </div>
+    <div class="footer-bottom">&copy; 2026 Physics Society, IIT Kharagpur. Built with passion for science.</div>
+  </footer>
+
+  <script src="shared.js"></script>
+</body>
+</html>

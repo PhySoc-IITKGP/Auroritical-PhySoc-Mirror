@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About — PhySoc | IIT Kharagpur</title>
+  <meta name="description" content="Learn about the Physics Society of IIT Kharagpur — our mission, history, values and what we do." />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://physoc.iitkgp.ac.in/about/" />
+  <link rel="icon" href="../logo.svg" type="image/svg+xml" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Inter:wght@400;500;600&family=Fira+Code&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.2/anime.min.js"></script>
+  <link rel="stylesheet" href="../shared.css" />
+</head>
+<body class="dark-theme">
+  <canvas id="particle-canvas"></canvas>
+  <div id="physoc-header"></div>
+
+  <main class="page-main page-content" id="main-content">
+
+    <section class="card hero-card" style="min-height:310px;background-image:linear-gradient(135deg,rgba(3,10,26,0.96),rgba(6,14,40,0.92)),url('../anim_kgp_constellation.png');background-size:cover;background-position:center;margin-bottom:22px" aria-labelledby="about-heading">
+      <span class="section-label"><i class="fa-solid fa-circle-info"></i> About Us</span>
+      <h1 id="about-heading">The Physics Society<br>of IIT Kharagpur</h1>
+      <p>Founded on the belief that curiosity is the cornerstone of discovery, PhySoc has been the heartbeat of physics culture at IIT KGP. We are students, researchers, and dreamers — united by a love for the universe.</p>
+      <div class="hero-actions">
+        <a href="../officers/" class="btn btn-primary"><i class="fa-solid fa-user-group"></i> Meet the Officers</a>
+        <a href="../contact/" class="btn btn-secondary"><i class="fa-solid fa-envelope"></i> Get in Touch</a>
+      </div>
+    </section>
+
+    <div style="border-radius:14px;overflow:hidden;margin-bottom:22px;border:1px solid var(--border);height:220px;position:relative">
+      <img src="../anim_kgp_constellation.png" alt="IIT KGP campus as a star constellation map" style="width:100%;height:100%;object-fit:cover" />
+      <div style="position:absolute;inset:0;background:linear-gradient(to right,rgba(3,10,26,0.85),transparent,rgba(3,10,26,0.85));display:flex;align-items:center;justify-content:center">
+        <div style="text-align:center;padding:0 20px">
+          <p style="font-family:var(--font-heading);font-size:clamp(13px,2vw,18px);color:var(--gold);letter-spacing:2px;text-transform:uppercase;font-weight:700;margin-bottom:4px">IIT Kharagpur — Campus Constellation</p>
+          <p style="font-size:12px;color:var(--text-muted)">Every great discovery begins with a map of the known</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="grid-2" style="margin-bottom:22px">
+      <div class="card anim-fade-up">
+        <h2><i class="fa-solid fa-bullseye text-cyan" style="margin-right:10px"></i>Our Mission</h2>
+        <p style="color:var(--text-muted);font-size:14px;line-height:1.8;margin-bottom:16px">To cultivate a vibrant intellectual community where every student can explore physics beyond the classroom — through lectures, research, collaboration, and experimentation.</p>
+        <div class="divider"></div>
+        <ul style="display:flex;flex-direction:column;gap:10px">
+          <li style="display:flex;gap:10px;font-size:13px;color:var(--text-muted);align-items:flex-start"><i class="fa-solid fa-check-circle text-cyan" style="margin-top:3px;flex-shrink:0"></i>Weekly talks, seminars and reading groups on frontier physics</li>
+          <li style="display:flex;gap:10px;font-size:13px;color:var(--text-muted);align-items:flex-start"><i class="fa-solid fa-check-circle text-cyan" style="margin-top:3px;flex-shrink:0"></i>Facilitate student-faculty research connections (UROP)</li>
+          <li style="display:flex;gap:10px;font-size:13px;color:var(--text-muted);align-items:flex-start"><i class="fa-solid fa-check-circle text-cyan" style="margin-top:3px;flex-shrink:0"></i>Maintain shared study and resource repositories for all years</li>
+          <li style="display:flex;gap:10px;font-size:13px;color:var(--text-muted);align-items:flex-start"><i class="fa-solid fa-check-circle text-cyan" style="margin-top:3px;flex-shrink:0"></i>Represent physics students on academic governance bodies</li>
+        </ul>
+      </div>
+      <div class="card anim-fade-up">
+        <h2><i class="fa-solid fa-heart text-purple" style="margin-right:10px"></i>Our Values</h2>
+        <div style="display:flex;flex-direction:column;gap:14px">
+          <div style="display:flex;gap:12px;align-items:flex-start"><div style="width:36px;height:36px;border-radius:50%;background:rgba(0,242,254,0.1);border:1px solid rgba(0,242,254,0.2);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:15px">🔭</div><div><strong style="display:block;font-size:14px;color:var(--text-bright);margin-bottom:3px">Curiosity First</strong><span style="font-size:13px;color:var(--text-muted)">No question is too small. We celebrate wondering out loud.</span></div></div>
+          <div style="display:flex;gap:12px;align-items:flex-start"><div style="width:36px;height:36px;border-radius:50%;background:rgba(167,139,250,0.1);border:1px solid rgba(167,139,250,0.2);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:15px">🤝</div><div><strong style="display:block;font-size:14px;color:var(--text-bright);margin-bottom:3px">Inclusive Community</strong><span style="font-size:13px;color:var(--text-muted)">Physics belongs to everyone — any background, any year.</span></div></div>
+          <div style="display:flex;gap:12px;align-items:flex-start"><div style="width:36px;height:36px;border-radius:50%;background:rgba(255,226,89,0.1);border:1px solid rgba(255,226,89,0.2);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:15px">⚗️</div><div><strong style="display:block;font-size:14px;color:var(--text-bright);margin-bottom:3px">Rigor with Joy</strong><span style="font-size:13px;color:var(--text-muted)">We take science seriously while keeping it joyful.</span></div></div>
+          <div style="display:flex;gap:12px;align-items:flex-start"><div style="width:36px;height:36px;border-radius:50%;background:rgba(16,185,129,0.1);border:1px solid rgba(16,185,129,0.2);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:15px">🌱</div><div><strong style="display:block;font-size:14px;color:var(--text-bright);margin-bottom:3px">Student-Driven</strong><span style="font-size:13px;color:var(--text-muted)">Every activity, resource and decision is shaped by students.</span></div></div>
+        </div>
+      </div>
+    </div>
+
+    <div style="border-radius:14px;overflow:hidden;margin-bottom:22px;border:1px solid var(--border);height:190px;position:relative">
+      <img src="../anim_wave_collapse.png" alt="Quantum wave function collapsing into a point" style="width:100%;height:100%;object-fit:cover" />
+      <div style="position:absolute;inset:0;background:linear-gradient(90deg,rgba(3,10,26,0.95),rgba(3,10,26,0.5));display:flex;align-items:center;padding:clamp(20px,4vw,48px)">
+        <div>
+          <p style="font-family:var(--font-heading);font-size:clamp(15px,2.5vw,24px);font-weight:800;color:#fff;margin-bottom:8px;line-height:1.3">"The observer and the observed<br>are inseparable."</p>
+          <p style="font-size:12px;color:var(--text-muted)">— Copenhagen Interpretation, Quantum Mechanics</p>
+        </div>
+      </div>
+    </div>
+
+    <section class="card anim-fade-up" aria-labelledby="wwd-heading">
+      <h2 id="wwd-heading">What We Do</h2>
+      <div class="grid-3" style="margin-top:18px">
+        <div style="text-align:center;padding:20px;background:rgba(0,242,254,0.03);border:1px solid var(--border);border-radius:12px" data-stagger="wwd"><div style="font-size:28px;margin-bottom:12px">📖</div><h4 style="font-family:var(--font-heading);font-size:15px;color:var(--text-bright);margin-bottom:8px">Feynman Lectures</h4><p style="font-size:12px;color:var(--text-muted);line-height:1.5">Weekly student-led talks from condensed matter to cosmology.</p></div>
+        <div style="text-align:center;padding:20px;background:rgba(167,139,250,0.03);border:1px solid var(--border);border-radius:12px" data-stagger="wwd"><div style="font-size:28px;margin-bottom:12px">🔬</div><h4 style="font-family:var(--font-heading);font-size:15px;color:var(--text-bright);margin-bottom:8px">UROP Projects</h4><p style="font-size:12px;color:var(--text-muted);line-height:1.5">Connecting undergrads with department research groups.</p></div>
+        <div style="text-align:center;padding:20px;background:rgba(255,226,89,0.03);border:1px solid var(--border);border-radius:12px" data-stagger="wwd"><div style="font-size:28px;margin-bottom:12px">💻</div><h4 style="font-family:var(--font-heading);font-size:15px;color:var(--text-bright);margin-bottom:8px">Physics Sandbox</h4><p style="font-size:12px;color:var(--text-muted);line-height:1.5">Interactive simulations built by our members.</p></div>
+        <div style="text-align:center;padding:20px;background:rgba(16,185,129,0.03);border:1px solid var(--border);border-radius:12px" data-stagger="wwd"><div style="font-size:28px;margin-bottom:12px">📚</div><h4 style="font-family:var(--font-heading);font-size:15px;color:var(--text-bright);margin-bottom:8px">Resource Library</h4><p style="font-size:12px;color:var(--text-muted);line-height:1.5">Curated textbooks and notes for every semester.</p></div>
+        <div style="text-align:center;padding:20px;background:rgba(0,242,254,0.03);border:1px solid var(--border);border-radius:12px" data-stagger="wwd"><div style="font-size:28px;margin-bottom:12px">🧩</div><h4 style="font-family:var(--font-heading);font-size:15px;color:var(--text-bright);margin-bottom:8px">Weekly Puzzles</h4><p style="font-size:12px;color:var(--text-muted);line-height:1.5">New physics problem every week — olympiad to research level.</p></div>
+        <div style="text-align:center;padding:20px;background:rgba(167,139,250,0.03);border:1px solid var(--border);border-radius:12px" data-stagger="wwd"><div style="font-size:28px;margin-bottom:12px">🌌</div><h4 style="font-family:var(--font-heading);font-size:15px;color:var(--text-bright);margin-bottom:8px">Stargazing Nights</h4><p style="font-size:12px;color:var(--text-muted);line-height:1.5">Monthly telescope sessions at the KGP observatory rooftop.</p></div>
+      </div>
+    </section>
+
+  </main>
+
+  <div id="physoc-footer"></div>
+  <script src="../components.js"></script>
+  <script src="../shared.js"></script>
+</body>
+</html>

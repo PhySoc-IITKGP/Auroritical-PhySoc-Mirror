@@ -1,0 +1,20 @@
+# Physics Society (PhySoc) - IIT Kharagpur
+
+Welcome to the Physics Society of IIT Kharagpur (PhySoc). We are a student-run society passionate about the cosmos, quantum worlds, and the fundamental laws of nature.
+
+## Architecture
+The site is built as a static site consisting of HTML, CSS, and Vanilla JS, using `anime.js` for premium animations.
+No backend logic is required to serve the files. It can be hosted on Vercel, Netlify, or GitHub Pages.
+
+## Sections
+- /about/: Learn about our mission, history, values, and activities like Feynman Lectures, UROP, Stargazing, and more.
+- /announcements/: Stay updated with events, academic opportunities, and society news.
+- /resources/: Access curated textbooks, notes, and roadmaps for physics students.
+- /officers/: Meet the leadership team of PhySoc.
+- /sandbox/: Explore interactive physics simulations built by our members (e.g., Orbital Mechanics, Double Pendulum).
+- /contact/: Get in touch with us for queries or collaborations.
+- /admin/: Officer panel for managing announcements and checking contact submissions.
+
+## Contact
+Email: phyiitkharagpur@gmail.com
+Location: Physics Department, IIT Kharagpur, West Bengal - 721302

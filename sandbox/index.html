@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Physics Sandbox — PhySoc | IIT Kharagpur</title>
+  <meta name="description" content="Interactive physics simulations — orbital mechanics, double pendulum, and more." />
+  <link rel="canonical" href="https://physoc.iitkgp.ac.in/sandbox/" />
+  <link rel="icon" href="../logo.svg" type="image/svg+xml" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Inter:wght@400;500;600&family=Fira+Code&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.2/anime.min.js"></script>
+  <link rel="stylesheet" href="../shared.css" />
+</head>
+<body class="dark-theme">
+  <canvas id="particle-canvas"></canvas>
+  <div id="physoc-header"></div>
+
+  <main class="page-main page-content" id="main-content">
+
+    <section class="card hero-card" style="min-height:310px;background-image:linear-gradient(135deg,rgba(3,10,26,0.95),rgba(6,14,40,0.92)),url('../anim_orbital_planet.png');background-size:cover;background-position:center;margin-bottom:22px" aria-labelledby="sandbox-heading">
+      <span class="section-label"><i class="fa-solid fa-atom"></i> Physics Sandbox</span>
+      <h1 id="sandbox-heading">Interactive Physics<br>Simulations</h1>
+      <p>Explore the laws of physics through real-time, interactive simulations built by PhySoc members. From orbital mechanics to chaotic pendulums — experience physics in motion.</p>
+      <div class="hero-actions">
+        <a href="orbit/" class="btn btn-primary"><i class="fa-solid fa-circle-dot"></i> Orbit Simulator</a>
+        <a href="double-pendulum/" class="btn btn-secondary"><i class="fa-solid fa-rotate"></i> Double Pendulum</a>
+      </div>
+    </section>
+
+    <div style="border-radius:14px;overflow:hidden;margin-bottom:22px;border:1px solid var(--border);height:200px;position:relative">
+      <img src="../anim_orbital_planet.png" alt="Glowing planet tracing an elliptical orbit" style="width:100%;height:100%;object-fit:cover" />
+      <div style="position:absolute;inset:0;background:linear-gradient(to right,rgba(3,10,26,0.85),transparent,rgba(3,10,26,0.85));display:flex;align-items:center;justify-content:center">
+        <div style="text-align:center;padding:0 20px">
+          <p style="font-family:var(--font-heading);font-size:clamp(13px,2vw,18px);color:var(--gold);letter-spacing:1px;font-weight:700;margin-bottom:4px">Kepler's Laws in Real-Time</p>
+          <p style="font-size:12px;color:var(--text-muted)">Equal areas swept in equal times — Newton's gravitational law in action</p>
+        </div>
+      </div>
+    </div>
+
+    <section aria-labelledby="sims-heading">
+      <h2 id="sims-heading" style="font-family:var(--font-heading);font-size:clamp(20px,3vw,28px);font-weight:700;color:var(--text-bright);margin-bottom:18px">Available Simulations</h2>
+      <div class="sandbox-grid">
+        <article class="game-card">
+          <div class="game-preview"><canvas id="mini-orbit"></canvas></div>
+          <div class="game-body">
+            <h3>🪐 Orbital Mechanics</h3>
+            <p>Simulate Keplerian orbits with adjustable velocity, mass ratio, and eccentricity. Watch elliptical, parabolic, and hyperbolic trajectories in real time. Features gravitational binding energy and apoapsis/periapsis markers.</p>
+            <a href="orbit/" class="btn btn-primary" style="align-self:flex-start"><i class="fa-solid fa-play"></i> Launch Simulator</a>
+          </div>
+        </article>
+        <article class="game-card">
+          <div class="game-preview" style="background:linear-gradient(135deg,#030210,#070118)"><canvas id="mini-pendulum"></canvas></div>
+          <div class="game-body">
+            <h3>🌀 Chaotic Double Pendulum</h3>
+            <p>Experience chaos theory first-hand. Two pendulums with slightly different initial conditions diverge exponentially — a demonstration of sensitive dependence. Lagrangian EOM solved in real time with RK4 integration.</p>
+            <a href="double-pendulum/" class="btn btn-secondary" style="align-self:flex-start"><i class="fa-solid fa-play"></i> Launch Simulator</a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <div class="card" style="margin-top:22px;text-align:center;border-style:dashed">
+      <div style="font-size:32px;margin-bottom:12px">🔭</div>
+      <h3 style="font-family:var(--font-heading);color:var(--text-bright);margin-bottom:8px">More Simulations Coming Soon</h3>
+      <p style="font-size:13px;color:var(--text-muted);max-width:450px;margin:0 auto 18px;line-height:1.7">Our members are building quantum harmonic oscillators, wave interference patterns, and the three-body problem.</p>
+      <a href="../contact/" class="btn btn-ghost"><i class="fa-solid fa-code"></i> Contribute a Simulation</a>
+    </div>
+
+  </main>
+
+  <div id="physoc-footer"></div>
+  <script src="../components.js"></script>
+  <script src="../shared.js"></script>
+</body>
+</html>

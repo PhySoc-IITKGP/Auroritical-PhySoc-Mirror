@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Interactive Double Pendulum Simulator - Physics Society, IIT Kharagpur.">
+  <title>Double Pendulum | PhySoc Sandbox</title>
+  
+  <link rel="icon" type="image/svg+xml" href="../../logo.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="../../index.css">
+  <style>
+    body {
+      padding: 0;
+      margin: 0;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    .sandbox-container {
+      max-width: 1200px;
+      margin: 40px auto;
+      padding: 0 20px;
+      width: 100%;
+      flex: 1;
+    }
+    .back-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 20px;
+      color: var(--color-primary);
+      font-weight: 600;
+    }
+    .back-btn:hover {
+      color: var(--color-secondary);
+      text-decoration: none;
+    }
+    .game-layout {
+      display: grid;
+      grid-template-columns: 1fr 280px;
+      gap: 30px;
+      align-items: start;
+    }
+    .canvas-card {
+      background-color: #03050a;
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      box-shadow: var(--box-shadow);
+    }
+    canvas {
+      width: 100%;
+      height: 500px;
+      display: block;
+      cursor: crosshair;
+    }
+    .instructions {
+      background-color: rgba(0, 0, 0, 0.6);
+      color: var(--color-primary);
+      font-size: 13px;
+      text-align: center;
+      padding: 12px;
+      border-top: 1px solid var(--border-color);
+      font-style: italic;
+    }
+    .controls-card {
+      background-color: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      padding: 24px;
+      box-shadow: var(--box-shadow);
+    }
+    .controls-card h3 {
+      font-family: var(--font-heading);
+      font-size: 18px;
+      color: var(--text-bright);
+      margin-bottom: 20px;
+      border-bottom: 1px solid var(--border-color);
+      padding-bottom: 10px;
+    }
+    @media screen and (max-width: 900px) {
+      .game-layout {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body class="dark-theme">
+  <!-- Particle Background -->
+  <canvas id="particle-canvas" style="position:fixed; z-index:-1; pointer-events:none;"></canvas>
+
+  <div class="sandbox-container">
+    <a href="../../index.html#sandbox" class="back-btn"><i class="fa-solid fa-arrow-left"></i> Back to PhySoc Home</a>
+    
+    <div class="info-card wide-card" style="margin-bottom: 30px; padding: 25px;">
+      <h2 style="font-family: var(--font-heading); margin-bottom: 10px; color: var(--text-bright);"><i class="fa-solid fa-atom text-purple"></i> Double Pendulum</h2>
+      <p style="color: var(--text-muted); font-size: 14px; margin: 0;">Observe chaotic physics dynamics with a Lagrangian double pendulum simulation. Interact by dragging bobs on screen to set start angles.</p>
+    </div>
+
+    <div class="game-layout">
+      <!-- Game Canvas -->
+      <div class="canvas-card">
+        <canvas id="pendulum-canvas"></canvas>
+        <div class="instructions">Click and drag either bob to alter the initial angles and release to see the chaotic trajectory.</div>
+      </div>
+
+      <!-- Controls -->
+      <div class="controls-card">
+        <h3>Pendulum Controls</h3>
+        <div class="control-group">
+          <label for="pendulum-len" style="font-size: 13px; color: var(--text-main); font-weight: 500;">Length (Rod 1 & 2)</label>
+          <input type="range" id="pendulum-len" min="50" max="150" step="5" value="100" style="margin: 8px 0;">
+          <span id="pendulum-len-val" class="ctrl-val" style="font-family: var(--font-code); font-size: 12px; color: var(--color-primary);">100px</span>
+        </div>
+        <div class="control-group" style="margin-top: 20px;">
+          <label for="pendulum-mass" style="font-size: 13px; color: var(--text-main); font-weight: 500;">Mass (Bob 1 & 2)</label>
+          <input type="range" id="pendulum-mass" min="5" max="30" step="1" value="15" style="margin: 8px 0;">
+          <span id="pendulum-mass-val" class="ctrl-val" style="font-family: var(--font-code); font-size: 12px; color: var(--color-primary);">15kg</span>
+        </div>
+        <div class="control-group" style="margin-top: 20px;">
+          <label for="pendulum-damping" style="font-size: 13px; color: var(--text-main); font-weight: 500;">Air Resistance/Damping</label>
+          <input type="range" id="pendulum-damping" min="0" max="0.005" step="0.0001" value="0.0005" style="margin: 8px 0;">
+          <span id="pendulum-damping-val" class="ctrl-val" style="font-family: var(--font-code); font-size: 12px; color: var(--color-primary);">0.0005</span>
+        </div>
+        <div class="control-group checkbox-group" style="margin-top: 25px; display: flex; align-items: center; gap: 8px;">
+          <input type="checkbox" id="show-chaos-trace" checked>
+          <label for="show-chaos-trace" style="font-size: 13px; color: var(--text-muted); cursor: pointer;">Show Chaos Trajectory</label>
+        </div>
+        <div class="control-actions" style="margin-top: 30px; display: flex; flex-direction: column; gap: 10px;">
+          <button class="primary-btn" id="clear-traces" style="width: 100%; border-radius: 8px !important; justify-content: center; padding: 12px;"><i class="fa-solid fa-eraser"></i> Clear Traces</button>
+          <button class="secondary-btn" id="reset-pendulum" style="width: 100%; border-radius: 8px !important; justify-content: center; padding: 12px;"><i class="fa-solid fa-rotate-left"></i> Reset Angles</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="../../app.js"></script>
+  <script>
+    // Particles bg
+    document.addEventListener("DOMContentLoaded", () => {
+      const pCanvas = document.getElementById("particle-canvas");
+      if (pCanvas) {
+        const pCtx = pCanvas.getContext("2d");
+        let w = (pCanvas.width = window.innerWidth);
+        let h = (pCanvas.height = window.innerHeight);
+        const particles = [];
+        for (let i = 0; i < 40; i++) {
+          particles.push({
+            x: Math.random() * w,
+            y: Math.random() * h,
+            vx: (Math.random() - 0.5) * 0.4,
+            vy: (Math.random() - 0.5) * 0.4,
+            radius: Math.random() * 2 + 0.5,
+            color: "rgba(167, 139, 250, 0.12)"
+          });
+        }
+        function anim() {
+          pCtx.clearRect(0, 0, w, h);
+          particles.forEach(p => {
+            p.x += p.vx; p.y += p.vy;
+            if (p.x < 0 || p.x > w) p.vx *= -1;
+            if (p.y < 0 || p.y > h) p.vy *= -1;
+            pCtx.beginPath();
+            pCtx.arc(p.x, p.y, p.radius, 0, Math.PI*2);
+            pCtx.fillStyle = p.color;
+            pCtx.fill();
+          });
+          requestAnimationFrame(anim);
+        }
+        window.addEventListener("resize", () => {
+          w = pCanvas.width = window.innerWidth;
+          h = pCanvas.height = window.innerHeight;
+        });
+        anim();
+      }
+
+      // Physics logic
+      const canvas = document.getElementById("pendulum-canvas");
+      const ctx = canvas.getContext("2d");
+      function resize() {
+        const rect = canvas.getBoundingClientRect();
+        canvas.width = rect.width;
+        canvas.height = rect.height;
+      }
+      
+      let r1 = 100, r2 = 100;
+      let m1 = 15, m2 = 15;
+      let a1 = Math.PI / 2, a2 = Math.PI / 2;
+      let a1_v = 0, a2_v = 0;
+      const g = 0.2;
+      let damping = 0.0005;
+      let showChaos = true;
+      let pendulumTrace = [];
+      let isDraggingBob = 0; // 0, 1 or 2
+
+      const lenSlider = document.getElementById("pendulum-len");
+      const massSlider = document.getElementById("pendulum-mass");
+      const dampingSlider = document.getElementById("pendulum-damping");
+      const chaosCheckbox = document.getElementById("show-chaos-trace");
+      const clearBtn = document.getElementById("clear-traces");
+      const resetBtn = document.getElementById("reset-pendulum");
+
+      if (lenSlider) {
+        lenSlider.addEventListener("input", (e) => {
+          r1 = r2 = parseFloat(e.target.value);
+          document.getElementById("pendulum-len-val").innerText = `${r1}px`;
+        });
+      }
+      if (massSlider) {
+        massSlider.addEventListener("input", (e) => {
+          m1 = m2 = parseFloat(e.target.value);
+          document.getElementById("pendulum-mass-val").innerText = `${m1}kg`;
+        });
+      }
+      if (dampingSlider) {
+        dampingSlider.addEventListener("input", (e) => {
+          damping = parseFloat(e.target.value);
+          document.getElementById("pendulum-damping-val").innerText = damping;
+        });
+      }
+      if (chaosCheckbox) {
+        chaosCheckbox.addEventListener("change", (e) => {
+          showChaos = e.target.checked;
+        });
+      }
+      if (clearBtn) {
+        clearBtn.addEventListener("click", () => { pendulumTrace = []; });
+      }
+      if (resetBtn) {
+        resetBtn.addEventListener("click", () => {
+          a1 = Math.PI / 2 + (Math.random() - 0.5) * 0.2;
+          a2 = Math.PI / 2 + (Math.random() - 0.5) * 0.2;
+          a1_v = 0; a2_v = 0;
+          pendulumTrace = [];
+        });
+      }
+
+      canvas.addEventListener("mousedown", (e) => {
+        const rect = canvas.getBoundingClientRect();
+        const mx = e.clientX - rect.left;
+        const my = e.clientY - rect.top;
+
+        const cx = canvas.width / 2;
+        const cy = 120;
+        const x1 = cx + r1 * Math.sin(a1);
+        const y1 = cy + r1 * Math.cos(a1);
+        const x2 = x1 + r2 * Math.sin(a2);
+        const y2 = y1 + r2 * Math.cos(a2);
+
+        if (Math.hypot(mx - x2, my - y2) < m2 * 1.5) isDraggingBob = 2;
+        else if (Math.hypot(mx - x1, my - y1) < m1 * 1.5) isDraggingBob = 1;
+      });
+
+      canvas.addEventListener("mousemove", (e) => {
+        if (isDraggingBob === 0) return;
+        const rect = canvas.getBoundingClientRect();
+        const mx = e.clientX - rect.left;
+        const my = e.clientY - rect.top;
+        const cx = canvas.width / 2;
+        const cy = 120;
+
+        if (isDraggingBob === 1) {
+          a1 = Math.atan2(mx - cx, my - cy);
+          a1_v = 0;
+        } else if (isDraggingBob === 2) {
+          const x1 = cx + r1 * Math.sin(a1);
+          const y1 = cy + r1 * Math.cos(a1);
+          a2 = Math.atan2(mx - x1, my - y1);
+          a2_v = 0;
+        }
+        pendulumTrace = [];
+      });
+
+      canvas.addEventListener("mouseup", () => { isDraggingBob = 0; });
+      canvas.addEventListener("mouseleave", () => { isDraggingBob = 0; });
+
+      function loop() {
+        ctx.fillStyle = "#03050a";
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+        // gridlines
+        ctx.strokeStyle = "rgba(255,255,255,0.02)";
+        ctx.lineWidth = 1;
+        for (let x = 0; x < canvas.width; x += 40) {
+          ctx.beginPath(); ctx.moveTo(x, 0); ctx.lineTo(x, canvas.height); ctx.stroke();
+        }
+        for (let y = 0; y < canvas.height; y += 40) {
+          ctx.beginPath(); ctx.moveTo(0, y); ctx.lineTo(canvas.width, y); ctx.stroke();
+        }
+
+        // physics update
+        if (isDraggingBob === 0) {
+          const num1 = -g * (2 * m1 + m2) * Math.sin(a1) - m2 * g * Math.sin(a1 - 2 * a2) - 2 * Math.sin(a1 - a2) * m2 * (a2_v * a2_v * r2 + a1_v * a1_v * r1 * Math.cos(a1 - a2));
+          const den1 = r1 * (2 * m1 + m2 - m2 * Math.cos(2 * a1 - 2 * a2));
+          const a1_a = num1 / den1;
+
+          const num2 = 2 * Math.sin(a1 - a2) * (a1_v * a1_v * r1 * (m1 + m2) + g * (m1 + m2) * Math.cos(a1) + a2_v * a2_v * r2 * m2 * Math.cos(a1 - a2));
+          const den2 = r2 * (2 * m1 + m2 - m2 * Math.cos(2 * a1 - 2 * a2));
+          const a2_a = num2 / den2;
+
+          a1_v += a1_a; a2_v += a2_a;
+          a1 += a1_v; a2 += a2_v;
+          a1_v *= (1 - damping); a2_v *= (1 - damping);
+        }
+
+        // Draw pendulum bobs and rods
+        const cx = canvas.width / 2;
+        const cy = 120;
+        const x1 = cx + r1 * Math.sin(a1);
+        const y1 = cy + r1 * Math.cos(a1);
+        const x2 = x1 + r2 * Math.sin(a2);
+        const y2 = y1 + r2 * Math.cos(a2);
+
+        if (showChaos) {
+          pendulumTrace.push({ x: x2, y: y2 });
+          if (pendulumTrace.length > 250) pendulumTrace.shift();
+        } else {
+          pendulumTrace = [];
+        }
+
+        if (pendulumTrace.length > 1) {
+          ctx.beginPath();
+          ctx.moveTo(pendulumTrace[0].x, pendulumTrace[0].y);
+          for (let i = 1; i < pendulumTrace.length; i++) {
+            ctx.lineTo(pendulumTrace[i].x, pendulumTrace[i].y);
+          }
+          ctx.strokeStyle = "rgba(167, 139, 250, 0.4)";
+          ctx.lineWidth = 1.5;
+          ctx.stroke();
+        }
+
+        ctx.beginPath();
+        ctx.moveTo(cx, cy); ctx.lineTo(x1, y1); ctx.lineTo(x2, y2);
+        ctx.strokeStyle = "rgba(255,255,255,0.4)";
+        ctx.lineWidth = 3;
+        ctx.stroke();
+
+        ctx.beginPath(); ctx.arc(cx, cy, 6, 0, Math.PI * 2); ctx.fillStyle = "#94a3b8"; ctx.fill();
+
+        ctx.beginPath(); ctx.arc(x1, y1, m1 * 0.8, 0, Math.PI * 2);
+        ctx.fillStyle = "var(--color-secondary)";
+        ctx.shadowBlur = 10; ctx.shadowColor = "var(--color-secondary)";
+        ctx.fill(); ctx.shadowBlur = 0;
+
+        ctx.beginPath(); ctx.arc(x2, y2, m2 * 0.8, 0, Math.PI * 2);
+        ctx.fillStyle = "var(--color-primary)";
+        ctx.shadowBlur = 10; ctx.shadowColor = "var(--color-primary)";
+        ctx.fill(); ctx.shadowBlur = 0;
+
+        requestAnimationFrame(loop);
+      }
+
+      window.addEventListener("resize", resize);
+      resize();
+      loop();
+    });
+  </script>
+</body>
+</html>
