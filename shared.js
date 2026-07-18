@@ -476,7 +476,7 @@ function initSearch() {
     { title: 'Bhoomik Modi - Advisor', url: 'officers/', type: 'Officer' },
     { title: 'Academic Chair', url: 'officers/', type: 'Chair' },
     { title: 'Social Chair', url: 'officers/', type: 'Chair' },
-    { title: 'Outreach Chair', url: 'officers/', type: 'Chair' },
+    { title: 'Sayak Moulic - Technical & Growth Chair', url: 'officers/', type: 'Chair' },
     { title: 'Feynman Lecture Series', url: 'announcements/', type: 'Event' },
     { title: 'Physics Puzzle', url: 'sandbox/', type: 'Sandbox' }
   ];
