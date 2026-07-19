@@ -65,7 +65,7 @@
     .term-tab {
       background: transparent;
       border: 1px solid transparent;
-      color: var(--text-muted);
+      color: rgba(255, 255, 255, 0.45); /* Darker inactive text */
       font-family: 'Outfit', sans-serif;
       font-size: 13px;
       font-weight: 600;
@@ -79,16 +79,17 @@
     }
 
     .term-tab:hover {
-      color: var(--text);
+      color: #ffffff;
       background: rgba(255, 255, 255, 0.04);
     }
 
-      .term-tab.active {
-      color: #0b1a30; /* Dark text */
-      background: rgba(0, 242, 254, 0.8); /* Semi-transparent but bright cyan background */
-      border: 1px solid rgba(0, 242, 254, 0.9);
-      box-shadow: 0 0 12px rgba(0, 242, 254, 0.2);
+    .term-tab.active {
+      color: #05122d; /* Dark text inside active button */
+      background: var(--cyan); /* Glowing solid cyan background */
+      border: 1px solid var(--cyan);
+      box-shadow: 0 0 15px rgba(0, 242, 254, 0.35);
     }
+
     /* Term view content layout switches */
     .term-content {
       display: none;
@@ -136,7 +137,7 @@
           <i class="fa-solid fa-calendar-days"></i> 2026–27 (Current Term)
         </button>
         <button class="term-tab" data-term="past">
-          <i class="fa-solid fa-clock-rotate-left"></i> 2025–26 (Past Officers)
+          <i class="fa-solid fa-clock-rotate-left"></i> 2025–26 (Past Term)
         </button>
       </div>
 
@@ -174,7 +175,7 @@
           </div>
         </div>
 
-        <div class="tier-label"><span>🎓 Advisor</span></div>
+        <div class="tier-label"><span>🎓 Advisors</span></div>
         <div class="officer-grid" style="grid-template-columns:repeat(auto-fill,minmax(220px,1fr))">
           <div class="officer-card" data-stagger="advisor">
             <div class="officer-banner" style="background:linear-gradient(135deg,rgba(255,226,89,0.3),rgba(43,124,182,0.15))"></div>
@@ -182,24 +183,22 @@
             <div class="officer-body">
               <h3>Bhoomik Modi</h3>
               <span class="officer-role text-gold">Advisor (4th Year)</span>
-              <p>4th year mentor guiding society strategy, UROP programs, and academic initiatives.</p>
+              <p>Final-year mentor guiding society strategy, UROP programs, and academic initiatives.</p>
               <div class="officer-links">
                 <a href="mailto:phyiitkharagpur@gmail.com" title="Email"><i class="fa-solid fa-envelope"></i></a>
                 <a href="https://www.linkedin.com/in/bhoomik-modi-348b7728b/" target="_blank" title="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
               </div>
             </div>
           </div>
-           <div class="officer-grid" style="grid-template-columns:repeat(auto-fill,minmax(220px,1fr))">
           <div class="officer-card" data-stagger="advisor">
-            <div class="officer-banner" style="background:linear-gradient(135deg,rgba(255,226,89,0.3),rgba(43,124,182,0.15))"></div>
-            <div class="officer-avatar"><img src="../bhoomik-modi.jpeg" alt="Bhoomik Modi" style="width:100%;height:100%;object-fit:cover;border-radius:50%" /></div>
+            <div class="officer-banner" style="background:linear-gradient(135deg,rgba(0,242,254,0.3),rgba(43,124,182,0.15))"></div>
+            <div class="officer-avatar"><div class="officer-avatar-placeholder">🎓</div></div>
             <div class="officer-body">
-              <h3>Sagerneel Gosh</h3>
-              <span class="officer-role text-gold">Advisor (5th Year)</span>
-              <p>5th year mentor guiding society strategy, UROP programs, and academic initiatives.</p>
+              <h3>Sagarneel Ghoshal</h3>
+              <span class="officer-role text-cyan">Advisor (5th Year)</span>
+              <p>Senior 5th-year mentor guiding society operations, strategic growth, and research initiatives.</p>
               <div class="officer-links">
                 <a href="mailto:phyiitkharagpur@gmail.com" title="Email"><i class="fa-solid fa-envelope"></i></a>
-                <a href="https://www.linkedin.com/in/bhoomik-modi-348b7728b/" target="_blank" title="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
               </div>
             </div>
           </div>
@@ -297,105 +296,106 @@
       </div>
 
       <!-- ============================================== -->
-      <!-- PAST TERM (2025-2026)                            -->
+      <!-- PAST TERM (2025-26)                            -->
       <!-- ============================================== -->
       <div id="term-past" class="term-content">
+        <!-- New Head Section -->
+        <div class="tier-label"><span>🛸 Head</span></div>
+        <div class="officer-grid" style="grid-template-columns:repeat(auto-fill,minmax(240px,1fr))">
+          <div class="officer-card featured" data-stagger="officers">
+            <div class="officer-banner" style="background:linear-gradient(135deg,rgba(0,242,254,0.35),rgba(43,124,182,0.15))"></div>
+            <div class="officer-avatar"><img src="../bhoomik-modi.jpeg" alt="Bhoomik Modi" style="width:100%;height:100%;object-fit:cover;border-radius:50%" /></div>
+            <div class="officer-body">
+              <h3>Bhoomik Modi</h3>
+              <span class="officer-role text-gold">Head (3rd Year)</span>
+              <p>Oversees operations, major administrative decisions, and supports core organizational direction.</p>
+              <div class="officer-links">
+                <a href="mailto:phyiitkharagpur@gmail.com" title="Email"><i class="fa-solid fa-envelope"></i></a>
+                <a href="https://www.linkedin.com/in/bhoomik-modi-348b7728b/" target="_blank" title="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="tier-label"><span>⚡ Leadership</span></div>
         <div class="officer-grid" style="grid-template-columns:repeat(auto-fill,minmax(240px,1fr))">
           <div class="officer-card featured" data-stagger="officers">
             <div class="officer-banner"></div>
-            <div class="officer-avatar"><img src="../neerajlaikara.jpeg" alt="Neeraj Laikara" style="width:100%;height:100%;object-fit:cover;border-radius:50%" /></div>
+            <div class="officer-avatar"><div class="officer-avatar-placeholder">⚡</div></div>
             <div class="officer-body">
-              <h3>Sagerneel Gosh</h3>
-              <span class="officer-role text-gold">President</span>
-              <p>4rth Year, Physics · Oversees all society operations, strategic direction, and inter-department relations.</p>
+              <h3>Sagarneel Ghoshal</h3>
+              <span class="officer-role text-gold">President (4th Year)</span>
+              <p>Oversees society operations, strategic execution, and coordinates public/academic affairs.</p>
               <div class="officer-links">
                 <a href="mailto:phyiitkharagpur@gmail.com" title="Email"><i class="fa-solid fa-envelope"></i></a>
-                <a href="https://au.linkedin.com/in/neeraj-laikara-27a76a404" target="_blank" title="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
               </div>
             </div>
           </div>
           <div class="officer-card featured" data-stagger="officers">
             <div class="officer-banner" style="background:linear-gradient(135deg,rgba(167,139,250,0.45),rgba(0,242,254,0.12))"></div>
-            <div class="officer-avatar"><img src="../wasim.png" alt="Wasim" style="width:100%;height:100%;object-fit:cover;border-radius:50%" /></div>
+            <div class="officer-avatar"><div class="officer-avatar-placeholder">⭐</div></div>
             <div class="officer-body">
-              <h3>Yash kakade</h3>
-              <span class="officer-role text-purple">Vice President</span>
-              <p>4rth Year, Physics · Coordinates events, manages officer teams, and assists the President.</p>
+              <h3>Yash Kakade</h3>
+              <span class="officer-role text-purple">Vice President (4th Year)</span>
+              <p>Coordinates events, supports the President in management, and assists with administrative affairs.</p>
               <div class="officer-links">
                 <a href="mailto:phyiitkharagpur@gmail.com" title="Email"><i class="fa-solid fa-envelope"></i></a>
-                <a href="https://www.linkedin.com/in/kazi-wasim-raj-b7884433b/" target="_blank" title="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
               </div>
             </div>
           </div>
         </div>
 
-        <div class="tier-label"><span>🪑 Head</span></div>
+        <!-- Moved former chairs and senior fellows here under Senior Fellows -->
+        <div class="tier-label"><span>🌟 Senior Fellows — 2nd Year</span></div>
         <div class="officer-grid">
           <div class="officer-card" data-stagger="seniors">
-            <div class="officer-banner" style="background:linear-gradient(135deg,rgba(0,242,254,0.3),rgba(43,124,182,0.15))"></div>
-            <div class="officer-avatar"><img src="../bhoomik-modi.png" alt="Bhoomik" style="width:100%;height:100%;object-fit:cover;border-radius:50%" /></div>
+            <div class="officer-banner" style="background:linear-gradient(135deg,rgba(167,139,250,0.3),rgba(43,124,182,0.15))"></div>
+            <div class="officer-avatar"><img src="../neerajlaikara.jpeg" alt="Neeraj Laikara" style="width:100%;height:100%;object-fit:cover;border-radius:50%" /></div>
             <div class="officer-body">
-              <h3>Bhoomik Modi</h3>
-              <span class="officer-role text-cyan">Head</span>
-              <p>Manages study groups, and academic events for the society.</p>
+              <h3>Neeraj Laikara</h3>
+              <span class="officer-role text-purple">Senior Fellow</span>
+              <p>Coordinates events and assists the Chairs in society functions.</p>
+              <div class="officer-links">
+                <a href="https://au.linkedin.com/in/neeraj-laikara-27a76a404" target="_blank" title="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+              </div>
+            </div>
+          </div>
+          <div class="officer-card" data-stagger="seniors">
+            <div class="officer-banner" style="background:linear-gradient(135deg,rgba(0,242,254,0.3),rgba(43,124,182,0.15))"></div>
+            <div class="officer-avatar"><img src="../wasim.png" alt="Wasim" style="width:100%;height:100%;object-fit:cover;border-radius:50%" /></div>
+            <div class="officer-body">
+              <h3>Wasim</h3>
+              <span class="officer-role text-cyan">Senior Fellow</span>
+              <p>Coordinates events and assists the Chairs in society functions.</p>
               <div class="officer-links">
                 <a href="https://www.linkedin.com/in/kazi-wasim-raj-b7884433b/" target="_blank" title="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
               </div>
             </div>
           </div>
-        </div>
-
-        <div class="tier-label"><span>🌟 Senior Fellows — 2nd Year</span></div>
-         <div class="officer-grid">
-            <div class="officer-card" data-stagger="seniors">
-            <div class="officer-banner" style="background:linear-gradient(135deg,rgba(255,226,89,0.25),rgba(43,124,182,0.15))"></div>
-            <div class="officer-avatar"><img src="../wasim.jpeg" alt="Wasim" style="width:100%;height:100%;object-fit:cover;border-radius:50%" /></div>
-            <div class="officer-body">
-              <h3>Wasim</h3>
-              <span class="officer-role text-gold">Technical Chair</span>
-              <p>Manages digital platforms, website, growth strategies, and external integrations.</p>
-              <div class="officer-links">
-                <a href="https://www.linkedin.com/in/neelabh-priyam-jha/" target="_blank" title="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
-              </div>
-            </div>
-          </div>
-            <div class="officer-card" data-stagger="seniors">
-            <div class="officer-banner" style="background:linear-gradient(135deg,rgba(255,226,89,0.25),rgba(43,124,182,0.15))"></div>
-            <div class="officer-avatar"><img src="../neelabh.jpeg" alt="Neelabh Priyam Jha" style="width:100%;height:100%;object-fit:cover;border-radius:50%" /></div>
-            <div class="officer-body">
-              <h3>Neelabh Priyam Jha</h3>
-              <span class="officer-role text-gold">Technical Chair</span>
-              <p>Manages digital platforms, website, growth strategies, and external integrations.</p>
-              <div class="officer-links">
-                <a href="https://www.linkedin.com/in/neelabh-priyam-jha/" target="_blank" title="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
-              </div>
-            </div>
-          </div>
-             <div class="officer-card" data-stagger="seniors">
+          <div class="officer-card" data-stagger="seniors">
             <div class="officer-banner" style="background:linear-gradient(135deg,rgba(16,185,129,0.3),rgba(43,124,182,0.15))"></div>
-            <div class="officer-avatar"><img src="../debdutt%20adhikary.jpeg" alt="Debdut Adhikari" style="width:100%;height:100%;object-fit:cover;border-radius:50%" /></div>
+            <div class="officer-avatar"><img src="../debdutt%20adhikary.jpeg" alt="Debdut Adhikary" style="width:100%;height:100%;object-fit:cover;border-radius:50%" /></div>
             <div class="officer-body">
-              <h3>Debdut Adhikari</h3>
-              <span class="officer-role text-cyan">Outreach Chair</span>
-              <p>Manages outreach, external communications, and public relations.</p>
+              <h3>Debdut Adhikary</h3>
+              <span class="officer-role text-cyan">Senior Fellow</span>
+              <p>Coordinates events and assists the Chairs in society functions.</p>
               <div class="officer-links">
                 <a href="https://www.linkedin.com/in/debdut-adhikary-b40192300/" target="_blank" title="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
               </div>
             </div>
           </div>
           <div class="officer-card" data-stagger="seniors">
-            <div class="officer-banner" style="background:linear-gradient(135deg,rgba(167,139,250,0.3),rgba(43,124,182,0.15))"></div>
-            <div class="officer-avatar"><img src="../neerajlaikara.jpeg" alt="Neeraj Laikara" style="width:100%;height:100%;object-fit:cover;border-radius:50%" /></div>
+            <div class="officer-banner" style="background:linear-gradient(135deg,rgba(255,226,89,0.25),rgba(43,124,182,0.15))"></div>
+            <div class="officer-avatar"><img src="../neelabh.jpeg" alt="Neelabh Priyam Jha" style="width:100%;height:100%;object-fit:cover;border-radius:50%" /></div>
             <div class="officer-body">
-              <h3>Neeraj Laikara</h3>
-              <span class="officer-role text-purple">Social Chair</span>
-              <p>Organises social events, lab visits, orientation programs, and community outreach.</p>
+              <h3>Neelabh Priyam Jha</h3>
+              <span class="officer-role text-gold">Senior Fellow</span>
+              <p>Coordinates events and assists the Chairs in society functions.</p>
               <div class="officer-links">
-                <a href="https://au.linkedin.com/in/neeraj-laikara-27a76a404" target="_blank" title="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+                <a href="https://www.linkedin.com/in/neelabh-priyam-jha/" target="_blank" title="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
               </div>
             </div>
           </div>
-
           <div class="officer-card" data-stagger="seniors">
             <div class="officer-banner" style="background:linear-gradient(135deg,rgba(167,139,250,0.3),rgba(43,124,182,0.15))"></div>
             <div class="officer-avatar"><img src="../harsh-gupta.png" alt="Harsh Gupta" style="width:100%;height:100%;object-fit:cover;border-radius:50%" /></div>
@@ -410,11 +410,9 @@
           </div>
           <div class="officer-card" data-stagger="seniors">
             <div class="officer-banner" style="background:linear-gradient(135deg,rgba(255,226,89,0.25),rgba(43,124,182,0.15))"></div>
-            <div class="officer-avatar">
-              <div class="officer-avatar-placeholder">⭐</div>
-            </div>
+            <div class="officer-avatar"><div class="officer-avatar-placeholder">⭐</div></div>
             <div class="officer-body">
-              <h3>Mani Bharati</h3>
+              <h3>Mani Barathi AG</h3>
               <span class="officer-role text-gold">Senior Fellow</span>
               <p>Coordinates events and assists the Chairs in society functions.</p>
               <div class="officer-links">
@@ -424,9 +422,7 @@
           </div>
           <div class="officer-card" data-stagger="seniors">
             <div class="officer-banner" style="background:linear-gradient(135deg,rgba(16,185,129,0.25),rgba(43,124,182,0.15))"></div>
-            <div class="officer-avatar">
-              <div class="officer-avatar-placeholder">⭐</div>
-            </div>
+            <div class="officer-avatar"><div class="officer-avatar-placeholder">⭐</div></div>
             <div class="officer-body">
               <h3>Sahil Patil</h3>
               <span class="officer-role" style="color:var(--success)">Senior Fellow</span>
@@ -487,7 +483,7 @@
           if (selectedTerm === 'current') {
             heroDescription.innerHTML = 'PhySoc is run entirely by students passionate about physics. Here\'s the team making it all happen in 2026–27.';
           } else {
-            heroDescription.innerHTML = 'PhySoc is run entirely by students passionate about physics. Here\'s the legacy team from the 2025–26 term.';
+            heroDescription.innerHTML = 'PhySoc is run entirely by students passionate about physics. Here\'s the team that led the society in the 2025–26 term.';
           }
         });
       });
