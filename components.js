@@ -9,8 +9,6 @@
 
   /* --------------------------------------------------
      BASE PATH DETECTION
-     Reads the href of the shared.css link so this file
-     works at any folder depth without configuration.
   -------------------------------------------------- */
   const cssLink = document.querySelector('link[href*="shared.css"]');
   const base = cssLink
@@ -25,7 +23,7 @@
     { href: 'about/',      icon: 'fa-circle-info',      label: 'About' },
     { href: 'announcements/', icon: 'fa-bullhorn',      label: 'Announcements' },
     { href: 'resources/',  icon: 'fa-book-open-reader', label: 'Resources' },
-    { href: 'officers/',   icon: 'fa-user-group',       label: 'Officers' },
+    { href: 'officers/',   icon: 'fa-user-group',       label: 'Team' },
     { href: 'sandbox/',    icon: 'fa-atom',             label: 'Sandbox' },
     { href: 'contact/',    icon: 'fa-envelope',         label: 'Contact' },
   ];
@@ -206,7 +204,6 @@
   const footerEl = document.getElementById('physoc-footer');
   if (footerEl) footerEl.outerHTML = footerHTML;
 
-  // Auto-inject the WhatsApp Verification Modal overlay into the page body if not present
   if (!document.getElementById('whatsapp-modal')) {
     document.body.insertAdjacentHTML('beforeend', whatsappModalHTML);
   }
