@@ -1312,7 +1312,7 @@ body.light-theme .theme-toggle-btn {
 }
 
 /* -----------------------------------------
-   team CARDS
+   officers CARDS
 ----------------------------------------- */
 .section-desc {
   font-size: 14px;
@@ -1320,7 +1320,7 @@ body.light-theme .theme-toggle-btn {
   margin-bottom: 20px;
 }
 
-.team-grid {
+.officers-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: 20px;
