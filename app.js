@@ -11,8 +11,8 @@ document.addEventListener("DOMContentLoaded", () => {
   initAnnouncements();
   initEventCountdown();
   initPuzzle();
+  initPhysicsSandbox();
   initContactForm();
-  initSmoothScrolling();
   initWhatsappAuth();
 });
 
@@ -1177,58 +1177,272 @@ function initContactForm() {
 }
 
 /* =========================================================================
-   9. SMOOTH SCROLLING & PARALLAX
+   10. WHATSAPP ACCESS IDENTITY VERIFICATION
    ========================================================================= */
-function initSmoothScrolling() {
-  // Check if Lenis and GSAP are loaded
-  if (typeof Lenis === 'undefined' || typeof gsap === 'undefined') return;
+function initWhatsappAuth() {
+  const whatsappBtn = document.getElementById("whatsapp-chair-btn");
+  const modal = document.getElementById("whatsapp-modal");
+  if (!whatsappBtn || !modal) return;
 
-  // Initialize Lenis
-  const lenis = new Lenis({
-    duration: 1.2,
-    easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), // https://www.desmos.com/calculator/brs54l4xou
-    direction: 'vertical',
-    gestureDirection: 'vertical',
-    smooth: true,
-    mouseMultiplier: 1,
-    smoothTouch: false,
-    touchMultiplier: 2,
-    infinite: false,
-  });
+  const stepDetecting = document.getElementById("wa-step-detecting");
+  const stepSuccess = document.getElementById("wa-step-success");
+  const stepManual = document.getElementById("wa-step-manual");
+  const networkNameLabel = document.getElementById("wa-network-name");
+  const progressBar = document.getElementById("wa-progress-bar");
+  
+  const authForm = document.getElementById("whatsapp-auth-form");
+  const instSelect = document.getElementById("wa-institute");
+  const rollInput = document.getElementById("wa-roll");
+  const emailInput = document.getElementById("wa-email");
+  const rollError = document.getElementById("wa-roll-error");
+  const emailError = document.getElementById("wa-email-error");
 
-  // Sync Lenis with GSAP ScrollTrigger
-  lenis.on('scroll', ScrollTrigger.update);
+  const WHATSAPP_URL = "https://wa.me/919887078617?text=Hi%20Neeraj%2C%20I%27m%20very%20interested%20to%20join%20PhySoc.%20I%20got%20your%20number%20from%20the%20website.";
 
-  gsap.ticker.add((time) => {
-    lenis.raf(time * 1000);
-  });
+  // Validation configurations for each institute
+  const schemas = {
+    kgp: {
+      name: "IIT Kharagpur",
+      rollPlaceholder: "e.g. 24PH10029",
+      emailPlaceholder: "e.g. rollnumber@kgpian.iitkgp.ac.in",
+      rollRegex: /^\d{2}[A-Z]{2}\d{5}$/i,
+      emailCheck: (email) => email.endsWith("@kgpian.iitkgp.ac.in") || email.endsWith("@iitkgp.ac.in"),
+      rollErrorMsg: "Format must be: 2 digits + 2 letters + 5 digits (e.g., 24PH10029)",
+      emailErrorMsg: "Email must end with @kgpian.iitkgp.ac.in or @iitkgp.ac.in"
+    },
+    bombay: {
+      name: "IIT Bombay",
+      rollPlaceholder: "e.g. 240050012",
+      emailPlaceholder: "e.g. rollnumber@iitb.ac.in",
+      rollRegex: /^\d{2}[A-Z0-9]\d{6,7}$/i,
+      emailCheck: (email) => email.endsWith("@iitb.ac.in"),
+      rollErrorMsg: "Must be a 9 or 10-character code starting with year (e.g., 240050012)",
+      emailErrorMsg: "Email must end with @iitb.ac.in"
+    },
+    kanpur: {
+      name: "IIT Kanpur",
+      rollPlaceholder: "e.g. 240123",
+      emailPlaceholder: "e.g. username@iitk.ac.in",
+      rollRegex: /^\d{6,8}$/,
+      emailCheck: (email) => email.endsWith("@iitk.ac.in"),
+      rollErrorMsg: "Must be a 6 or 8 digit number starting with year (e.g., 240123)",
+      emailErrorMsg: "Email must end with @iitk.ac.in"
+    },
+    madras: {
+      name: "IIT Madras",
+      rollPlaceholder: "e.g. EE19D016",
+      emailPlaceholder: "e.g. rollnumber@smail.iitm.ac.in",
+      rollRegex: /^[A-Z]{2}\d{2}[A-Z]\d{3}$/i,
+      emailCheck: (email) => email.endsWith("@smail.iitm.ac.in") || email.endsWith("@iitm.ac.in"),
+      rollErrorMsg: "Must be in format: Dept + Year + Program + Serial (e.g., EE19D016)",
+      emailErrorMsg: "Email must end with @smail.iitm.ac.in or @iitm.ac.in"
+    },
+    delhi: {
+      name: "IIT Delhi",
+      rollPlaceholder: "e.g. 2024PH10123",
+      emailPlaceholder: "e.g. username@iitd.ac.in",
+      rollRegex: /^\d{4}[A-Z]{2}\d{5}$/i,
+      emailCheck: (email) => email.endsWith("@iitd.ac.in") || (email.includes("@") && email.split("@")[1].endsWith("iitd.ac.in")),
+      rollErrorMsg: "Must be 11 characters starting with 4-digit year (e.g., 2024PH10123)",
+      emailErrorMsg: "Email must end with @iitd.ac.in"
+    },
+    roorkee: {
+      name: "IIT Roorkee",
+      rollPlaceholder: "e.g. 24112023",
+      emailPlaceholder: "e.g. username@iitr.ac.in",
+      rollRegex: /^\d{8}$/,
+      emailCheck: (email) => email.endsWith("@iitr.ac.in"),
+      rollErrorMsg: "Must be an 8-digit enrollment number (e.g., 24112023)",
+      emailErrorMsg: "Email must end with @iitr.ac.in"
+    },
+    guwahati: {
+      name: "IIT Guwahati",
+      rollPlaceholder: "e.g. 240101012",
+      emailPlaceholder: "e.g. username@iitg.ac.in",
+      rollRegex: /^\d{9}$/,
+      emailCheck: (email) => email.endsWith("@iitg.ac.in"),
+      rollErrorMsg: "Must be a 9-digit roll number starting with year (e.g., 240101012)",
+      emailErrorMsg: "Email must end with @iitg.ac.in"
+    },
+    shibpur: {
+      name: "IIEST Shibpur",
+      rollPlaceholder: "e.g. 2024PHB012",
+      emailPlaceholder: "e.g. username@iiests.ac.in",
+      rollRegex: /^[A-Z0-9]{9,10}$/i,
+      emailCheck: (email) => email.endsWith("@iiests.ac.in"),
+      rollErrorMsg: "Must be a 9 or 10 character code (e.g., 2024PHB012)",
+      emailErrorMsg: "Email must end with @iiests.ac.in"
+    }
+  };
 
-  gsap.ticker.lagSmoothing(0);
-
-  // Parallax Effect for Background Image
-  const parallaxBg = document.getElementById('parallax-bg');
-  if (parallaxBg) {
-    // We move the background image upwards slowly as we scroll down
-    gsap.to(parallaxBg, {
-      yPercent: -15, // Moves up by 15% of its height
-      ease: "none",
-      scrollTrigger: {
-        trigger: document.body,
-        start: "top top",
-        end: "bottom bottom",
-        scrub: true
-      }
-    });
-
-    // Fade in after load
-    setTimeout(() => {
-      parallaxBg.style.opacity = '0.65';
-    }, 500);
+  // Update form inputs when changing institute selection
+  function updatePlaceholder() {
+    const inst = instSelect.value;
+    const schema = schemas[inst];
+    if (schema) {
+      rollInput.placeholder = schema.rollPlaceholder;
+      emailInput.placeholder = schema.emailPlaceholder;
+      rollError.style.display = "none";
+      emailError.style.display = "none";
+      rollInput.classList.remove("invalid");
+      emailInput.classList.remove("invalid");
+    }
   }
+
+  instSelect.addEventListener("change", updatePlaceholder);
+  updatePlaceholder(); // Set initial placeholders
+
+  // Functions to show/hide steps
+  function showStep(step) {
+    stepDetecting.style.display = step === "detecting" ? "flex" : "none";
+    stepSuccess.style.display = step === "success" ? "flex" : "none";
+    stepManual.style.display = step === "manual" ? "block" : "none";
+  }
+
+  // Open modal handler
+  window.openWhatsappModal = function() {
+    modal.classList.add("active");
+    showStep("detecting");
+    
+    // Clear inputs and error labels
+    rollInput.value = "";
+    emailInput.value = "";
+    rollInput.classList.remove("invalid");
+    emailInput.classList.remove("invalid");
+    rollError.style.display = "none";
+    emailError.style.display = "none";
+    progressBar.style.width = "0%";
+
+    // Attempt campus network auto-detection
+    setTimeout(async () => {
+      const detectedInst = await checkCampusNetwork();
+      if (detectedInst) {
+        // Success: Network matched
+        networkNameLabel.innerText = `Access Granted via ${detectedInst}`;
+        showStep("success");
+        // Animate progress bar
+        setTimeout(() => {
+          progressBar.style.width = "100%";
+        }, 50);
+        
+        // Redirect to WhatsApp
+        setTimeout(() => {
+          window.open(WHATSAPP_URL, "_blank");
+          closeWhatsappModal();
+        }, 1600);
+      } else {
+        // Fallback to manual verification form
+        showStep("manual");
+      }
+    }, 1500); // 1.5 seconds loading state feel
+  };
+
+  window.closeWhatsappModal = function() {
+    modal.classList.remove("active");
+  };
+
+  // Check client public IP/ISP using ipapi.co (CORS-enabled and HTTPS friendly)
+  async function checkCampusNetwork() {
+    try {
+      // Fetch with timeout to prevent blocking indefinitely if connection is slow
+      const controller = new AbortController();
+      const id = setTimeout(() => controller.abort(), 3500);
+
+      const response = await fetch('https://ipapi.co/json/', { signal: controller.signal });
+      clearTimeout(id);
+      
+      if (!response.ok) return null;
+      const data = await response.json();
+      
+      const org = (data.org || '').toLowerCase();
+      const isp = (data.isp || '').toLowerCase();
+      
+      // Look for matches
+      if (org.includes('kharagpur') || isp.includes('kharagpur') || org.includes('iit kgp') || isp.includes('iit kgp')) {
+        return "IIT Kharagpur WiFi";
+      }
+      if (org.includes('bombay') || isp.includes('bombay') || org.includes('iitb') || isp.includes('iitb')) {
+        return "IIT Bombay WiFi";
+      }
+      if (org.includes('kanpur') || isp.includes('kanpur') || org.includes('iitk') || isp.includes('iitk')) {
+        return "IIT Kanpur WiFi";
+      }
+      if (org.includes('madras') || isp.includes('madras') || org.includes('iitm') || isp.includes('iitm')) {
+        return "IIT Madras WiFi";
+      }
+      if (org.includes('delhi') || isp.includes('delhi') || org.includes('iitd') || isp.includes('iitd')) {
+        return "IIT Delhi WiFi";
+      }
+      if (org.includes('roorkee') || isp.includes('roorkee') || org.includes('iitr') || isp.includes('iitr')) {
+        return "IIT Roorkee WiFi";
+      }
+      if (org.includes('guwahati') || isp.includes('guwahati') || org.includes('iitg') || isp.includes('iitg')) {
+        return "IIT Guwahati WiFi";
+      }
+      if (org.includes('shibpur') || isp.includes('shibpur') || org.includes('iiest') || isp.includes('iiest')) {
+        return "IIEST Shibpur WiFi";
+      }
+      if (org.includes('national knowledge network') || isp.includes('national knowledge network') || org.includes('nkn') || isp.includes('nkn') || org.includes('ernet') || isp.includes('ernet')) {
+        return "NKN (Campus Network)";
+      }
+      
+      return null;
+    } catch (err) {
+      console.warn("Campus network check failed/timed out, falling back to manual validation.", err);
+      return null;
+    }
+  }
+
+  // Trigger modal on click for all WhatsApp buttons/links across the site
+  const whatsappBtns = document.querySelectorAll(".whatsapp-auth-btn, #whatsapp-chair-btn, a[href*='wa.me'], a[data-obfuscated-wa]");
+  whatsappBtns.forEach(btn => {
+    btn.addEventListener("click", (e) => {
+      e.preventDefault();
+      openWhatsappModal();
+    });
+  });
+
+  // Handle Form Submission Validation
+  authForm.addEventListener("submit", (e) => {
+    e.preventDefault();
+    
+    const inst = instSelect.value;
+    const schema = schemas[inst];
+    if (!schema) return;
+
+    let isRollValid = true;
+    let isEmailValid = true;
+
+    const rollVal = rollInput.value.trim();
+    const emailVal = emailInput.value.trim();
+
+    // Reset styles
+    rollInput.classList.remove("invalid");
+    emailInput.classList.remove("invalid");
+    rollError.style.display = "none";
+    emailError.style.display = "none";
+
+    // Validate Roll Number
+    if (!schema.rollRegex.test(rollVal)) {
+      rollInput.classList.add("invalid");
+      rollError.innerText = schema.rollErrorMsg;
+      rollError.style.display = "block";
+      isRollValid = false;
+    }
+
+    // Validate Email
+    if (!schema.emailCheck(emailVal)) {
+      emailInput.classList.add("invalid");
+      emailError.innerText = schema.emailErrorMsg;
+      emailError.style.display = "block";
+      isEmailValid = false;
+    }
+
+    if (!isRollValid || !isEmailValid) return;
+
+    // Successful Verification
+    window.open(WHATSAPP_URL, "_blank");
+    closeWhatsappModal();
+  });
 }
 
-make change here
-</#USER_REQUEST>
-<ADDITIONAL_METADATA>
-The current local time is: 2026-07-19T22:42:00+05:30.
-</ADDITIONAL_METADATA>
