@@ -89,10 +89,6 @@
         <button class="icon-btn" id="theme-toggle" aria-label="Toggle theme">
           <i class="fa-solid fa-moon moon-icon"></i>
           <i class="fa-solid fa-sun sun-icon"></i>
-        </button>
-        <a href="#" class="btn btn-primary whatsapp-auth-btn" style="padding:7px 12px;font-size:12px;display:flex;align-items:center;gap:6px" aria-label="Join Us">
-          <i class="fa-brands fa-whatsapp" style="font-size:14px"></i> <span style="font-weight:600">Join Us</span>
-        </a>
         <button class="hamburger-btn" id="hamburger-btn" aria-label="Open menu">
           <span></span><span></span><span></span>
         </button>
