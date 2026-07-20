@@ -92,9 +92,9 @@
           <i class="fa-solid fa-moon moon-icon"></i>
           <i class="fa-solid fa-sun sun-icon"></i>
         </button>
-        <a href="https://wa.me/919887078617?text=Hi%20Neeraj%2C%20I%27m%20very%20interested%20to%20join%20PhySoc.%20I%20got%20your%20number%20from%20the%20website." target="_blank" rel="noopener" class="btn btn-primary" style="padding:7px 12px;font-size:12px;display:flex;align-items:center;gap:6px" aria-label="Join Us">
-          <i class="fa-brands fa-whatsapp" style="font-size:14px"></i> <span style="font-weight:600">Join Us</span>
-        </a>
+       <a href="#" class="btn btn-primary whatsapp-auth-btn" style="padding:7px 12px;font-size:12px;display:flex;align-items:center;gap:6px" aria-label="Join Us">
+  <i class="fa-brands fa-whatsapp" style="font-size:14px"></i> <span style="font-weight:600">Join Us</span>
+</a>
         <button class="hamburger-btn" id="hamburger-btn" aria-label="Open menu">
           <span></span><span></span><span></span>
         </button>
