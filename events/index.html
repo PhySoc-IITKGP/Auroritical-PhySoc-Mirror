@@ -853,11 +853,9 @@
   <section class="section py-12">
     <div class="container">
 
-      <!-- Guaranteed Side-by-Side Flex Layout (Left: Calendar, Right: Event Details List) -->
-      <div class="flex flex-col lg:flex-row items-start gap-12 xl:gap-16">
-        
-        <!-- Left Side: Bluish Google Calendar Embed -->
-        <div class="w-full lg:w-1/2 shrink-0">
+      <div class="row items-start justify-between">
+        <!-- Left Column: Bluish Google Calendar Embed (with bgcolor=#eef6fa and #3E7B9D border) -->
+        <div class="lg:col-5 mb-12 lg:mb-0">
           <div class="p-3.5 rounded-2xl border-2 transition-all shadow-lg" style="background-color: #eef6fa; border-color: #3E7B9D; box-shadow: 0 12px 35px -10px rgba(62, 123, 157, 0.35);">
             <iframe
               src="https://calendar.google.com/calendar/embed?src=c_6fbd372605c808f63a0cceea8a8ec7b8211a57fffced2c6958dda7ab78e7148c%40group.calendar.google.com&ctz=Asia%2FKolkata&bgcolor=%23eef6fa"
@@ -869,8 +867,8 @@
           </div>
         </div>
 
-        <!-- Right Side: Events List -->
-        <div class="w-full lg:w-1/2">
+        <!-- Right Column: Events List with Balanced Separation -->
+        <div class="lg:col-6 lg:pl-6 xl:pl-8">
           <ul class="space-y-10 text-text-dark dark:text-white">
 
             <!-- Item 1 -->
