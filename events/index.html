@@ -891,9 +891,51 @@
   
   <section class="section">
     <div class="container">
-      <div class="mb-8">
-        <iframe src="https://calendar.google.com/calendar/embed?src=c_6fbd372605c808f63a0cceea8a8ec7b8211a57fffced2c6958dda7ab78e7148c%40group.calendar.google.com&ctz=Asia%2FKolkata" style="border: 0; width: 100%; height: 800px;" class="w-full max-w-full rounded-xl shadow-sm" frameborder="0" scrolling="no"></iframe>
+      <div class="mb-8 relative group calendar-container rounded-xl overflow-hidden shadow-sm border border-border/50 dark:border-darkmode-border/50">
+        <!-- Interactive Mode Overlay Shield -->
+        <div id="calendar-shield" class="absolute inset-0 bg-black/5 dark:bg-black/20 z-10 flex items-center justify-center transition-opacity duration-300 cursor-pointer" onclick="activateCalendar(this)">
+          <div class="bg-white dark:bg-darkmode-body px-5 py-2.5 rounded-full shadow-md border border-[#3E7B9D]/30 flex items-center gap-2 text-sm font-semibold text-[#3E7B9D] dark:text-white group-hover:scale-105 transition-transform">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-[#3E7B9D]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 15l-2 5L9 9l11 4-5 2zm0 0l5 5M7.188 2.239l.777 2.897M5.136 7.965l-2.898-.777M13.95 4.05l-2.122 2.122m-5.657 5.656l-2.12 2.122" />
+            </svg>
+            <span>Click to interact with Calendar</span>
+          </div>
+        </div>
+
+        <!-- Google Calendar Iframe -->
+        <iframe
+          id="calendar-iframe"
+          src="https://calendar.google.com/calendar/embed?src=c_6fbd372605c808f63a0cceea8a8ec7b8211a57fffced2c6958dda7ab78e7148c%40group.calendar.google.com&ctz=Asia%2FKolkata"
+          style="border: 0; width: 100%; height: 800px; pointer-events: none;"
+          class="w-full max-w-full rounded-xl"
+          frameborder="0"
+          scrolling="no">
+        </iframe>
       </div>
+
+      <script>
+        function activateCalendar(shieldEl) {
+          shieldEl.style.opacity = '0';
+          shieldEl.style.pointerEvents = 'none';
+          const iframe = document.getElementById('calendar-iframe');
+          if (iframe) iframe.style.pointerEvents = 'auto';
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+          const calendarContainer = document.querySelector('.calendar-container');
+          if (calendarContainer) {
+            calendarContainer.addEventListener('mouseleave', function() {
+              const shield = document.getElementById('calendar-shield');
+              const iframe = document.getElementById('calendar-iframe');
+              if (shield && iframe) {
+                shield.style.opacity = '1';
+                shield.style.pointerEvents = 'auto';
+                iframe.style.pointerEvents = 'none';
+              }
+            });
+          }
+        });
+      </script>
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         
       </div>
