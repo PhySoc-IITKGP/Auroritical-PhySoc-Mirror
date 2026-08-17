@@ -406,8 +406,9 @@
     .event-item.expanded .event-details {
       display: block !important;
     }
-    .event-item.expanded .chevron-icon {
-      transform: rotate(-90deg) !important;
+    .event-item.expanded .expand-pill {
+      background-color: #3E7B9D !important;
+      color: #ffffff !important;
     }
   </style>
 
@@ -853,11 +854,11 @@
   <section class="section py-12">
     <div class="container">
 
-      <!-- Guaranteed Side-by-Side Flex Layout (Left: Calendar, Right: Event Details List) -->
-      <div class="flex flex-col lg:flex-row items-start gap-12 xl:gap-16">
+      <!-- Side-by-Side Layout (Left: Google Calendar, Right: Events List matching hand-drawn wireframe) -->
+      <div class="flex flex-col lg:flex-row items-start justify-between gap-8 lg:gap-12 xl:gap-14">
         
         <!-- Left Side: Bluish Google Calendar Embed -->
-        <div class="w-full lg:w-1/2 shrink-0">
+        <div class="w-full lg:w-[44%] shrink-0">
           <div class="p-3.5 rounded-2xl border-2 transition-all shadow-lg" style="background-color: #eef6fa; border-color: #3E7B9D; box-shadow: 0 12px 35px -10px rgba(62, 123, 157, 0.35);">
             <iframe
               src="https://calendar.google.com/calendar/embed?src=c_6fbd372605c808f63a0cceea8a8ec7b8211a57fffced2c6958dda7ab78e7148c%40group.calendar.google.com&ctz=Asia%2FKolkata&bgcolor=%23eef6fa"
@@ -869,8 +870,8 @@
           </div>
         </div>
 
-        <!-- Right Side: Events List -->
-        <div class="w-full lg:w-1/2">
+        <!-- Right Side: Events List with [expand] Pill Buttons (Matching Hand-Drawn Diagram) -->
+        <div class="w-full lg:w-[52%]">
           <ul class="space-y-10 text-text-dark dark:text-white">
 
             <!-- Item 1 -->
@@ -880,8 +881,8 @@
                   <span class="text-black dark:text-white font-bold select-none text-2xl leading-none mr-1">•</span>
                   <span>Intra Department badminton tournament</span>
                 </h3>
-                <span class="chevron-icon text-xl font-bold transition-transform duration-300 inline-block text-right pr-2" style="color: #3E7B9D;">
-                  &lt;
+                <span class="expand-pill shrink-0 px-4 py-1 rounded-full text-xs font-semibold border transition-all inline-block text-center" style="border-color: #3E7B9D; color: #3E7B9D;">
+                  expand
                 </span>
               </div>
 
@@ -905,8 +906,8 @@
                   <span class="text-black dark:text-white font-bold select-none text-2xl leading-none mr-1">•</span>
                   <span>Photography Competition</span>
                 </h3>
-                <span class="chevron-icon text-xl font-bold transition-transform duration-300 inline-block text-right pr-2" style="color: #3E7B9D;">
-                  &lt;
+                <span class="expand-pill shrink-0 px-4 py-1 rounded-full text-xs font-semibold border transition-all inline-block text-center" style="border-color: #3E7B9D; color: #3E7B9D;">
+                  expand
                 </span>
               </div>
 
@@ -930,8 +931,8 @@
                   <span class="text-black dark:text-white font-bold select-none text-2xl leading-none mr-1">•</span>
                   <span>Welcome freshers</span>
                 </h3>
-                <span class="chevron-icon text-xl font-bold transition-transform duration-300 inline-block text-right pr-2" style="color: #3E7B9D;">
-                  &lt;
+                <span class="expand-pill shrink-0 px-4 py-1 rounded-full text-xs font-semibold border transition-all inline-block text-center" style="border-color: #3E7B9D; color: #3E7B9D;">
+                  expand
                 </span>
               </div>
 
@@ -955,8 +956,8 @@
                   <span class="text-black dark:text-white font-bold select-none text-2xl leading-none mr-1">•</span>
                   <span>A Conversation with Sir Michael Berry</span>
                 </h3>
-                <span class="chevron-icon text-xl font-bold transition-transform duration-300 inline-block text-right pr-2" style="color: #3E7B9D;">
-                  &lt;
+                <span class="expand-pill shrink-0 px-4 py-1 rounded-full text-xs font-semibold border transition-all inline-block text-center" style="border-color: #3E7B9D; color: #3E7B9D;">
+                  expand
                 </span>
               </div>
 
