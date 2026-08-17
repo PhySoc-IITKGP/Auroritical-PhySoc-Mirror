@@ -853,20 +853,22 @@
   <section class="section py-12">
     <div class="container">
 
-      <div class="row items-start">
-        <!-- Left Half: Clean Google Calendar with Right Padding for Extra Separation -->
-        <div class="lg:col-6 mb-12 lg:mb-0 lg:pr-8 xl:pr-12">
-          <iframe
-            src="https://calendar.google.com/calendar/embed?src=c_6fbd372605c808f63a0cceea8a8ec7b8211a57fffced2c6958dda7ab78e7148c%40group.calendar.google.com&ctz=Asia%2FKolkata"
-            style="border: 0; width: 100%; height: 600px;"
-            class="rounded-xl shadow-md"
-            frameborder="0"
-            scrolling="no">
-          </iframe>
+      <div class="row items-start justify-between">
+        <!-- Left Half: Google Calendar with Bluish Frame & Extra Separation -->
+        <div class="lg:col-5 mb-12 lg:mb-0">
+          <div class="p-3.5 rounded-2xl border transition-all" style="background-color: rgba(62, 123, 157, 0.08); border-color: rgba(62, 123, 157, 0.25); box-shadow: 0 10px 30px -10px rgba(62, 123, 157, 0.25);">
+            <iframe
+              src="https://calendar.google.com/calendar/embed?src=c_6fbd372605c808f63a0cceea8a8ec7b8211a57fffced2c6958dda7ab78e7148c%40group.calendar.google.com&ctz=Asia%2FKolkata"
+              style="border: 0; width: 100%; height: 600px;"
+              class="rounded-xl"
+              frameborder="0"
+              scrolling="no">
+            </iframe>
+          </div>
         </div>
 
-        <!-- Right Half: Open Bulleted List with Extra Left Padding and Black Bullets -->
-        <div class="lg:col-6 lg:pl-12 xl:pl-16">
+        <!-- Right Half: Open Bulleted List with Wide Left Margin / Separation -->
+        <div class="lg:col-6 lg:pl-10 xl:pl-16">
           <ul class="space-y-10 text-text-dark dark:text-white">
 
             <!-- Item 1 -->
