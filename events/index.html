@@ -31,11 +31,11 @@
 
 
 
-<link rel="shortcut icon" href="/images/logo2_hu_584b5ba3997ef7dc.png" type="image/x-icon">
-<link rel="icon" href="/images/logo2_hu_584b5ba3997ef7dc.png" type="image/x-icon">
-<link rel="icon" type="image/png" sizes="48x48" href="/images/logo2_hu_71e5220b4385f89d.png">
-<link rel="icon" type="image/png" sizes="96x96" href="/images/logo2_hu_584b5ba3997ef7dc.png">
-<link rel="apple-touch-icon" sizes="144x144" href="/images/logo2_hu_41bd81c3df23aa9a.png">
+<link rel="shortcut icon" href="../images/logo2_hu_20f6f98a0862d010.png" type="image/x-icon">
+<link rel="icon" href="../images/logo2_hu_20f6f98a0862d010.png" type="image/x-icon">
+<link rel="icon" type="image/png" sizes="48x48" href="../images/logo2_hu_b53ae1fe34da2a5a.png">
+<link rel="icon" type="image/png" sizes="96x96" href="../images/logo2_hu_20f6f98a0862d010.png">
+<link rel="apple-touch-icon" sizes="144x144" href="../images/logo2_hu_dc2b6003544f3619.png">
 
 
 
@@ -73,7 +73,7 @@
 
 
 
-  <base href="https://sps.studentorg.berkeley.edu/events/" />
+  
 
 
 
@@ -218,7 +218,7 @@
 
 
 <script>
-  let indexURL = "https://sps.studentorg.berkeley.edu/searchindex.json";
+  let indexURL = "../searchindex.json";
   let includeSectionsInSearch = ["events"];
   let search_no_results = "No results for";
   let search_initial_message = "Type something to search..";
@@ -245,7 +245,7 @@
 
 
 
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+<link rel="stylesheet" href="../vendor/swiper-bundle.min.css" />
 
 
   
@@ -331,8 +331,7 @@
 
 
 <link
-  href="/css/style.min.b2a4458f838f267a3a7cd4feeb7c561fb2f6f45802790c87cd2db5fe88fed457.css"
-  integrity="sha256-sqRFj4OPJno6fNT+63xWH7L29FgCeQyHzS21/oj+1Fc="
+  href="../css/style.min.75408a616c8d64a93d3b03e345cadd04f72b1cded1cd7b9819149db1a7264234.css"
   rel="stylesheet" />
 
 
@@ -340,10 +339,9 @@
   defer
   async
   rel="stylesheet"
-  href="/css/style-lazy.min.7ec1751ab5ce8fc06e2e25abd3e7ac12f76849a862b04d99e7a7bb31bfb15aba.css"
-  integrity="sha256-fsF1GrXOj8BuLiWr0+esEvdoSahisE2Z56e7Mb+xWro="
-  media="print"
-  onload="this.media='all'; this.onload=null;" />
+  href="../css/style-lazy.min.1891ab9d1988b9b19756de1bbea47aecb95c7b5ab195f6fe52244b6eca5d8154.css"
+  media="all"
+   />
 
 
   </head>
@@ -405,6 +403,12 @@
     .dark .announcement {
       background-color: #222;
     }
+    .event-item.expanded .event-details {
+      display: block !important;
+    }
+    .event-item.expanded .chevron-icon {
+      transform: rotate(-90deg) !important;
+    }
   </style>
 
 
@@ -417,7 +421,7 @@
     
     <div class="order-0">
       
-      <a class="navbar-brand block" href="/">
+      <a class="navbar-brand block" href="../index.html">
         
 
 
@@ -500,9 +504,9 @@
       class="img img-light"
       width="250"
       height="40"
-      src="/images/logo_hu_7125f169e4aff36c.webp"
+      src="../images/logo_hu_62a2c291369a66f0.webp"
       alt="Berkeley SPS"
-      onerror="this.onerror=null;this.src='\/images\/logo_hu_87718947ead75e44.jpg';" />
+      onerror="this.onerror=null;this.src='\/images\/logo_hu_2fca4d2ac2314e.jpg';" />
 
     <img
       fetchpriority="high"
@@ -510,9 +514,9 @@
       class="img img-dark"
       width="250"
       height="40"
-      src="/images/logo-darkmode_hu_88a291774b6f8c22.webp"
+      src="../images/logo-darkmode_hu_ce06e59bade57f0d.webp"
       alt="Berkeley SPS"
-      onerror="this.onerror=null;this.src='\/images\/logo-darkmode_hu_408879f166abbf47.png';" />
+      onerror="this.onerror=null;this.src='\/images\/logo-darkmode_hu_fa721757c615f129.png';" />
   
   
 
@@ -540,7 +544,7 @@
     
     <ul
       id="nav-menu"
-      class="navbar-nav order-3 hidden lg:flex w-full pb-6 lg:order-1 lg:w-auto lg:space-x-2 lg:pb-0 xl:space-x-8">
+      class="navbar-nav order-3 hidden lg:flex w-full pb-6 lg:order-1 lg:w-auto lg:ml-auto lg:space-x-2 lg:pb-0 xl:space-x-8">
       
       
         
@@ -551,7 +555,7 @@
             <a
               class="nav-link "
               
-              href="/about"
+              href="../about/index.html"
               >About</a
             >
           </li>
@@ -565,7 +569,7 @@
             <a
               class="nav-link "
               
-              href="/events"
+              href="../events/index.html"
               >Events</a
             >
           </li>
@@ -579,7 +583,7 @@
             <a
               class="nav-link "
               
-              href="/resources"
+              href="../resources/index.html"
               >Resources</a
             >
           </li>
@@ -589,14 +593,7 @@
         
         
         
-          <li class="nav-item">
-            <a
-              class="nav-link "
-              
-              href="/snacks"
-              >Snacks</a
-            >
-          </li>
+
         
       
         
@@ -645,7 +642,7 @@
                   <a
                     class="nav-dropdown-link "
                     
-                    href="/committees/competitions">
+                    href="../committees/competitions/index.html">
                     Competitions
                   </a>
                 </li>
@@ -656,7 +653,7 @@
                   <a
                     class="nav-dropdown-link "
                     
-                    href="/committees/media">
+                    href="../committees/media/index.html">
                     Media
                   </a>
                 </li>
@@ -667,7 +664,7 @@
                   <a
                     class="nav-dropdown-link "
                     
-                    href="/committees/outreach">
+                    href="../committees/outreach/index.html">
                     Outreach
                   </a>
                 </li>
@@ -678,7 +675,7 @@
                   <a
                     class="nav-dropdown-link "
                     
-                    href="/committees/projects">
+                    href="../committees/projects/index.html">
                     Projects
                   </a>
                 </li>
@@ -689,7 +686,7 @@
                   <a
                     class="nav-dropdown-link "
                     
-                    href="/committees/seminars">
+                    href="../committees/seminars/index.html">
                     Seminars
                   </a>
                 </li>
@@ -700,7 +697,7 @@
                   <a
                     class="nav-dropdown-link "
                     
-                    href="/committees/socials">
+                    href="../committees/socials/index.html">
                     Socials
                   </a>
                 </li>
@@ -710,54 +707,18 @@
         
       
       
-        <li class="mt-4 inline-block lg:hidden">
-          <a
-            class="btn btn-outline-primary btn-sm"
-            href="/mail">
-            Join Mailing List
-          </a>
-        </li>
-      
-    </ul>
-
-    <div class="order-1 ml-auto flex items-center md:order-2 lg:ml-0">
+    <div class="order-1 ml-auto flex items-center md:order-2 lg:ml-6">
       
         
           <button
             aria-label="search"
             class="border-border text-text-dark hover:text-primary
-            dark:border-darkmode-border mr-5 inline-block border-r pr-5
-            text-xl dark:text-white cursor-pointer dark:hover:text-darkmode-primary
+            dark:border-darkmode-border inline-block text-xl dark:text-white cursor-pointer dark:hover:text-darkmode-primary
             "
             data-target="search-modal">
             <i class="fa-solid fa-search"></i>
           </button>
         
-      
-
-      
-
-
-
-
-
-
-
-
-
-      
-
-
-
-
-
-      
-      
-        <a
-          href="/mail"
-          class="btn btn-outline-primary btn-sm hidden lg:inline-block">
-          Join Mailing List
-        </a>
       
     </div>
   </nav>
@@ -889,16 +850,133 @@
   </section>
 
   
-  <section class="section">
+  <section class="section py-12">
     <div class="container">
-      
-      <div class="mb-8">
-        <iframe src="https://calendar.google.com/calendar/embed?src=c_6fbd372605c808f63a0cceea8a8ec7b8211a57fffced2c6958dda7ab78e7148c%40group.calendar.google.com&ctz=America%2FLos_Angeles" style="border: 0" width="1200" height="800" frameborder="0" scrolling="no"></iframe>
 
-      </div>
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <!-- Guaranteed Side-by-Side Flex Layout (Left: Calendar, Right: Event Details List) -->
+      <div class="flex flex-col lg:flex-row items-start gap-12 xl:gap-16">
         
+        <!-- Left Side: Bluish Google Calendar Embed -->
+        <div class="w-full lg:w-1/2 shrink-0">
+          <div class="p-3.5 rounded-2xl border-2 transition-all shadow-lg" style="background-color: #eef6fa; border-color: #3E7B9D; box-shadow: 0 12px 35px -10px rgba(62, 123, 157, 0.35);">
+            <iframe
+              src="https://calendar.google.com/calendar/embed?src=c_6fbd372605c808f63a0cceea8a8ec7b8211a57fffced2c6958dda7ab78e7148c%40group.calendar.google.com&ctz=Asia%2FKolkata&bgcolor=%23eef6fa"
+              style="border: 0; width: 100%; height: 600px; background-color: #eef6fa;"
+              class="rounded-xl"
+              frameborder="0"
+              scrolling="no">
+            </iframe>
+          </div>
+        </div>
+
+        <!-- Right Side: Events List -->
+        <div class="w-full lg:w-1/2">
+          <ul class="space-y-10 text-text-dark dark:text-white">
+
+            <!-- Item 1 -->
+            <li class="event-item border-b border-border/50 dark:border-darkmode-border/50 pb-8">
+              <div class="flex items-center justify-between gap-4 cursor-pointer select-none group" onclick="this.closest('.event-item').classList.toggle('expanded')">
+                <h3 class="text-xl md:text-2xl font-semibold text-text-dark dark:text-white flex items-center gap-2 group-hover:text-[#3E7B9D] transition-colors">
+                  <span class="text-black dark:text-white font-bold select-none text-2xl leading-none mr-1">•</span>
+                  <span>Intra Department badminton tournament</span>
+                </h3>
+                <span class="chevron-icon text-xl font-bold transition-transform duration-300 inline-block text-right pr-2" style="color: #3E7B9D;">
+                  &lt;
+                </span>
+              </div>
+
+              <!-- Expanded Details (Revealed between title and time/date) -->
+              <div class="event-details hidden my-4 text-base text-text-dark dark:text-darkmode-light pl-6 leading-relaxed space-y-1.5">
+                <p>Annual intra-department badminton championship organized by PhySoc. Singles and doubles matches open to all physics students &amp; faculty members!</p>
+                <p class="font-medium text-sm pt-1" style="color: #3E7B9D;">Venue: IITKGP Sports Complex / Badminton Courts</p>
+              </div>
+
+              <!-- Time & Date Line (Pushed down when expanded) -->
+              <div class="text-base text-text-dark/80 dark:text-white/80 pl-6 font-normal flex items-center gap-10 mt-2">
+                <span>5 to 2</span>
+                <span>23-08-2026</span>
+              </div>
+            </li>
+
+            <!-- Item 2 -->
+            <li class="event-item border-b border-border/50 dark:border-darkmode-border/50 pb-8">
+              <div class="flex items-center justify-between gap-4 cursor-pointer select-none group" onclick="this.closest('.event-item').classList.toggle('expanded')">
+                <h3 class="text-xl md:text-2xl font-semibold text-text-dark dark:text-white flex items-center gap-2 group-hover:text-[#3E7B9D] transition-colors">
+                  <span class="text-black dark:text-white font-bold select-none text-2xl leading-none mr-1">•</span>
+                  <span>Photography Competition</span>
+                </h3>
+                <span class="chevron-icon text-xl font-bold transition-transform duration-300 inline-block text-right pr-2" style="color: #3E7B9D;">
+                  &lt;
+                </span>
+              </div>
+
+              <!-- Expanded Details -->
+              <div class="event-details hidden my-4 text-base text-text-dark dark:text-darkmode-light pl-6 leading-relaxed space-y-1.5">
+                <p>Theme: "Physics in Motion &amp; Nature". Submit your best photograph capturing everyday physics phenomena. Exciting prizes for top entries!</p>
+                <p class="font-medium text-sm pt-1" style="color: #3E7B9D;">Submission Mode: Online Form Portal</p>
+              </div>
+
+              <!-- Time & Date Line -->
+              <div class="text-base text-text-dark/80 dark:text-white/80 pl-6 font-normal flex items-center gap-10 mt-2">
+                <span>till 5 pm</span>
+                <span>30th -08-26</span>
+              </div>
+            </li>
+
+            <!-- Item 3 -->
+            <li class="event-item border-b border-border/50 dark:border-darkmode-border/50 pb-8">
+              <div class="flex items-center justify-between gap-4 cursor-pointer select-none group" onclick="this.closest('.event-item').classList.toggle('expanded')">
+                <h3 class="text-xl md:text-2xl font-semibold text-text-dark dark:text-white flex items-center gap-2 group-hover:text-[#3E7B9D] transition-colors">
+                  <span class="text-black dark:text-white font-bold select-none text-2xl leading-none mr-1">•</span>
+                  <span>Welcome freshers</span>
+                </h3>
+                <span class="chevron-icon text-xl font-bold transition-transform duration-300 inline-block text-right pr-2" style="color: #3E7B9D;">
+                  &lt;
+                </span>
+              </div>
+
+              <!-- Expanded Details -->
+              <div class="event-details hidden my-4 text-base text-text-dark dark:text-darkmode-light pl-6 leading-relaxed space-y-1.5">
+                <p>Official PhySoc Orientation &amp; Welcome Ceremony for incoming undergraduate physics students. Interactive games, faculty introductions &amp; refreshments!</p>
+                <p class="font-medium text-sm pt-1" style="color: #3E7B9D;">Venue: Department of Physics Auditorium</p>
+              </div>
+
+              <!-- Time & Date Line -->
+              <div class="text-base text-text-dark/80 dark:text-white/80 pl-6 font-normal flex items-center gap-10 mt-2">
+                <span>4 Pm</span>
+                <span>08-08-2026</span>
+              </div>
+            </li>
+
+            <!-- Item 4 -->
+            <li class="event-item pb-4">
+              <div class="flex items-center justify-between gap-4 cursor-pointer select-none group" onclick="this.closest('.event-item').classList.toggle('expanded')">
+                <h3 class="text-xl md:text-2xl font-semibold text-text-dark dark:text-white flex items-center gap-2 group-hover:text-[#3E7B9D] transition-colors">
+                  <span class="text-black dark:text-white font-bold select-none text-2xl leading-none mr-1">•</span>
+                  <span>A Conversation with Sir Michael Berry</span>
+                </h3>
+                <span class="chevron-icon text-xl font-bold transition-transform duration-300 inline-block text-right pr-2" style="color: #3E7B9D;">
+                  &lt;
+                </span>
+              </div>
+
+              <!-- Expanded Details -->
+              <div class="event-details hidden my-4 text-base text-text-dark dark:text-darkmode-light pl-6 leading-relaxed space-y-1.5">
+                <p>Distinguished guest lecture and interactive Q&amp;A session with world-renowned theoretical physicist Sir Michael Berry (discoverer of the Berry Phase in quantum mechanics).</p>
+                <p class="font-medium text-sm pt-1" style="color: #3E7B9D;">Venue: Hybrid / Lecture Hall &amp; Online Stream</p>
+              </div>
+
+              <!-- Time & Date Line -->
+              <div class="text-base text-text-dark/80 dark:text-white/80 pl-6 font-normal flex items-center gap-10 mt-2">
+                <span>3 pm</span>
+                <span>7-08-2026</span>
+              </div>
+            </li>
+
+          </ul>
+        </div>
       </div>
+
     </div>
   </section>
 
@@ -910,10 +988,7 @@
     <div class="row items-center py-10">
       <div class="lg:col-3 mb-8 text-center lg:mb-0 lg:text-left">
         
-        <a href="https://www.ocf.berkeley.edu">
-            <img src="http://www.ocf.berkeley.edu/hosting-logos/ocf-hosted-penguin.svg"
-                alt="Hosted by the OCF" style="border: 0;" />
-        </a>
+        <img src="../images/ocf-hosted-penguin.svg" alt="PhySoc" style="border: 0;" />
         
       </div>
       <div class="lg:col-6 mb-8 text-center lg:mb-0">
@@ -929,7 +1004,7 @@
                 target="_blank"
                 aria-label="instagram"
                 rel="nofollow noopener"
-                href="https://www.instagram.com/sps_berkeley">
+                href="https://www.instagram.com/physoc_iitkgp">
                 <i class="fab fa-instagram"></i>
               </a>
             </li>
@@ -937,10 +1012,10 @@
             <li>
               <a
                 target="_blank"
-                aria-label="discord"
+                aria-label="linkedin"
                 rel="nofollow noopener"
-                href="https://discord.gg/37Be85xrRQ">
-                <i class="fab fa-discord"></i>
+                href="https://linkedin.com/company/phy-soc-iit-kharagpur">
+                <i class="fab fa-linkedin"></i>
               </a>
             </li>
           
@@ -1034,20 +1109,18 @@
 
 
 
-<script src="/js/main.min.5a3d3f40013de29c38a958fc78198eb9cae1a039d1d89cb738607a65ef5c00be.js" defer></script>
+<script src="../js/main.min.c382e2105e67658eff86fe0a044cac3f838636947d327cd08f2b03f6a8b21f2e.js" defer></script>
 
 <script
   crossorigin="anonymous"
-  integrity="sha256-M6sEZWV7XiFrJEgU5tpOCXgVEYtpcNtmzAWlvSe6sM4="
-  src="/js/script.min.33ab0465657b5e216b244814e6da4e097815118b6970db66cc05a5bd27bab0ce.js"></script>
+  src="../js/script.min.e47bd8989fcd86cba20150c3b02e9c9806d76d4d7b000a4b636d101f8a300ad6.js"></script>
 
 
 <script
   defer
   async
   crossorigin="anonymous"
-  integrity="sha256-/UbQpi41gRF4L3tMBw4CWxoguOuT8AqFFTDvpdw7aRg="
-  src="/js/script-lazy.min.fd46d0a62e358111782f7b4c070e025b1a20b8eb93f00a851530efa5dc3b6918.js"></script>
+  src="../js/script-lazy.min.c3e692e360f6f81f898b1fa3a19ee902e6b5bdbbbfa512bf221a0fe796fc9f7c.js"></script>
 
 
 <script>
@@ -1071,7 +1144,7 @@
 </script>
 
 
-<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<script src="../vendor/swiper-bundle.min.js"></script>
 <script>
   const swiper = new Swiper('.swiper', {
     loop: true,
