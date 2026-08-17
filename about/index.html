@@ -120,35 +120,211 @@
     </style>
 
     <!-- Header Navigation -->
-    <header class="header sticky top-0 z-30">
-      <nav class="navbar container">
-        <div class="order-0">
-          <a class="navbar-brand block" href="../index.html">
-            <img fetchpriority="high" decoding="async" class="img img-light" width="250" height="40" src="../images/logo_hu_62a2c291369a66f0.webp" alt="PhySoc" onerror="this.onerror=null;this.src='\/images\/logo_hu_2fca4d2ac2314e.jpg';" />
-            <img fetchpriority="high" decoding="async" class="img img-dark" width="250" height="40" src="../images/logo-darkmode_hu_ce06e59bade57f0d.webp" alt="PhySoc" onerror="this.onerror=null;this.src='\/images\/logo-darkmode_hu_fa721757c615f129.png';" />
-          </a>
-        </div>
+    <header
+  class="header sticky top-0 z-30">
+  <nav class="navbar container">
+    
+    <div class="order-0">
+      
+      <a class="navbar-brand block" href="../index.html">
+        <img
+          fetchpriority="high"
+          decoding="async"
+          class="img img-light"
+          width="250"
+          height="40"
+          src="../images/logo_hu_62a2c291369a66f0.webp"
+          alt="PhySoc"
+          onerror="this.onerror=null;this.src='\/images\/logo_hu_2fca4d2ac2314e.jpg';" />
+
+        <img
+          fetchpriority="high"
+          decoding="async"
+          class="img img-dark"
+          width="250"
+          height="40"
+          src="../images/logo-darkmode_hu_ce06e59bade57f0d.webp"
+          alt="PhySoc"
+          onerror="this.onerror=null;this.src='\/images\/logo-darkmode_hu_fa721757c615f129.png';" />
+      </a>
+    </div>
+    
+    <input id="nav-toggle" type="checkbox" class="hidden" />
+    <label
+      for="nav-toggle"
+      class="order-3 cursor-pointer flex items-center lg:hidden text-text-dark dark:text-white lg:order-1">
+      <svg id="show-button" class="h-6 fill-current block" viewBox="0 0 20 20">
+        <title>Menu Open</title>
+        <path d="M0 3h20v2H0V3z m0 6h20v2H0V9z m0 6h20v2H0V0z"></path>
+      </svg>
+      <svg id="hide-button" class="h-6 fill-current hidden" viewBox="0 0 20 20">
+        <title>Menu Close</title>
+        <polygon
+          points="11 9 22 9 22 11 11 11 11 22 9 22 9 11 -2 11 -2 9 9 9 9 -2 11 -2"
+          transform="rotate(45 10 10)"></polygon>
+      </svg>
+    </label>
+    
+
+    
+    <ul
+      id="nav-menu"
+      class="navbar-nav order-3 hidden lg:flex w-full pb-6 lg:order-1 lg:w-auto lg:ml-auto lg:space-x-2 lg:pb-0 xl:space-x-8">
+      
+      
         
-        <input id="nav-toggle" type="checkbox" class="hidden" />
-        <label for="nav-toggle" class="order-3 cursor-pointer flex items-center lg:hidden text-text-dark dark:text-white lg:order-1">
-          <svg id="show-button" class="h-6 fill-current block" viewBox="0 0 20 20">
-            <title>Menu Open</title>
-            <path d="M0 3h20v2H0V3z m0 6h20v2H0V9z m0 6h20v2H0V0z"></path>
-          </svg>
-          <svg id="hide-button" class="h-6 fill-current hidden" viewBox="0 0 20 20">
-            <title>Menu Close</title>
-            <polygon points="11 9 22 9 22 11 11 11 11 22 9 22 9 11 -2 11 -2 9 9 9 9 -2 11 -2" transform="rotate(45 10 10)"></polygon>
-          </svg>
-        </label>
+        
+        
+        
+          <li class="nav-item">
+            <a
+              class="nav-link active"
+              
+              href="../about/index.html"
+              >About</a
+            >
+          </li>
+        
+      
+        
+        
+        
+        
+          <li class="nav-item">
+            <a
+              class="nav-link "
+              
+              href="../events/index.html"
+              >Events</a
+            >
+          </li>
+        
+      
+        
+        
+        
+        
+          <li class="nav-item">
+            <a
+              class="nav-link "
+              
+              href="../resources/index.html"
+              >Resources</a
+            >
+          </li>
+        
+      
+        
+        
+        
+        
 
-
-        <div class="order-1 ml-auto flex items-center md:order-2 lg:ml-6">
-          <button aria-label="search" class="border-border text-text-dark hover:text-primary dark:border-darkmode-border inline-block text-xl dark:text-white cursor-pointer dark:hover:text-darkmode-primary" data-target="search-modal">
+        
+      
+        
+        
+        
+        
+          <li class="nav-item nav-dropdown group relative">
+            <span
+              class="nav-link 
+               inline-flex items-center">
+              Committees
+              <svg class="h-4 w-4 fill-current" viewBox="0 0 20 20">
+                <path
+                  d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
+              </svg>
+            </span>
+            <ul
+              class="nav-dropdown-list lg:group-hover:visible lg:group-hover:opacity-100">
+              
+                
+                
+                <li class="nav-dropdown-item">
+                  <a
+                    class="nav-dropdown-link "
+                    
+                    href="../committees/competitions/index.html">
+                    Competitions
+                  </a>
+                </li>
+              
+                
+                
+                <li class="nav-dropdown-item">
+                  <a
+                    class="nav-dropdown-link "
+                    
+                    href="../committees/media/index.html">
+                    Media
+                  </a>
+                </li>
+              
+                
+                
+                <li class="nav-dropdown-item">
+                  <a
+                    class="nav-dropdown-link "
+                    
+                    href="../committees/outreach/index.html">
+                    Outreach
+                  </a>
+                </li>
+              
+                
+                
+                <li class="nav-dropdown-item">
+                  <a
+                    class="nav-dropdown-link "
+                    
+                    href="../committees/projects/index.html">
+                    Projects
+                  </a>
+                </li>
+              
+                
+                
+                <li class="nav-dropdown-item">
+                  <a
+                    class="nav-dropdown-link "
+                    
+                    href="../committees/seminars/index.html">
+                    Seminars
+                  </a>
+                </li>
+              
+                
+                
+                <li class="nav-dropdown-item">
+                  <a
+                    class="nav-dropdown-link "
+                    
+                    href="../committees/socials/index.html">
+                    Socials
+                  </a>
+                </li>
+              
+            </ul>
+          </li>
+        
+      
+      
+    <div class="order-1 ml-auto flex items-center md:order-2 lg:ml-6">
+      
+        
+          <button
+            aria-label="search"
+            class="border-border text-text-dark hover:text-primary
+            dark:border-darkmode-border inline-block text-xl dark:text-white cursor-pointer dark:hover:text-darkmode-primary
+            "
+            data-target="search-modal">
             <i class="fa-solid fa-search"></i>
           </button>
-        </div>
-      </nav>
-    </header>
+        
+      
+    </div>
+  </nav>
+</header>
 
     <!-- MAIN BODY -->
     <main>
