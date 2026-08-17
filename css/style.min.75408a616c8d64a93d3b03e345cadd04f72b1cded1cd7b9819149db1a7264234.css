@@ -25,8 +25,8 @@ section {
 .bg-theme-light,
 footer,
 footer.bg-theme-light {
-  background-color: #e1eef9 !important;
-  border-top: 1px solid #cbd5e1 !important;
+  background: linear-gradient(180deg, #d4e8f9 0%, #c5e1f8 100%) !important;
+  border-top: 1px solid #90c2eb !important;
 }
 
 a:hover {
