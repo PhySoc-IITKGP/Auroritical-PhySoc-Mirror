@@ -848,151 +848,126 @@
     <div class="container">
 
       <div class="row items-start">
-        <!-- Left Half: Big Google Calendar Widget -->
+        <!-- Left Half: Clean Google Calendar (No Extra Card Box/Borders around it) -->
         <div class="lg:col-6 mb-10 lg:mb-0">
-          <div class="bg-white dark:bg-darkmode-theme-light p-4 rounded-2xl shadow-lg border border-border dark:border-darkmode-border">
-            <div class="flex items-center justify-between mb-4 px-2">
-              <h3 class="text-xl font-bold text-text-dark dark:text-white flex items-center gap-2">
-                <i class="fa-solid fa-calendar-days" style="color: #3E7B9D;"></i> Live Event Calendar
-              </h3>
-              <span class="text-xs px-3 py-1 rounded-full font-semibold text-white" style="background-color: #3E7B9D;">IITKGP</span>
-            </div>
-            <div class="overflow-hidden rounded-xl border border-border dark:border-darkmode-border" style="min-height: 560px;">
-              <iframe
-                src="https://calendar.google.com/calendar/embed?src=c_6fbd372605c808f63a0cceea8a8ec7b8211a57fffced2c6958dda7ab78e7148c%40group.calendar.google.com&ctz=Asia%2FKolkata"
-                style="border: 0; width: 100%; height: 560px;"
-                frameborder="0"
-                scrolling="no">
-              </iframe>
-            </div>
-          </div>
+          <iframe
+            src="https://calendar.google.com/calendar/embed?src=c_6fbd372605c808f63a0cceea8a8ec7b8211a57fffced2c6958dda7ab78e7148c%40group.calendar.google.com&ctz=Asia%2FKolkata"
+            style="border: 0; width: 100%; height: 600px;"
+            class="rounded-xl shadow-md"
+            frameborder="0"
+            scrolling="no">
+          </iframe>
         </div>
 
-        <!-- Right Half: Spacious Events List (Matching User Reference Image) -->
-        <div class="lg:col-6 lg:pl-6">
-          <div class="space-y-6">
+        <!-- Right Half: Open Bulleted List (No Boxes, Dot Bullets) -->
+        <div class="lg:col-6 lg:pl-8">
+          <ul class="space-y-8 text-text-dark dark:text-white">
 
             <!-- Item 1 -->
-            <div class="bg-white dark:bg-darkmode-theme-light p-6 rounded-2xl shadow-sm border border-border dark:border-darkmode-border transition-all hover:shadow-md">
-              <details class="group">
-                <summary class="list-none cursor-pointer flex items-center justify-between gap-4">
-                  <div class="flex items-start gap-3">
-                    <i class="fa-solid fa-atom text-xl mt-1 shrink-0" style="color: #3E7B9D;"></i>
-                    <div>
-                      <h3 class="text-lg md:text-xl font-semibold text-text-dark dark:text-white leading-snug">
-                        Intra Department Badminton Tournament
-                      </h3>
-                      <div class="flex flex-wrap items-center gap-4 text-sm text-light dark:text-darkmode-light mt-2">
-                        <span><i class="fa-solid fa-clock mr-1.5" style="color: #3E7B9D;"></i> 5 PM to 2 AM</span>
-                        <span><i class="fa-solid fa-calendar-day mr-1.5" style="color: #3E7B9D;"></i> 23-08-2026</span>
-                      </div>
-                    </div>
-                  </div>
-                  <span class="shrink-0 px-4 py-1.5 rounded-full text-xs font-semibold border transition-all inline-flex items-center gap-1.5 group-open:bg-[#3E7B9D] group-open:text-white" style="border-color: #3E7B9D; color: #3E7B9D;">
-                    <span>expand</span>
-                    <i class="fa-solid fa-chevron-down text-[10px] group-open:rotate-180 transition-transform"></i>
-                  </span>
-                </summary>
-                <div class="mt-4 pt-4 border-t border-border dark:border-darkmode-border text-base text-text-dark dark:text-darkmode-light pl-9 space-y-2">
-                  <p class="leading-relaxed">Annual intra-department badminton championship organized by PhySoc. Singles and doubles matches open to all physics students &amp; faculty members!</p>
-                  <div class="font-medium text-sm flex items-center gap-2 pt-1" style="color: #3E7B9D;">
-                    <i class="fa-solid fa-location-dot"></i> Venue: IITKGP Sports Complex / Badminton Courts
+            <li class="border-b border-border/50 dark:border-darkmode-border/50 pb-6">
+              <div class="flex items-start justify-between gap-4">
+                <div class="space-y-1">
+                  <h3 class="text-xl font-bold text-text-dark dark:text-white flex items-start gap-2">
+                    <span style="color: #3E7B9D;" class="select-none">•</span>
+                    <span>Intra Department badminton tournament</span>
+                  </h3>
+                  <div class="text-base text-light dark:text-darkmode-light pl-5 font-medium flex items-center gap-6 mt-1">
+                    <span>5 to 2</span>
+                    <span>23-08-2026</span>
                   </div>
                 </div>
-              </details>
-            </div>
+                <details class="group shrink-0 mt-1">
+                  <summary class="list-none cursor-pointer px-4 py-1 rounded-full text-sm border font-medium transition-all inline-flex items-center gap-1.5 group-open:bg-[#3E7B9D] group-open:text-white" style="border-color: #3E7B9D; color: #3E7B9D;">
+                    <span>expand</span>
+                    <i class="fa-solid fa-chevron-down text-[10px] group-open:rotate-180 transition-transform"></i>
+                  </summary>
+                  <div class="mt-3 text-sm text-text-dark dark:text-darkmode-light pl-5 space-y-1">
+                    <p>Annual intra-department badminton championship organized by PhySoc. Singles and doubles matches open to all physics students &amp; faculty!</p>
+                    <p class="font-medium text-xs pt-1" style="color: #3E7B9D;">Venue: IITKGP Sports Complex / Badminton Courts</p>
+                  </div>
+                </details>
+              </div>
+            </li>
 
             <!-- Item 2 -->
-            <div class="bg-white dark:bg-darkmode-theme-light p-6 rounded-2xl shadow-sm border border-border dark:border-darkmode-border transition-all hover:shadow-md">
-              <details class="group">
-                <summary class="list-none cursor-pointer flex items-center justify-between gap-4">
-                  <div class="flex items-start gap-3">
-                    <i class="fa-solid fa-atom text-xl mt-1 shrink-0" style="color: #3E7B9D;"></i>
-                    <div>
-                      <h3 class="text-lg md:text-xl font-semibold text-text-dark dark:text-white leading-snug">
-                        Photography Competition
-                      </h3>
-                      <div class="flex flex-wrap items-center gap-4 text-sm text-light dark:text-darkmode-light mt-2">
-                        <span><i class="fa-solid fa-clock mr-1.5" style="color: #3E7B9D;"></i> Till 5 PM</span>
-                        <span><i class="fa-solid fa-calendar-day mr-1.5" style="color: #3E7B9D;"></i> 30-08-2026</span>
-                      </div>
-                    </div>
-                  </div>
-                  <span class="shrink-0 px-4 py-1.5 rounded-full text-xs font-semibold border transition-all inline-flex items-center gap-1.5 group-open:bg-[#3E7B9D] group-open:text-white" style="border-color: #3E7B9D; color: #3E7B9D;">
-                    <span>expand</span>
-                    <i class="fa-solid fa-chevron-down text-[10px] group-open:rotate-180 transition-transform"></i>
-                  </span>
-                </summary>
-                <div class="mt-4 pt-4 border-t border-border dark:border-darkmode-border text-base text-text-dark dark:text-darkmode-light pl-9 space-y-2">
-                  <p class="leading-relaxed">Theme: "Physics in Motion &amp; Nature". Submit your best high-resolution photograph capturing everyday physics phenomena. Exciting prizes for top 3 entries!</p>
-                  <div class="font-medium text-sm flex items-center gap-2 pt-1" style="color: #3E7B9D;">
-                    <i class="fa-solid fa-upload"></i> Submission Mode: Online Form Portal
+            <li class="border-b border-border/50 dark:border-darkmode-border/50 pb-6">
+              <div class="flex items-start justify-between gap-4">
+                <div class="space-y-1">
+                  <h3 class="text-xl font-bold text-text-dark dark:text-white flex items-start gap-2">
+                    <span style="color: #3E7B9D;" class="select-none">•</span>
+                    <span>Photography Competition</span>
+                  </h3>
+                  <div class="text-base text-light dark:text-darkmode-light pl-5 font-medium flex items-center gap-6 mt-1">
+                    <span>till 5 pm</span>
+                    <span>30th -08-26</span>
                   </div>
                 </div>
-              </details>
-            </div>
+                <details class="group shrink-0 mt-1">
+                  <summary class="list-none cursor-pointer px-4 py-1 rounded-full text-sm border font-medium transition-all inline-flex items-center gap-1.5 group-open:bg-[#3E7B9D] group-open:text-white" style="border-color: #3E7B9D; color: #3E7B9D;">
+                    <span>expand</span>
+                    <i class="fa-solid fa-chevron-down text-[10px] group-open:rotate-180 transition-transform"></i>
+                  </summary>
+                  <div class="mt-3 text-sm text-text-dark dark:text-darkmode-light pl-5 space-y-1">
+                    <p>Theme: "Physics in Motion &amp; Nature". Submit your best photograph capturing everyday physics phenomena. Exciting prizes for top entries!</p>
+                    <p class="font-medium text-xs pt-1" style="color: #3E7B9D;">Submission Mode: Online Form Portal</p>
+                  </div>
+                </details>
+              </div>
+            </li>
 
             <!-- Item 3 -->
-            <div class="bg-white dark:bg-darkmode-theme-light p-6 rounded-2xl shadow-sm border border-border dark:border-darkmode-border transition-all hover:shadow-md">
-              <details class="group">
-                <summary class="list-none cursor-pointer flex items-center justify-between gap-4">
-                  <div class="flex items-start gap-3">
-                    <i class="fa-solid fa-atom text-xl mt-1 shrink-0" style="color: #3E7B9D;"></i>
-                    <div>
-                      <h3 class="text-lg md:text-xl font-semibold text-text-dark dark:text-white leading-snug">
-                        Welcome Freshers
-                      </h3>
-                      <div class="flex flex-wrap items-center gap-4 text-sm text-light dark:text-darkmode-light mt-2">
-                        <span><i class="fa-solid fa-clock mr-1.5" style="color: #3E7B9D;"></i> 4 PM</span>
-                        <span><i class="fa-solid fa-calendar-day mr-1.5" style="color: #3E7B9D;"></i> 08-08-2026</span>
-                      </div>
-                    </div>
-                  </div>
-                  <span class="shrink-0 px-4 py-1.5 rounded-full text-xs font-semibold border transition-all inline-flex items-center gap-1.5 group-open:bg-[#3E7B9D] group-open:text-white" style="border-color: #3E7B9D; color: #3E7B9D;">
-                    <span>expand</span>
-                    <i class="fa-solid fa-chevron-down text-[10px] group-open:rotate-180 transition-transform"></i>
-                  </span>
-                </summary>
-                <div class="mt-4 pt-4 border-t border-border dark:border-darkmode-border text-base text-text-dark dark:text-darkmode-light pl-9 space-y-2">
-                  <p class="leading-relaxed">Official PhySoc Orientation &amp; Welcome Ceremony for incoming undergraduate physics students. Interactive games, faculty introductions &amp; refreshments!</p>
-                  <div class="font-medium text-sm flex items-center gap-2 pt-1" style="color: #3E7B9D;">
-                    <i class="fa-solid fa-building-columns"></i> Venue: Department of Physics Auditorium
+            <li class="border-b border-border/50 dark:border-darkmode-border/50 pb-6">
+              <div class="flex items-start justify-between gap-4">
+                <div class="space-y-1">
+                  <h3 class="text-xl font-bold text-text-dark dark:text-white flex items-start gap-2">
+                    <span style="color: #3E7B9D;" class="select-none">•</span>
+                    <span>Welcome freshers</span>
+                  </h3>
+                  <div class="text-base text-light dark:text-darkmode-light pl-5 font-medium flex items-center gap-6 mt-1">
+                    <span>4 Pm</span>
+                    <span>8-08-2026</span>
                   </div>
                 </div>
-              </details>
-            </div>
+                <details class="group shrink-0 mt-1">
+                  <summary class="list-none cursor-pointer px-4 py-1 rounded-full text-sm border font-medium transition-all inline-flex items-center gap-1.5 group-open:bg-[#3E7B9D] group-open:text-white" style="border-color: #3E7B9D; color: #3E7B9D;">
+                    <span>expand</span>
+                    <i class="fa-solid fa-chevron-down text-[10px] group-open:rotate-180 transition-transform"></i>
+                  </summary>
+                  <div class="mt-3 text-sm text-text-dark dark:text-darkmode-light pl-5 space-y-1">
+                    <p>Official PhySoc Orientation &amp; Welcome Ceremony for incoming undergraduate physics students. Interactive games, faculty introductions &amp; refreshments!</p>
+                    <p class="font-medium text-xs pt-1" style="color: #3E7B9D;">Venue: Department of Physics Auditorium</p>
+                  </div>
+                </details>
+              </div>
+            </li>
 
             <!-- Item 4 -->
-            <div class="bg-white dark:bg-darkmode-theme-light p-6 rounded-2xl shadow-sm border border-border dark:border-darkmode-border transition-all hover:shadow-md">
-              <details class="group">
-                <summary class="list-none cursor-pointer flex items-center justify-between gap-4">
-                  <div class="flex items-start gap-3">
-                    <i class="fa-solid fa-atom text-xl mt-1 shrink-0" style="color: #3E7B9D;"></i>
-                    <div>
-                      <h3 class="text-lg md:text-xl font-semibold text-text-dark dark:text-white leading-snug">
-                        A Conversation with Sir Michael Berry
-                      </h3>
-                      <div class="flex flex-wrap items-center gap-4 text-sm text-light dark:text-darkmode-light mt-2">
-                        <span><i class="fa-solid fa-clock mr-1.5" style="color: #3E7B9D;"></i> 3 PM</span>
-                        <span><i class="fa-solid fa-calendar-day mr-1.5" style="color: #3E7B9D;"></i> 07-08-2026</span>
-                      </div>
-                    </div>
-                  </div>
-                  <span class="shrink-0 px-4 py-1.5 rounded-full text-xs font-semibold border transition-all inline-flex items-center gap-1.5 group-open:bg-[#3E7B9D] group-open:text-white" style="border-color: #3E7B9D; color: #3E7B9D;">
-                    <span>expand</span>
-                    <i class="fa-solid fa-chevron-down text-[10px] group-open:rotate-180 transition-transform"></i>
-                  </span>
-                </summary>
-                <div class="mt-4 pt-4 border-t border-border dark:border-darkmode-border text-base text-text-dark dark:text-darkmode-light pl-9 space-y-2">
-                  <p class="leading-relaxed">Distinguished guest lecture and interactive Q&amp;A session with world-renowned theoretical physicist Sir Michael Berry (discoverer of the Berry Phase in quantum mechanics).</p>
-                  <div class="font-medium text-sm flex items-center gap-2 pt-1" style="color: #3E7B9D;">
-                    <i class="fa-solid fa-video"></i> Venue: Hybrid / Lecture Hall &amp; Online Stream
+            <li class="pb-2">
+              <div class="flex items-start justify-between gap-4">
+                <div class="space-y-1">
+                  <h3 class="text-xl font-bold text-text-dark dark:text-white flex items-start gap-2">
+                    <span style="color: #3E7B9D;" class="select-none">•</span>
+                    <span>A Conversation with Sir Michael Berry</span>
+                  </h3>
+                  <div class="text-base text-light dark:text-darkmode-light pl-5 font-medium flex items-center gap-6 mt-1">
+                    <span>3 pm</span>
+                    <span>7-08-2026</span>
                   </div>
                 </div>
-              </details>
-            </div>
+                <details class="group shrink-0 mt-1">
+                  <summary class="list-none cursor-pointer px-4 py-1 rounded-full text-sm border font-medium transition-all inline-flex items-center gap-1.5 group-open:bg-[#3E7B9D] group-open:text-white" style="border-color: #3E7B9D; color: #3E7B9D;">
+                    <span>expand</span>
+                    <i class="fa-solid fa-chevron-down text-[10px] group-open:rotate-180 transition-transform"></i>
+                  </summary>
+                  <div class="mt-3 text-sm text-text-dark dark:text-darkmode-light pl-5 space-y-1">
+                    <p>Distinguished guest lecture and interactive Q&amp;A session with world-renowned theoretical physicist Sir Michael Berry (discoverer of the Berry Phase in quantum mechanics).</p>
+                    <p class="font-medium text-xs pt-1" style="color: #3E7B9D;">Venue: Hybrid / Lecture Hall &amp; Online Stream</p>
+                  </div>
+                </details>
+              </div>
+            </li>
 
-          </div>
+          </ul>
         </div>
       </div>
 
