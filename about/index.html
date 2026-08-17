@@ -1,5 +1,9 @@
 <!doctype html>
-<html itemscope class="dark" lang="en-us" itemtype="http://schema.org/WebPage">
+<html
+  itemscope
+  class="light"
+  lang="en-us"
+  itemtype="http://schema.org/WebPage">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
@@ -12,65 +16,137 @@
     <link rel="apple-touch-icon" sizes="144x144" href="../images/logo2_hu_dc2b6003544f3619.png">
 
     <link rel="manifest" href="/manifest.webmanifest" />
-    <meta name="msapplication-TileColor" content="#000000" />
-    <meta name="theme-color" content="#000000" />
+    <meta name="msapplication-TileColor" content="#ddd" />
+    <meta name="theme-color" content="#ffffff" />
 
-    <title>About - Physics Society | IIT Kharagpur</title>
+    <title>About</title>
 
-    <meta name="keywords" content="IIT Kharagpur, Physics, Physics Society, PhySoc" />
+    <meta name="keywords" content="IIT Kharagpur, Physics, Physics Society, PhySoc, Academic Wing" />
     <meta name="description" content="Physics Society (PhySoc) Website - IIT Kharagpur" />
     <meta name="author" content="PhySoc Webdev" />
 
-    <!-- Fonts & FontAwesome -->
+    <meta property="og:image" content="https://sps.studentorg.berkeley.edu/images/about_background.jpg" />
+    <meta name="twitter:image" content="https://sps.studentorg.berkeley.edu/images/about_background.jpg" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta property="og:image:width" content="6000" />
+    <meta property="og:image:height" content="4000" />
+    <meta property="og:image:type" content="image/.jpg" />
+
+    <meta property="og:title" content="About" />
+    <meta property="og:description" content="Physics Society (PhySoc) Website" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://sps.studentorg.berkeley.edu/about/" />
+
+    <meta name="twitter:title" content="About" />
+    <meta name="twitter:description" content="Physics Society (PhySoc) Website" />
+    <meta name="twitter:creator" content="@PhySoc Webdev" />
+
+    <script>
+      let indexURL = "https://sps.studentorg.berkeley.edu/searchindex.json";
+      let includeSectionsInSearch = ["events"];
+      let search_no_results = "No results for";
+      let search_initial_message = "Type something to search..";
+    </script>
+
+    <link rel="stylesheet" href="../vendor/swiper-bundle.min.css" />
+
+    <meta http-equiv="x-dns-prefetch-control" content="on" />
+    <link rel="preconnect" href="https://use.fontawesome.com" crossorigin />
+    <link rel="preconnect" href="//cdnjs.cloudflare.com" />
+    <link rel="preconnect" href="//www.googletagmanager.com" />
+    <link rel="preconnect" href="//www.google-analytics.com" />
+    <link rel="dns-prefetch" href="https://use.fontawesome.com" />
+    <link rel="dns-prefetch" href="//ajax.googleapis.com" />
+    <link rel="dns-prefetch" href="//cdnjs.cloudflare.com" />
+    <link rel="dns-prefetch" href="//www.googletagmanager.com" />
+    <link rel="dns-prefetch" href="//www.google-analytics.com" />
+    <link rel="dns-prefetch" href="//fonts.googleapis.com" />
+    <link rel="dns-prefetch" href="//connect.facebook.net" />
+    <link rel="dns-prefetch" href="//platform.linkedin.com" />
+    <link rel="dns-prefetch" href="//platform.twitter.com" />
+
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <script>
+      (function () {
+        const googleFont = document.createElement("link");
+        googleFont.href = "https://fonts.googleapis.com/css2?family=IBM\u002bPlex\u002bSerif:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&family=IBM\u002bPlex\u002bSans:ital,wght@0,100..700;1,100..700&display=swap";
+        googleFont.type = "text/css";
+        googleFont.rel = "stylesheet";
+        document.head.appendChild(googleFont);
+      })();
+    </script>
 
     <link href="../css/style.min.75408a616c8d64a93d3b03e345cadd04f72b1cded1cd7b9819149db1a7264234.css" rel="stylesheet" />
-    
-    <style>
-      body {
-        background-color: #000000 !important;
-        color: #ffffff !important;
-      }
-      .content h3 {
-        color: #ffffff !important;
-      }
-      .header {
-        background-color: #0a0a0a !important;
-        border-bottom: 1px solid #1a1a1a;
-      }
-      .nav-link {
-        color: #e2e8f0 !important;
-      }
-      .nav-link:hover {
-        color: #4299e1 !important;
-      }
-      footer {
-        background-color: #050505 !important;
-        border-top: 1px solid #1a1a1a;
-        color: #a0aec0 !important;
-      }
-    </style>
+    <link defer async rel="stylesheet" href="../css/style-lazy.min.1891ab9d1988b9b19756de1bbea47aecb95c7b5ab195f6fe52244b6eca5d8154.css" media="all" />
   </head>
 
-  <body class="bg-black text-white">
+  <body>
+    <!-- Announcement Banner -->
+    <div id="announcement" class="announcement announcement-hide">
+      This site is currently under construction. Thank you for your patience!
+      <button id="announcement-button" class="announcement-button">&times;</button>
+    </div>
+
+    <style>
+      .announcement {
+        position: relative;
+        z-index: 999;
+        padding: 1rem;
+        padding-right: 2.8rem;
+        background-color: #fff;
+        box-shadow: 1px 0px 10px 7px rgba(154, 154, 154, 0.11);
+        font-size: 1.1rem;
+      }
+      .announcement-button {
+        cursor: pointer;
+        padding: 0 0.5rem;
+        border: 0;
+        font-size: 1.3rem;
+        position: absolute;
+        top: 50%;
+        right: 1rem;
+        transform: translateY(-50%);
+        border: 1px solid;
+        border-radius: 50%;
+        height: 1.1em;
+        width: 1.1em;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .announcement-hide { display: none; }
+      .dark .announcement { background-color: #222; }
+    </style>
+
     <!-- Header Navigation -->
     <header class="header sticky top-0 z-30">
       <nav class="navbar container">
         <div class="order-0">
           <a class="navbar-brand block" href="../index.html">
-            <img class="img img-dark" width="250" height="40" src="../images/logo-darkmode_hu_ce06e59bade57f0d.webp" alt="PhySoc" />
+            <img fetchpriority="high" decoding="async" class="img img-light" width="250" height="40" src="../images/logo_hu_62a2c291369a66f0.webp" alt="PhySoc" onerror="this.onerror=null;this.src='\/images\/logo_hu_2fca4d2ac2314e.jpg';" />
+            <img fetchpriority="high" decoding="async" class="img img-dark" width="250" height="40" src="../images/logo-darkmode_hu_ce06e59bade57f0d.webp" alt="PhySoc" onerror="this.onerror=null;this.src='\/images\/logo-darkmode_hu_fa721757c615f129.png';" />
           </a>
         </div>
         
-        <ul id="nav-menu" class="navbar-nav order-3 lg:flex w-full lg:order-1 lg:w-auto lg:space-x-8">
+        <input id="nav-toggle" type="checkbox" class="hidden" />
+        <label for="nav-toggle" class="order-3 cursor-pointer flex items-center lg:hidden text-text-dark dark:text-white lg:order-1">
+          <svg id="show-button" class="h-6 fill-current block" viewBox="0 0 20 20">
+            <title>Menu Open</title>
+            <path d="M0 3h20v2H0V3z m0 6h20v2H0V9z m0 6h20v2H0V0z"></path>
+          </svg>
+          <svg id="hide-button" class="h-6 fill-current hidden" viewBox="0 0 20 20">
+            <title>Menu Close</title>
+            <polygon points="11 9 22 9 22 11 11 11 11 22 9 22 9 11 -2 11 -2 9 9 9 9 -2 11 -2" transform="rotate(45 10 10)"></polygon>
+          </svg>
+        </label>
+
+        <ul id="nav-menu" class="navbar-nav order-3 hidden lg:flex w-full pb-6 lg:order-1 lg:w-auto lg:space-x-2 lg:pb-0 xl:space-x-8">
           <li class="nav-item">
-            <a class="nav-link font-bold text-cyan" href="../about/index.html" style="color: #4299e1 !important;">About</a>
+            <a class="nav-link" href="../about/index.html">About</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="../academic-wing/index.html">Academic Wing</a>
+            <a class="nav-link" href="#academic-wing">Academic Wing</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="../events/index.html">Events</a>
@@ -81,184 +157,359 @@
           <li class="nav-item">
             <a class="nav-link" href="../snacks/index.html">Snacks</a>
           </li>
+          <li class="nav-item nav-dropdown group relative">
+            <span class="nav-link inline-flex items-center">
+              Committees
+              <svg class="h-4 w-4 fill-current" viewBox="0 0 20 20">
+                <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
+              </svg>
+            </span>
+            <ul class="nav-dropdown-list lg:group-hover:visible lg:group-hover:opacity-100">
+              <li class="nav-dropdown-item"><a class="nav-dropdown-link" href="#Officers">Team</a></li>
+              <li class="nav-dropdown-item"><a class="nav-dropdown-link" href="#academic-wing">Academic Wing</a></li>
+              <li class="nav-dropdown-item"><a class="nav-dropdown-link" href="../committees/competitions/index.html">Competitions</a></li>
+              <li class="nav-dropdown-item"><a class="nav-dropdown-link" href="../committees/media/index.html">Media</a></li>
+              <li class="nav-dropdown-item"><a class="nav-dropdown-link" href="../committees/outreach/index.html">Outreach</a></li>
+              <li class="nav-dropdown-item"><a class="nav-dropdown-link" href="../committees/projects/index.html">Projects</a></li>
+              <li class="nav-dropdown-item"><a class="nav-dropdown-link" href="../committees/seminars/index.html">Seminars</a></li>
+              <li class="nav-dropdown-item"><a class="nav-dropdown-link" href="../committees/socials/index.html">Socials</a></li>
+            </ul>
+          </li>
+          <li class="mt-4 inline-block lg:hidden">
+            <a class="btn btn-outline-primary btn-sm" href="../mail/index.html">Join Mailing List</a>
+          </li>
         </ul>
 
-        <div class="order-1 ml-auto flex items-center md:order-2">
-          <a href="../mail/index.html" class="btn btn-outline-primary btn-sm">Join Mailing List</a>
+        <div class="order-1 ml-auto flex items-center md:order-2 lg:ml-0">
+          <button aria-label="search" class="border-border text-text-dark hover:text-primary dark:border-darkmode-border mr-5 inline-block border-r pr-5 text-xl dark:text-white cursor-pointer dark:hover:text-darkmode-primary" data-target="search-modal">
+            <i class="fa-solid fa-search"></i>
+          </button>
+          <a href="../mail/index.html" class="btn btn-outline-primary btn-sm hidden lg:inline-block">
+            Join Mailing List
+          </a>
         </div>
       </nav>
     </header>
 
-    <!-- Main Content -->
-    <main style="background-color: #000000; min-height: 80vh;">
+    <!-- MAIN BODY -->
+    <main>
+      <!-- Hero Section -->
+      <section class="relative section-sm" style="background-image: url('/images/about_background.jpg'); background-size: cover; background-position: center; background-repeat: no-repeat; height: 300px;">
+        <div class="absolute inset-0 bg-black opacity-50"></div> 
+        <div class="container h-full flex items-center justify-center relative z-10">
+          <h1 class="text-4xl font-bold text-white p-6">About</h1>
+        </div>
+      </section>
+
+      <!-- Content Section -->
       <section class="section-sm">
         <div class="container">
           <div class="row justify-center">
             <div class="lg:col-10">
               <div class="content">
                 
-                <h3 id="what-we-do" style="border-bottom: 2px solid #4299e1; padding-bottom: 8px;">What We Do</h3>
-                <p style="color: #cbd5e0; font-size: 1.05rem; line-height: 1.7;">We host a variety of events to help bring the physics community at IITKGP closer! Members can pursue their interests in physics in rigorous competitions or more laidback socials; PhySoc is whatever you make of it. We are also here to help support you, so please feel free to talk to other members about how to make the most of your physics experience at KGP!</p>
+                <h3 id="what-we-do">What We Do</h3>
+                <p>We host a variety of events to help bring the physics community at IITKGP closer! Members can pursue their interests in physics in rigorous competitions or more laidback socials; PhySoc is whatever you make of it. We are also here to help support you, so please feel free to talk to other members about how to make the most of your physics experience at KGP!</p>
 
                 <!-- ======================================================= -->
-                <!-- PHYSOC WORKING COMMITTEE TEAM GRID                      -->
+                <!-- TEAM / PHYSOC WORKING COMMITTEE                         -->
                 <!-- ======================================================= -->
-                <h3 id="Officers" style="margin-top: 3rem; margin-bottom: 2rem; border-bottom: 2px solid #4299e1; padding-bottom: 8px;">PhySoc Working Committee</h3>
+                <h3 id="Officers">Team</h3>
 
-                <div style="width:100%; max-width:950px; margin:auto;">
+                <div style="width:100%; max-width:900px; margin:auto;">
                   
                   <!-- Row 1: Secretaries -->
-                  <div style="display:flex; gap:24px; justify-content:center; margin-bottom:2.5em; flex-wrap:wrap;">
-                    <div style="text-align:center; flex:1; min-width:130px; max-width:160px;">
-                      <img src="../images/gallery/Officers/neerajlaikara.jpeg" alt="Neeraj Laikara" style="width:120px; height:120px; object-fit:cover; border-radius:8px; margin:auto; border: 2px solid #2d3748;">
-                      <div style="font-weight:bold; margin-top:0.6em; color: #ffffff;">Neeraj Laikara</div>
-                      <div style="color:#4299e1; font-weight:600; font-size:0.82em;">Secretary (Events & Competitions)</div>
-                      <div style="color:#a0aec0; font-size:0.78em;">24PH10029</div>
+                  <div style="display:flex; gap:24px; justify-content:center; margin-bottom:2em; flex-wrap:wrap;">
+                    <div style="text-align:center; flex:1; min-width:140px;">
+                      <img src="../images/gallery/Officers/neerajlaikara.jpeg" alt="Neeraj Laikara" style="width:120px; height:120px; object-fit:cover; border-radius:8px; margin:auto;">
+                      <div style="font-weight:bold; margin-top:0.5em;">Neeraj Laikara</div>
+                      <div style="color:gray; font-size:0.85em;">Secretary (Events & Competitions)</div>
+                      <div style="color:#718096; font-size:0.78em;">24PH10029</div>
                     </div>
 
-                    <div style="text-align:center; flex:1; min-width:130px; max-width:160px;">
-                      <img src="../images/gallery/Officers/wasim.png" alt="Kazi Wasim Raj" style="width:120px; height:120px; object-fit:cover; border-radius:8px; margin:auto; border: 2px solid #2d3748;">
-                      <div style="font-weight:bold; margin-top:0.6em; color: #ffffff;">Kazi Wasim Raj</div>
-                      <div style="color:#4299e1; font-weight:600; font-size:0.82em;">Secretary (Academic Wing)</div>
-                      <div style="color:#a0aec0; font-size:0.78em;">24PH10005</div>
+                    <div style="text-align:center; flex:1; min-width:140px;">
+                      <img src="../images/gallery/Officers/wasim.png" alt="Kazi Wasim Raj" style="width:120px; height:120px; object-fit:cover; border-radius:8px; margin:auto;">
+                      <div style="font-weight:bold; margin-top:0.5em;">Kazi Wasim Raj</div>
+                      <div style="color:gray; font-size:0.85em;">Secretary (Academic Wing)</div>
+                      <div style="color:#718096; font-size:0.78em;">24PH10005</div>
                     </div>
 
-                    <div style="text-align:center; flex:1; min-width:130px; max-width:160px;">
-                      <img src="../images/gallery/Officers/neelabh.jpeg" alt="Neelabh Priyam Jha" style="width:120px; height:120px; object-fit:cover; border-radius:8px; margin:auto; border: 2px solid #2d3748;">
-                      <div style="font-weight:bold; margin-top:0.6em; color: #ffffff;">Neelabh Priyam Jha</div>
-                      <div style="color:#4299e1; font-weight:600; font-size:0.82em;">Secretary (Tech & Finance)</div>
-                      <div style="color:#a0aec0; font-size:0.78em;">24PH10004</div>
+                    <div style="text-align:center; flex:1; min-width:140px;">
+                      <img src="../images/gallery/Officers/neelabh.jpeg" alt="Neelabh Priyam Jha" style="width:120px; height:120px; object-fit:cover; border-radius:8px; margin:auto;">
+                      <div style="font-weight:bold; margin-top:0.5em;">Neelabh Priyam Jha</div>
+                      <div style="color:gray; font-size:0.85em;">Secretary (Tech & Finance)</div>
+                      <div style="color:#718096; font-size:0.78em;">24PH10004</div>
                     </div>
 
-                    <div style="text-align:center; flex:1; min-width:130px; max-width:160px;">
-                      <img src="../images/gallery/Officers/JKHuskey.jpeg" alt="Rakshita" style="width:120px; height:120px; object-fit:cover; border-radius:8px; margin:auto; border: 2px solid #2d3748;">
-                      <div style="font-weight:bold; margin-top:0.6em; color: #ffffff;">Rakshita</div>
-                      <div style="color:#4299e1; font-weight:600; font-size:0.82em;">Secretary (Outreach)</div>
-                      <div style="color:#a0aec0; font-size:0.78em;">24PH10037</div>
+                    <div style="text-align:center; flex:1; min-width:140px;">
+                      <img src="../images/gallery/Officers/JKHuskey.jpeg" alt="Rakshita" style="width:120px; height:120px; object-fit:cover; border-radius:8px; margin:auto;">
+                      <div style="font-weight:bold; margin-top:0.5em;">Rakshita</div>
+                      <div style="color:gray; font-size:0.85em;">Secretary (Outreach)</div>
+                      <div style="color:#718096; font-size:0.78em;">24PH10037</div>
                     </div>
                   </div>
 
                   <!-- Row 2: Senior Student Members -->
-                  <div style="display:flex; gap:24px; justify-content:center; margin-bottom:2.5em; flex-wrap:wrap;">
-                    <div style="text-align:center; flex:1; min-width:130px; max-width:160px;">
-                      <img src="../images/gallery/Officers/sagerneel.png" alt="Sayak Moulic" style="width:120px; height:120px; object-fit:cover; border-radius:8px; margin:auto; border: 2px solid #2d3748;">
-                      <div style="font-weight:bold; margin-top:0.6em; color: #ffffff;">Sayak Moulic</div>
-                      <div style="color:#a0aec0; font-size:0.85em;">Senior Student Member</div>
+                  <div style="display:flex; gap:24px; justify-content:center; margin-bottom:2em; flex-wrap:wrap;">
+                    <div style="text-align:center; flex:1; min-width:140px;">
+                      <img src="../images/gallery/Officers/sagerneel.png" alt="Sayak Moulic" style="width:120px; height:120px; object-fit:cover; border-radius:8px; margin:auto;">
+                      <div style="font-weight:bold; margin-top:0.5em;">Sayak Moulic</div>
+                      <div style="color:gray; font-size:0.85em;">Senior Student Member</div>
                       <div style="color:#718096; font-size:0.78em;">25PH10007</div>
                     </div>
 
-                    <div style="text-align:center; flex:1; min-width:130px; max-width:160px;">
-                      <img src="../images/gallery/Officers/BSimberg.jpeg" alt="Skanda K M" style="width:120px; height:120px; object-fit:cover; border-radius:8px; margin:auto; border: 2px solid #2d3748;">
-                      <div style="font-weight:bold; margin-top:0.6em; color: #ffffff;">Skanda K M</div>
-                      <div style="color:#a0aec0; font-size:0.85em;">Senior Student Member</div>
+                    <div style="text-align:center; flex:1; min-width:140px;">
+                      <img src="../images/gallery/Officers/BSimberg.jpeg" alt="Skanda K M" style="width:120px; height:120px; object-fit:cover; border-radius:8px; margin:auto;">
+                      <div style="font-weight:bold; margin-top:0.5em;">Skanda K M</div>
+                      <div style="color:gray; font-size:0.85em;">Senior Student Member</div>
                       <div style="color:#718096; font-size:0.78em;">25PH10008</div>
                     </div>
 
-                    <div style="text-align:center; flex:1; min-width:130px; max-width:160px;">
-                      <img src="../images/gallery/Officers/FChou.jpeg" alt="Aman Kumar" style="width:120px; height:120px; object-fit:cover; border-radius:8px; margin:auto; border: 2px solid #2d3748;">
-                      <div style="font-weight:bold; margin-top:0.6em; color: #ffffff;">Aman Kumar</div>
-                      <div style="color:#a0aec0; font-size:0.85em;">Senior Student Member</div>
+                    <div style="text-align:center; flex:1; min-width:140px;">
+                      <img src="../images/gallery/Officers/FChou.jpeg" alt="Aman Kumar" style="width:120px; height:120px; object-fit:cover; border-radius:8px; margin:auto;">
+                      <div style="font-weight:bold; margin-top:0.5em;">Aman Kumar</div>
+                      <div style="color:gray; font-size:0.85em;">Senior Student Member</div>
                       <div style="color:#718096; font-size:0.78em;">25PH10014</div>
                     </div>
 
-                    <div style="text-align:center; flex:1; min-width:130px; max-width:160px;">
-                      <img src="../images/gallery/Officers/HOBale.jpeg" alt="Rudraksh Thakur" style="width:120px; height:120px; object-fit:cover; border-radius:8px; margin:auto; border: 2px solid #2d3748;">
-                      <div style="font-weight:bold; margin-top:0.6em; color: #ffffff;">Rudraksh Thakur</div>
-                      <div style="color:#a0aec0; font-size:0.85em;">Senior Student Member</div>
+                    <div style="text-align:center; flex:1; min-width:140px;">
+                      <img src="../images/gallery/Officers/HOBale.jpeg" alt="Rudraksh Thakur" style="width:120px; height:120px; object-fit:cover; border-radius:8px; margin:auto;">
+                      <div style="font-weight:bold; margin-top:0.5em;">Rudraksh Thakur</div>
+                      <div style="color:gray; font-size:0.85em;">Senior Student Member</div>
                       <div style="color:#718096; font-size:0.78em;">25PH10050</div>
                     </div>
                   </div>
 
-                  <!-- Row 3: Student Members (5 per row) -->
-                  <div style="display:flex; gap:24px; justify-content:center; margin-bottom:2.5em; flex-wrap:wrap;">
-                    <div style="text-align:center; flex:1; min-width:130px; max-width:150px;">
-                      <img src="../images/gallery/Officers/JZhang.jpg" alt="Gaurish Malik" style="width:120px; height:120px; object-fit:cover; border-radius:8px; margin:auto; border: 2px solid #2d3748;">
-                      <div style="font-weight:bold; margin-top:0.6em; color: #ffffff;">Gaurish Malik</div>
-                      <div style="color:#a0aec0; font-size:0.85em;">Student Member</div>
+                  <!-- Row 3: Student Members -->
+                  <div style="display:flex; gap:24px; justify-content:center; margin-bottom:2em; flex-wrap:wrap;">
+                    <div style="text-align:center; flex:1; min-width:130px;">
+                      <img src="../images/gallery/Officers/JZhang.jpg" alt="Gaurish Malik" style="width:120px; height:120px; object-fit:cover; border-radius:8px; margin:auto;">
+                      <div style="font-weight:bold; margin-top:0.5em;">Gaurish Malik</div>
+                      <div style="color:gray; font-size:0.85em;">Student Member</div>
                       <div style="color:#718096; font-size:0.78em;">26PH10002</div>
                     </div>
 
-                    <div style="text-align:center; flex:1; min-width:130px; max-width:150px;">
-                      <img src="../images/gallery/Officers/KDeoskar.jpg" alt="KVVH Vasishta" style="width:120px; height:120px; object-fit:cover; border-radius:8px; margin:auto; border: 2px solid #2d3748;">
-                      <div style="font-weight:bold; margin-top:0.6em; color: #ffffff;">KVVH Vasishta</div>
-                      <div style="color:#a0aec0; font-size:0.85em;">Student Member</div>
+                    <div style="text-align:center; flex:1; min-width:130px;">
+                      <img src="../images/gallery/Officers/KDeoskar.jpg" alt="KVVH Vasishta" style="width:120px; height:120px; object-fit:cover; border-radius:8px; margin:auto;">
+                      <div style="font-weight:bold; margin-top:0.5em;">KVVH Vasishta</div>
+                      <div style="color:gray; font-size:0.85em;">Student Member</div>
                       <div style="color:#718096; font-size:0.78em;">26PH10003</div>
                     </div>
 
-                    <div style="text-align:center; flex:1; min-width:130px; max-width:150px;">
-                      <img src="../images/gallery/Officers/KHernandez.png" alt="Padma Youdon" style="width:120px; height:120px; object-fit:cover; border-radius:8px; margin:auto; border: 2px solid #2d3748;">
-                      <div style="font-weight:bold; margin-top:0.6em; color: #ffffff;">Padma Youdon</div>
-                      <div style="color:#a0aec0; font-size:0.85em;">Student Member</div>
+                    <div style="text-align:center; flex:1; min-width:130px;">
+                      <img src="../images/gallery/Officers/KHernandez.png" alt="Padma Youdon" style="width:120px; height:120px; object-fit:cover; border-radius:8px; margin:auto;">
+                      <div style="font-weight:bold; margin-top:0.5em;">Padma Youdon</div>
+                      <div style="color:gray; font-size:0.85em;">Student Member</div>
                       <div style="color:#718096; font-size:0.78em;">26PH10007</div>
                     </div>
 
-                    <div style="text-align:center; flex:1; min-width:130px; max-width:150px;">
-                      <img src="../images/gallery/Officers/KLAdcock.jpeg" alt="Utkarsh Singh" style="width:120px; height:120px; object-fit:cover; border-radius:8px; margin:auto; border: 2px solid #2d3748;">
-                      <div style="font-weight:bold; margin-top:0.6em; color: #ffffff;">Utkarsh Singh</div>
-                      <div style="color:#a0aec0; font-size:0.85em;">Student Member</div>
+                    <div style="text-align:center; flex:1; min-width:130px;">
+                      <img src="../images/gallery/Officers/KLAdcock.jpeg" alt="Utkarsh Singh" style="width:120px; height:120px; object-fit:cover; border-radius:8px; margin:auto;">
+                      <div style="font-weight:bold; margin-top:0.5em;">Utkarsh Singh</div>
+                      <div style="color:gray; font-size:0.85em;">Student Member</div>
                       <div style="color:#718096; font-size:0.78em;">26PH10008</div>
                     </div>
 
-                    <div style="text-align:center; flex:1; min-width:130px; max-width:150px;">
-                      <img src="../images/gallery/Officers/MKe.jpeg" alt="Avtar Jain" style="width:120px; height:120px; object-fit:cover; border-radius:8px; margin:auto; border: 2px solid #2d3748;">
-                      <div style="font-weight:bold; margin-top:0.6em; color: #ffffff;">Avtar Jain</div>
-                      <div style="color:#a0aec0; font-size:0.85em;">Student Member</div>
+                    <div style="text-align:center; flex:1; min-width:130px;">
+                      <img src="../images/gallery/Officers/MKe.jpeg" alt="Avtar Jain" style="width:120px; height:120px; object-fit:cover; border-radius:8px; margin:auto;">
+                      <div style="font-weight:bold; margin-top:0.5em;">Avtar Jain</div>
+                      <div style="color:gray; font-size:0.85em;">Student Member</div>
                       <div style="color:#718096; font-size:0.78em;">26PH10010</div>
                     </div>
                   </div>
 
                   <!-- Row 4: Student Members -->
-                  <div style="display:flex; gap:24px; justify-content:center; margin-bottom:2.5em; flex-wrap:wrap;">
-                    <div style="text-align:center; flex:1; min-width:130px; max-width:150px;">
-                      <img src="../images/gallery/Officers/NSun.jpeg" alt="Abir Dutta" style="width:120px; height:120px; object-fit:cover; border-radius:8px; margin:auto; border: 2px solid #2d3748;">
-                      <div style="font-weight:bold; margin-top:0.6em; color: #ffffff;">Abir Dutta</div>
-                      <div style="color:#a0aec0; font-size:0.85em;">Student Member</div>
+                  <div style="display:flex; gap:24px; justify-content:center; margin-bottom:2em; flex-wrap:wrap;">
+                    <div style="text-align:center; flex:1; min-width:130px;">
+                      <img src="../images/gallery/Officers/NSun.jpeg" alt="Abir Dutta" style="width:120px; height:120px; object-fit:cover; border-radius:8px; margin:auto;">
+                      <div style="font-weight:bold; margin-top:0.5em;">Abir Dutta</div>
+                      <div style="color:gray; font-size:0.85em;">Student Member</div>
                       <div style="color:#718096; font-size:0.78em;">26PH10014</div>
                     </div>
 
-                    <div style="text-align:center; flex:1; min-width:130px; max-width:150px;">
-                      <img src="../images/gallery/Officers/RKReczek.jpeg" alt="Aditya senapati" style="width:120px; height:120px; object-fit:cover; border-radius:8px; margin:auto; border: 2px solid #2d3748;">
-                      <div style="font-weight:bold; margin-top:0.6em; color: #ffffff;">Aditya senapati</div>
-                      <div style="color:#a0aec0; font-size:0.85em;">Student Member</div>
+                    <div style="text-align:center; flex:1; min-width:130px;">
+                      <img src="../images/gallery/Officers/RKReczek.jpeg" alt="Aditya senapati" style="width:120px; height:120px; object-fit:cover; border-radius:8px; margin:auto;">
+                      <div style="font-weight:bold; margin-top:0.5em;">Aditya senapati</div>
+                      <div style="color:gray; font-size:0.85em;">Student Member</div>
                       <div style="color:#718096; font-size:0.78em;">26PH10015</div>
                     </div>
 
-                    <div style="text-align:center; flex:1; min-width:130px; max-width:150px;">
-                      <img src="../images/gallery/Officers/SGoel.jpg" alt="Darshana Katariya" style="width:120px; height:120px; object-fit:cover; border-radius:8px; margin:auto; border: 2px solid #2d3748;">
-                      <div style="font-weight:bold; margin-top:0.6em; color: #ffffff;">Darshana Katariya</div>
-                      <div style="color:#a0aec0; font-size:0.85em;">Student Member</div>
+                    <div style="text-align:center; flex:1; min-width:130px;">
+                      <img src="../images/gallery/Officers/SGoel.jpg" alt="Darshana Katariya" style="width:120px; height:120px; object-fit:cover; border-radius:8px; margin:auto;">
+                      <div style="font-weight:bold; margin-top:0.5em;">Darshana Katariya</div>
+                      <div style="color:gray; font-size:0.85em;">Student Member</div>
                       <div style="color:#718096; font-size:0.78em;">26PH10021</div>
                     </div>
 
-                    <div style="text-align:center; flex:1; min-width:130px; max-width:150px;">
-                      <img src="../images/gallery/Officers/SKulkarni.jpg" alt="Jayant Kumar Kushwaha" style="width:120px; height:120px; object-fit:cover; border-radius:8px; margin:auto; border: 2px solid #2d3748;">
-                      <div style="font-weight:bold; margin-top:0.6em; color: #ffffff;">Jayant K. Kushwaha</div>
-                      <div style="color:#a0aec0; font-size:0.85em;">Student Member</div>
+                    <div style="text-align:center; flex:1; min-width:130px;">
+                      <img src="../images/gallery/Officers/SKulkarni.jpg" alt="Jayant Kumar Kushwaha" style="width:120px; height:120px; object-fit:cover; border-radius:8px; margin:auto;">
+                      <div style="font-weight:bold; margin-top:0.5em;">Jayant Kumar Kushwaha</div>
+                      <div style="color:gray; font-size:0.85em;">Student Member</div>
                       <div style="color:#718096; font-size:0.78em;">26PH10027</div>
                     </div>
 
-                    <div style="text-align:center; flex:1; min-width:130px; max-width:150px;">
-                      <img src="../images/gallery/Officers/SMahajan.JPG" alt="Pratham Matad" style="width:120px; height:120px; object-fit:cover; border-radius:8px; margin:auto; border: 2px solid #2d3748;">
-                      <div style="font-weight:bold; margin-top:0.6em; color: #ffffff;">Pratham Matad</div>
-                      <div style="color:#a0aec0; font-size:0.85em;">Student Member</div>
+                    <div style="text-align:center; flex:1; min-width:130px;">
+                      <img src="../images/gallery/Officers/SMahajan.JPG" alt="Pratham Matad" style="width:120px; height:120px; object-fit:cover; border-radius:8px; margin:auto;">
+                      <div style="font-weight:bold; margin-top:0.5em;">Pratham Matad</div>
+                      <div style="color:gray; font-size:0.85em;">Student Member</div>
                       <div style="color:#718096; font-size:0.78em;">26PH10029</div>
                     </div>
                   </div>
 
                   <!-- Row 5: Student Members -->
-                  <div style="display:flex; gap:24px; justify-content:center; margin-bottom:2.5em; flex-wrap:wrap;">
-                    <div style="text-align:center; flex:1; min-width:130px; max-width:150px;">
-                      <img src="../images/gallery/Officers/SSShirol.jpeg" alt="Sidhant Jain" style="width:120px; height:120px; object-fit:cover; border-radius:8px; margin:auto; border: 2px solid #2d3748;">
-                      <div style="font-weight:bold; margin-top:0.6em; color: #ffffff;">Sidhant Jain</div>
-                      <div style="color:#a0aec0; font-size:0.85em;">Student Member</div>
+                  <div style="display:flex; gap:24px; justify-content:center; margin-bottom:2em; flex-wrap:wrap;">
+                    <div style="flex:1;"></div>
+                    <div style="text-align:center; flex:1; min-width:130px;">
+                      <img src="../images/gallery/Officers/SSShirol.jpeg" alt="Sidhant Jain" style="width:120px; height:120px; object-fit:cover; border-radius:8px; margin:auto;">
+                      <div style="font-weight:bold; margin-top:0.5em;">Sidhant Jain</div>
+                      <div style="color:gray; font-size:0.85em;">Student Member</div>
                       <div style="color:#718096; font-size:0.78em;">26PH10040</div>
                     </div>
-
-                    <div style="text-align:center; flex:1; min-width:130px; max-width:150px;">
-                      <img src="../images/gallery/Officers/SXu.jpeg" alt="Subhra Gour" style="width:120px; height:120px; object-fit:cover; border-radius:8px; margin:auto; border: 2px solid #2d3748;">
-                      <div style="font-weight:bold; margin-top:0.6em; color: #ffffff;">Subhra Gour</div>
-                      <div style="color:#a0aec0; font-size:0.85em;">Student Member</div>
+                    <div style="text-align:center; flex:1; min-width:130px;">
+                      <img src="../images/gallery/Officers/SXu.jpeg" alt="Subhra Gour" style="width:120px; height:120px; object-fit:cover; border-radius:8px; margin:auto;">
+                      <div style="font-weight:bold; margin-top:0.5em;">Subhra Gour</div>
+                      <div style="color:gray; font-size:0.85em;">Student Member</div>
                       <div style="color:#718096; font-size:0.78em;">26PH10041</div>
+                    </div>
+                    <div style="flex:1;"></div>
+                  </div>
+
+                </div>
+
+                <!-- ======================================================= -->
+                <!-- ACADEMIC WING TAB (LIGHT BLUE FIELD COLORS)            -->
+                <!-- ======================================================= -->
+                <h3 id="academic-wing" style="margin-top: 3.5em;">Academic Wing</h3>
+                <p>The Academic Wing works to provide peer mentoring, subject study guides, research domain discussions, and academic support across the department.</p>
+
+                <div style="width:100%; max-width:900px; margin:auto;">
+                  
+                  <!-- Academic Wing Row 1 -->
+                  <div style="display:flex; gap:24px; justify-content:center; margin-bottom:2em; flex-wrap:wrap;">
+                    <div style="text-align:center; flex:1; min-width:140px;">
+                      <img src="../images/gallery/Officers/wasim.png" alt="Kazi Wasim Raj" style="width:120px; height:120px; object-fit:cover; border-radius:8px; margin:auto;">
+                      <div style="font-weight:bold; margin-top:0.5em;">Kazi Wasim Raj</div>
+                      <div style="color:#3182ce; font-weight:600; font-size:0.82em;">Secretary (Academic Wing)</div>
+                      <div style="color:gray; font-size:0.8em;">3rd Year &bull; 24PH10005</div>
+                      <div style="color:#718096; font-size:0.75em; margin-top:2px;">kazi90ar@gmail.com</div>
+                    </div>
+
+                    <div style="text-align:center; flex:1; min-width:140px;">
+                      <img src="../images/gallery/Officers/YZayats.jpg" alt="Kedhar Athreya S" style="width:120px; height:120px; object-fit:cover; border-radius:8px; margin:auto;">
+                      <div style="font-weight:bold; margin-top:0.5em;">Kedhar Athreya S</div>
+                      <div style="color:#4299e1; font-weight:600; font-size:0.82em;">Condensed Matter Physics</div>
+                      <div style="color:gray; font-size:0.8em;">3rd Year &bull; 24PH10022</div>
+                      <div style="color:#718096; font-size:0.75em; margin-top:2px;">kedharathreya.24@kgpian...</div>
+                    </div>
+
+                    <div style="text-align:center; flex:1; min-width:140px;">
+                      <img src="../images/gallery/Officers/ZMonschein.jpeg" alt="Samrudh R Kashyap" style="width:120px; height:120px; object-fit:cover; border-radius:8px; margin:auto;">
+                      <div style="font-weight:bold; margin-top:0.5em;">Samrudh R Kashyap</div>
+                      <div style="color:#4299e1; font-weight:600; font-size:0.82em;">Biophysics</div>
+                      <div style="color:gray; font-size:0.8em;">2nd Year &bull; 25PH10040</div>
+                      <div style="color:#718096; font-size:0.75em; margin-top:2px;">samrudhrkashyap@gmail.com</div>
+                    </div>
+
+                    <div style="text-align:center; flex:1; min-width:140px;">
+                      <img src="../images/gallery/Officers/JZhang.jpg" alt="Adarsh Tiwari" style="width:120px; height:120px; object-fit:cover; border-radius:8px; margin:auto;">
+                      <div style="font-weight:bold; margin-top:0.5em;">Adarsh Tiwari</div>
+                      <div style="color:#4299e1; font-weight:600; font-size:0.82em;">Theoretical Physics</div>
+                      <div style="color:gray; font-size:0.8em;">4th Year &bull; 23PH10003</div>
+                      <div style="color:#718096; font-size:0.75em; margin-top:2px;">adarsh0808@kgpian...</div>
+                    </div>
+
+                    <div style="text-align:center; flex:1; min-width:140px;">
+                      <img src="../images/gallery/Officers/KDeoskar.jpg" alt="Tukshit Talani" style="width:120px; height:120px; object-fit:cover; border-radius:8px; margin:auto;">
+                      <div style="font-weight:bold; margin-top:0.5em;">Tukshit Talani</div>
+                      <div style="color:#4299e1; font-weight:600; font-size:0.82em;">Theoretical Physics</div>
+                      <div style="color:gray; font-size:0.8em;">3rd Year &bull; 24PH10004</div>
+                      <div style="color:#718096; font-size:0.75em; margin-top:2px;">tukshitreso@gmail.com</div>
+                    </div>
+                  </div>
+
+                  <!-- Academic Wing Row 2 -->
+                  <div style="display:flex; gap:24px; justify-content:center; margin-bottom:2em; flex-wrap:wrap;">
+                    <div style="text-align:center; flex:1; min-width:140px;">
+                      <img src="../images/gallery/Officers/KHernandez.png" alt="Daniel S" style="width:120px; height:120px; object-fit:cover; border-radius:8px; margin:auto;">
+                      <div style="font-weight:bold; margin-top:0.5em;">Daniel S</div>
+                      <div style="color:#4299e1; font-weight:600; font-size:0.82em;">Photonics</div>
+                      <div style="color:gray; font-size:0.8em;">2nd Year &bull; 25PH10023</div>
+                      <div style="color:#718096; font-size:0.75em; margin-top:2px;">daniel25@kgpian...</div>
+                    </div>
+
+                    <div style="text-align:center; flex:1; min-width:140px;">
+                      <img src="../images/gallery/Officers/KLAdcock.jpeg" alt="Avani Dandawate" style="width:120px; height:120px; object-fit:cover; border-radius:8px; margin:auto;">
+                      <div style="font-weight:bold; margin-top:0.5em;">Avani Dandawate</div>
+                      <div style="color:#4299e1; font-weight:600; font-size:0.82em;">Quantum Mechanics</div>
+                      <div style="color:gray; font-size:0.8em;">3rd Year &bull; 24PH10001</div>
+                      <div style="color:#718096; font-size:0.75em; margin-top:2px;">avanidandawate@gmail.com</div>
+                    </div>
+
+                    <div style="text-align:center; flex:1; min-width:140px;">
+                      <img src="../images/gallery/Officers/MKe.jpeg" alt="Mani Barathi" style="width:120px; height:120px; object-fit:cover; border-radius:8px; margin:auto;">
+                      <div style="font-weight:bold; margin-top:0.5em;">Mani Barathi</div>
+                      <div style="color:#4299e1; font-weight:600; font-size:0.82em;">Theoretical Physics</div>
+                      <div style="color:gray; font-size:0.8em;">3rd Year &bull; 24PH10026</div>
+                      <div style="color:#718096; font-size:0.75em; margin-top:2px;">manibarathiag.24@kgpian...</div>
+                    </div>
+
+                    <div style="text-align:center; flex:1; min-width:140px;">
+                      <img src="../images/gallery/Officers/NSun.jpeg" alt="Bramhavidnya Kachave" style="width:120px; height:120px; object-fit:cover; border-radius:8px; margin:auto;">
+                      <div style="font-weight:bold; margin-top:0.5em;">Bramhavidnya Kachave</div>
+                      <div style="color:#4299e1; font-weight:600; font-size:0.82em;">Astrophysics</div>
+                      <div style="color:gray; font-size:0.8em;">2nd Year &bull; 25PH10026</div>
+                      <div style="color:#718096; font-size:0.75em; margin-top:2px;">bramhavidnyakachave@gmail...</div>
+                    </div>
+
+                    <div style="text-align:center; flex:1; min-width:140px;">
+                      <img src="../images/gallery/Officers/RKReczek.jpeg" alt="Biswajeet Bhuyan" style="width:120px; height:120px; object-fit:cover; border-radius:8px; margin:auto;">
+                      <div style="font-weight:bold; margin-top:0.5em;">Biswajeet Bhuyan</div>
+                      <div style="color:#4299e1; font-weight:600; font-size:0.82em;">Theoretical Physics</div>
+                      <div style="color:gray; font-size:0.8em;">2nd Year &bull; 25PH10002</div>
+                      <div style="color:#718096; font-size:0.75em; margin-top:2px;">sbhuyan47025@kgpian...</div>
+                    </div>
+                  </div>
+
+                  <!-- Academic Wing Row 3 -->
+                  <div style="display:flex; gap:24px; justify-content:center; margin-bottom:2em; flex-wrap:wrap;">
+                    <div style="text-align:center; flex:1; min-width:140px;">
+                      <img src="../images/gallery/Officers/SGoel.jpg" alt="Adith Sankarram" style="width:120px; height:120px; object-fit:cover; border-radius:8px; margin:auto;">
+                      <div style="font-weight:bold; margin-top:0.5em;">Adith Sankarram</div>
+                      <div style="color:#4299e1; font-weight:600; font-size:0.82em;">Astrophysics</div>
+                      <div style="color:gray; font-size:0.8em;">3rd Year &bull; 24PH10007</div>
+                      <div style="color:#718096; font-size:0.75em; margin-top:2px;">student149208@gmail.com</div>
+                    </div>
+
+                    <div style="text-align:center; flex:1; min-width:140px;">
+                      <img src="../images/gallery/Officers/SKulkarni.jpg" alt="Rushabh Santosh Bodwade" style="width:120px; height:120px; object-fit:cover; border-radius:8px; margin:auto;">
+                      <div style="font-weight:bold; margin-top:0.5em;">Rushabh Santosh Bodwade</div>
+                      <div style="color:#4299e1; font-weight:600; font-size:0.82em;">Theoretical Physics</div>
+                      <div style="color:gray; font-size:0.8em;">2nd Year &bull; 25PH10009</div>
+                      <div style="color:#718096; font-size:0.75em; margin-top:2px;">rushabhbodwade@gmail.com</div>
+                    </div>
+
+                    <div style="text-align:center; flex:1; min-width:140px;">
+                      <img src="../images/gallery/Officers/SMahajan.JPG" alt="Dishant Talse" style="width:120px; height:120px; object-fit:cover; border-radius:8px; margin:auto;">
+                      <div style="font-weight:bold; margin-top:0.5em;">Dishant Talse</div>
+                      <div style="color:#4299e1; font-weight:600; font-size:0.82em;">General Physics</div>
+                      <div style="color:gray; font-size:0.8em;">2nd Year &bull; 25PH10024</div>
+                      <div style="color:#718096; font-size:0.75em; margin-top:2px;">dishanttalsem13@gmail.com</div>
+                    </div>
+
+                    <div style="text-align:center; flex:1; min-width:140px;">
+                      <img src="../images/gallery/Officers/SSShirol.jpeg" alt="Praneeth Mutchu" style="width:120px; height:120px; object-fit:cover; border-radius:8px; margin:auto;">
+                      <div style="font-weight:bold; margin-top:0.5em;">Praneeth Mutchu</div>
+                      <div style="color:#4299e1; font-weight:600; font-size:0.82em;">Photonics</div>
+                      <div style="color:gray; font-size:0.8em;">2nd Year &bull; 25PH10006</div>
+                      <div style="color:#718096; font-size:0.75em; margin-top:2px;">praneethmutchu322@gmail.com</div>
+                    </div>
+
+                    <div style="text-align:center; flex:1; min-width:140px;">
+                      <img src="../images/gallery/Officers/SXu.jpeg" alt="Isiri Harithas" style="width:120px; height:120px; object-fit:cover; border-radius:8px; margin:auto;">
+                      <div style="font-weight:bold; margin-top:0.5em;">Isiri Harithas</div>
+                      <div style="color:#4299e1; font-weight:600; font-size:0.82em;">Theoretical Physics</div>
+                      <div style="color:gray; font-size:0.8em;">2nd Year &bull; 25PH10003</div>
+                      <div style="color:#718096; font-size:0.75em; margin-top:2px;">isiriharithas@gmail.com</div>
                     </div>
                   </div>
 
@@ -272,10 +523,52 @@
     </main>
 
     <!-- Footer -->
-    <footer>
-      <div class="container py-8 text-center text-gray-400">
-        Physics Society (PhySoc), Department of Physics, IIT Kharagpur.
+    <footer class="bg-theme-light dark:bg-darkmode-theme-light">
+      <div class="container">
+        <div class="row items-center py-10">
+          <div class="lg:col-3 mb-8 text-center lg:mb-0 lg:text-left">
+            <a href="https://www.iitkgp.ac.in">
+              <span style="font-weight: bold;">Physics Society (PhySoc), IIT Kharagpur</span>
+            </a>
+          </div>
+          <div class="lg:col-6 mb-8 text-center lg:mb-0"></div>
+          <div class="lg:col-3 mb-8 text-center lg:mb-0 lg:mt-0 lg:text-right">
+            <ul class="social-icons">
+              <li>
+                <a target="_blank" aria-label="instagram" rel="nofollow noopener" href="https://www.instagram.com/physoc_iitkgp">
+                  <i class="fab fa-instagram"></i>
+                </a>
+              </li>
+              <li>
+                <a target="_blank" aria-label="linkedin" rel="nofollow noopener" href="https://linkedin.com/company/phy-soc-iit-kharagpur">
+                  <i class="fab fa-linkedin"></i>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="border-border dark:border-darkmode-border border-t py-7">
+        <div class="text-light dark:text-darkmode-light container text-center">
+          Department of Physics, Indian Institute of Technology Kharagpur.
+        </div>
       </div>
     </footer>
+
+    <!-- Scripts -->
+    <script src="../js/main.min.c382e2105e67658eff86fe0a044cac3f838636947d327cd08f2b03f6a8b21f2e.js" defer></script>
+    <script crossorigin="anonymous" src="../js/script.min.e47bd8989fcd86cba20150c3b02e9c9806d76d4d7b000a4b636d101f8a300ad6.js"></script>
+    <script defer async crossorigin="anonymous" src="../js/script-lazy.min.c3e692e360f6f81f898b1fa3a19ee902e6b5bdbbbfa512bf221a0fe796fc9f7c.js"></script>
+    <script src="../vendor/swiper-bundle.min.js"></script>
+    
+    <script>
+      const announcementBox = document.getElementById('announcement');
+      const announcementButton = document.getElementById('announcement-button');
+      if (announcementButton) {
+        announcementButton.onclick = function () {
+          announcementBox.classList.add('announcement-hide');
+        };
+      }
+    </script>
   </body>
 </html>
