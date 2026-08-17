@@ -1,1 +1,72 @@
-[]
+[
+  {
+    "title": "About PhySoc & Working Committee",
+    "url": "about/index.html",
+    "description": "Learn about the Physics Society of IIT Kharagpur, our vision, events, and the 20-member student Working Committee including Secretaries, Senior Student Members, and Student Members.",
+    "categories": ["About", "Team"],
+    "tags": ["PhySoc", "About", "Team", "Officers", "Neeraj Laikara", "Kazi Wasim Raj", "Neelabh Priyam Jha", "Rakshita", "Working Committee", "IIT Kharagpur"]
+  },
+  {
+    "title": "Academic Wing",
+    "url": "academic-wing/index.html",
+    "description": "Academic Wing of PhySoc IIT Kharagpur. Facilitating peer mentorship, subject roadmaps, course handbooks, and research domain discussions across Condensed Matter, Theoretical Physics, Biophysics, Photonics, Quantum Mechanics, and Astrophysics.",
+    "categories": ["Academic Wing"],
+    "tags": ["Academic Wing", "Physics", "Research", "Mentorship", "Quantum Mechanics", "Condensed Matter", "Astrophysics", "Biophysics", "Photonics", "Theoretical Physics", "Kedhar Athreya", "Samrudh Kashyap", "Adarsh Tiwari", "Tukshit Talani", "Daniel S", "Avani Dandawate", "Mani Barathi"]
+  },
+  {
+    "title": "Events & Activities",
+    "url": "events/index.html",
+    "description": "Explore upcoming and past events hosted by PhySoc IIT Kharagpur, including Physics Carnivals, Guest Lectures, Telescope Observation Nights, Competitions, and Socials.",
+    "categories": ["Events"],
+    "tags": ["Events", "Carnival", "Lectures", "Observation Night", "Socials", "Competitions", "Seminars"]
+  },
+  {
+    "title": "Student Resources & Handbooks",
+    "url": "resources/index.html",
+    "description": "Course handbooks, curriculum guides, research project archives, summer internship opportunities, and study materials for physics undergraduates at IIT Kharagpur.",
+    "categories": ["Resources"],
+    "tags": ["Resources", "Handbooks", "Course Material", "Projects", "Internships", "Research", "Physics Department"]
+  },
+  {
+    "title": "Competitions Committee",
+    "url": "committees/competitions/index.html",
+    "description": "Organizing physics quizzes, problem-solving hackathons, olympiads, and inter-hall physics competitions at IIT Kharagpur.",
+    "categories": ["Committees"],
+    "tags": ["Competitions", "Quizzes", "Hackathons", "Problem Solving", "PhySoc"]
+  },
+  {
+    "title": "Seminars & Guest Lectures Committee",
+    "url": "committees/seminars/index.html",
+    "description": "Hosting research talks, faculty seminars, alumni sessions, and interactive workshops with leading physicists.",
+    "categories": ["Committees"],
+    "tags": ["Seminars", "Lectures", "Research Talks", "Workshops", "Faculty"]
+  },
+  {
+    "title": "Outreach Committee",
+    "url": "committees/outreach/index.html",
+    "description": "Promoting public interest in physics on campus, school visits, science demonstrations, and astronomy outreach.",
+    "categories": ["Committees"],
+    "tags": ["Outreach", "Astronomy", "Science Demo", "Public Relations", "PhySoc"]
+  },
+  {
+    "title": "Projects Committee",
+    "url": "committees/projects/index.html",
+    "description": "Guiding undergraduate research projects, lab experiments, simulation tools, and technical physics builds.",
+    "categories": ["Committees"],
+    "tags": ["Projects", "Research", "Simulations", "Labs", "PhySoc"]
+  },
+  {
+    "title": "Media & Tech Committee",
+    "url": "committees/media/index.html",
+    "description": "Managing the website, digital posters, social media channels, event photography, and tech infrastructure for PhySoc.",
+    "categories": ["Committees"],
+    "tags": ["Media", "Tech", "Website", "Design", "Social Media", "PhySoc"]
+  },
+  {
+    "title": "Socials & Community Committee",
+    "url": "committees/socials/index.html",
+    "description": "Bringing the IIT Kharagpur physics community together through department socials, freshers welcome, farewells, and informal meetups.",
+    "categories": ["Committees"],
+    "tags": ["Socials", "Freshers", "Farewell", "Community", "Meetups"]
+  }
+]
