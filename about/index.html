@@ -1,546 +1,445 @@
-<!doctype html>
-<html
-  itemscope
-  class="light"
-  lang="en-us"
-  itemtype="http://schema.org/WebPage">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
-    <meta name="theme-name" content="hugoplate" />
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Physics Society (PhySoc) - IIT Kharagpur. Igniting curiosity, fostering discovery, and connecting the physics community.">
+  <title>Physics Society (PhySoc) | IIT Kharagpur</title>
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Roboto:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+  
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="index.css">
+</head>
+<body class="dark-theme">
+  <!-- Particle Background Canvas -->
+  <canvas id="particle-canvas"></canvas>
 
-    <link rel="shortcut icon" href="../images/logo2_hu_20f6f98a0862d010.png" type="image/x-icon">
-    <link rel="icon" href="../images/logo2_hu_20f6f98a0862d010.png" type="image/x-icon">
-    <link rel="icon" type="image/png" sizes="48x48" href="../images/logo2_hu_b53ae1fe34da2a5a.png">
-    <link rel="icon" type="image/png" sizes="96x96" href="../images/logo2_hu_20f6f98a0862d010.png">
-    <link rel="apple-touch-icon" sizes="144x144" href="../images/logo2_hu_dc2b6003544f3619.png">
-
-    <link rel="manifest" href="/manifest.webmanifest" />
-    <meta name="msapplication-TileColor" content="#ddd" />
-    <meta name="theme-color" content="#ffffff" />
-
-    <title>About</title>
-
-    <meta name="keywords" content="IIT Kharagpur, Physics, Physics Society, PhySoc, Academic Wing" />
-    <meta name="description" content="Physics Society (PhySoc) Website - IIT Kharagpur" />
-    <meta name="author" content="PhySoc Webdev" />
-
-    <meta property="og:image" content="https://sps.studentorg.berkeley.edu/images/about_background.jpg" />
-    <meta name="twitter:image" content="https://sps.studentorg.berkeley.edu/images/about_background.jpg" />
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta property="og:image:width" content="6000" />
-    <meta property="og:image:height" content="4000" />
-    <meta property="og:image:type" content="image/.jpg" />
-
-    <meta property="og:title" content="About" />
-    <meta property="og:description" content="Physics Society (PhySoc) Website" />
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://sps.studentorg.berkeley.edu/about/" />
-
-    <meta name="twitter:title" content="About" />
-    <meta name="twitter:description" content="Physics Society (PhySoc) Website" />
-    <meta name="twitter:creator" content="@PhySoc Webdev" />
-
-    <script>
-      let indexURL = "https://sps.studentorg.berkeley.edu/searchindex.json";
-      let includeSectionsInSearch = ["events"];
-      let search_no_results = "No results for";
-      let search_initial_message = "Type something to search..";
-    </script>
-
-    <link rel="stylesheet" href="../vendor/swiper-bundle.min.css" />
-
-    <meta http-equiv="x-dns-prefetch-control" content="on" />
-    <link rel="preconnect" href="https://use.fontawesome.com" crossorigin />
-    <link rel="preconnect" href="//cdnjs.cloudflare.com" />
-    <link rel="preconnect" href="//www.googletagmanager.com" />
-    <link rel="preconnect" href="//www.google-analytics.com" />
-    <link rel="dns-prefetch" href="https://use.fontawesome.com" />
-    <link rel="dns-prefetch" href="//ajax.googleapis.com" />
-    <link rel="dns-prefetch" href="//cdnjs.cloudflare.com" />
-    <link rel="dns-prefetch" href="//www.googletagmanager.com" />
-    <link rel="dns-prefetch" href="//www.google-analytics.com" />
-    <link rel="dns-prefetch" href="//fonts.googleapis.com" />
-    <link rel="dns-prefetch" href="//connect.facebook.net" />
-    <link rel="dns-prefetch" href="//platform.linkedin.com" />
-    <link rel="dns-prefetch" href="//platform.twitter.com" />
-
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <script>
-      (function () {
-        const googleFont = document.createElement("link");
-        googleFont.href = "https://fonts.googleapis.com/css2?family=IBM\u002bPlex\u002bSerif:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&family=IBM\u002bPlex\u002bSans:ital,wght@0,100..700;1,100..700&display=swap";
-        googleFont.type = "text/css";
-        googleFont.rel = "stylesheet";
-        document.head.appendChild(googleFont);
-      })();
-    </script>
-
-    <link href="../css/style.min.75408a616c8d64a93d3b03e345cadd04f72b1cded1cd7b9819149db1a7264234.css" rel="stylesheet" />
-    <link defer async rel="stylesheet" href="../css/style-lazy.min.1891ab9d1988b9b19756de1bbea47aecb95c7b5ab195f6fe52244b6eca5d8154.css" media="all" />
-  </head>
-
-  <body>
-    <!-- Announcement Banner -->
-    <div id="announcement" class="announcement announcement-hide">
-      This site is currently under construction. Thank you for your patience!
-      <button id="announcement-button" class="announcement-button">&times;</button>
-    </div>
-
-    <style>
-      .announcement {
-        position: relative;
-        z-index: 999;
-        padding: 1rem;
-        padding-right: 2.8rem;
-        background-color: #fff;
-        box-shadow: 1px 0px 10px 7px rgba(154, 154, 154, 0.11);
-        font-size: 1.1rem;
-      }
-      .announcement-button {
-        cursor: pointer;
-        padding: 0 0.5rem;
-        border: 0;
-        font-size: 1.3rem;
-        position: absolute;
-        top: 50%;
-        right: 1rem;
-        transform: translateY(-50%);
-        border: 1px solid;
-        border-radius: 50%;
-        height: 1.1em;
-        width: 1.1em;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-      }
-      .announcement-hide { display: none; }
-      .dark .announcement { background-color: #222; }
-    </style>
-
-    <!-- Header Navigation -->
-    <header class="header sticky top-0 z-30">
-      <nav class="navbar container">
-        <div class="order-0">
-          <a class="navbar-brand block" href="../index.html">
-            <img fetchpriority="high" decoding="async" class="img img-light" width="250" height="40" src="../images/logo_hu_62a2c291369a66f0.webp" alt="PhySoc" onerror="this.onerror=null;this.src='\/images\/logo_hu_2fca4d2ac2314e.jpg';" />
-            <img fetchpriority="high" decoding="async" class="img img-dark" width="250" height="40" src="../images/logo-darkmode_hu_ce06e59bade57f0d.webp" alt="PhySoc" onerror="this.onerror=null;this.src='\/images\/logo-darkmode_hu_fa721757c615f129.png';" />
-          </a>
+  <div class="app-container">
+    
+    <!-- HEADER -->
+    <header class="main-header">
+      <div class="header-left">
+        <div class="logo-container">
+          <img src="logo.svg" alt="PhySoc Logo" class="physoc-logo">
+        </div>
+        <div class="title-container">
+          <h1>PhySoc</h1>
+          <span class="sub-title">IIT Kharagpur</span>
+        </div>
+      </div>
+      
+      <div class="header-right">
+        <!-- Search bar -->
+        <div class="search-container" id="search-wrapper">
+          <input type="text" placeholder="Search PhySoc..." id="search-input" aria-label="Search site">
+          <button class="search-btn" id="search-trigger" aria-label="Toggle Search">
+            <i class="fa-solid fa-magnifying-glass"></i>
+          </button>
         </div>
         
-        <input id="nav-toggle" type="checkbox" class="hidden" />
-        <label for="nav-toggle" class="order-3 cursor-pointer flex items-center lg:hidden text-text-dark dark:text-white lg:order-1">
-          <svg id="show-button" class="h-6 fill-current block" viewBox="0 0 20 20">
-            <title>Menu Open</title>
-            <path d="M0 3h20v2H0V3z m0 6h20v2H0V9z m0 6h20v2H0V0z"></path>
-          </svg>
-          <svg id="hide-button" class="h-6 fill-current hidden" viewBox="0 0 20 20">
-            <title>Menu Close</title>
-            <polygon points="11 9 22 9 22 11 11 11 11 22 9 22 9 11 -2 11 -2 9 9 9 9 -2 11 -2" transform="rotate(45 10 10)"></polygon>
-          </svg>
-        </label>
-
-        <ul id="nav-menu" class="navbar-nav order-3 hidden lg:flex w-full pb-6 lg:order-1 lg:w-auto lg:space-x-2 lg:pb-0 xl:space-x-8">
-          <li class="nav-item">
-            <a class="nav-link" href="../about/index.html">About</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#academic-wing" onclick="switchCategory('academic-wing')">Academic Wing</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="../events/index.html">Events</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="../resources/index.html">Resources</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="../snacks/index.html">Snacks</a>
-          </li>
-          <li class="nav-item nav-dropdown group relative">
-            <span class="nav-link inline-flex items-center">
-              Committees
-              <svg class="h-4 w-4 fill-current" viewBox="0 0 20 20">
-                <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
-              </svg>
-            </span>
-            <ul class="nav-dropdown-list lg:group-hover:visible lg:group-hover:opacity-100">
-              <li class="nav-dropdown-item"><a class="nav-dropdown-link" href="#Officers" onclick="switchCategory('working-committee')">Team</a></li>
-              <li class="nav-dropdown-item"><a class="nav-dropdown-link" href="#academic-wing" onclick="switchCategory('academic-wing')">Academic Wing</a></li>
-              <li class="nav-dropdown-item"><a class="nav-dropdown-link" href="../committees/competitions/index.html">Competitions</a></li>
-              <li class="nav-dropdown-item"><a class="nav-dropdown-link" href="../committees/media/index.html">Media</a></li>
-              <li class="nav-dropdown-item"><a class="nav-dropdown-link" href="../committees/outreach/index.html">Outreach</a></li>
-              <li class="nav-dropdown-item"><a class="nav-dropdown-link" href="../committees/projects/index.html">Projects</a></li>
-              <li class="nav-dropdown-item"><a class="nav-dropdown-link" href="../committees/seminars/index.html">Seminars</a></li>
-              <li class="nav-dropdown-item"><a class="nav-dropdown-link" href="../committees/socials/index.html">Socials</a></li>
-            </ul>
-          </li>
-          <li class="mt-4 inline-block lg:hidden">
-            <a class="btn btn-outline-primary btn-sm" href="../mail/index.html">Join Mailing List</a>
-          </li>
-        </ul>
-
-        <div class="order-1 ml-auto flex items-center md:order-2 lg:ml-0">
-          <button aria-label="search" class="border-border text-text-dark hover:text-primary dark:border-darkmode-border mr-5 inline-block border-r pr-5 text-xl dark:text-white cursor-pointer dark:hover:text-darkmode-primary" data-target="search-modal">
-            <i class="fa-solid fa-search"></i>
-          </button>
-          <a href="../mail/index.html" class="btn btn-outline-primary btn-sm hidden lg:inline-block">
-            Join Mailing List
-          </a>
-        </div>
-      </nav>
+        <!-- Theme Toggle -->
+        <button class="theme-toggle-btn" id="theme-toggle" aria-label="Toggle Theme">
+          <i class="fa-solid fa-moon moon-icon"></i>
+          <i class="fa-solid fa-sun sun-icon"></i>
+        </button>
+        
+        <a href="https://www.iitkgp.ac.in/" target="_blank" class="iitkgp-link">
+          <span class="kgp-text">IIT KGP</span>
+          <i class="fa-solid fa-arrow-up-right-from-square"></i>
+        </a>
+      </div>
     </header>
 
-    <!-- MAIN BODY -->
-    <main>
-      <!-- Hero Section -->
-      <section class="relative section-sm" style="background-image: url('/images/about_background.jpg'); background-size: cover; background-position: center; background-repeat: no-repeat; height: 300px;">
-        <div class="absolute inset-0 bg-black opacity-50"></div> 
-        <div class="container h-full flex items-center justify-center relative z-10">
-          <h1 class="text-4xl font-bold text-white p-6">About</h1>
-        </div>
-      </section>
+    <!-- MAIN BODY SECTION -->
+    <div class="main-content-layout">
+      
+      <!-- LEFT SIDEBAR: MENU NAVIGATION -->
+      <aside class="sidebar-left">
+        <nav class="sidebar-nav">
+          <ul>
+            <li>
+              <a href="#home" class="nav-link active" data-tab="home">
+                <i class="fa-solid fa-house-chimney nav-icon"></i> Home
+              </a>
+            </li>
+            <li>
+              <a href="#about" class="nav-link" data-tab="about">
+                <i class="fa-solid fa-circle-info nav-icon"></i> About
+              </a>
+            </li>
+            <li>
+              <a href="#academic-wing" class="nav-link" data-tab="academic-wing">
+                <i class="fa-solid fa-graduation-cap nav-icon"></i> Academic Wing
+              </a>
+            </li>
+            <li>
+              <a href="#officers" class="nav-link" data-tab="officers">
+                <i class="fa-solid fa-users nav-icon"></i> Team
+              </a>
+            </li>
+            <li>
+              <a href="#announcements" class="nav-link" data-tab="announcements">
+                <i class="fa-solid fa-bullhorn nav-icon"></i> Announcements
+              </a>
+            </li>
+            <li class="has-submenu">
+              <a href="#resources" class="nav-link" data-tab="resources">
+                <i class="fa-solid fa-book-open-reader nav-icon"></i> Resources
+                <i class="fa-solid fa-chevron-down submenu-indicator"></i>
+              </a>
+              <ul class="submenu">
+                <li><a href="#resources-new-course" class="sub-nav-link" data-subtab="new-course">New to Physics</a></li>
+                <li><a href="#resources-handbook" class="sub-nav-link" data-subtab="handbook">Course Handbook</a></li>
+                <li><a href="#resources-projects" class="sub-nav-link" data-subtab="projects">Research & Projects</a></li>
+                <li><a href="#resources-internships" class="sub-nav-link" data-subtab="internships">Summer Opportunities</a></li>
+              </ul>
+            </li>
+          </ul>
+        </nav>
+      </aside>
 
-      <!-- Content Section -->
-      <section class="section-sm">
-        <div class="container">
-          <div class="row justify-center">
-            <div class="lg:col-10">
-              <div class="content">
-                
-                <h3 id="what-we-do">What We Do</h3>
-                <p>We host a variety of events to help bring the physics community at IITKGP closer! Members can pursue their interests in physics in rigorous competitions or more laidback socials; PhySoc is whatever you make of it. We are also here to help support you, so please feel free to talk to other members about how to make the most of your physics experience at KGP!</p>
+      <!-- MAIN CONTENT VIEW -->
+      <main class="content-area">
+        
+        <!-- ABOUT TAB -->
+        <section id="about-tab" class="tab-panel">
+          <div class="info-card wide-card">
+            <h2><i class="fa-solid fa-circle-info text-cyan"></i> About Physics Society</h2>
+            <p>The Physics Society (PhySoc) at IIT Kharagpur is the official student body representing undergraduate, postgraduate, and research scholars in the Department of Physics. We facilitate academic mentorship, scientific seminars, research discussions, and community social events.</p>
+          </div>
+        </section>
 
-                <!-- ======================================================= -->
-                <!-- TOGGLE SWITCH FOR MEMBER / ACADEMIC WING               -->
-                <!-- ======================================================= -->
-                <h3 id="Officers">Team</h3>
-
-                <div style="display:flex; justify-content:center; gap:16px; margin: 2rem 0;">
-                  <button id="toggle-working-committee" onclick="switchCategory('working-committee')" 
-                          style="padding: 10px 28px; border-radius: 25px; border: 2px solid #4299e1; ; font-weight: 600; font-size:0.95rem; cursor: pointer; transition: all 0.3s ease; box-shadow: 0 4px 12px rgba(66, 153, 225, 0.25);">
-                    Member
-                  </button>
-                  <button id="toggle-academic-wing" onclick="switchCategory('academic-wing')" 
-                          style="padding: 10px 28px; border-radius: 25px; border: 2px solid #4299e1; background-color: transparent; color: #4299e1; font-weight: 600; font-size:0.95rem; cursor: pointer; transition: all 0.3s ease;">
-                    Academic Wing
-                  </button>
+        <!-- ACADEMIC WING TAB -->
+        <section id="academic-wing-tab" class="tab-panel active">
+          <div class="info-card wide-card">
+            <div class="academic-wing-header">
+              <h2><i class="fa-solid fa-graduation-cap text-cyan"></i> PhySoc Academic Wing</h2>
+              <span class="wing-badge">Department of Physics, IIT Kharagpur</span>
+            </div>
+            <p class="section-desc">The academic core of PhySoc — facilitating peer mentorship, course roadmaps, subject handbooks, research seminars, and specialized interest groups across theoretical & experimental physics domains.</p>
+            
+            <div class="divider"></div>
+            
+            <!-- Wing Leadership -->
+            <h3>Academic Wing Secretary</h3>
+            <div class="officers-grid" style="margin-bottom: 35px;">
+              <div class="officer-card profile-card wasim-card">
+                <div class="dark-header-bg"></div>
+                <div class="absolute-avatar">
+                  <img src="wasim.jpg" alt="Kazi Wasim Raj" class="avatar-img circular-crop">
                 </div>
-
-                <!-- CATEGORY 1: PHYSOC WORKING COMMITTEE (MEMBER) -->
-                <div id="category-working-committee" style="width:100%; max-width:900px; margin:auto;">
-                  
-                  <!-- Row 1: Secretaries -->
-                  <div style="display:flex; gap:24px; justify-content:center; margin-bottom:2em; flex-wrap:wrap;">
-                    <div style="text-align:center; flex:1; min-width:130px; max-width:160px;">
-                      <img src="../images/gallery/Officers/neerajlaikara.jpeg" alt="Neeraj Laikara" style="width:120px; height:120px; object-fit:cover; border-radius:8px; margin:auto;">
-                      <div style="font-weight:bold; margin-top:0.5em;">Neeraj Laikara</div>
-                      <div style="color:#4299e1; font-weight:600; font-size:0.82em;">Secretary (Events & Competitions)</div>
-                    </div>
-
-                    <div style="text-align:center; flex:1; min-width:130px; max-width:160px;">
-                      <img src="../images/gallery/Officers/wasim.png" alt="Kazi Wasim Raj" style="width:120px; height:120px; object-fit:cover; border-radius:8px; margin:auto;">
-                      <div style="font-weight:bold; margin-top:0.5em;">Kazi Wasim Raj</div>
-                      <div style="color:#4299e1; font-weight:600; font-size:0.82em;">Secretary (Academic Wing)</div>
-                    </div>
-
-                    <div style="text-align:center; flex:1; min-width:130px; max-width:160px;">
-                      <img src="../images/gallery/Officers/neelabh.jpeg" alt="Neelabh Priyam Jha" style="width:120px; height:120px; object-fit:cover; border-radius:8px; margin:auto;">
-                      <div style="font-weight:bold; margin-top:0.5em;">Neelabh Priyam Jha</div>
-                      <div style="color:#4299e1; font-weight:600; font-size:0.82em;">Secretary (Tech & Finance)</div>
-                    </div>
-
-                    <div style="text-align:center; flex:1; min-width:130px; max-width:160px;">
-                      <img src="../images/gallery/Officers/JKHuskey.jpeg" alt="Rakshita" style="width:120px; height:120px; object-fit:cover; border-radius:8px; margin:auto;">
-                      <div style="font-weight:bold; margin-top:0.5em;">Rakshita</div>
-                      <div style="color:#4299e1; font-weight:600; font-size:0.82em;">Secretary (Outreach)</div>
-                    </div>
+                <div class="card-content-shift">
+                  <h3>Kazi Wasim Raj</h3>
+                  <span class="role" style="color:#4299e1; font-weight:600;">Secretary (Academic Wing)</span>
+                  <span class="roll-tag">Roll: 24PH10005 &bull; 3rd Year</span>
+                  <p>Leads academic curriculum resources, peer mentoring programs, and academic wing coordination.</p>
+                  <div class="officer-links">
+                    <a href="mailto:kazi90ar@gmail.com" title="Email Kazi Wasim Raj"><i class="fa-solid fa-envelope"></i></a>
+                    <a href="tel:9679951538" title="Call Kazi Wasim Raj"><i class="fa-solid fa-phone"></i></a>
                   </div>
-
-                  <!-- Row 2: Senior Student Members -->
-                  <div style="display:flex; gap:24px; justify-content:center; margin-bottom:2em; flex-wrap:wrap;">
-                    <div style="text-align:center; flex:1; min-width:130px; max-width:160px;">
-                      <img src="../images/gallery/Officers/sagerneel.png" alt="Sayak Moulic" style="width:120px; height:120px; object-fit:cover; border-radius:8px; margin:auto;">
-                      <div style="font-weight:bold; margin-top:0.5em;">Sayak Moulic</div>
-                      <div style="color:gray; font-size:0.85em;">Senior Student Member</div>
-                    </div>
-
-                    <div style="text-align:center; flex:1; min-width:130px; max-width:160px;">
-                      <img src="../images/gallery/Officers/BSimberg.jpeg" alt="Skanda K M" style="width:120px; height:120px; object-fit:cover; border-radius:8px; margin:auto;">
-                      <div style="font-weight:bold; margin-top:0.5em;">Skanda K M</div>
-                      <div style="color:gray; font-size:0.85em;">Senior Student Member</div>
-                    </div>
-
-                    <div style="text-align:center; flex:1; min-width:130px; max-width:160px;">
-                      <img src="../images/gallery/Officers/FChou.jpeg" alt="Aman Kumar" style="width:120px; height:120px; object-fit:cover; border-radius:8px; margin:auto;">
-                      <div style="font-weight:bold; margin-top:0.5em;">Aman Kumar</div>
-                      <div style="color:gray; font-size:0.85em;">Senior Student Member</div>
-                    </div>
-
-                    <div style="text-align:center; flex:1; min-width:130px; max-width:160px;">
-                      <img src="../images/gallery/Officers/HOBale.jpeg" alt="Rudraksh Thakur" style="width:120px; height:120px; object-fit:cover; border-radius:8px; margin:auto;">
-                      <div style="font-weight:bold; margin-top:0.5em;">Rudraksh Thakur</div>
-                      <div style="color:gray; font-size:0.85em;">Senior Student Member</div>
-                    </div>
-                  </div>
-
-                  <!-- Row 3: Student Members (5 per row) -->
-                  <div style="display:flex; gap:24px; justify-content:center; margin-bottom:2em; flex-wrap:wrap;">
-                    <div style="text-align:center; flex:1; min-width:130px; max-width:150px;">
-                      <img src="../images/gallery/Officers/JZhang.jpg" alt="Gaurish Malik" style="width:120px; height:120px; object-fit:cover; border-radius:8px; margin:auto;">
-                      <div style="font-weight:bold; margin-top:0.5em;">Gaurish Malik</div>
-                      <div style="color:gray; font-size:0.85em;">Student Member</div>
-                    </div>
-
-                    <div style="text-align:center; flex:1; min-width:130px; max-width:150px;">
-                      <img src="../images/gallery/Officers/KDeoskar.jpg" alt="KVVH Vasishta" style="width:120px; height:120px; object-fit:cover; border-radius:8px; margin:auto;">
-                      <div style="font-weight:bold; margin-top:0.5em;">KVVH Vasishta</div>
-                      <div style="color:gray; font-size:0.85em;">Student Member</div>
-                    </div>
-
-                    <div style="text-align:center; flex:1; min-width:130px; max-width:150px;">
-                      <img src="../images/gallery/Officers/KHernandez.png" alt="Padma Youdon" style="width:120px; height:120px; object-fit:cover; border-radius:8px; margin:auto;">
-                      <div style="font-weight:bold; margin-top:0.5em;">Padma Youdon</div>
-                      <div style="color:gray; font-size:0.85em;">Student Member</div>
-                    </div>
-
-                    <div style="text-align:center; flex:1; min-width:130px; max-width:150px;">
-                      <img src="../images/gallery/Officers/KLAdcock.jpeg" alt="Utkarsh Singh" style="width:120px; height:120px; object-fit:cover; border-radius:8px; margin:auto;">
-                      <div style="font-weight:bold; margin-top:0.5em;">Utkarsh Singh</div>
-                      <div style="color:gray; font-size:0.85em;">Student Member</div>
-                    </div>
-
-                    <div style="text-align:center; flex:1; min-width:130px; max-width:150px;">
-                      <img src="../images/gallery/Officers/MKe.jpeg" alt="Avtar Jain" style="width:120px; height:120px; object-fit:cover; border-radius:8px; margin:auto;">
-                      <div style="font-weight:bold; margin-top:0.5em;">Avtar Jain</div>
-                      <div style="color:gray; font-size:0.85em;">Student Member</div>
-                    </div>
-                  </div>
-
-                  <!-- Row 4: Student Members (5 per row) -->
-                  <div style="display:flex; gap:24px; justify-content:center; margin-bottom:2em; flex-wrap:wrap;">
-                    <div style="text-align:center; flex:1; min-width:130px; max-width:150px;">
-                      <img src="../images/gallery/Officers/NSun.jpeg" alt="Abir Dutta" style="width:120px; height:120px; object-fit:cover; border-radius:8px; margin:auto;">
-                      <div style="font-weight:bold; margin-top:0.5em;">Abir Dutta</div>
-                      <div style="color:gray; font-size:0.85em;">Student Member</div>
-                    </div>
-
-                    <div style="text-align:center; flex:1; min-width:130px; max-width:150px;">
-                      <img src="../images/gallery/Officers/RKReczek.jpeg" alt="Aditya senapati" style="width:120px; height:120px; object-fit:cover; border-radius:8px; margin:auto;">
-                      <div style="font-weight:bold; margin-top:0.5em;">Aditya senapati</div>
-                    </div>
-
-                    <div style="text-align:center; flex:1; min-width:130px; max-width:150px;">
-                      <img src="../images/gallery/Officers/SGoel.jpg" alt="Darshana Katariya" style="width:120px; height:120px; object-fit:cover; border-radius:8px; margin:auto;">
-                      <div style="font-weight:bold; margin-top:0.5em;">Darshana Katariya</div>
-                    </div>
-
-                    <div style="text-align:center; flex:1; min-width:130px; max-width:150px;">
-                      <img src="../images/gallery/Officers/SKulkarni.jpg" alt="Jayant Kumar Kushwaha" style="width:120px; height:120px; object-fit:cover; border-radius:8px; margin:auto;">
-                      <div style="font-weight:bold; margin-top:0.5em;">Jayant Kumar Kushwaha</div>
-                      <div style="color:gray; font-size:0.85em;">Student Member</div>
-                    </div>
-
-                    <div style="text-align:center; flex:1; min-width:130px; max-width:150px;">
-                      <img src="../images/gallery/Officers/SMahajan.JPG" alt="Pratham Matad" style="width:120px; height:120px; object-fit:cover; border-radius:8px; margin:auto;">
-                      <div style="font-weight:bold; margin-top:0.5em;">Pratham Matad</div>
-                      <div style="color:gray; font-size:0.85em;">Student Member</div>
-                    </div>
-                  </div>
-
-                  <!-- Row 5: Student Members -->
-                  <div style="display:flex; gap:24px; justify-content:center; margin-bottom:2em; flex-wrap:wrap;">
-                    <div style="text-align:center; flex:1; min-width:130px; max-width:150px;">
-                      <img src="../images/gallery/Officers/SSShirol.jpeg" alt="Sidhant Jain" style="width:120px; height:120px; object-fit:cover; border-radius:8px; margin:auto;">
-                      <div style="font-weight:bold; margin-top:0.5em;">Sidhant Jain</div>
-                      <div style="color:gray; font-size:0.85em;">Student Member</div>
-                    </div>
-
-                    <div style="text-align:center; flex:1; min-width:130px; max-width:150px;">
-                      <img src="../images/gallery/Officers/SXu.jpeg" alt="Subhra Gour" style="width:120px; height:120px; object-fit:cover; border-radius:8px; margin:auto;">
-                      <div style="font-weight:bold; margin-top:0.5em;">Subhra Gour</div>
-                      <div style="color:gray; font-size:0.85em;">Student Member</div>
-                    </div>
-                  </div>
-
                 </div>
+              </div>
+            </div>
 
-                <!-- CATEGORY 2: ACADEMIC WING (LIGHT BLUE FIELDS) -->
-                <div id="category-academic-wing" style="width:100%; max-width:900px; margin:auto; display:none;">
-                  
-                  <!-- Academic Wing Row 1 (5 per row) -->
-                  <div style="display:flex; gap:24px; justify-content:center; margin-bottom:2em; flex-wrap:wrap;">
-                    <div style="text-align:center; flex:1; min-width:130px; max-width:150px;">
-                      <img src="../images/gallery/Officers/wasim.png" alt="Kazi Wasim Raj" style="width:120px; height:120px; object-fit:cover; border-radius:8px; margin:auto;">
-                      <div style="font-weight:bold; margin-top:0.5em;">Kazi Wasim Raj</div>
-                    </div>
+            <div class="divider"></div>
 
-                    <div style="text-align:center; flex:1; min-width:130px; max-width:150px;">
-                      <img src="../images/gallery/Officers/YZayats.jpg" alt="Kedhar Athreya S" style="width:120px; height:120px; object-fit:cover; border-radius:8px; margin:auto;">
-                      <div style="font-weight:bold; margin-top:0.5em;">Kedhar Athreya S</div>
-                    </div>
+            <!-- Domain Search & Filters -->
+            <div class="academic-filter-bar">
+              <div class="search-box-inline">
+                <i class="fa-solid fa-magnifying-glass search-inline-icon"></i>
+                <input type="text" id="academic-search-input" placeholder="Search members by name, roll no, or research field..." aria-label="Search Academic Wing Members">
+              </div>
+              <div class="domain-filter-tags" id="domain-filters">
+                <button class="domain-btn active" data-domain="all">All Fields</button>
+                <button class="domain-btn" data-domain="Theoretical Physics">Theoretical Physics</button>
+                <button class="domain-btn" data-domain="Condensed Matter Physics">Condensed Matter</button>
+                <button class="domain-btn" data-domain="Astrophysics">Astrophysics</button>
+                <button class="domain-btn" data-domain="Photonics">Photonics</button>
+                <button class="domain-btn" data-domain="Quantum Mechanics">Quantum Mechanics</button>
+                <button class="domain-btn" data-domain="Biophysics">Biophysics</button>
+              </div>
+            </div>
 
-                    <div style="text-align:center; flex:1; min-width:130px; max-width:150px;">
-                      <img src="../images/gallery/Officers/ZMonschein.jpeg" alt="Samrudh R Kashyap" style="width:120px; height:120px; object-fit:cover; border-radius:8px; margin:auto;">
-                      <div style="font-weight:bold; margin-top:0.5em;">Samrudh R Kashyap</div>
-                    </div>
-
-                    <div style="text-align:center; flex:1; min-width:130px; max-width:150px;">
-                      <img src="../images/gallery/Officers/JZhang.jpg" alt="Adarsh Tiwari" style="width:120px; height:120px; object-fit:cover; border-radius:8px; margin:auto;">
-                      <div style="font-weight:bold; margin-top:0.5em;">Adarsh Tiwari</div>
-                    </div>
-
-                    <div style="text-align:center; flex:1; min-width:130px; max-width:150px;">
-                      <img src="../images/gallery/Officers/KDeoskar.jpg" alt="Tukshit Talani" style="width:120px; height:120px; object-fit:cover; border-radius:8px; margin:auto;">
-                      <div style="font-weight:bold; margin-top:0.5em;">Tukshit Talani</div>
-                    </div>
+            <div class="academic-members-grid" id="academic-members-grid">
+              <!-- Member 1 -->
+              <div class="academic-member-card" data-domain="Condensed Matter Physics" data-year="3rd Year" data-name="Kedhar Athreya S" data-roll="24PH10022">
+                <div class="member-header">
+                  <div class="member-avatar-icon"><i class="fa-solid fa-user"></i></div>
+                  <div>
+                    <h4>Kedhar Athreya S</h4>
+                    <span class="member-roll">24PH10022 &bull; 3rd Year</span>
                   </div>
-
-                  <!-- Academic Wing Row 2 (5 per row) -->
-                  <div style="display:flex; gap:24px; justify-content:center; margin-bottom:2em; flex-wrap:wrap;">
-                    <div style="text-align:center; flex:1; min-width:130px; max-width:150px;">
-                      <img src="../images/gallery/Officers/KHernandez.png" alt="Daniel S" style="width:120px; height:120px; object-fit:cover; border-radius:8px; margin:auto;">
-                      <div style="font-weight:bold; margin-top:0.5em;">Daniel S</div>
-                    </div>
-
-                    <div style="text-align:center; flex:1; min-width:130px; max-width:150px;">
-                      <img src="../images/gallery/Officers/KLAdcock.jpeg" alt="Avani Dandawate" style="width:120px; height:120px; object-fit:cover; border-radius:8px; margin:auto;">
-                      <div style="font-weight:bold; margin-top:0.5em;">Avani Dandawate</div>
-                    </div>
-
-                    <div style="text-align:center; flex:1; min-width:130px; max-width:150px;">
-                      <img src="../images/gallery/Officers/MKe.jpeg" alt="Mani Barathi" style="width:120px; height:120px; object-fit:cover; border-radius:8px; margin:auto;">
-                      <div style="font-weight:bold; margin-top:0.5em;">Mani Barathi</div>
-                    </div>
-
-                    <div style="text-align:center; flex:1; min-width:130px; max-width:150px;">
-                      <img src="../images/gallery/Officers/NSun.jpeg" alt="Bramhavidnya Kachave" style="width:120px; height:120px; object-fit:cover; border-radius:8px; margin:auto;">
-                      <div style="font-weight:bold; margin-top:0.5em;">Bramhavidnya K.</div>
-                    </div>
-
-                    <div style="text-align:center; flex:1; min-width:130px; max-width:150px;">
-                      <img src="../images/gallery/Officers/RKReczek.jpeg" alt="Biswajeet Bhuyan" style="width:120px; height:120px; object-fit:cover; border-radius:8px; margin:auto;">
-                      <div style="font-weight:bold; margin-top:0.5em;">Biswajeet Bhuyan</div>
-                    </div>
-                  </div>
-
-                  <!-- Academic Wing Row 3 (5 per row) -->
-                  <div style="display:flex; gap:24px; justify-content:center; margin-bottom:2em; flex-wrap:wrap;">
-                    <div style="text-align:center; flex:1; min-width:130px; max-width:150px;">
-                      <img src="../images/gallery/Officers/SGoel.jpg" alt="Adith Sankarram" style="width:120px; height:120px; object-fit:cover; border-radius:8px; margin:auto;">
-                      <div style="font-weight:bold; margin-top:0.5em;">Adith Sankarram</div>
-                    </div>
-
-                    <div style="text-align:center; flex:1; min-width:130px; max-width:150px;">
-                      <img src="../images/gallery/Officers/SKulkarni.jpg" alt="Rushabh Santosh Bodwade" style="width:120px; height:120px; object-fit:cover; border-radius:8px; margin:auto;">
-                      <div style="font-weight:bold; margin-top:0.5em;">Rushabh Santosh</div>
-                    </div>
-
-                    <div style="text-align:center; flex:1; min-width:130px; max-width:150px;">
-                      <img src="../images/gallery/Officers/SMahajan.JPG" alt="Dishant Talse" style="width:120px; height:120px; object-fit:cover; border-radius:8px; margin:auto;">
-                      <div style="font-weight:bold; margin-top:0.5em;">Dishant Talse</div>
-                    </div>
-
-                    <div style="text-align:center; flex:1; min-width:130px; max-width:150px;">
-                      <img src="../images/gallery/Officers/SSShirol.jpeg" alt="Praneeth Mutchu" style="width:120px; height:120px; object-fit:cover; border-radius:8px; margin:auto;">
-                      <div style="font-weight:bold; margin-top:0.5em;">Praneeth Mutchu</div>
-                    </div>
-
-                    <div style="text-align:center; flex:1; min-width:130px; max-width:150px;">
-                      <img src="../images/gallery/Officers/SXu.jpeg" alt="Isiri Harithas" style="width:120px; height:120px; object-fit:cover; border-radius:8px; margin:auto;">
-                      <div style="font-weight:bold; margin-top:0.5em;">Isiri Harithas</div>
-                    </div>
-                  </div>
-
                 </div>
+                <div class="member-domain" style="color: #4299e1; font-weight: 600;"><i class="fa-solid fa-microscope"></i> Condensed Matter Physics</div>
+                <div class="member-contact">
+                  <a href="mailto:kedharathreya.24@kgpian.iitkgp.ac.in" class="contact-pill"><i class="fa-solid fa-envelope"></i> Email</a>
+                  <a href="tel:8122980394" class="contact-pill"><i class="fa-solid fa-phone"></i> 8122980394</a>
+                </div>
+              </div>
 
-                <script>
-                  function switchCategory(category) {
-                    var btnMember = document.getElementById('toggle-working-committee');
-                    var btnAcademic = document.getElementById('toggle-academic-wing');
-                    var gridMember = document.getElementById('category-working-committee');
-                    var gridAcademic = document.getElementById('category-academic-wing');
+              <!-- Member 2 -->
+              <div class="academic-member-card" data-domain="Biophysics" data-year="2nd Year" data-name="Samrudh R Kashyap" data-roll="25PH10040">
+                <div class="member-header">
+                  <div class="member-avatar-icon"><i class="fa-solid fa-user"></i></div>
+                  <div>
+                    <h4>Samrudh R Kashyap</h4>
+                    <span class="member-roll">25PH10040 &bull; 2nd Year</span>
+                  </div>
+                </div>
+                <div class="member-domain" style="color: #4299e1; font-weight: 600;"><i class="fa-solid fa-dna"></i> Biophysics</div>
+                <div class="member-contact">
+                  <a href="mailto:samrudhrkashyap@gmail.com" class="contact-pill"><i class="fa-solid fa-envelope"></i> Email</a>
+                  <a href="tel:9663503051" class="contact-pill"><i class="fa-solid fa-phone"></i> 9663503051</a>
+                </div>
+              </div>
 
-                    if (category === 'working-committee') {
-                      btnMember.style.backgroundColor = '#4299e1';
-                      btnMember.style.color = '#ffffff';
-                      btnMember.style.boxShadow = '0 4px 12px rgba(66, 153, 225, 0.25)';
-                      
-                      btnAcademic.style.backgroundColor = 'transparent';
-                      btnAcademic.style.color = '#4299e1';
-                      btnAcademic.style.boxShadow = 'none';
+              <!-- Member 3 -->
+              <div class="academic-member-card" data-domain="Theoretical Physics" data-year="4th Year" data-name="Adarsh Tiwari" data-roll="23PH10003">
+                <div class="member-header">
+                  <div class="member-avatar-icon"><i class="fa-solid fa-user"></i></div>
+                  <div>
+                    <h4>Adarsh Tiwari</h4>
+                    <span class="member-roll">23PH10003 &bull; 4th Year</span>
+                  </div>
+                </div>
+                <div class="member-domain" style="color: #4299e1; font-weight: 600;"><i class="fa-solid fa-infinity"></i> Theoretical Physics</div>
+                <div class="member-contact">
+                  <a href="mailto:adarsh0808@kgpian.iitkgp.ac.in" class="contact-pill"><i class="fa-solid fa-envelope"></i> Email</a>
+                  <a href="tel:7489299650" class="contact-pill"><i class="fa-solid fa-phone"></i> 7489299650</a>
+                </div>
+              </div>
 
-                      gridMember.style.display = 'block';
-                      gridAcademic.style.display = 'none';
-                    } else {
-                      btnAcademic.style.backgroundColor = '#4299e1';
-                      btnAcademic.style.color = '#ffffff';
-                      btnAcademic.style.boxShadow = '0 4px 12px rgba(66, 153, 225, 0.25)';
+              <!-- Member 4 -->
+              <div class="academic-member-card" data-domain="Theoretical Physics" data-year="3rd Year" data-name="Tukshit Talani" data-roll="24PH10004">
+                <div class="member-header">
+                  <div class="member-avatar-icon"><i class="fa-solid fa-user"></i></div>
+                  <div>
+                    <h4>Tukshit Talani</h4>
+                    <span class="member-roll">24PH10004 &bull; 3rd Year</span>
+                  </div>
+                </div>
+                <div class="member-domain" style="color: #4299e1; font-weight: 600;"><i class="fa-solid fa-infinity"></i> Theoretical Physics</div>
+                <div class="member-contact">
+                  <a href="mailto:tukshitreso@gmail.com" class="contact-pill"><i class="fa-solid fa-envelope"></i> Email</a>
+                  <a href="tel:9460337350" class="contact-pill"><i class="fa-solid fa-phone"></i> 9460337350</a>
+                </div>
+              </div>
 
-                      btnMember.style.backgroundColor = 'transparent';
-                      btnMember.style.color = '#4299e1';
-                      btnMember.style.boxShadow = 'none';
+              <!-- Member 5 -->
+              <div class="academic-member-card" data-domain="Photonics" data-year="2nd Year" data-name="Daniel S" data-roll="25PH10023">
+                <div class="member-header">
+                  <div class="member-avatar-icon"><i class="fa-solid fa-user"></i></div>
+                  <div>
+                    <h4>Daniel S</h4>
+                    <span class="member-roll">25PH10023 &bull; 2nd Year</span>
+                  </div>
+                </div>
+                <div class="member-domain" style="color: #4299e1; font-weight: 600;"><i class="fa-solid fa-lightbulb"></i> Photonics</div>
+                <div class="member-contact">
+                  <a href="mailto:daniel25@kgpian.iitkgp.ac.in" class="contact-pill"><i class="fa-solid fa-envelope"></i> Email</a>
+                  <a href="tel:7305946629" class="contact-pill"><i class="fa-solid fa-phone"></i> 7305946629</a>
+                </div>
+              </div>
 
-                      gridMember.style.display = 'none';
-                      gridAcademic.style.display = 'block';
-                    }
-                  }
-                </script>
+              <!-- Member 6 -->
+              <div class="academic-member-card" data-domain="Quantum Mechanics" data-year="3rd Year" data-name="Avani Dandawate" data-roll="24PH10001">
+                <div class="member-header">
+                  <div class="member-avatar-icon"><i class="fa-solid fa-user"></i></div>
+                  <div>
+                    <h4>Avani Dandawate</h4>
+                    <span class="member-roll">24PH10001 &bull; 3rd Year</span>
+                  </div>
+                </div>
+                <div class="member-domain" style="color: #4299e1; font-weight: 600;"><i class="fa-solid fa-atom"></i> Quantum Mechanics</div>
+                <div class="member-contact">
+                  <a href="mailto:avanidandawate@gmail.com" class="contact-pill"><i class="fa-solid fa-envelope"></i> Email</a>
+                  <a href="tel:8329348148" class="contact-pill"><i class="fa-solid fa-phone"></i> 8329348148</a>
+                </div>
+              </div>
 
+              <!-- Member 7 -->
+              <div class="academic-member-card" data-domain="Theoretical Physics" data-year="3rd Year" data-name="Mani Barathi" data-roll="24PH10026">
+                <div class="member-header">
+                  <div class="member-avatar-icon"><i class="fa-solid fa-user"></i></div>
+                  <div>
+                    <h4>Mani Barathi</h4>
+                    <span class="member-roll">24PH10026 &bull; 3rd Year</span>
+                  </div>
+                </div>
+                <div class="member-domain" style="color: #4299e1; font-weight: 600;"><i class="fa-solid fa-infinity"></i> Theoretical Physics</div>
+                <div class="member-contact">
+                  <a href="mailto:manibarathiag.24@kgpian.iitkgp.ac.in" class="contact-pill"><i class="fa-solid fa-envelope"></i> Email</a>
+                  <a href="tel:6371615658" class="contact-pill"><i class="fa-solid fa-phone"></i> 6371615658</a>
+                </div>
+              </div>
+
+              <!-- Member 8 -->
+              <div class="academic-member-card" data-domain="Astrophysics" data-year="2nd Year" data-name="Bramhavidnya Kachave" data-roll="25PH10026">
+                <div class="member-header">
+                  <div class="member-avatar-icon"><i class="fa-solid fa-user"></i></div>
+                  <div>
+                    <h4>Bramhavidnya Kachave</h4>
+                    <span class="member-roll">25PH10026 &bull; 2nd Year</span>
+                  </div>
+                </div>
+                <div class="member-domain" style="color: #4299e1; font-weight: 600;"><i class="fa-solid fa-user-astronaut"></i> Astrophysics</div>
+                <div class="member-contact">
+                  <a href="mailto:bramhavidnyakachave@gmail.com" class="contact-pill"><i class="fa-solid fa-envelope"></i> Email</a>
+                  <a href="tel:8007922476" class="contact-pill"><i class="fa-solid fa-phone"></i> 8007922476</a>
+                </div>
+              </div>
+
+              <!-- Member 9 -->
+              <div class="academic-member-card" data-domain="Theoretical Physics" data-year="2nd Year" data-name="Biswajeet Bhuyan" data-roll="25PH10002">
+                <div class="member-header">
+                  <div class="member-avatar-icon"><i class="fa-solid fa-user"></i></div>
+                  <div>
+                    <h4>Biswajeet Bhuyan</h4>
+                    <span class="member-roll">25PH10002 &bull; 2nd Year</span>
+                  </div>
+                </div>
+                <div class="member-domain" style="color: #4299e1; font-weight: 600;"><i class="fa-solid fa-infinity"></i> Theoretical Physics</div>
+                <div class="member-contact">
+                  <a href="mailto:sbhuyan47025@kgpian.iitkgp.ac.in" class="contact-pill"><i class="fa-solid fa-envelope"></i> Email</a>
+                  <a href="tel:8249402145" class="contact-pill"><i class="fa-solid fa-phone"></i> 8249402145</a>
+                </div>
+              </div>
+
+              <!-- Member 10 -->
+              <div class="academic-member-card" data-domain="Astrophysics" data-year="3rd Year" data-name="Adith Sankarram" data-roll="24PH10007">
+                <div class="member-header">
+                  <div class="member-avatar-icon"><i class="fa-solid fa-user"></i></div>
+                  <div>
+                    <h4>Adith Sankarram</h4>
+                    <span class="member-roll">24PH10007 &bull; 3rd Year</span>
+                  </div>
+                </div>
+                <div class="member-domain" style="color: #4299e1; font-weight: 600;"><i class="fa-solid fa-user-astronaut"></i> Astrophysics</div>
+                <div class="member-contact">
+                  <a href="mailto:student149208@gmail.com" class="contact-pill"><i class="fa-solid fa-envelope"></i> Email</a>
+                  <a href="tel:9677626023" class="contact-pill"><i class="fa-solid fa-phone"></i> 9677626023</a>
+                </div>
+              </div>
+
+              <!-- Member 11 -->
+              <div class="academic-member-card" data-domain="Academic Secretary" data-year="3rd Year" data-name="Kazi Wasim Raj" data-roll="24PH10005">
+                <div class="member-header">
+                  <div class="member-avatar-icon"><i class="fa-solid fa-user"></i></div>
+                  <div>
+                    <h4>Kazi Wasim Raj</h4>
+                    <span class="member-roll">24PH10005 &bull; 3rd Year</span>
+                  </div>
+                </div>
+                <div class="member-domain" style="color: #4299e1; font-weight: 600;"><i class="fa-solid fa-award"></i> Secretary (Academic Wing)</div>
+                <div class="member-contact">
+                  <a href="mailto:kazi90ar@gmail.com" class="contact-pill"><i class="fa-solid fa-envelope"></i> Email</a>
+                  <a href="tel:9679951538" class="contact-pill"><i class="fa-solid fa-phone"></i> 9679951538</a>
+                </div>
+              </div>
+
+              <!-- Member 12 -->
+              <div class="academic-member-card" data-domain="Theoretical Physics" data-year="2nd Year" data-name="Rushabh Santosh Bodwade" data-roll="25PH10009">
+                <div class="member-header">
+                  <div class="member-avatar-icon"><i class="fa-solid fa-user"></i></div>
+                  <div>
+                    <h4>Rushabh Santosh Bodwade</h4>
+                    <span class="member-roll">25PH10009 &bull; 2nd Year</span>
+                  </div>
+                </div>
+                <div class="member-domain" style="color: #4299e1; font-weight: 600;"><i class="fa-solid fa-infinity"></i> Theoretical Physics</div>
+                <div class="member-contact">
+                  <a href="mailto:rushabhbodwade@gmail.com" class="contact-pill"><i class="fa-solid fa-envelope"></i> Email</a>
+                  <a href="tel:8454914909" class="contact-pill"><i class="fa-solid fa-phone"></i> 8454914909</a>
+                </div>
+              </div>
+
+              <!-- Member 13 -->
+              <div class="academic-member-card" data-domain="General Physics" data-year="2nd Year" data-name="Dishant Talse" data-roll="25PH10024">
+                <div class="member-header">
+                  <div class="member-avatar-icon"><i class="fa-solid fa-user"></i></div>
+                  <div>
+                    <h4>Dishant Talse</h4>
+                    <span class="member-roll">25PH10024 &bull; 2nd Year</span>
+                  </div>
+                </div>
+                <div class="member-domain" style="color: #4299e1; font-weight: 600;"><i class="fa-solid fa-flask"></i> General Physics</div>
+                <div class="member-contact">
+                  <a href="mailto:dishanttalsem13@gmail.com" class="contact-pill"><i class="fa-solid fa-envelope"></i> Email</a>
+                  <a href="tel:9665375178" class="contact-pill"><i class="fa-solid fa-phone"></i> 9665375178</a>
+                </div>
+              </div>
+
+              <!-- Member 14 -->
+              <div class="academic-member-card" data-domain="Photonics" data-year="2nd Year" data-name="Praneeth Mutchu" data-roll="25PH10006">
+                <div class="member-header">
+                  <div class="member-avatar-icon"><i class="fa-solid fa-user"></i></div>
+                  <div>
+                    <h4>Praneeth Mutchu</h4>
+                    <span class="member-roll">25PH10006 &bull; 2nd Year</span>
+                  </div>
+                </div>
+                <div class="member-domain" style="color: #4299e1; font-weight: 600;"><i class="fa-solid fa-lightbulb"></i> Photonics</div>
+                <div class="member-contact">
+                  <a href="mailto:praneethmutchu322@gmail.com" class="contact-pill"><i class="fa-solid fa-envelope"></i> Email</a>
+                  <a href="tel:7483934589" class="contact-pill"><i class="fa-solid fa-phone"></i> 7483934589</a>
+                </div>
+              </div>
+
+              <!-- Member 15 -->
+              <div class="academic-member-card" data-domain="Theoretical Physics" data-year="2nd Year" data-name="Isiri Harithas" data-roll="25PH10003">
+                <div class="member-header">
+                  <div class="member-avatar-icon"><i class="fa-solid fa-user"></i></div>
+                  <div>
+                    <h4>Isiri Harithas</h4>
+                    <span class="member-roll">25PH10003 &bull; 2nd Year</span>
+                  </div>
+                </div>
+                <div class="member-domain" style="color: #4299e1; font-weight: 600;"><i class="fa-solid fa-infinity"></i> Theoretical Physics</div>
+                <div class="member-contact">
+                  <a href="mailto:isiriharithas@gmail.com" class="contact-pill"><i class="fa-solid fa-envelope"></i> Email</a>
+                  <a href="tel:9900114572" class="contact-pill"><i class="fa-solid fa-phone"></i> 9900114572</a>
+                </div>
               </div>
             </div>
           </div>
-        </div>
-      </section>
-    </main>
+        </section>
 
-    <!-- Footer -->
-    <footer class="bg-theme-light dark:bg-darkmode-theme-light">
-      <div class="container">
-        <div class="row items-center py-10">
-          <div class="lg:col-3 mb-8 text-center lg:mb-0 lg:text-left">
-            <a href="https://www.iitkgp.ac.in">
-              <span style="font-weight: bold;">Physics Society (PhySoc), IIT Kharagpur</span>
-            </a>
-          </div>
-          <div class="lg:col-6 mb-8 text-center lg:mb-0"></div>
-          <div class="lg:col-3 mb-8 text-center lg:mb-0 lg:mt-0 lg:text-right">
-            <ul class="social-icons">
-              <li>
-                <a target="_blank" aria-label="instagram" rel="nofollow noopener" href="https://www.instagram.com/physoc_iitkgp">
-                  <i class="fab fa-instagram"></i>
-                </a>
-              </li>
-              <li>
-                <a target="_blank" aria-label="linkedin" rel="nofollow noopener" href="https://linkedin.com/company/phy-soc-iit-kharagpur">
-                  <i class="fab fa-linkedin"></i>
-                </a>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
-      <div class="border-border dark:border-darkmode-border border-t py-7">
-        <div class="text-light dark:text-darkmode-light container text-center">
-          Department of Physics, Indian Institute of Technology Kharagpur.
-        </div>
-      </div>
-    </footer>
+        <!-- TEAM / OFFICERS TAB -->
+        <section id="officers-tab" class="tab-panel">
+          <div class="info-card wide-card">
+            <h2><i class="fa-solid fa-users text-cyan"></i> PhySoc Working Committee</h2>
+            <div class="divider"></div>
+            
+            <div class="officers-grid" style="display:flex; flex-wrap:wrap; gap:20px; justify-content:center;">
+              <!-- Secretaries -->
+              <div class="officer-card profile-card" style="text-align:center; min-width:140px;">
+                <img src="neeraj.jpg" alt="Neeraj Laikara" style="width:120px; height:120px; object-fit:cover; border-radius:8px; margin:auto;">
+                <h4 style="margin-top:8px;">Neeraj Laikara</h4>
+                <span style="color:#4299e1; font-weight:600; font-size:0.85em;">Secretary (Events & Competitions)</span>
+                <span class="roll-tag">24PH10029</span>
+              </div>
 
-    <!-- Scripts -->
-    <script src="../js/main.min.c382e2105e67658eff86fe0a044cac3f838636947d327cd08f2b03f6a8b21f2e.js" defer></script>
-    <script crossorigin="anonymous" src="../js/script.min.e47bd8989fcd86cba20150c3b02e9c9806d76d4d7b000a4b636d101f8a300ad6.js"></script>
-    <script defer async crossorigin="anonymous" src="../js/script-lazy.min.c3e692e360f6f81f898b1fa3a19ee902e6b5bdbbbfa512bf221a0fe796fc9f7c.js"></script>
-    <script src="../vendor/swiper-bundle.min.js"></script>
-    
-    <script>
-      const announcementBox = document.getElementById('announcement');
-      const announcementButton = document.getElementById('announcement-button');
-      if (announcementButton) {
-        announcementButton.onclick = function () {
-          announcementBox.classList.add('announcement-hide');
-        };
-      }
-    </script>
-  </body>
+              <div class="officer-card profile-card" style="text-align:center; min-width:140px;">
+                <img src="wasim.jpg" alt="Kazi Wasim Raj" style="width:120px; height:120px; object-fit:cover; border-radius:8px; margin:auto;">
+                <h4 style="margin-top:8px;">Kazi Wasim Raj</h4>
+                <span style="color:#4299e1; font-weight:600; font-size:0.85em;">Secretary (Academic Wing)</span>
+                <span class="roll-tag">24PH10005</span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+      </main>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
 </html>
