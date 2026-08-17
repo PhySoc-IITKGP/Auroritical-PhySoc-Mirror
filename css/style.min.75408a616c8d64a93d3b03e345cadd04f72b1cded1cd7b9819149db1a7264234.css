@@ -35,15 +35,15 @@ a:hover {
 
 .btn-primary,
 .custom-button {
-  background-color: #3182ce !important;
-  border-color: #3182ce !important;
+  background-color: #3E7B9D !important;
+  border-color: #3E7B9D !important;
   color: #ffffff !important;
 }
 
 .btn-primary:hover,
 .custom-button:hover {
-  background-color: #2b6cb0 !important;
-  border-color: #2b6cb0 !important;
+  background-color: #306380 !important;
+  border-color: #306380 !important;
 }
 
 .btn-outline-primary {
