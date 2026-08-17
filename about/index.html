@@ -1,1418 +1,1295 @@
-<!doctype html>
-<html
-  itemscope
-  class="light"
-  lang="en-us"
-  itemtype="http://schema.org/WebPage">
-  <head>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Physics Society (PhySoc) - IIT Kharagpur. Igniting curiosity, fostering discovery, and connecting the physics community.">
+  <title>Physics Society (PhySoc) | IIT Kharagpur</title>
   
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Roboto:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+  
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="index.css">
+</head>
+<body class="dark-theme">
+  <!-- Particle Background Canvas -->
+  <canvas id="particle-canvas"></canvas>
+
+  <div class="app-container">
     
-    <meta charset="utf-8" />
-
-
-<meta
-  name="viewport"
-  content="width=device-width, initial-scale=1, maximum-scale=5" />
-
-
-<meta name="theme-name" content="hugoplate" />
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<link rel="shortcut icon" href="../images/logo2_hu_20f6f98a0862d010.png" type="image/x-icon">
-<link rel="icon" href="../images/logo2_hu_20f6f98a0862d010.png" type="image/x-icon">
-<link rel="icon" type="image/png" sizes="48x48" href="../images/logo2_hu_b53ae1fe34da2a5a.png">
-<link rel="icon" type="image/png" sizes="96x96" href="../images/logo2_hu_20f6f98a0862d010.png">
-<link rel="apple-touch-icon" sizes="144x144" href="../images/logo2_hu_dc2b6003544f3619.png">
-
-
-
-
-
-
-
-
-<link rel="manifest" href="/manifest.webmanifest" />
-<meta
-  name="msapplication-TileColor"
-  content="#ddd" />
-<meta
-  name="theme-color"
-  content="#ffffff" />
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
-
-
-
-
-
-
-
-  
-
-
-<title>About</title>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  <meta
-    name="keywords"
-    content="UC Berkeley, Physics, Society of Physics Students, SPS" />
-
-
-
-
-<meta
-  name="description"
-  content="UC Berkeley SPS Website" />
-
-
-
-  <meta name="author" content="SPS Webdev" />
-
-
-
-
-
-
-  
-
-
-
-
-
-
-  
-
-
-
-
-
-
-
-  
-
-  
-  
-  
-
-
-  
-  
-    
-    
+    <!-- HEADER -->
+    <header class="main-header">
+      <div class="header-left">
+        <div class="logo-container">
+          <img src="logo.svg" alt="PhySoc Logo" class="physoc-logo">
+        </div>
+        <div class="title-container">
+          <h1>PhySoc</h1>
+          <span class="sub-title">IIT Kharagpur</span>
+        </div>
+      </div>
       
-    
-
-    
-
-
-    
-    
-
-
-    
-    
-      
-      
-      
-        <meta property="og:image" content="https://sps.studentorg.berkeley.edu/images/about_background.jpg" />
-        <meta name="twitter:image" content="https://sps.studentorg.berkeley.edu/images/about_background.jpg" />
-        <meta
-          name="twitter:card"
-          content="summary_large_image" />
-      
-      
-      <meta property="og:image:width" content="6000" />
-      <meta property="og:image:height" content="4000" />
-    
-
-
-    
-    <meta
-      property="og:image:type"
-      content="image/.jpg" />
-  
-
-
-  
-
-
-
-
-
-<meta property="og:title" content="About" />
-<meta property="og:description" content="UC Berkeley SPS Website" />
-<meta property="og:type" content="website" />
-<meta property="og:url" content="https://sps.studentorg.berkeley.edu/about/" />
-
-
-<meta name="twitter:title" content="About" />
-<meta name="twitter:description" content="UC Berkeley SPS Website" />
-
-
-
-  <meta name="twitter:creator" content="@SPS Webdev" />
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<script>
-  let indexURL = "https://sps.studentorg.berkeley.edu/searchindex.json";
-  let includeSectionsInSearch = ["events"];
-  let search_no_results = "No results for";
-  let search_initial_message = "Type something to search..";
-</script>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<link rel="stylesheet" href="../vendor/swiper-bundle.min.css" />
-
-
-  
-    
-    
-<meta http-equiv="x-dns-prefetch-control" content="on" />
-<link rel="preconnect" href="https://use.fontawesome.com" crossorigin />
-<link rel="preconnect" href="//cdnjs.cloudflare.com" />
-<link rel="preconnect" href="//www.googletagmanager.com" />
-<link rel="preconnect" href="//www.google-analytics.com" />
-<link rel="dns-prefetch" href="https://use.fontawesome.com" />
-<link rel="dns-prefetch" href="//ajax.googleapis.com" />
-<link rel="dns-prefetch" href="//cdnjs.cloudflare.com" />
-<link rel="dns-prefetch" href="//www.googletagmanager.com" />
-<link rel="dns-prefetch" href="//www.google-analytics.com" />
-<link rel="dns-prefetch" href="//fonts.googleapis.com" />
-<link rel="dns-prefetch" href="//connect.facebook.net" />
-<link rel="dns-prefetch" href="//platform.linkedin.com" />
-<link rel="dns-prefetch" href="//platform.twitter.com" />
-
-
-
-
-<link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<script>
-  (function () {
-    const googleFont = document.createElement("link");
-    googleFont.href = "https://fonts.googleapis.com/css2?family=IBM\u002bPlex\u002bSerif:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&family=IBM\u002bPlex\u002bSans:ital,wght@0,100..700;1,100..700&display=swap";
-    googleFont.type = "text/css";
-    googleFont.rel = "stylesheet";
-    document.head.appendChild(googleFont);
-  })();
-</script>
-
-
-
-
-
-  
-    
-      
-    
-  
-
-  
-    
-      
-    
-  
-
-  
-    
-      
-    
-  
-
-  
-    
-      
-    
-  
-
-  
-    
-      
-    
-  
-
-
-
-
-
-
-
-
-
-
-
-  
-  
-
-
-
-<link
-  href="../css/style.min.75408a616c8d64a93d3b03e345cadd04f72b1cded1cd7b9819149db1a7264234.css"
-  rel="stylesheet" />
-
-
-<link
-  defer
-  async
-  rel="stylesheet"
-  href="../css/style-lazy.min.1891ab9d1988b9b19756de1bbea47aecb95c7b5ab195f6fe52244b6eca5d8154.css"
-  media="all"
-   />
-
-
-  </head>
-
-  <body>
-    
-    
-      
-
-
-
-      
-
-    
-
-
-    
-    
-
-
-  <div id="announcement" class="announcement announcement-hide">
-    This site is currently under construction. Thank you for your patience!
-    <button id="announcement-button" class="announcement-button">
-      &times;
-    </button>
-  </div>
-
-  
-  <style>
-    .announcement {
-      position: relative;
-      z-index: 999;
-      padding: 1rem;
-      padding-right: 2.8rem;
-      background-color: #fff;
-      box-shadow: 1px 0px 10px 7px rgba(154, 154, 154, 0.11);
-      font-size: 1.1rem;
-    }
-    .announcement-button {
-      cursor: pointer;
-      padding: 0 0.5rem;
-      border: 0;
-      font-size: 1.3rem;
-      position: absolute;
-      top: 50%;
-      right: 1rem;
-      transform: translateY(-50%);
-      border: 1px solid;
-      border-radius: 50%;
-      height: 1.1em;
-      width: 1.1em;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-    .announcement-hide {
-      display: none;
-    }
-    .dark .announcement {
-      background-color: #222;
-    }
-  </style>
-
-
-
-
-    
-    <header
-  class="header sticky top-0 z-30">
-  <nav class="navbar container">
-    
-    <div class="order-0">
-      
-      <a class="navbar-brand block" href="../index.html">
-        
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
-
-
-
-
-
-
-
-
-
-  
-  
-  
-
-
-  
-  
-    
-    
-  
-
-
-  
-  
-      
-      
-    
-    
-    
-    
-    
-    
-  
-  
-
-  
-  
-    
-    
-      
-      
-
-
-      
-      
-        
-        
-        
-        
-
-        
-        
-        
-      
-      
-    
-  
-  
-
-  
-    <img
-      fetchpriority="high"
-      decoding="async"
-      class="img img-light"
-      width="250"
-      height="40"
-      src="../images/logo_hu_62a2c291369a66f0.webp"
-      alt="Berkeley SPS"
-      onerror="this.onerror=null;this.src='\/images\/logo_hu_2fca4d2ac2314e.jpg';" />
-
-    <img
-      fetchpriority="high"
-      decoding="async"
-      class="img img-dark"
-      width="250"
-      height="40"
-      src="../images/logo-darkmode_hu_ce06e59bade57f0d.webp"
-      alt="Berkeley SPS"
-      onerror="this.onerror=null;this.src='\/images\/logo-darkmode_hu_fa721757c615f129.png';" />
-  
-  
-
-
-      </a>
-    </div>
-    
-    <input id="nav-toggle" type="checkbox" class="hidden" />
-    <label
-      for="nav-toggle"
-      class="order-3 cursor-pointer flex items-center lg:hidden text-text-dark dark:text-white lg:order-1">
-      <svg id="show-button" class="h-6 fill-current block" viewBox="0 0 20 20">
-        <title>Menu Open</title>
-        <path d="M0 3h20v2H0V3z m0 6h20v2H0V9z m0 6h20v2H0V0z"></path>
-      </svg>
-      <svg id="hide-button" class="h-6 fill-current hidden" viewBox="0 0 20 20">
-        <title>Menu Close</title>
-        <polygon
-          points="11 9 22 9 22 11 11 11 11 22 9 22 9 11 -2 11 -2 9 9 9 9 -2 11 -2"
-          transform="rotate(45 10 10)"></polygon>
-      </svg>
-    </label>
-    
-
-    
-    <ul
-      id="nav-menu"
-      class="navbar-nav order-3 hidden lg:flex w-full pb-6 lg:order-1 lg:w-auto lg:space-x-2 lg:pb-0 xl:space-x-8">
-      
-      
-        
-        
-        
-        
-          <li class="nav-item">
-            <a
-              class="nav-link "
-              
-              href="../about/index.html"
-              >About</a
-            >
-          </li>
-        
-      
-        
-        
-        
-        
-          <li class="nav-item">
-            <a
-              class="nav-link "
-              
-              href="../events/index.html"
-              >Events</a
-            >
-          </li>
-        
-      
-        
-        
-        
-        
-          <li class="nav-item">
-            <a
-              class="nav-link "
-              
-              href="../resources/index.html"
-              >Resources</a
-            >
-          </li>
-        
-      
-        
-        
-        
-        
-          <li class="nav-item">
-            <a
-              class="nav-link "
-              
-              href="../snacks/index.html"
-              >Snacks</a
-            >
-          </li>
-        
-      
-        
-        
-        
-        
-          <li class="nav-item nav-dropdown group relative">
-            <span
-              class="nav-link 
-                
-                
-                
-              
-                
-                
-                
-              
-                
-                
-                
-              
-                
-                
-                
-              
-                
-                
-                
-              
-                
-                
-                
-               inline-flex items-center">
-              Committees
-              <svg class="h-4 w-4 fill-current" viewBox="0 0 20 20">
-                <path
-                  d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
-              </svg>
-            </span>
-            <ul
-              class="nav-dropdown-list lg:group-hover:visible lg:group-hover:opacity-100">
-              
-                
-                
-                <li class="nav-dropdown-item">
-                  <a
-                    class="nav-dropdown-link "
-                    
-                    href="../committees/competitions/index.html">
-                    Competitions
-                  </a>
-                </li>
-              
-                
-                
-                <li class="nav-dropdown-item">
-                  <a
-                    class="nav-dropdown-link "
-                    
-                    href="../committees/media/index.html">
-                    Media
-                  </a>
-                </li>
-              
-                
-                
-                <li class="nav-dropdown-item">
-                  <a
-                    class="nav-dropdown-link "
-                    
-                    href="../committees/outreach/index.html">
-                    Outreach
-                  </a>
-                </li>
-              
-                
-                
-                <li class="nav-dropdown-item">
-                  <a
-                    class="nav-dropdown-link "
-                    
-                    href="../committees/projects/index.html">
-                    Projects
-                  </a>
-                </li>
-              
-                
-                
-                <li class="nav-dropdown-item">
-                  <a
-                    class="nav-dropdown-link "
-                    
-                    href="../committees/seminars/index.html">
-                    Seminars
-                  </a>
-                </li>
-              
-                
-                
-                <li class="nav-dropdown-item">
-                  <a
-                    class="nav-dropdown-link "
-                    
-                    href="../committees/socials/index.html">
-                    Socials
-                  </a>
-                </li>
-              
-            </ul>
-          </li>
-        
-      
-      
-        <li class="mt-4 inline-block lg:hidden">
-          <a
-            class="btn btn-outline-primary btn-sm"
-            href="../mail/index.html">
-            Join Mailing List
-          </a>
-        </li>
-      
-    </ul>
-
-    <div class="order-1 ml-auto flex items-center md:order-2 lg:ml-0">
-      
-        
-          <button
-            aria-label="search"
-            class="border-border text-text-dark hover:text-primary
-            dark:border-darkmode-border mr-5 inline-block border-r pr-5
-            text-xl dark:text-white cursor-pointer dark:hover:text-darkmode-primary
-            "
-            data-target="search-modal">
-            <i class="fa-solid fa-search"></i>
+      <div class="header-right">
+        <!-- Search bar -->
+        <div class="search-container" id="search-wrapper">
+          <input type="text" placeholder="Search PhySoc..." id="search-input" aria-label="Search site">
+          <button class="search-btn" id="search-trigger" aria-label="Toggle Search">
+            <i class="fa-solid fa-magnifying-glass"></i>
           </button>
+        </div>
         
-      
-
-      
-
-
-
-
-
-
-
-
-
-      
-
-
-
-
-
-      
-      
-        <a
-          href="../mail/index.html"
-          class="btn btn-outline-primary btn-sm hidden lg:inline-block">
-          Join Mailing List
+        <!-- Theme Toggle -->
+        <button class="theme-toggle-btn" id="theme-toggle" aria-label="Toggle Theme">
+          <i class="fa-solid fa-moon moon-icon"></i>
+          <i class="fa-solid fa-sun sun-icon"></i>
+        </button>
+        
+        <a href="https://www.iitkgp.ac.in/" target="_blank" class="iitkgp-link">
+          <span class="kgp-text">IIT KGP</span>
+          <i class="fa-solid fa-arrow-up-right-from-square"></i>
         </a>
-      
-    </div>
-  </nav>
-</header>
-    
-
-
-
-
-  
-    <div
-      class="search-modal "
-      aria-hidden="true"
-      style="--color-primary: #121212">
-      <div data-target="close-search-modal" class="search-modal-overlay"></div>
-      <div
-        class="search-wrapper"
-        data-image="true"
-        data-description="true"
-        data-tags="true"
-        data-categories="true">
-        <div class="search-wrapper-header">
-          <label for="search-modal-input" style="margin-top:-1px">
-            <span class="sr-only">search icon</span>
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 512 512"
-              height="18"
-              width="18"
-              class="search-icon"
-              data-type="search">
-              <path
-                fill="currentColor"
-                d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352a144 144 0 1 0 0-288 144 144 0 1 0 0 288z" />
-            </svg>
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 512 512"
-              height="18"
-              width="18"
-              class="search-reset"
-              data-type="reset">
-              <path
-                fill="currentColor"
-                d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM175 175c9.4-9.4 24.6-9.4 33.9 0l47 47 47-47c9.4-9.4 24.6-9.4 33.9 0s9.4 24.6 0 33.9l-47 47 47 47c9.4 9.4 9.4 24.6 0 33.9s-24.6 9.4-33.9 0l-47-47-47 47c-9.4 9.4-24.6 9.4-33.9 0s-9.4-24.6 0-33.9l47-47-47-47c-9.4-9.4-9.4-24.6 0-33.9z" />
-            </svg>
-          </label>
-          <input
-            id="search-modal-input"
-            type="text"
-            data-search-input
-            autocomplete="off"
-            aria-label="Search"
-            placeholder="Search Post..." />
-        </div>
-        <div class="search-wrapper-body">
-          <div class="search-result" data-search-result></div>
-          <span class="search-result-empty">
-            Type something to search..
-          </span>
-        </div>
-        <div class="search-wrapper-footer">
-          <span>
-            <kbd>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="14"
-                height="14"
-                fill="currentColor"
-                viewBox="0 0 16 16">
-                <path
-                  d="M3.204 11h9.592L8 5.519 3.204 11zm-.753-.659 4.796-5.48a1 1 0 0 1 1.506 0l4.796 5.48c.566.647.106 1.659-.753 1.659H3.204a1 1 0 0 1-.753-1.659z" />
-              </svg>
-            </kbd>
-            <kbd>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="14"
-                height="14"
-                fill="currentColor"
-                style="margin-top:1px;"
-                viewBox="0 0 16 16">
-                <path
-                  d="M3.204 5h9.592L8 10.481 3.204 5zm-.753.659 4.796 5.48a1 1 0 0 0 1.506 0l4.796-5.48c.566-.647.106-1.659-.753-1.659H3.204a1 1 0 0 0-.753 1.659z" />
-              </svg>
-            </kbd>
-            to navigate
-          </span>
-          <span>
-            <kbd>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="12"
-                height="12"
-                fill="currentColor"
-                style="display:inline-block;"
-                viewBox="0 0 16 16">
-                <path
-                  fill-rule="evenodd"
-                  d="M14.5 1.5a.5.5 0 0 1 .5.5v4.8a2.5 2.5 0 0 1-2.5 2.5H2.707l3.347 3.346a.5.5 0 0 1-.708.708l-4.2-4.2a.5.5 0 0 1 0-.708l4-4a.5.5 0 1 1 .708.708L2.707 8.3H12.5A1.5 1.5 0 0 0 14 6.8V2a.5.5 0 0 1 .5-.5z" />
-              </svg>
-            </kbd>
-            to select
-          </span>
-          <span class="search-result-info"></span>
-          <span data-target="close-search-modal">
-            <kbd>ESC</kbd> to close
-          </span>
-        </div>
       </div>
-    </div>
-  
+    </header>
 
-  
-
-    <main>
+    <!-- MAIN BODY SECTION -->
+    <div class="main-content-layout">
       
-  
-  
-  <section class="relative section-sm" style="background-image: url('/images/about_background.jpg'); background-size: cover; background-position: center; background-repeat: no-repeat; height: 300px;">
-    
-    <div class="absolute inset-0 bg-black opacity-50"></div> 
-
-    <div class="container h-full flex items-center justify-center relative z-10">
-      <h1 class="text-4xl font-bold text-white p-6">
-        About
-      </h1>
-    </div>
-  </section>
-
-  
-  <section class="section-sm">
-    <div class="container">
-      <div class="row justify-center">
-        <div class="lg:col-10">
-          <div class="content">
-            <h3 id="what-we-do">What We Do</h3>
-<p>We host a variety of events to help bring the physics community at IITKGP closer! Members can pursue their interests in physics in rigorous competitions or more laidback socials; PhySoc is whatever you make of it. We are also here to help support you, so please feel free to talk to other members about how to make the most of your physics experience at Cal!</p>
-<h3 id="Officers">Team</h3>
-
-
-
-
-  <div style="width:100%; max-width:900px; margin:auto;">
-    
-    
-    
-    
-      
-      
-      
-      <div style="display:flex; gap:24px; justify-content:center; margin-bottom:2em;">
-        
-          
-          
-            
-              <div style="text-align:center; flex:1;">
-                <img src="../images/gallery/Officers/neerajlaikara.jpeg" alt="Gallery Photo 1"
-                     style="width:120px; height:120px; object-fit:cover; border-radius:8px;">
-                <div style="font-weight:bold; margin-top:0.5em;">Neeraj Laikara</div>
-                <div style="color:gray; font-size:0.9em;">President</div>
-              </div>
-            
-          
-            
-              <div style="text-align:center; flex:1;">
-                <img src="../images/gallery/Officers/wasim.png" alt="Gallery Photo 2"
-                     style="width:120px; height:120px; object-fit:cover; border-radius:8px;">
-                <div style="font-weight:bold; margin-top:0.5em;">Kazi Wasim Raj</div>
-                <div style="color:gray; font-size:0.9em;">Vice-President</div>
-              </div>
-            
-          
-            
-              <div style="text-align:center; flex:1;">
-                <img src="../images/gallery/Officers/neelabh.jpeg" alt="Gallery Photo 3"
-                     style="width:120px; height:120px; object-fit:cover; border-radius:8px;">
-                <div style="font-weight:bold; margin-top:0.5em;">Neelabh Priyam Jha</div>
-                <div style="color:gray; font-size:0.9em;">Secretary</div>
-              </div>
-            
-          
-            
-          
-        
-      </div>
-    
-      
-      
-      
-      <div style="display:flex; gap:24px; justify-content:center; margin-bottom:2em;">
-        
-          
-          
-            
-              <div style="text-align:center; flex:1;">
-                <img src="../images/gallery/Officers/sagerneel.png" alt="Gallery Photo 4"
-                     style="width:120px; height:120px; object-fit:cover; border-radius:8px;">
-                <div style="font-weight:bold; margin-top:0.5em;">Sagarneel Ghoshal</div>
-                <div style="color:gray; font-size:0.9em;">Advisor</div>
-              </div>
-            
-          
-            
-              <div style="text-align:center; flex:1;">
-                <img src="../images/gallery/Officers/BSimberg.jpeg" alt="Gallery Photo 5"
-                     style="width:120px; height:120px; object-fit:cover; border-radius:8px;">
-                <div style="font-weight:bold; margin-top:0.5em;">Bhoomik Modi</div>
-                <div style="color:gray; font-size:0.9em;">Advisor</div>
-              </div>
-            
-          
-            
-              <div style="text-align:center; flex:1;">
-                <img src="../images/gallery/Officers/FChou.jpeg" alt="Gallery Photo 8"
-                     style="width:120px; height:120px; object-fit:cover; border-radius:8px;">
-                <div style="font-weight:bold; margin-top:0.5em;">Aman Kumar</div>
-                <div style="color:gray; font-size:0.9em;">Senior Fellow</div>
-              </div>
-            
-          
-            
-              <div style="text-align:center; flex:1;">
-                <img src="../images/gallery/Officers/HOBale.jpeg" alt="Gallery Photo 9"
-                     style="width:120px; height:120px; object-fit:cover; border-radius:8px;">
-                <div style="font-weight:bold; margin-top:0.5em;">Rudraksh Thakur</div>
-                <div style="color:gray; font-size:0.9em;">Senior Fellow</div>
-              </div>
-            
-          
-            
-              <div style="text-align:center; flex:1;">
-                <img src="../images/gallery/Officers/JKHuskey.jpeg" alt="Gallery Photo 10"
-                     style="width:120px; height:120px; object-fit:cover; border-radius:8px;">
-                <div style="font-weight:bold; margin-top:0.5em;">Person</div>
-                <div style="color:gray; font-size:0.9em;">Junior Fellow</div>
-              </div>
-            
-          
-        
-      </div>
-    
-      
-      
-      
-      <div style="display:flex; gap:24px; justify-content:center; margin-bottom:2em;">
-        
-          
-          
-            
-              <div style="text-align:center; flex:1;">
-                <img src="../images/gallery/Officers/JZhang.jpg" alt="Gallery Photo 11"
-                     style="width:120px; height:120px; object-fit:cover; border-radius:8px;">
-                <div style="font-weight:bold; margin-top:0.5em;">Josh Zhang</div>
-                <div style="color:gray; font-size:0.9em;">Junior Fellow</div>
-              </div>
-            
-          
-            
-              <div style="text-align:center; flex:1;">
-                <img src="../images/gallery/Officers/KDeoskar.jpg" alt="Gallery Photo 12"
-                     style="width:120px; height:120px; object-fit:cover; border-radius:8px;">
-                <div style="font-weight:bold; margin-top:0.5em;">Keshav Deoskar</div>
-                <div style="color:gray; font-size:0.9em;">Junior Fellow</div>
-              </div>
-            
-          
-            
-              <div style="text-align:center; flex:1;">
-                <img src="../images/gallery/Officers/KHernandez.png" alt="Gallery Photo 13"
-                     style="width:120px; height:120px; object-fit:cover; border-radius:8px;">
-                <div style="font-weight:bold; margin-top:0.5em;">Kevin Hernandez</div>
-                <div style="color:gray; font-size:0.9em;">Junior Fellow</div>
-              </div>
-            
-          
-            
-              <div style="text-align:center; flex:1;">
-                <img src="../images/gallery/Officers/KLAdcock.jpeg" alt="Gallery Photo 14"
-                     style="width:120px; height:120px; object-fit:cover; border-radius:8px;">
-                <div style="font-weight:bold; margin-top:0.5em;">Kaelani Adcock</div>
-                <div style="color:gray; font-size:0.9em;">Junior Fellow</div>
-              </div>
-            
-          
-            
-              <div style="text-align:center; flex:1;">
-                <img src="../images/gallery/Officers/MKe.jpeg" alt="Gallery Photo 15"
-                     style="width:120px; height:120px; object-fit:cover; border-radius:8px;">
-                <div style="font-weight:bold; margin-top:0.5em;">Meghan Ke</div>
-                <div style="color:gray; font-size:0.9em;">Junior Fellow</div>
-              </div>
-            
-          
-        
-      </div>
-    
-      
-      
-      
-      <div style="display:flex; gap:24px; justify-content:center; margin-bottom:2em;">
-        
-          
-          
-            
-              <div style="text-align:center; flex:1;">
-                <img src="../images/gallery/Officers/NSun.jpeg" alt="Gallery Photo 16"
-                     style="width:120px; height:120px; object-fit:cover; border-radius:8px;">
-                <div style="font-weight:bold; margin-top:0.5em;">Nadia Sun</div>
-                <div style="color:gray; font-size:0.9em;">Junior Fellow</div>
-              </div>
-            
-          
-            
-              <div style="text-align:center; flex:1;">
-                <img src="../images/gallery/Officers/RKReczek.jpeg" alt="Gallery Photo 17"
-                     style="width:120px; height:120px; object-fit:cover; border-radius:8px;">
-                <div style="font-weight:bold; margin-top:0.5em;">Rainer Reczek</div>
-                <div style="color:gray; font-size:0.9em;">Junior Fellow</div>
-              </div>
-            
-          
-            
-              <div style="text-align:center; flex:1;">
-                <img src="../images/gallery/Officers/SGoel.jpg" alt="Gallery Photo 18"
-                     style="width:120px; height:120px; object-fit:cover; border-radius:8px;">
-                <div style="font-weight:bold; margin-top:0.5em;">Shrey Goel</div>
-                <div style="color:gray; font-size:0.9em;">Junior Fellow</div>
-              </div>
-            
-          
-            
-              <div style="text-align:center; flex:1;">
-                <img src="../images/gallery/Officers/SKulkarni.jpg" alt="Gallery Photo 19"
-                     style="width:120px; height:120px; object-fit:cover; border-radius:8px;">
-                <div style="font-weight:bold; margin-top:0.5em;">Shivani Kulkarni</div>
-                <div style="color:gray; font-size:0.9em;">Junior Fellow</div>
-              </div>
-            
-          
-            
-              <div style="text-align:center; flex:1;">
-                <img src="../images/gallery/Officers/SMahajan.JPG" alt="Gallery Photo 20"
-                     style="width:120px; height:120px; object-fit:cover; border-radius:8px;">
-                <div style="font-weight:bold; margin-top:0.5em;">Smridhi Mahajan</div>
-                <div style="color:gray; font-size:0.9em;">Junior Fellow</div>
-              </div>
-            
-          
-        
-      </div>
-    
-      
-      
-      
-      <div style="display:flex; gap:24px; justify-content:center; margin-bottom:2em;">
-        
-          
-          
-            
-              <div style="text-align:center; flex:1;">
-                <img src="../images/gallery/Officers/SSShirol.jpeg" alt="Gallery Photo 21"
-                     style="width:120px; height:120px; object-fit:cover; border-radius:8px;">
-                <div style="font-weight:bold; margin-top:0.5em;">Sanjit Shirol</div>
-                <div style="color:gray; font-size:0.9em;">Junior Fellow</div>
-              </div>
-            
-          
-            
-              <div style="text-align:center; flex:1;">
-                <img src="../images/gallery/Officers/SXu.jpeg" alt="Gallery Photo 22"
-                     style="width:120px; height:120px; object-fit:cover; border-radius:8px;">
-                <div style="font-weight:bold; margin-top:0.5em;">Sean Xu</div>
-                <div style="color:gray; font-size:0.9em;">Junior Fellow</div>
-              </div>
-            
-          
-            
-              <div style="text-align:center; flex:1;">
-                <img src="../images/gallery/Officers/TBrennan.JPEG" alt="Gallery Photo 23"
-                     style="width:120px; height:120px; object-fit:cover; border-radius:8px;">
-                <div style="font-weight:bold; margin-top:0.5em;">Ty Brennan</div>
-                <div style="color:gray; font-size:0.9em;">Junior Fellow</div>
-              </div>
-            
-          
-            
-              <div style="text-align:center; flex:1;">
-                <img src="../images/gallery/Officers/XLiu.jpeg" alt="Gallery Photo 24"
-                     style="width:120px; height:120px; object-fit:cover; border-radius:8px;">
-                <div style="font-weight:bold; margin-top:0.5em;">Xing Liu</div>
-                <div style="color:gray; font-size:0.9em;">Junior Fellow</div>
-              </div>
-            
-          
-            
-              <div style="text-align:center; flex:1;">
-                <img src="../images/gallery/Officers/YShi.jpg" alt="Gallery Photo 25"
-                     style="width:120px; height:120px; object-fit:cover; border-radius:8px;">
-                <div style="font-weight:bold; margin-top:0.5em;">Yuhong Shi</div>
-                <div style="color:gray; font-size:0.9em;">Junior Fellow</div>
-              </div>
-            
-          
-        
-      </div>
-    
-      
-      
-      
-      <div style="display:flex; gap:24px; justify-content:center; margin-bottom:2em;">
-        
-          
-          <div style="flex:1;"></div>
-          <div style="text-align:center; flex:1;">
-            <img src="../images/gallery/Officers/YZayats.jpg" alt="Gallery Photo 26"
-                 style="width:120px; height:120px; object-fit:cover; border-radius:8px;">
-            <div style="font-weight:bold; margin-top:0.5em;">Yael Zayats</div>
-            <div style="color:gray; font-size:0.9em;">Junior Fellow</div>
-          </div>
-          <div style="text-align:center; flex:1;">
-            <img src="../images/gallery/Officers/ZMonschein.jpeg" alt="Gallery Photo 27"
-                 style="width:120px; height:120px; object-fit:cover; border-radius:8px;">
-            <div style="font-weight:bold; margin-top:0.5em;">Zoe Monschein</div>
-            <div style="color:gray; font-size:0.9em;">Junior Fellow</div>
-          </div>
-          <div style="flex:1;"></div>
-        
-      </div>
-    
-  </div>
-
-
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-
-    </main>
-
-    
-    <footer class="bg-theme-light dark:bg-darkmode-theme-light">
-  <div class="container">
-    <div class="row items-center py-10">
-      <div class="lg:col-3 mb-8 text-center lg:mb-0 lg:text-left">
-        
-        <a href="https://www.ocf.berkeley.edu">
-            <img src="../images/ocf-hosted-penguin.svg"
-                alt="Hosted by the OCF" style="border: 0;" />
-        </a>
-        
-      </div>
-      <div class="lg:col-6 mb-8 text-center lg:mb-0">
-        <ul>
-          
-        </ul>
-      </div>
-      <div class="lg:col-3 mb-8 text-center lg:mb-0 lg:mt-0 lg:text-right">
-        <ul class="social-icons">
-          
+      <!-- LEFT SIDEBAR: MENU NAVIGATION -->
+      <aside class="sidebar-left">
+        <nav class="sidebar-nav">
+          <ul>
             <li>
-              <a
-                target="_blank"
-                aria-label="instagram"
-                rel="nofollow noopener"
-                href="https://www.instagram.com/sps_berkeley">
-                <i class="fab fa-instagram"></i>
+              <a href="#home" class="nav-link active" data-tab="home">
+                <i class="fa-solid fa-house-chimney nav-icon"></i> Home
               </a>
             </li>
-          
             <li>
-              <a
-                target="_blank"
-                aria-label="discord"
-                rel="nofollow noopener"
-                href="https://discord.gg/37Be85xrRQ">
-                <i class="fab fa-discord"></i>
+              <a href="#about" class="nav-link" data-tab="about">
+                <i class="fa-solid fa-circle-info nav-icon"></i> About
               </a>
             </li>
-          
-        </ul>
+            <li>
+              <a href="#announcements" class="nav-link" data-tab="announcements">
+                <i class="fa-solid fa-bullhorn nav-icon"></i> Announcements
+              </a>
+            </li>
+            <li class="has-submenu">
+              <a href="#resources" class="nav-link" data-tab="resources">
+                <i class="fa-solid fa-book-open-reader nav-icon"></i> Resources
+                <i class="fa-solid fa-chevron-down submenu-indicator"></i>
+              </a>
+              <ul class="submenu">
+                <li><a href="#resources-new-course" class="sub-nav-link" data-subtab="new-course">New to Physics</a></li>
+                <li><a href="#resources-handbook" class="sub-nav-link" data-subtab="handbook">Course Handbook</a></li>
+                <li><a href="#resources-projects" class="sub-nav-link" data-subtab="projects">Research & Projects</a></li>
+                <li><a href="#resources-internships" class="sub-nav-link" data-subtab="internships">Summer Opportunities</a></li>
+              </ul>
+            </li>
+            <li>
+              <a href="#academic-wing" class="nav-link" data-tab="academic-wing">
+                <i class="fa-solid fa-graduation-cap nav-icon"></i> Academic Wing
+              </a>
+            </li>
+            <li>
+              <a href="#officers" class="nav-link" data-tab="officers">
+                <i class="fa-solid fa-user-group nav-icon"></i> Working Committee
+              </a>
+            </li>
+            <li>
+              <a href="#sandbox" class="nav-link" data-tab="sandbox">
+                <i class="fa-solid fa-atom nav-icon"></i> Physics Sandbox
+              </a>
+            </li>
+            <li>
+              <a href="#contact" class="nav-link" data-tab="contact">
+                <i class="fa-solid fa-envelope nav-icon"></i> Contact Us
+              </a>
+            </li>
+          </ul>
+        </nav>
+        
+        <!-- Sidebar Meta Info -->
+        <div class="sidebar-meta">
+          <p>Email: <br><a href="mailto:phyiitkharagpur@gmail.com">phyiitkharagpur@gmail.com</a></p>
+          <div class="sidebar-socials" style="margin-top: 10px; display: flex; gap: 15px; font-size: 16px;">
+            <a href="https://www.instagram.com/physoc_iitkgp/" target="_blank" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+            <a href="https://linkedin.com/company/phy-soc-iit-kharagpur" target="_blank" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+          </div>
+        </div>
+      </aside>
+
+      <!-- CENTER PANEL: DYNAMIC CONTENT CARDS -->
+      <main class="main-content-panel">
+        
+        <!-- HOME TAB -->
+        <section id="home-tab" class="tab-panel active">
+          <div class="welcome-card hero-gradient-card">
+            <h2>Welcome to PhySoc!</h2>
+            <p>We are the student-run Physics Society of IIT Kharagpur, based out of the Department of Physics. We represent a community of students who are passionate about physics, ranging from undergraduate Physics majors to postgraduate scholars and research students across other engineering disciplines.</p>
+            <div class="hero-actions">
+              <button class="primary-btn" onclick="switchTab('contact')">Contact Us <i class="fa-solid fa-envelope"></i></button>
+              <button class="secondary-btn" onclick="switchTab('sandbox')">Play in Sandbox <i class="fa-solid fa-gamepad"></i></button>
+            </div>
+          </div>
+
+          <div class="content-grid-2">
+            <div class="info-card">
+              <h3><i class="fa-solid fa-right-to-bracket card-icon text-cyan"></i> Selections & Membership</h3>
+              <p>PhySoc is a selective student working group. We recruit active members annually via official department selection rounds. General membership is not open without selection.</p>
+              <ul class="styled-list">
+                <li>
+                  <i class="fa-solid fa-calendar-check list-bullet"></i>
+                  <div>
+                    <strong>Executive Selections:</strong>
+                    <span>Selections are conducted at the start of semesters. Check the Announcements section for selection dates.</span>
+                  </div>
+                </li>
+                <li>
+                  <i class="fa-solid fa-id-card list-bullet"></i>
+                  <div>
+                    <strong>Profile Selections:</strong>
+                    <span>Candidates are interviewed for specific positions: resource management, event coordination, web development, and digital outreach.</span>
+                  </div>
+                </li>
+                <li>
+                  <i class="fa-solid fa-share-nodes list-bullet"></i>
+                  <div>
+                    <strong>Follow Selection News:</strong>
+                    <span>All recruitment briefs are posted on our official Instagram and LinkedIn pages.</span>
+                  </div>
+                </li>
+              </ul>
+            </div>
+
+            <!-- Active Calendar Widget -->
+            <div class="info-card calendar-card">
+              <h3><i class="fa-solid fa-calendar-days card-icon text-gold"></i> PhySoc Events Calendar</h3>
+              <div class="calendar-widget">
+                <div class="calendar-header">
+                  <button id="prev-month" aria-label="Previous Month"><i class="fa-solid fa-chevron-left"></i></button>
+                  <h4 id="calendar-month-year">July 2026</h4>
+                  <button id="next-month" aria-label="Next Month"><i class="fa-solid fa-chevron-right"></i></button>
+                </div>
+                <div class="calendar-grid">
+                  <div class="day-name">Su</div>
+                  <div class="day-name">Mo</div>
+                  <div class="day-name">Tu</div>
+                  <div class="day-name">We</div>
+                  <div class="day-name">Th</div>
+                  <div class="day-name">Fr</div>
+                  <div class="day-name">Sa</div>
+                  <!-- Days injected via Javascript -->
+                  <div class="calendar-days" id="calendar-days-container"></div>
+                </div>
+                <div class="event-details-box" id="event-display">
+                  <p class="no-event-selected">Select a highlighted day to view event details.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ABOUT TAB -->
+        <section id="about-tab" class="tab-panel">
+          <div class="info-card wide-card">
+            <h2>About Physics Society, IIT Kharagpur</h2>
+            <div class="about-content">
+              <p>Founded to bridge the gap between classroom theory and cutting-edge physics research, <strong>PhySoc</strong> is the student forum of the Department of Physics at IIT Kharagpur. We aim to inspire curiosity, foster high-quality research practices, and create a strong community of thinkers.</p>
+              
+              <div class="divider"></div>
+              
+              <div class="about-grid-3">
+                <div class="metric-item">
+                  <i class="fa-solid fa-rocket metric-icon text-cyan"></i>
+                  <h4>Our Mission</h4>
+                  <p>Promoting physics literacy, organizing academic workshops, telescope observation nights, and research panel discussions.</p>
+                </div>
+                <div class="metric-item">
+                  <i class="fa-solid fa-microscope metric-icon text-purple"></i>
+                  <h4>Research Focus</h4>
+                  <p>Connecting students with research projects, providing peer mentorship, and guiding students on external internships.</p>
+                </div>
+                <div class="metric-item">
+                  <i class="fa-solid fa-comments metric-icon text-gold"></i>
+                  <h4>Community</h4>
+                  <p>Hosting interactive tea-table physics discussions, movie screenings, quizzes, and annual symposiums.</p>
+                </div>
+              </div>
+              
+              <div class="divider"></div>
+              
+              <h3>Department of Physics, IIT Kharagpur</h3>
+              <p>The Department of Physics at IIT Kharagpur is one of the oldest and most prestigious departments in the country, starting its journey in 1951. Over the decades, it has evolved into a premier hub for education and research. The department hosts advanced laboratory facilities, runs the Integrated M.Sc. (5-Year), Joint M.Sc.-Ph.D. program, and Ph.D. researches across diverse fields including astrophysics, condensed matter physics, quantum computation, high-energy particle physics, and nonlinear optics.</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- ANNOUNCEMENTS TAB -->
+        <section id="announcements-tab" class="tab-panel">
+          <div class="info-card wide-card">
+            <div class="section-header-flex">
+              <h2>Society Announcements</h2>
+              <div class="filter-controls">
+                <button class="filter-btn active" data-filter="all">All</button>
+                <button class="filter-btn" data-filter="events">Events</button>
+                <button class="filter-btn" data-filter="academic">Academic</button>
+                <button class="filter-btn" data-filter="research">Research</button>
+              </div>
+            </div>
+            
+            <div class="announcements-feed" id="announcements-container">
+              <!-- Announcements injected by AppJS -->
+            </div>
+          </div>
+        </section>
+
+        <!-- RESOURCES TAB -->
+        <section id="resources-tab" class="tab-panel">
+          <div class="resources-container">
+            <!-- Resources Sidebar Subtab navigation -->
+            <div class="resources-subtabs-nav">
+              <button class="subtab-btn active" data-target="new-course">
+                <i class="fa-solid fa-graduation-cap"></i> New to Physics
+              </button>
+              <button class="subtab-btn" data-target="handbook">
+                <i class="fa-solid fa-compass"></i> Course Handbook
+              </button>
+              <button class="subtab-btn" data-target="projects">
+                <i class="fa-solid fa-diagram-project"></i> Finding Projects (UROP)
+              </button>
+              <button class="subtab-btn" data-target="internships">
+                <i class="fa-solid fa-plane-departure"></i> Summer Opportunities
+              </button>
+            </div>
+
+            <!-- Resources Subtab Panes -->
+            <div class="resources-panes">
+              
+              <!-- SUBTAB: NEW TO PHYSICS -->
+              <div class="subtab-pane active" id="pane-new-course">
+                <h3>Welcome to Course PH!</h3>
+                <p>Entering the world of physics can be both exhilarating and overwhelming. Here is a curated checklist of survival tips, textbooks, and software skills you should pick up early.</p>
+                
+                <div class="divider"></div>
+                
+                <div class="resources-grid-2">
+                  <div class="resource-block">
+                    <h4><i class="fa-solid fa-book text-cyan"></i> Recommended Textbooks</h4>
+                    <ul class="book-list">
+                      <li>
+                        <strong>Classical Mechanics:</strong> 
+                        <em>An Introduction to Mechanics</em> by Kleppner & Kolenkow, and <em>Classical Mechanics</em> by Herbert Goldstein.
+                      </li>
+                      <li>
+                        <strong>Electrodynamics:</strong>
+                        <em>Introduction to Electrodynamics</em> by David J. Griffiths.
+                      </li>
+                      <li>
+                        <strong>Quantum Mechanics:</strong>
+                        <em>Introduction to Quantum Mechanics</em> by David J. Griffiths, or <em>Quantum Physics</em> by Stephen Gasiorowicz.
+                      </li>
+                    </ul>
+                  </div>
+                  
+                  <div class="resource-block">
+                    <h4><i class="fa-solid fa-laptop-code text-purple"></i> Technical Software Skills</h4>
+                    <p>Modern physics relies heavily on computational modeling and typesetting. Start learning these as early as possible:</p>
+                    <ul class="tech-tags">
+                      <li>Python (NumPy, SciPy, Matplotlib)</li>
+                      <li>LaTeX (Academic document typesetting)</li>
+                      <li>Mathematica / Jupyter Notebooks</li>
+                      <li>Linux Command Line & Bash</li>
+                    </ul>
+                    <a href="#" class="btn-link block-link">Access PhySoc's LaTeX Templates & Tutorials <i class="fa-solid fa-arrow-right"></i></a>
+                  </div>
+                </div>
+              </div>
+
+              <!-- SUBTAB: COURSE HANDBOOK -->
+              <div class="subtab-pane" id="pane-handbook">
+                <h3>Physics Curriculum & Course Roadmap</h3>
+                <p>An interactive outline of the Core Physics courses across semesters for B.Sc. / Integrated M.Sc. students at IIT Kharagpur.</p>
+                
+                <div class="divider"></div>
+                
+                <div class="roadmap-timeline">
+                  <div class="timeline-node">
+                    <div class="node-badge">Sem 1</div>
+                    <div class="node-content">
+                      <h4>First Semester</h4>
+                      <ul>
+                        <li>PH11003: Physics of Waves</li>
+                        <li>MA11003: Advanced Calculus</li>
+                        <li>EC21201: Basic Electronics</li>
+                        <li>CS11003: Programming and Data Structures (PDS)</li>
+                      </ul>
+                    </div>
+                  </div>
+                  
+                  <div class="timeline-node">
+                    <div class="node-badge">Sem 2</div>
+                    <div class="node-content">
+                      <h4>Second Semester</h4>
+                      <ul>
+                        <li>MA11004: Linear Algebra, Numerical Codings, and Analysis (LANCA)</li>
+                        <li>EE11003: Electrical Technology</li>
+                        <li>ME11003: Basic Engineering Mechanics</li>
+                        <li>CY11003: Chemistry</li>
+                      </ul>
+                    </div>
+                  </div>
+                  
+                  <div class="timeline-node">
+                    <div class="node-badge">Sem 3</div>
+                    <div class="node-content">
+                      <h4>Third Semester</h4>
+                      <ul>
+                        <li>PH21205: Classical Dynamics and Special Relativity (CDSR)</li>
+                        <li>PH21209: Electromagnetism</li>
+                        <li>MA20205: Probability & Statistics</li>
+                        <li>PH20206: Maths for Physics 1</li>
+                        <li>Labs: GPM (PH29205) & EM (PH29207)</li>
+                        <li>Elective: Intro to Soc Psych (HS21221)</li>
+                      </ul>
+                    </div>
+                  </div>
+                  
+                  <div class="timeline-node">
+                    <div class="node-badge">Sem 4</div>
+                    <div class="node-content">
+                      <h4>Fourth Semester</h4>
+                      <ul>
+                        <li>AI20001: Artificial Intelligence / Machine Learning</li>
+                        <li>PH21210: Thermal Physics</li>
+                        <li>PH21212: Quantum Physics</li>
+                        <li>PH21214: Optics</li>
+                        <li>Labs: Thermal Physics (PH29208) & Optics (PH29212)</li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- SUBTAB: FINDING PROJECTS -->
+              <div class="subtab-pane" id="pane-projects">
+                <h3>Finding a Research Project (UROP Guide)</h3>
+                <p>At IIT Kharagpur, getting hands-on research experience under professors is highly encouraged. This is our equivalent of MIT's Undergraduate Research Opportunities Program (UROP).</p>
+                
+                <div class="divider"></div>
+                
+                <div class="urop-steps">
+                  <div class="step-card">
+                    <div class="step-num">1</div>
+                    <h5>Identify Your Area</h5>
+                    <p>Read through the research profiles of professors on the Department Webpage. Focus on what excites you: condensed matter, gravitation, quantum computing, or nuclear physics.</p>
+                  </div>
+                  <div class="step-card">
+                    <div class="step-num">2</div>
+                    <h5>Do Your Homework</h5>
+                    <p>Before emailing a professor, read one of their recent publications or review articles in their field. Understand the basic concepts they work on.</p>
+                  </div>
+                  <div class="step-card">
+                    <div class="step-num">3</div>
+                    <h5>Write a Professional Email</h5>
+                    <p>Keep it concise. State your academic background, your interest in their specific field, and mention a paper of theirs you looked at. Ask for a brief 10-minute meeting.</p>
+                  </div>
+                </div>
+
+                <div class="email-template-box">
+                  <div class="template-header">
+                    <span><i class="fa-solid fa-envelope"></i> Recommended Email Template</span>
+                    <button class="copy-btn" onclick="copyEmailTemplate()"><i class="fa-solid fa-copy"></i> Copy</button>
+                  </div>
+                  <pre id="email-template">Subject: Inquiry regarding research projects under your guidance - [Your Name]
+
+Dear Professor [Professor's Last Name],
+
+I am a [Year] student pursuing [Your Degree] in Physics (or your branch). I have been reading about your work on [Research Topic/Title] and found your recent paper on [Brief description of their paper/work] highly intriguing.
+
+I am very interested in working on a research project in this domain under your guidance. I have prior coursework in [Mention relevant subjects, e.g., Quantum Mechanics / Python Programming] which I believe would be useful.
+
+Would you be available for a brief meeting sometime this week to discuss potential opportunities in your lab? I have attached my CV for your reference.
+
+Thank you for your time and consideration.
+
+Sincerely,
+[Your Name]
+Roll Number: [Your Roll No]
+IIT Kharagpur</pre>
+                </div>
+              </div>
+
+              <!-- SUBTAB: SUMMER OPPORTUNITIES -->
+              <div class="subtab-pane" id="pane-internships">
+                <h3>Summer Research Opportunities</h3>
+                <p>Securing a summer fellowship is a great way to experience research at other premier institutions globally and within India. Here are some of the most sought-after fellowships by physics students:</p>
+                
+                <div class="divider"></div>
+                
+                <div class="fellowship-grid">
+                  <div class="fellowship-card">
+                    <div class="f-header">
+                      <h5>IAS-SRFP</h5>
+                      <span class="f-type">National</span>
+                    </div>
+                    <p>Indian Academy of Sciences Summer Research Fellowship Program. Placements at top institutes like IISc, TIFR, HRI, and IITs.</p>
+                    <span class="f-deadline">Timeline: October - November</span>
+                  </div>
+                  
+                  <div class="fellowship-card">
+                    <div class="f-header">
+                      <h5>DAAD WISE</h5>
+                      <span class="f-type">International</span>
+                    </div>
+                    <p>Research internships at German public universities and institutes. Highly competitive, covering travel and living costs.</p>
+                    <span class="f-deadline">Timeline: September - October</span>
+                  </div>
+                  
+                  <div class="fellowship-card">
+                    <div class="f-header">
+                      <h5>Mitacs Globalink</h5>
+                      <span class="f-type">International</span>
+                    </div>
+                    <p>Fully-funded summer internships at universities in Canada. Excellent cross-cultural and academic experience.</p>
+                    <span class="f-deadline">Timeline: July - August</span>
+                  </div>
+                  
+                  <div class="fellowship-card">
+                    <div class="f-header">
+                      <h5>S.N. Bose Scholars</h5>
+                      <span class="f-type">International</span>
+                    </div>
+                    <p>A prestigious student exchange program for research at partner universities in the United States.</p>
+                    <span class="f-deadline">Timeline: September - October</span>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </section>
+
+        <!-- ACADEMIC WING TAB -->
+        <section id="academic-wing-tab" class="tab-panel">
+          <div class="info-card wide-card">
+            <div class="academic-wing-header">
+              <h2><i class="fa-solid fa-graduation-cap text-cyan"></i> PhySoc Academic Wing</h2>
+              <span class="wing-badge">Department of Physics, IIT Kharagpur</span>
+            </div>
+            <p class="section-desc">The academic core of PhySoc — facilitating peer mentorship, course roadmaps, subject handbooks, research seminars, and specialized interest groups across theoretical & experimental physics domains.</p>
+            
+            <div class="divider"></div>
+            
+            <!-- Wing Leadership -->
+            <h3>Academic Wing Secretary</h3>
+            <div class="officers-grid" style="margin-bottom: 35px;">
+              <div class="officer-card profile-card wasim-card">
+                <div class="dark-header-bg"></div>
+                <div class="absolute-avatar">
+                  <img src="wasim.jpg" alt="Kazi Wasim Raj" class="avatar-img circular-crop">
+                </div>
+                <div class="card-content-shift">
+                  <h3>Kazi Wasim Raj</h3>
+                  <span class="role">Secretary (Academic Wing)</span>
+                  <span class="roll-tag">Roll: 24PH10005 &bull; 3rd Year</span>
+                  <p>Leads academic curriculum resources, peer mentoring programs, and academic wing coordination.</p>
+                  <div class="officer-links">
+                    <a href="mailto:kazi90ar@gmail.com" title="Email Kazi Wasim Raj"><i class="fa-solid fa-envelope"></i></a>
+                    <a href="tel:9679951538" title="Call Kazi Wasim Raj"><i class="fa-solid fa-phone"></i></a>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="divider"></div>
+
+            <!-- Domain Search & Filters -->
+            <div class="academic-filter-bar">
+              <div class="search-box-inline">
+                <i class="fa-solid fa-magnifying-glass search-inline-icon"></i>
+                <input type="text" id="academic-search-input" placeholder="Search members by name, roll no, or research field..." aria-label="Search Academic Wing Members">
+              </div>
+              <div class="domain-filter-tags" id="domain-filters">
+                <button class="domain-btn active" data-domain="all">All Fields</button>
+                <button class="domain-btn" data-domain="Theoretical Physics">Theoretical Physics</button>
+                <button class="domain-btn" data-domain="Condensed Matter Physics">Condensed Matter</button>
+                <button class="domain-btn" data-domain="Astrophysics">Astrophysics</button>
+                <button class="domain-btn" data-domain="Photonics">Photonics</button>
+                <button class="domain-btn" data-domain="Quantum Mechanics">Quantum Mechanics</button>
+                <button class="domain-btn" data-domain="Biophysics">Biophysics</button>
+              </div>
+            </div>
+
+            <div class="academic-members-grid" id="academic-members-grid">
+              <!-- Academic Wing Members List (15 Members) -->
+              
+              <!-- Member 1 -->
+              <div class="academic-member-card" data-domain="Condensed Matter Physics" data-year="3rd Year" data-name="Kedhar Athreya S" data-roll="24PH10022">
+                <div class="member-header">
+                  <div class="member-avatar"><i class="fa-solid fa-atom"></i></div>
+                  <div>
+                    <h4>Kedhar Athreya S</h4>
+                    <span class="member-roll">24PH10022 &bull; 3rd Year</span>
+                  </div>
+                </div>
+                <div class="member-domain"><i class="fa-solid fa-microscope"></i> Condensed Matter Physics</div>
+                <div class="member-contact">
+                  <a href="mailto:kedharathreya.24@kgpian.iitkgp.ac.in" class="contact-pill"><i class="fa-solid fa-envelope"></i> Email</a>
+                  <a href="tel:8122980394" class="contact-pill"><i class="fa-solid fa-phone"></i> 8122980394</a>
+                </div>
+              </div>
+
+              <!-- Member 2 -->
+              <div class="academic-member-card" data-domain="Biophysics" data-year="2nd Year" data-name="Samrudh R Kashyap" data-roll="25PH10040">
+                <div class="member-header">
+                  <div class="member-avatar"><i class="fa-solid fa-dna"></i></div>
+                  <div>
+                    <h4>Samrudh R Kashyap</h4>
+                    <span class="member-roll">25PH10040 &bull; 2nd Year</span>
+                  </div>
+                </div>
+                <div class="member-domain"><i class="fa-solid fa-dna"></i> Biophysics</div>
+                <div class="member-contact">
+                  <a href="mailto:samrudhrkashyap@gmail.com" class="contact-pill"><i class="fa-solid fa-envelope"></i> Email</a>
+                  <a href="tel:9663503051" class="contact-pill"><i class="fa-solid fa-phone"></i> 9663503051</a>
+                </div>
+              </div>
+
+              <!-- Member 3 -->
+              <div class="academic-member-card" data-domain="Theoretical Physics" data-year="4th Year" data-name="Adarsh Tiwari" data-roll="23PH10003">
+                <div class="member-header">
+                  <div class="member-avatar"><i class="fa-solid fa-brain"></i></div>
+                  <div>
+                    <h4>Adarsh Tiwari</h4>
+                    <span class="member-roll">23PH10003 &bull; 4th Year</span>
+                  </div>
+                </div>
+                <div class="member-domain"><i class="fa-solid fa-infinity"></i> Theoretical Physics</div>
+                <div class="member-contact">
+                  <a href="mailto:adarsh0808@kgpian.iitkgp.ac.in" class="contact-pill"><i class="fa-solid fa-envelope"></i> Email</a>
+                  <a href="tel:7489299650" class="contact-pill"><i class="fa-solid fa-phone"></i> 7489299650</a>
+                </div>
+              </div>
+
+              <!-- Member 4 -->
+              <div class="academic-member-card" data-domain="Theoretical Physics" data-year="3rd Year" data-name="Tukshit Talani" data-roll="24PH10004">
+                <div class="member-header">
+                  <div class="member-avatar"><i class="fa-solid fa-square-root-variable"></i></div>
+                  <div>
+                    <h4>Tukshit Talani</h4>
+                    <span class="member-roll">24PH10004 &bull; 3rd Year</span>
+                  </div>
+                </div>
+                <div class="member-domain"><i class="fa-solid fa-infinity"></i> Theoretical Physics</div>
+                <div class="member-contact">
+                  <a href="mailto:tukshitreso@gmail.com" class="contact-pill"><i class="fa-solid fa-envelope"></i> Email</a>
+                  <a href="tel:9460337350" class="contact-pill"><i class="fa-solid fa-phone"></i> 9460337350</a>
+                </div>
+              </div>
+
+              <!-- Member 5 -->
+              <div class="academic-member-card" data-domain="Photonics" data-year="2nd Year" data-name="Daniel S" data-roll="25PH10023">
+                <div class="member-header">
+                  <div class="member-avatar"><i class="fa-solid fa-lightbulb"></i></div>
+                  <div>
+                    <h4>Daniel S</h4>
+                    <span class="member-roll">25PH10023 &bull; 2nd Year</span>
+                  </div>
+                </div>
+                <div class="member-domain"><i class="fa-solid fa-bolt"></i> Photonics</div>
+                <div class="member-contact">
+                  <a href="mailto:daniel25@kgpian.iitkgp.ac.in" class="contact-pill"><i class="fa-solid fa-envelope"></i> Email</a>
+                  <a href="tel:7305946629" class="contact-pill"><i class="fa-solid fa-phone"></i> 7305946629</a>
+                </div>
+              </div>
+
+              <!-- Member 6 -->
+              <div class="academic-member-card" data-domain="Quantum Mechanics" data-year="3rd Year" data-name="Avani Dandawate" data-roll="24PH10001">
+                <div class="member-header">
+                  <div class="member-avatar"><i class="fa-solid fa-atom"></i></div>
+                  <div>
+                    <h4>Avani Dandawate</h4>
+                    <span class="member-roll">24PH10001 &bull; 3rd Year</span>
+                  </div>
+                </div>
+                <div class="member-domain"><i class="fa-solid fa-wave-square"></i> Quantum Mechanics</div>
+                <div class="member-contact">
+                  <a href="mailto:avanidandawate@gmail.com" class="contact-pill"><i class="fa-solid fa-envelope"></i> Email</a>
+                  <a href="tel:8329348148" class="contact-pill"><i class="fa-solid fa-phone"></i> 8329348148</a>
+                </div>
+              </div>
+
+              <!-- Member 7 -->
+              <div class="academic-member-card" data-domain="Theoretical Physics" data-year="3rd Year" data-name="Mani Barathi" data-roll="24PH10026">
+                <div class="member-header">
+                  <div class="member-avatar"><i class="fa-solid fa-brain"></i></div>
+                  <div>
+                    <h4>Mani Barathi</h4>
+                    <span class="member-roll">24PH10026 &bull; 3rd Year</span>
+                  </div>
+                </div>
+                <div class="member-domain"><i class="fa-solid fa-infinity"></i> Theoretical Physics</div>
+                <div class="member-contact">
+                  <a href="mailto:manibarathiag.24@kgpian.iitkgp.ac.in" class="contact-pill"><i class="fa-solid fa-envelope"></i> Email</a>
+                  <a href="tel:6371615658" class="contact-pill"><i class="fa-solid fa-phone"></i> 6371615658</a>
+                </div>
+              </div>
+
+              <!-- Member 8 -->
+              <div class="academic-member-card" data-domain="Astrophysics" data-year="2nd Year" data-name="Bramhavidnya Kachave" data-roll="25PH10026">
+                <div class="member-header">
+                  <div class="member-avatar"><i class="fa-solid fa-user-astronaut"></i></div>
+                  <div>
+                    <h4>Bramhavidnya Kachave</h4>
+                    <span class="member-roll">25PH10026 &bull; 2nd Year</span>
+                  </div>
+                </div>
+                <div class="member-domain"><i class="fa-solid fa-meteor"></i> Astrophysics</div>
+                <div class="member-contact">
+                  <a href="mailto:bramhavidnyakachave@gmail.com" class="contact-pill"><i class="fa-solid fa-envelope"></i> Email</a>
+                  <a href="tel:8007922476" class="contact-pill"><i class="fa-solid fa-phone"></i> 8007922476</a>
+                </div>
+              </div>
+
+              <!-- Member 9 -->
+              <div class="academic-member-card" data-domain="Theoretical Physics" data-year="2nd Year" data-name="Biswajeet Bhuyan" data-roll="25PH10002">
+                <div class="member-header">
+                  <div class="member-avatar"><i class="fa-solid fa-atom"></i></div>
+                  <div>
+                    <h4>Biswajeet Bhuyan</h4>
+                    <span class="member-roll">25PH10002 &bull; 2nd Year</span>
+                  </div>
+                </div>
+                <div class="member-domain"><i class="fa-solid fa-infinity"></i> Theoretical Physics</div>
+                <div class="member-contact">
+                  <a href="mailto:sbhuyan47025@kgpian.iitkgp.ac.in" class="contact-pill"><i class="fa-solid fa-envelope"></i> Email</a>
+                  <a href="tel:8249402145" class="contact-pill"><i class="fa-solid fa-phone"></i> 8249402145</a>
+                </div>
+              </div>
+
+              <!-- Member 10 -->
+              <div class="academic-member-card" data-domain="Astrophysics" data-year="3rd Year" data-name="Adith Sankarram" data-roll="24PH10007">
+                <div class="member-header">
+                  <div class="member-avatar"><i class="fa-solid fa-user-astronaut"></i></div>
+                  <div>
+                    <h4>Adith Sankarram</h4>
+                    <span class="member-roll">24PH10007 &bull; 3rd Year</span>
+                  </div>
+                </div>
+                <div class="member-domain"><i class="fa-solid fa-meteor"></i> Astrophysics</div>
+                <div class="member-contact">
+                  <a href="mailto:student149208@gmail.com" class="contact-pill"><i class="fa-solid fa-envelope"></i> Email</a>
+                  <a href="tel:9677626023" class="contact-pill"><i class="fa-solid fa-phone"></i> 9677626023</a>
+                </div>
+              </div>
+
+              <!-- Member 11 -->
+              <div class="academic-member-card" data-domain="General Physics" data-year="3rd Year" data-name="Kazi Wasim Raj" data-roll="24PH10005">
+                <div class="member-header">
+                  <div class="member-avatar"><i class="fa-solid fa-graduation-cap"></i></div>
+                  <div>
+                    <h4>Kazi Wasim Raj</h4>
+                    <span class="member-roll">24PH10005 &bull; 3rd Year</span>
+                  </div>
+                </div>
+                <div class="member-domain"><i class="fa-solid fa-user-gear"></i> Secretary (Academic Wing)</div>
+                <div class="member-contact">
+                  <a href="mailto:kazi90ar@gmail.com" class="contact-pill"><i class="fa-solid fa-envelope"></i> Email</a>
+                  <a href="tel:9679951538" class="contact-pill"><i class="fa-solid fa-phone"></i> 9679951538</a>
+                </div>
+              </div>
+
+              <!-- Member 12 -->
+              <div class="academic-member-card" data-domain="Theoretical Physics" data-year="2nd Year" data-name="Rushabh Santosh Bodwade" data-roll="25PH10009">
+                <div class="member-header">
+                  <div class="member-avatar"><i class="fa-solid fa-brain"></i></div>
+                  <div>
+                    <h4>Rushabh Santosh Bodwade</h4>
+                    <span class="member-roll">25PH10009 &bull; 2nd Year</span>
+                  </div>
+                </div>
+                <div class="member-domain"><i class="fa-solid fa-infinity"></i> Theoretical Physics</div>
+                <div class="member-contact">
+                  <a href="mailto:rushabhbodwade@gmail.com" class="contact-pill"><i class="fa-solid fa-envelope"></i> Email</a>
+                  <a href="tel:8454914909" class="contact-pill"><i class="fa-solid fa-phone"></i> 8454914909</a>
+                </div>
+              </div>
+
+              <!-- Member 13 -->
+              <div class="academic-member-card" data-domain="General Physics" data-year="2nd Year" data-name="Dishant Talse" data-roll="25PH10024">
+                <div class="member-header">
+                  <div class="member-avatar"><i class="fa-solid fa-atom"></i></div>
+                  <div>
+                    <h4>Dishant Talse</h4>
+                    <span class="member-roll">25PH10024 &bull; 2nd Year</span>
+                  </div>
+                </div>
+                <div class="member-domain"><i class="fa-solid fa-compass"></i> General Physics</div>
+                <div class="member-contact">
+                  <a href="mailto:dishanttalsem13@gmail.com" class="contact-pill"><i class="fa-solid fa-envelope"></i> Email</a>
+                  <a href="tel:9665375178" class="contact-pill"><i class="fa-solid fa-phone"></i> 9665375178</a>
+                </div>
+              </div>
+
+              <!-- Member 14 -->
+              <div class="academic-member-card" data-domain="Photonics" data-year="2nd Year" data-name="Praneeth Mutchu" data-roll="25PH10006">
+                <div class="member-header">
+                  <div class="member-avatar"><i class="fa-solid fa-lightbulb"></i></div>
+                  <div>
+                    <h4>Praneeth Mutchu</h4>
+                    <span class="member-roll">25PH10006 &bull; 2nd Year</span>
+                  </div>
+                </div>
+                <div class="member-domain"><i class="fa-solid fa-bolt"></i> Photonics</div>
+                <div class="member-contact">
+                  <a href="mailto:praneethmutchu322@gmail.com" class="contact-pill"><i class="fa-solid fa-envelope"></i> Email</a>
+                  <a href="tel:7483934589" class="contact-pill"><i class="fa-solid fa-phone"></i> 7483934589</a>
+                </div>
+              </div>
+
+              <!-- Member 15 -->
+              <div class="academic-member-card" data-domain="Theoretical Physics" data-year="2nd Year" data-name="Isiri Harithas" data-roll="25PH10003">
+                <div class="member-header">
+                  <div class="member-avatar"><i class="fa-solid fa-square-root-variable"></i></div>
+                  <div>
+                    <h4>Isiri Harithas</h4>
+                    <span class="member-roll">25PH10003 &bull; 2nd Year</span>
+                  </div>
+                </div>
+                <div class="member-domain"><i class="fa-solid fa-infinity"></i> Theoretical Physics</div>
+                <div class="member-contact">
+                  <a href="mailto:isiriharithas@gmail.com" class="contact-pill"><i class="fa-solid fa-envelope"></i> Email</a>
+                  <a href="tel:9900114572" class="contact-pill"><i class="fa-solid fa-phone"></i> 9900114572</a>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </section>
+
+        <!-- OFFICERS / WORKING COMMITTEE TAB -->
+        <section id="officers-tab" class="tab-panel">
+          <div class="info-card wide-card">
+            <h2>PhySoc Working Committee</h2>
+            <p class="section-desc">The official student governing body of the Physics Society, IIT Kharagpur — leading events, competitions, academic wing, tech infrastructure, and outreach.</p>
+            
+            <div class="divider"></div>
+            
+            <h3>Secretaries</h3>
+            <div class="officers-grid" style="margin-bottom: 45px;">
+              <!-- Secretary 1 -->
+              <div class="officer-card profile-card neeraj-card">
+                <div class="dark-header-bg"></div>
+                <div class="absolute-avatar">
+                  <img src="neeraj.jpg" alt="Neeraj Laikara" class="avatar-img circular-crop">
+                </div>
+                <div class="card-content-shift">
+                  <h3>Neeraj Laikara</h3>
+                  <span class="role">Secretary (Events & Competitions)</span>
+                  <span class="roll-tag">Roll: 24PH10029</span>
+                  <p>Manages flagship physics competitions, observation sessions, and overall society event execution.</p>
+                  <div class="officer-links">
+                    <a href="mailto:phyiitkharagpur@gmail.com" aria-label="Email Neeraj"><i class="fa-solid fa-envelope"></i></a>
+                    <a href="https://linkedin.com/company/phy-soc-iit-kharagpur" target="_blank" aria-label="LinkedIn PhySoc"><i class="fa-brands fa-linkedin"></i></a>
+                  </div>
+                </div>
+              </div>
+              
+              <!-- Secretary 2 -->
+              <div class="officer-card profile-card wasim-card">
+                <div class="dark-header-bg"></div>
+                <div class="absolute-avatar">
+                  <img src="wasim.jpg" alt="Kazi Wasim Raj" class="avatar-img circular-crop">
+                </div>
+                <div class="card-content-shift">
+                  <h3>Kazi Wasim Raj</h3>
+                  <span class="role">Secretary (Academic Wing)</span>
+                  <span class="roll-tag">Roll: 24PH10005</span>
+                  <p>Directs academic resources, study circles, course handbooks, and academic wing coordination.</p>
+                  <div class="officer-links">
+                    <a href="mailto:kazi90ar@gmail.com" aria-label="Email Wasim"><i class="fa-solid fa-envelope"></i></a>
+                    <a href="https://linkedin.com/company/phy-soc-iit-kharagpur" target="_blank" aria-label="LinkedIn PhySoc"><i class="fa-brands fa-linkedin"></i></a>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Secretary 3 -->
+              <div class="officer-card">
+                <div class="avatar-container">
+                  <div class="avatar-placeholder"><i class="fa-solid fa-code"></i></div>
+                </div>
+                <h3>Neelabh Priyam Jha</h3>
+                <span class="role">Secretary (Tech & Finance)</span>
+                <span class="roll-tag">Roll: 24PH10004</span>
+                <p>Coordinates digital infrastructure, web development, budgets, and financial management.</p>
+              </div>
+
+              <!-- Secretary 4 -->
+              <div class="officer-card">
+                <div class="avatar-container">
+                  <div class="avatar-placeholder"><i class="fa-solid fa-bullhorn"></i></div>
+                </div>
+                <h3>Rakshita</h3>
+                <span class="role">Secretary (Outreach)</span>
+                <span class="roll-tag">Roll: 24PH10037</span>
+                <p>Manages external relations, publicity, social media presence, and inter-society collaborations.</p>
+              </div>
+            </div>
+
+            <div class="divider"></div>
+
+            <h3>Senior Student Members (Batch of '25)</h3>
+            <div class="officers-grid" style="margin-bottom: 45px;">
+              <div class="officer-card">
+                <div class="avatar-container"><div class="avatar-placeholder"><i class="fa-solid fa-user-shield"></i></div></div>
+                <h3>Sayak Moulic</h3>
+                <span class="role">Senior Student Member</span>
+                <span class="roll-tag">Roll: 25PH10007</span>
+                <p>Mentors junior teams, manages departmental event logistics, and advises committee initiatives.</p>
+              </div>
+
+              <div class="officer-card">
+                <div class="avatar-container"><div class="avatar-placeholder"><i class="fa-solid fa-user-shield"></i></div></div>
+                <h3>Skanda K M</h3>
+                <span class="role">Senior Student Member</span>
+                <span class="roll-tag">Roll: 25PH10008</span>
+                <p>Oversees physics resource curation, event organization, and senior advisory operations.</p>
+              </div>
+
+              <div class="officer-card">
+                <div class="avatar-container"><div class="avatar-placeholder"><i class="fa-solid fa-user-shield"></i></div></div>
+                <h3>Aman Kumar</h3>
+                <span class="role">Senior Student Member</span>
+                <span class="roll-tag">Roll: 25PH10014</span>
+                <p>Event logistics lead, seminar setups, and telescope observation night coordinator.</p>
+              </div>
+
+              <div class="officer-card">
+                <div class="avatar-container"><div class="avatar-placeholder"><i class="fa-solid fa-user-shield"></i></div></div>
+                <h3>Rudraksh Thakur</h3>
+                <span class="role">Senior Student Member</span>
+                <span class="roll-tag">Roll: 25PH10050</span>
+                <p>Advises competitions, guides academic outreach, and supports department projects.</p>
+              </div>
+            </div>
+
+            <div class="divider"></div>
+
+            <h3>Student Members (Batch of '26)</h3>
+            <div class="officers-grid">
+              <div class="officer-card">
+                <div class="avatar-container"><div class="avatar-placeholder"><i class="fa-solid fa-user"></i></div></div>
+                <h3>Gaurish Malik</h3>
+                <span class="role">Student Member</span>
+                <span class="roll-tag">Roll: 26PH10002</span>
+              </div>
+
+              <div class="officer-card">
+                <div class="avatar-container"><div class="avatar-placeholder"><i class="fa-solid fa-user"></i></div></div>
+                <h3>KVVH Vasishta</h3>
+                <span class="role">Student Member</span>
+                <span class="roll-tag">Roll: 26PH10003</span>
+              </div>
+
+              <div class="officer-card">
+                <div class="avatar-container"><div class="avatar-placeholder"><i class="fa-solid fa-user"></i></div></div>
+                <h3>Padma Youdon</h3>
+                <span class="role">Student Member</span>
+                <span class="roll-tag">Roll: 26PH10007</span>
+              </div>
+
+              <div class="officer-card">
+                <div class="avatar-container"><div class="avatar-placeholder"><i class="fa-solid fa-user"></i></div></div>
+                <h3>Utkarsh Singh</h3>
+                <span class="role">Student Member</span>
+                <span class="roll-tag">Roll: 26PH10008</span>
+              </div>
+
+              <div class="officer-card">
+                <div class="avatar-container"><div class="avatar-placeholder"><i class="fa-solid fa-user"></i></div></div>
+                <h3>Avtar Jain</h3>
+                <span class="role">Student Member</span>
+                <span class="roll-tag">Roll: 26PH10010</span>
+              </div>
+
+              <div class="officer-card">
+                <div class="avatar-container"><div class="avatar-placeholder"><i class="fa-solid fa-user"></i></div></div>
+                <h3>Abir Dutta</h3>
+                <span class="role">Student Member</span>
+                <span class="roll-tag">Roll: 26PH10014</span>
+              </div>
+
+              <div class="officer-card">
+                <div class="avatar-container"><div class="avatar-placeholder"><i class="fa-solid fa-user"></i></div></div>
+                <h3>Aditya senapati</h3>
+                <span class="role">Student Member</span>
+                <span class="roll-tag">Roll: 26PH10015</span>
+              </div>
+
+              <div class="officer-card">
+                <div class="avatar-container"><div class="avatar-placeholder"><i class="fa-solid fa-user"></i></div></div>
+                <h3>Darshana Katariya</h3>
+                <span class="role">Student Member</span>
+                <span class="roll-tag">Roll: 26PH10021</span>
+              </div>
+
+              <div class="officer-card">
+                <div class="avatar-container"><div class="avatar-placeholder"><i class="fa-solid fa-user"></i></div></div>
+                <h3>Jayant Kumar Kushwaha</h3>
+                <span class="role">Student Member</span>
+                <span class="roll-tag">Roll: 26PH10027</span>
+              </div>
+
+              <div class="officer-card">
+                <div class="avatar-container"><div class="avatar-placeholder"><i class="fa-solid fa-user"></i></div></div>
+                <h3>Pratham Matad</h3>
+                <span class="role">Student Member</span>
+                <span class="roll-tag">Roll: 26PH10029</span>
+              </div>
+
+              <div class="officer-card">
+                <div class="avatar-container"><div class="avatar-placeholder"><i class="fa-solid fa-user"></i></div></div>
+                <h3>Sidhant Jain</h3>
+                <span class="role">Student Member</span>
+                <span class="roll-tag">Roll: 26PH10040</span>
+              </div>
+
+              <div class="officer-card">
+                <div class="avatar-container"><div class="avatar-placeholder"><i class="fa-solid fa-user"></i></div></div>
+                <h3>Subhra Gour</h3>
+                <span class="role">Student Member</span>
+                <span class="roll-tag">Roll: 26PH10041</span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- PHYSICS SANDBOX TAB -->
+        <section id="sandbox-tab" class="tab-panel">
+          <div class="info-card wide-card sandbox-panel">
+            <div class="sandbox-header">
+              <h2>Physics Interactive Sandbox</h2>
+              <div class="sandbox-toggles">
+                <button class="sandbox-tab-btn active" data-simulation="orbit">Orbit Simulator</button>
+                <button class="sandbox-tab-btn" data-simulation="double-pendulum">Double Pendulum</button>
+              </div>
+            </div>
+            <p class="sandbox-desc">Interact with mechanical simulations directly inside your browser. Change variables and observe mathematical physics in action.</p>
+            
+            <div class="divider"></div>
+            
+            <div class="simulation-layout">
+              <!-- Canvas Container -->
+              <div class="canvas-wrapper">
+                <canvas id="sandbox-canvas" width="600" height="400"></canvas>
+                <div class="canvas-instructions" id="sim-instructions">
+                  Click on canvas to launch orbits around the central gravity star.
+                </div>
+              </div>
+              
+              <!-- Simulation Controls -->
+              <div class="simulation-controls" id="orbit-controls">
+                <h4>Orbit Controls</h4>
+                <div class="control-group">
+                  <label for="orbit-mass">Central Star Mass:</label>
+                  <input type="range" id="orbit-mass" min="500" max="5000" step="100" value="2000">
+                  <span id="orbit-mass-val" class="ctrl-val">2000</span>
+                </div>
+                <div class="control-group">
+                  <label for="orbit-gravity">Gravity Strength (G):</label>
+                  <input type="range" id="orbit-gravity" min="0.1" max="2" step="0.1" value="0.8">
+                  <span id="orbit-gravity-val" class="ctrl-val">0.8</span>
+                </div>
+                <div class="control-group checkbox-group">
+                  <input type="checkbox" id="show-traces" checked>
+                  <label for="show-traces">Show Orbital Traces</label>
+                </div>
+                <div class="control-actions">
+                  <button class="control-btn" id="clear-orbits"><i class="fa-solid fa-trash-can"></i> Clear Planets</button>
+                  <button class="control-btn secondary" id="reset-orbits"><i class="fa-solid fa-rotate-left"></i> Reset System</button>
+                </div>
+              </div>
+              
+              <!-- Double Pendulum Controls (Hidden initially) -->
+              <div class="simulation-controls" id="double-pendulum-controls" style="display: none;">
+                <h4>Pendulum Controls</h4>
+                <div class="control-group">
+                  <label for="pendulum-len">Length (Rod 1 & 2):</label>
+                  <input type="range" id="pendulum-len" min="50" max="150" step="5" value="100">
+                  <span id="pendulum-len-val" class="ctrl-val">100px</span>
+                </div>
+                <div class="control-group">
+                  <label for="pendulum-mass">Mass (Bob 1 & 2):</label>
+                  <input type="range" id="pendulum-mass" min="5" max="30" step="1" value="15">
+                  <span id="pendulum-mass-val" class="ctrl-val">15kg</span>
+                </div>
+                <div class="control-group">
+                  <label for="pendulum-damping">Air Resistance/Damping:</label>
+                  <input type="range" id="pendulum-damping" min="0" max="0.005" step="0.0001" value="0.0005">
+                  <span id="pendulum-damping-val" class="ctrl-val">0.0005</span>
+                </div>
+                <div class="control-group checkbox-group">
+                  <input type="checkbox" id="show-chaos-trace" checked>
+                  <label for="show-chaos-trace">Show Chaos Trajectory</label>
+                </div>
+                <div class="control-actions">
+                  <button class="control-btn" id="clear-traces"><i class="fa-solid fa-eraser"></i> Clear Traces</button>
+                  <button class="control-btn secondary" id="reset-pendulum"><i class="fa-solid fa-rotate-left"></i> Reset Angles</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- CONTACT TAB -->
+        <section id="contact-tab" class="tab-panel">
+          <div class="info-card wide-card">
+            <h2>Contact PhySoc</h2>
+            <p>Have questions about upcoming events, academic resources, or annual executive selections? Send us a message below.</p>
+            
+            <div class="divider"></div>
+            
+            <div class="contact-layout">
+              <form class="contact-form" id="contact-form">
+                <div class="form-row">
+                  <div class="form-group">
+                    <label for="contact-name">Full Name *</label>
+                    <input type="text" id="contact-name" required placeholder="Enter your full name">
+                    <span class="error-msg" id="name-error">Name is required.</span>
+                  </div>
+                  <div class="form-group">
+                    <label for="contact-email">IIT KGP Email Address *</label>
+                    <input type="email" id="contact-email" required placeholder="rollnumber@kgpian.iitkgp.ac.in">
+                    <span class="error-msg" id="email-error">Please enter a valid IIT KGP email.</span>
+                  </div>
+                </div>
+                
+                <div class="form-group">
+                  <label for="contact-subject">Subject</label>
+                  <input type="text" id="contact-subject" placeholder="What are you writing about?">
+                </div>
+                
+                <div class="form-group">
+                  <label for="contact-msg">Your Message *</label>
+                  <textarea id="contact-msg" rows="5" required placeholder="Write your questions or suggestions here..."></textarea>
+                  <span class="error-msg" id="msg-error">Message cannot be empty.</span>
+                </div>
+                
+                <button type="submit" class="primary-btn submit-btn" id="form-submit">
+                  Send Message <i class="fa-solid fa-paper-plane"></i>
+                </button>
+              </form>
+              
+              <div class="contact-info-block">
+                <h4>📍 Find Us</h4>
+                <div class="info-row"><i class="fa-solid fa-location-dot"></i><span>Physics Department, IIT Kharagpur, West Bengal — 721302</span></div>
+                <div class="info-row"><i class="fa-solid fa-envelope"></i><a href="mailto:phyiitkharagpur@gmail.com" style="color:var(--cyan)">phyiitkharagpur@gmail.com</a></div>
+                <div class="info-row"><i class="fa-brands fa-whatsapp"></i><a href="#" id="whatsapp-chair-btn" style="color:var(--cyan)">+91 98870 78617 (Chairs)</a></div>
+                <div class="info-row"><i class="fa-solid fa-clock"></i><span>Responses within 48 hours (working days)</span></div>
+                <div class="divider" style="margin:14px 0"></div>
+                <div class="info-row"><i class="fa-brands fa-instagram"></i><a href="https://www.instagram.com/physoc_iitkgp/" target="_blank" style="color:var(--cyan)">@physoc_iitkgp</a></div>
+                <div class="info-row"><i class="fa-brands fa-linkedin"></i><a href="https://linkedin.com/company/phy-soc-iit-kharagpur" target="_blank" style="color:var(--cyan)">PhySoc IIT Kharagpur</a></div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+      </main>
+
+      <!-- RIGHT SIDEBAR: QUICK WIDGETS -->
+      <aside class="sidebar-right">
+        
+        <!-- QUICK STATS -->
+        <div class="widget-card stats-widget">
+          <h4>PhySoc Snapshot</h4>
+          <div class="stats-grid">
+            <div class="stat-item">
+              <span class="stat-num">500+</span>
+              <span class="stat-lbl">Active Members</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-num">35+</span>
+              <span class="stat-lbl">Faculty members</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-num">18+</span>
+              <span class="stat-lbl">Research Labs</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- COUNTDOWN WIDGET -->
+        <div class="widget-card countdown-widget">
+          <h4>Next Major Event</h4>
+          <div class="event-target-info">
+            <strong id="next-event-title">2nd Year Executive Selections</strong>
+            <span id="next-event-time">July 25, 2026, 10:00 AM</span>
+          </div>
+          <div class="timer-display">
+            <div class="timer-segment">
+              <span id="timer-days">00</span>
+              <label>Days</label>
+            </div>
+            <div class="timer-segment">
+              <span id="timer-hours">00</span>
+              <label>Hrs</label>
+            </div>
+            <div class="timer-segment">
+              <span id="timer-mins">00</span>
+              <label>Mins</label>
+            </div>
+          </div>
+        </div>
+
+        <!-- WEEKLY PUZZLE WIDGET -->
+        <div class="widget-card puzzle-widget">
+          <div class="widget-header">
+            <h4>Weekly Physics Challenge</h4>
+            <span class="puzzle-tag">Puzzle #42</span>
+          </div>
+          <div id="puzzle-box">
+            <p class="puzzle-q">Which particle is the gauge mediator of the strong nuclear force, binding quarks together in hadrons?</p>
+            <form id="puzzle-form">
+              <div class="puzzle-options">
+                <label class="option-label">
+                  <input type="radio" name="puzzle-ans" value="photon">
+                  <span>Photon</span>
+                </label>
+                <label class="option-label">
+                  <input type="radio" name="puzzle-ans" value="w-boson">
+                  <span>W / Z Boson</span>
+                </label>
+                <label class="option-label">
+                  <input type="radio" name="puzzle-ans" value="gluon">
+                  <span>Gluon</span>
+                </label>
+                <label class="option-label">
+                  <input type="radio" name="puzzle-ans" value="graviton">
+                  <span>Graviton</span>
+                </label>
+              </div>
+              <button type="submit" class="puzzle-submit-btn">Submit Answer</button>
+            </form>
+            <div id="puzzle-feedback" class="puzzle-feedback"></div>
+          </div>
+        </div>
+      </aside>
+
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="main-footer">
+      <div class="footer-content">
+        <div class="footer-left">
+          <img src="logo.svg" alt="PhySoc Logo" class="footer-logo">
+          <div>
+            <strong>Physics Society, IIT Kharagpur</strong>
+            <p>Department of Physics, IIT Kharagpur, West Bengal 721302, India</p>
+          </div>
+        </div>
+        <div class="footer-links">
+          <a href="https://accessibility.iitkgp.ac.in/" target="_blank">Accessibility</a>
+          <a href="#about" onclick="switchTab('about')">About Us</a>
+          <a href="#contact" onclick="switchTab('contact')">Feedback</a>
+          <a href="https://www.instagram.com/physoc_iitkgp/" target="_blank" aria-label="Instagram" style="margin-left: 10px;"><i class="fa-brands fa-instagram"></i></a>
+          <a href="https://linkedin.com/company/phy-soc-iit-kharagpur" target="_blank" aria-label="LinkedIn" style="margin-left: 5px;"><i class="fa-brands fa-linkedin"></i></a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 Physics Society, IIT Kharagpur. Inspired by MIT SPS website. All Rights Reserved.</p>
+      </div>
+    </footer>
+
+  </div>
+
+  <!-- Form Success Modal -->
+  <div class="modal-overlay" id="success-modal">
+    <div class="success-modal-card">
+      <i class="fa-solid fa-circle-check success-icon"></i>
+      <h3>Message Sent Successfully!</h3>
+      <p>Thank you for reaching out to PhySoc IIT Kharagpur. We have received your inquiry and our team will get back to you shortly.</p>
+      <button class="primary-btn close-modal-btn" onclick="closeModal()">Close</button>
+    </div>
+  </div>
+
+  <!-- WhatsApp Identity Verification Modal -->
+  <div class="modal-overlay" id="whatsapp-modal">
+    <div class="success-modal-card whatsapp-modal-card" style="max-width: 450px; text-align: left; padding: 30px;">
+      <!-- Step 1: Loading Network Auto-detection -->
+      <div id="wa-step-detecting" style="display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 20px 0;">
+        <i class="fa-solid fa-wifi fa-spin-pulse" style="font-size: 48px; color: var(--color-primary); margin-bottom: 20px; --fa-animation-duration: 2s;"></i>
+        <h3 style="margin-bottom: 10px;">Checking Campus Network</h3>
+        <p style="font-size: 13px; color: var(--text-muted); max-width: 320px; text-align: center;">Scanning for authorized institutional Wi-Fi networks (IITs or IIEST Shibpur)...</p>
+      </div>
+
+      <!-- Step 2: Auto-detection Success -->
+      <div id="wa-step-success" style="display: none; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 20px 0;">
+        <i class="fa-solid fa-circle-check" style="font-size: 56px; color: #10b981; margin-bottom: 20px; filter: drop-shadow(0 0 10px rgba(16, 185, 129, 0.3));"></i>
+        <h3 style="margin-bottom: 10px;">Network Verified!</h3>
+        <p id="wa-network-name" style="font-size: 14px; color: var(--text-bright); font-weight: 500; margin-bottom: 5px; text-align: center;">Access Granted via Campus Wifi</p>
+        <p style="font-size: 12px; color: var(--text-muted); margin-bottom: 20px; text-align: center;">Redirecting you to the Chairs' WhatsApp contact...</p>
+        <div class="loader-bar" style="width: 100%; height: 4px; background: var(--border-color); border-radius: 2px; overflow: hidden; position: relative;">
+          <div class="loader-progress" id="wa-progress-bar" style="width: 0%; height: 100%; background: var(--color-primary); transition: width 1.5s linear;"></div>
+        </div>
+      </div>
+
+      <!-- Step 3: Manual Verification Form -->
+      <div id="wa-step-manual" style="display: none;">
+        <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 15px;">
+          <div style="background: rgba(0, 242, 254, 0.1); width: 42px; height: 42px; border-radius: 8px; display: flex; align-items: center; justify-content: center; color: var(--color-primary); flex-shrink: 0;">
+            <i class="fa-solid fa-shield-halved" style="font-size: 20px;"></i>
+          </div>
+          <div>
+            <h3 style="margin: 0; font-size: 18px; line-height: 1.2;">Verify Identity</h3>
+            <p style="margin: 3px 0 0 0; font-size: 11px; color: var(--text-muted);">Please verify your student credentials to message the Chairs.</p>
+          </div>
+        </div>
+
+        <form id="whatsapp-auth-form" style="display: flex; flex-direction: column; gap: 14px;">
+          <div class="form-group" style="display: flex; flex-direction: column; gap: 5px;">
+            <label for="wa-institute" style="font-size: 12px; color: var(--text-bright); font-weight: 500;">Select Institute *</label>
+            <select id="wa-institute" required style="padding: 10px; border-radius: 6px; border: 1px solid var(--border-color); background: var(--bg-card); color: var(--text-bright); outline: none; font-size: 13px; cursor: pointer; width: 100%;">
+              <option value="kgp">IIT Kharagpur</option>
+              <option value="bombay">IIT Bombay</option>
+              <option value="kanpur">IIT Kanpur</option>
+              <option value="madras">IIT Madras</option>
+              <option value="delhi">IIT Delhi</option>
+              <option value="roorkee">IIT Roorkee</option>
+              <option value="guwahati">IIT Guwahati</option>
+              <option value="shibpur">IIEST Shibpur</option>
+            </select>
+          </div>
+
+          <div class="form-group" style="display: flex; flex-direction: column; gap: 5px;">
+            <label for="wa-roll" id="wa-roll-label" style="font-size: 12px; color: var(--text-bright); font-weight: 500;">Roll Number *</label>
+            <input type="text" id="wa-roll" placeholder="e.g. 24PH10029" required style="padding: 10px; border-radius: 6px; border: 1px solid var(--border-color); background: rgba(255, 255, 255, 0.03); color: var(--text-bright); outline: none; font-size: 13px; font-family: 'Fira Code', monospace; width: 100%;">
+            <span class="error-msg" id="wa-roll-error" style="display: none; color: #ff5252; font-size: 11px; margin-top: 3px;"></span>
+          </div>
+
+          <div class="form-group" style="display: flex; flex-direction: column; gap: 5px;">
+            <label for="wa-email" id="wa-email-label" style="font-size: 12px; color: var(--text-bright); font-weight: 500;">Institute Email *</label>
+            <input type="email" id="wa-email" placeholder="e.g. rollnumber@kgpian.iitkgp.ac.in" required style="padding: 10px; border-radius: 6px; border: 1px solid var(--border-color); background: rgba(255, 255, 255, 0.03); color: var(--text-bright); outline: none; font-size: 13px; width: 100%;">
+            <span class="error-msg" id="wa-email-error" style="display: none; color: #ff5252; font-size: 11px; margin-top: 3px;"></span>
+          </div>
+
+          <div style="display: flex; gap: 10px; margin-top: 10px; width: 100%;">
+            <button type="button" class="secondary-btn" onclick="closeWhatsappModal()" style="flex: 1; padding: 10px; border-radius: 6px; font-size: 13px; font-weight: 500; cursor: pointer;">Cancel</button>
+            <button type="submit" class="primary-btn" style="flex: 2; padding: 10px; border-radius: 6px; font-size: 13px; font-weight: 500; display: flex; align-items: center; justify-content: center; gap: 8px; cursor: pointer;">
+              Verify & Text <i class="fa-solid fa-arrow-right"></i>
+            </button>
+          </div>
+        </form>
       </div>
     </div>
   </div>
-  <div class="border-border dark:border-darkmode-border border-t py-7">
-    <div class="text-light dark:text-darkmode-light container text-center">
-        We are a student group acting independently of the University of California.
-        We take full responsibility for our organization and this web site.
-      
-      
-      
-    </div>
-  </div>
-</footer>
 
-
-
-    
-    
-
-
-
-  
-    
-      
-    
-  
-
-  
-    
-      
-    
-  
-
-  
-    
-      
-    
-  
-
-  
-    
-      
-    
-  
-
-  
-    
-      
-    
-  
-
-  
-    
-      
-    
-  
-
-  
-    
-      
-    
-  
-
-  
-    
-      
-    
-  
-
-  
-    
-      
-    
-  
-
-
-
-
-
-
-
-
-
-  
-  
-
-
-
-
-<script src="../js/main.min.c382e2105e67658eff86fe0a044cac3f838636947d327cd08f2b03f6a8b21f2e.js" defer></script>
-
-<script
-  crossorigin="anonymous"
-  src="../js/script.min.e47bd8989fcd86cba20150c3b02e9c9806d76d4d7b000a4b636d101f8a300ad6.js"></script>
-
-
-<script
-  defer
-  async
-  crossorigin="anonymous"
-  src="../js/script-lazy.min.c3e692e360f6f81f898b1fa3a19ee902e6b5bdbbbfa512bf221a0fe796fc9f7c.js"></script>
-
-
-<script>
-  document.addEventListener('DOMContentLoaded', () => {
-    const swiper = new Swiper('.mySwiper', {
-      loop: true,
-      autoplay: {
-        delay: 5000,
-        disableOnInteraction: false,
-      },
-      pagination: {
-        el: '.swiper-pagination',
-        clickable: true,
-      },
-      navigation: {
-        nextEl: '.swiper-button-next',
-        prevEl: '.swiper-button-prev',
-      },
-    });
-  });
-</script>
-
-
-<script src="../vendor/swiper-bundle.min.js"></script>
-<script>
-  const swiper = new Swiper('.swiper', {
-    loop: true,
-    autoplay: {
-      delay: 4000,
-    },
-    effect: 'fade',
-    speed: 1000,
-  });
-</script>
-
-
-
-<script>
-  if ('serviceWorker' in navigator){navigator.serviceWorker.register("/service-worker.js");}
-</script>
-
-
-
-
-
-  
-
-
-
-
-
-
-
-
-
-
-  
-    <script type="application/javascript">
-      const announcementBox = document.getElementById('announcement');
-      const announcementButton = document.getElementById('announcement-button');
-      if (!Cookies.get('announcement-close')) {
-        announcementBox.classList.remove('announcement-hide');
-        announcementButton.onclick = function () {
-          Cookies.set('announcement-close', true, {
-            expires:  7 
-          });
-          announcementBox.classList.add('announcement-hide');
-        };
-      }
-    </script>
-  
-
-
-
-  </body>
+  <!-- Scripts -->
+  <script src="app.js"></script>
+</body>
 </html>
