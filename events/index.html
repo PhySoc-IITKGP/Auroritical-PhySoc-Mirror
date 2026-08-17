@@ -850,12 +850,12 @@
   </section>
 
   
-  <section class="section py-10">
+  <section class="section py-12">
     <div class="container">
 
       <div class="row items-start">
-        <!-- Left Half: Clean Google Calendar (No Extra Card Box/Borders around it) -->
-        <div class="lg:col-6 mb-10 lg:mb-0">
+        <!-- Left Half: Clean Google Calendar with Right Padding for Extra Separation -->
+        <div class="lg:col-6 mb-12 lg:mb-0 lg:pr-8 xl:pr-12">
           <iframe
             src="https://calendar.google.com/calendar/embed?src=c_6fbd372605c808f63a0cceea8a8ec7b8211a57fffced2c6958dda7ab78e7148c%40group.calendar.google.com&ctz=Asia%2FKolkata"
             style="border: 0; width: 100%; height: 600px;"
@@ -865,15 +865,15 @@
           </iframe>
         </div>
 
-        <!-- Right Half: Open Bulleted List (Matching Hand-Drawn Transition Diagram) -->
-        <div class="lg:col-6 lg:pl-8">
-          <ul class="space-y-8 text-text-dark dark:text-white">
+        <!-- Right Half: Open Bulleted List with Extra Left Padding and Black Bullets -->
+        <div class="lg:col-6 lg:pl-12 xl:pl-16">
+          <ul class="space-y-10 text-text-dark dark:text-white">
 
             <!-- Item 1 -->
-            <li class="event-item border-b border-border/50 dark:border-darkmode-border/50 pb-6">
+            <li class="event-item border-b border-border/50 dark:border-darkmode-border/50 pb-8">
               <div class="flex items-center justify-between gap-4 cursor-pointer select-none group" onclick="this.closest('.event-item').classList.toggle('expanded')">
-                <h3 class="text-xl font-bold text-text-dark dark:text-white flex items-center gap-2 group-hover:text-[#3E7B9D] transition-colors">
-                  <span style="color: #3E7B9D;" class="select-none">•</span>
+                <h3 class="text-xl md:text-2xl font-semibold text-text-dark dark:text-white flex items-center gap-2 group-hover:text-[#3E7B9D] transition-colors">
+                  <span class="text-black dark:text-white font-bold select-none text-2xl leading-none mr-1">•</span>
                   <span>Intra Department badminton tournament</span>
                 </h3>
                 <span class="chevron-icon text-xl font-bold transition-transform duration-300 inline-block text-right pr-2" style="color: #3E7B9D;">
@@ -882,23 +882,23 @@
               </div>
 
               <!-- Expanded Details (Revealed between title and time/date) -->
-              <div class="event-details hidden my-3 text-base text-text-dark dark:text-darkmode-light pl-5 leading-relaxed space-y-1">
+              <div class="event-details hidden my-4 text-base text-text-dark dark:text-darkmode-light pl-6 leading-relaxed space-y-1.5">
                 <p>Annual intra-department badminton championship organized by PhySoc. Singles and doubles matches open to all physics students &amp; faculty members!</p>
-                <p class="font-medium text-xs pt-1" style="color: #3E7B9D;">Venue: IITKGP Sports Complex / Badminton Courts</p>
+                <p class="font-medium text-sm pt-1" style="color: #3E7B9D;">Venue: IITKGP Sports Complex / Badminton Courts</p>
               </div>
 
               <!-- Time & Date Line (Pushed down when expanded) -->
-              <div class="text-base text-light dark:text-darkmode-light pl-5 font-medium flex items-center gap-8 mt-2">
+              <div class="text-base text-text-dark/80 dark:text-white/80 pl-6 font-normal flex items-center gap-10 mt-2">
                 <span>5 to 2</span>
                 <span>23-08-2026</span>
               </div>
             </li>
 
             <!-- Item 2 -->
-            <li class="event-item border-b border-border/50 dark:border-darkmode-border/50 pb-6">
+            <li class="event-item border-b border-border/50 dark:border-darkmode-border/50 pb-8">
               <div class="flex items-center justify-between gap-4 cursor-pointer select-none group" onclick="this.closest('.event-item').classList.toggle('expanded')">
-                <h3 class="text-xl font-bold text-text-dark dark:text-white flex items-center gap-2 group-hover:text-[#3E7B9D] transition-colors">
-                  <span style="color: #3E7B9D;" class="select-none">•</span>
+                <h3 class="text-xl md:text-2xl font-semibold text-text-dark dark:text-white flex items-center gap-2 group-hover:text-[#3E7B9D] transition-colors">
+                  <span class="text-black dark:text-white font-bold select-none text-2xl leading-none mr-1">•</span>
                   <span>Photography Competition</span>
                 </h3>
                 <span class="chevron-icon text-xl font-bold transition-transform duration-300 inline-block text-right pr-2" style="color: #3E7B9D;">
@@ -907,23 +907,23 @@
               </div>
 
               <!-- Expanded Details -->
-              <div class="event-details hidden my-3 text-base text-text-dark dark:text-darkmode-light pl-5 leading-relaxed space-y-1">
+              <div class="event-details hidden my-4 text-base text-text-dark dark:text-darkmode-light pl-6 leading-relaxed space-y-1.5">
                 <p>Theme: "Physics in Motion &amp; Nature". Submit your best photograph capturing everyday physics phenomena. Exciting prizes for top entries!</p>
-                <p class="font-medium text-xs pt-1" style="color: #3E7B9D;">Submission Mode: Online Form Portal</p>
+                <p class="font-medium text-sm pt-1" style="color: #3E7B9D;">Submission Mode: Online Form Portal</p>
               </div>
 
               <!-- Time & Date Line -->
-              <div class="text-base text-light dark:text-darkmode-light pl-5 font-medium flex items-center gap-8 mt-2">
+              <div class="text-base text-text-dark/80 dark:text-white/80 pl-6 font-normal flex items-center gap-10 mt-2">
                 <span>till 5 pm</span>
                 <span>30th -08-26</span>
               </div>
             </li>
 
             <!-- Item 3 -->
-            <li class="event-item border-b border-border/50 dark:border-darkmode-border/50 pb-6">
+            <li class="event-item border-b border-border/50 dark:border-darkmode-border/50 pb-8">
               <div class="flex items-center justify-between gap-4 cursor-pointer select-none group" onclick="this.closest('.event-item').classList.toggle('expanded')">
-                <h3 class="text-xl font-bold text-text-dark dark:text-white flex items-center gap-2 group-hover:text-[#3E7B9D] transition-colors">
-                  <span style="color: #3E7B9D;" class="select-none">•</span>
+                <h3 class="text-xl md:text-2xl font-semibold text-text-dark dark:text-white flex items-center gap-2 group-hover:text-[#3E7B9D] transition-colors">
+                  <span class="text-black dark:text-white font-bold select-none text-2xl leading-none mr-1">•</span>
                   <span>Welcome freshers</span>
                 </h3>
                 <span class="chevron-icon text-xl font-bold transition-transform duration-300 inline-block text-right pr-2" style="color: #3E7B9D;">
@@ -932,23 +932,23 @@
               </div>
 
               <!-- Expanded Details -->
-              <div class="event-details hidden my-3 text-base text-text-dark dark:text-darkmode-light pl-5 leading-relaxed space-y-1">
+              <div class="event-details hidden my-4 text-base text-text-dark dark:text-darkmode-light pl-6 leading-relaxed space-y-1.5">
                 <p>Official PhySoc Orientation &amp; Welcome Ceremony for incoming undergraduate physics students. Interactive games, faculty introductions &amp; refreshments!</p>
-                <p class="font-medium text-xs pt-1" style="color: #3E7B9D;">Venue: Department of Physics Auditorium</p>
+                <p class="font-medium text-sm pt-1" style="color: #3E7B9D;">Venue: Department of Physics Auditorium</p>
               </div>
 
               <!-- Time & Date Line -->
-              <div class="text-base text-light dark:text-darkmode-light pl-5 font-medium flex items-center gap-8 mt-2">
+              <div class="text-base text-text-dark/80 dark:text-white/80 pl-6 font-normal flex items-center gap-10 mt-2">
                 <span>4 Pm</span>
                 <span>08-08-2026</span>
               </div>
             </li>
 
             <!-- Item 4 -->
-            <li class="event-item pb-2">
+            <li class="event-item pb-4">
               <div class="flex items-center justify-between gap-4 cursor-pointer select-none group" onclick="this.closest('.event-item').classList.toggle('expanded')">
-                <h3 class="text-xl font-bold text-text-dark dark:text-white flex items-center gap-2 group-hover:text-[#3E7B9D] transition-colors">
-                  <span style="color: #3E7B9D;" class="select-none">•</span>
+                <h3 class="text-xl md:text-2xl font-semibold text-text-dark dark:text-white flex items-center gap-2 group-hover:text-[#3E7B9D] transition-colors">
+                  <span class="text-black dark:text-white font-bold select-none text-2xl leading-none mr-1">•</span>
                   <span>A Conversation with Sir Michael Berry</span>
                 </h3>
                 <span class="chevron-icon text-xl font-bold transition-transform duration-300 inline-block text-right pr-2" style="color: #3E7B9D;">
@@ -957,13 +957,13 @@
               </div>
 
               <!-- Expanded Details -->
-              <div class="event-details hidden my-3 text-base text-text-dark dark:text-darkmode-light pl-5 leading-relaxed space-y-1">
+              <div class="event-details hidden my-4 text-base text-text-dark dark:text-darkmode-light pl-6 leading-relaxed space-y-1.5">
                 <p>Distinguished guest lecture and interactive Q&amp;A session with world-renowned theoretical physicist Sir Michael Berry (discoverer of the Berry Phase in quantum mechanics).</p>
-                <p class="font-medium text-xs pt-1" style="color: #3E7B9D;">Venue: Hybrid / Lecture Hall &amp; Online Stream</p>
+                <p class="font-medium text-sm pt-1" style="color: #3E7B9D;">Venue: Hybrid / Lecture Hall &amp; Online Stream</p>
               </div>
 
               <!-- Time & Date Line -->
-              <div class="text-base text-light dark:text-darkmode-light pl-5 font-medium flex items-center gap-8 mt-2">
+              <div class="text-base text-text-dark/80 dark:text-white/80 pl-6 font-normal flex items-center gap-10 mt-2">
                 <span>3 pm</span>
                 <span>7-08-2026</span>
               </div>
