@@ -403,13 +403,6 @@
     .dark .announcement {
       background-color: #222;
     }
-    .event-item.expanded .event-details {
-      display: block !important;
-    }
-    .event-item.expanded .expand-pill {
-      background-color: #3E7B9D !important;
-      color: #ffffff !important;
-    }
   </style>
 
 
@@ -837,153 +830,32 @@
 
     <main>
       
-      <!-- Top Divider below Header Navigation -->
-      <div class="border-b border-border/60 dark:border-darkmode-border/60 w-full"></div>
+  
+  
+  <section class="relative section-sm" style="background-image: url('/images/events_background.jpg'); background-size: cover; background-position: center; background-repeat: no-repeat; height: 300px;">
+    
+    <div class="absolute inset-0 bg-black opacity-50"></div>
 
-      <!-- Section Title Section matching Hand-Drawn Wireframe -->
-      <section class="py-8 bg-theme-light/20 dark:bg-darkmode-theme-light/20">
-        <div class="container text-center">
-          <h1 class="text-3xl md:text-4xl font-bold text-text-dark dark:text-white tracking-wide">
-            Upcoming Events &amp; Announcements
-          </h1>
-        </div>
-      </section>
+    <div class="container h-full flex items-center justify-center relative z-10">
+      <h1 class="text-4xl font-bold text-white p-6">
+        Upcoming Events &amp; Opportunities
+      </h1>
+    </div>
+  </section>
 
-      <!-- Title Bottom Divider Line -->
-      <div class="border-b border-border/60 dark:border-darkmode-border/60 w-full"></div>
+  
+  <section class="section">
+    <div class="container">
+      
+      <div class="mb-8">
+        <iframe src="https://calendar.google.com/calendar/embed?src=c_6fbd372605c808f63a0cceea8a8ec7b8211a57fffced2c6958dda7ab78e7148c%40group.calendar.google.com&ctz=America%2FLos_Angeles" style="border: 0" width="1200" height="800" frameborder="0" scrolling="no"></iframe>
 
-      <!-- Main Split Section (Left: Google Calendar, Right: Events List matching wireframe) -->
-      <section class="section py-12">
-        <div class="container">
-
-          <div class="flex flex-col lg:flex-row items-start justify-between gap-8 lg:gap-10 xl:gap-14">
-            
-            <!-- Left Side: Compact Minimized Bluish Google Calendar Embed -->
-            <div class="w-full lg:w-[35%] xl:w-[32%] shrink-0">
-              <div class="p-2.5 rounded-2xl border-2 transition-all shadow-md" style="background-color: #eef6fa; border-color: #3E7B9D; box-shadow: 0 8px 25px -8px rgba(62, 123, 157, 0.3);">
-                <iframe
-                  src="https://calendar.google.com/calendar/embed?src=c_6fbd372605c808f63a0cceea8a8ec7b8211a57fffced2c6958dda7ab78e7148c%40group.calendar.google.com&ctz=Asia%2FKolkata&bgcolor=%23eef6fa&showTitle=0&showNav=1&showDate=1&showPrint=0&showTabs=0&showCalendars=0&showTz=0"
-                  style="border: 0; width: 100%; height: 420px; background-color: #eef6fa;"
-                  class="rounded-xl"
-                  frameborder="0"
-                  scrolling="no">
-                </iframe>
-              </div>
-            </div>
-
-            <!-- Right Side: Events List (60% Width, Expanded Spacing) -->
-            <div class="w-full lg:w-[60%] xl:w-[63%]">
-              <ul class="space-y-10 text-text-dark dark:text-white">
-
-                <!-- Item 1 -->
-                <li class="event-item border-b border-border/50 dark:border-darkmode-border/50 pb-8">
-                  <div class="flex items-start justify-between gap-4 cursor-pointer select-none group" onclick="this.closest('.event-item').classList.toggle('expanded')">
-                    <h3 class="text-xl md:text-2xl font-semibold text-text-dark dark:text-white flex items-start gap-2 group-hover:text-[#3E7B9D] transition-colors leading-snug">
-                      <span class="text-black dark:text-white font-bold select-none text-2xl leading-none mt-0.5">•</span>
-                      <span>Intra Department badminton tournament</span>
-                    </h3>
-                    <span class="expand-pill shrink-0 px-4 py-1 rounded-full text-xs font-semibold border transition-all inline-block text-center mt-1" style="border-color: #3E7B9D; color: #3E7B9D;">
-                      expand
-                    </span>
-                  </div>
-
-                  <!-- Expanded Details -->
-                  <div class="event-details hidden my-4 text-base text-text-dark dark:text-darkmode-light pl-6 leading-relaxed space-y-1.5">
-                    <p>Annual intra-department badminton championship organized by PhySoc. Singles and doubles matches open to all physics students &amp; faculty members!</p>
-                    <p class="font-medium text-sm pt-1" style="color: #3E7B9D;">Venue: IITKGP Sports Complex / Badminton Courts</p>
-                  </div>
-
-                  <!-- Time & Date -->
-                  <div class="text-base text-text-dark/80 dark:text-white/80 pl-6 font-normal flex items-center gap-10 mt-2">
-                    <span>5 to 2</span>
-                    <span>23-08-2026</span>
-                  </div>
-                </li>
-
-                <!-- Item 2 -->
-                <li class="event-item border-b border-border/50 dark:border-darkmode-border/50 pb-8">
-                  <div class="flex items-start justify-between gap-4 cursor-pointer select-none group" onclick="this.closest('.event-item').classList.toggle('expanded')">
-                    <h3 class="text-xl md:text-2xl font-semibold text-text-dark dark:text-white flex items-start gap-2 group-hover:text-[#3E7B9D] transition-colors leading-snug">
-                      <span class="text-black dark:text-white font-bold select-none text-2xl leading-none mt-0.5">•</span>
-                      <span>Photography Competition</span>
-                    </h3>
-                    <span class="expand-pill shrink-0 px-4 py-1 rounded-full text-xs font-semibold border transition-all inline-block text-center mt-1" style="border-color: #3E7B9D; color: #3E7B9D;">
-                      expand
-                    </span>
-                  </div>
-
-                  <!-- Expanded Details -->
-                  <div class="event-details hidden my-4 text-base text-text-dark dark:text-darkmode-light pl-6 leading-relaxed space-y-1.5">
-                    <p>Theme: "Physics in Motion &amp; Nature". Submit your best photograph capturing everyday physics phenomena. Exciting prizes for top entries!</p>
-                    <p class="font-medium text-sm pt-1" style="color: #3E7B9D;">Submission Mode: Online Form Portal</p>
-                  </div>
-
-                  <!-- Time & Date -->
-                  <div class="text-base text-text-dark/80 dark:text-white/80 pl-6 font-normal flex items-center gap-10 mt-2">
-                    <span>till 5 pm</span>
-                    <span>30th -08-26</span>
-                  </div>
-                </li>
-
-                <!-- Item 3 -->
-                <li class="event-item border-b border-border/50 dark:border-darkmode-border/50 pb-8">
-                  <div class="flex items-start justify-between gap-4 cursor-pointer select-none group" onclick="this.closest('.event-item').classList.toggle('expanded')">
-                    <h3 class="text-xl md:text-2xl font-semibold text-text-dark dark:text-white flex items-start gap-2 group-hover:text-[#3E7B9D] transition-colors leading-snug">
-                      <span class="text-black dark:text-white font-bold select-none text-2xl leading-none mt-0.5">•</span>
-                      <span>Welcome freshers</span>
-                    </h3>
-                    <span class="expand-pill shrink-0 px-4 py-1 rounded-full text-xs font-semibold border transition-all inline-block text-center mt-1" style="border-color: #3E7B9D; color: #3E7B9D;">
-                      expand
-                    </span>
-                  </div>
-
-                  <!-- Expanded Details -->
-                  <div class="event-details hidden my-4 text-base text-text-dark dark:text-darkmode-light pl-6 leading-relaxed space-y-1.5">
-                    <p>Official PhySoc Orientation &amp; Welcome Ceremony for incoming undergraduate physics students. Interactive games, faculty introductions &amp; refreshments!</p>
-                    <p class="font-medium text-sm pt-1" style="color: #3E7B9D;">Venue: Department of Physics Auditorium</p>
-                  </div>
-
-                  <!-- Time & Date -->
-                  <div class="text-base text-text-dark/80 dark:text-white/80 pl-6 font-normal flex items-center gap-10 mt-2">
-                    <span>4 Pm</span>
-                    <span>8-08-2026</span>
-                  </div>
-                </li>
-
-                <!-- Item 4 -->
-                <li class="event-item pb-4">
-                  <div class="flex items-start justify-between gap-4 cursor-pointer select-none group" onclick="this.closest('.event-item').classList.toggle('expanded')">
-                    <h3 class="text-xl md:text-2xl font-semibold text-text-dark dark:text-white flex items-start gap-2 group-hover:text-[#3E7B9D] transition-colors leading-snug">
-                      <span class="text-black dark:text-white font-bold select-none text-2xl leading-none mt-0.5">•</span>
-                      <span>A Conversation with Sir Michael Berry</span>
-                    </h3>
-                    <span class="expand-pill shrink-0 px-4 py-1 rounded-full text-xs font-semibold border transition-all inline-block text-center mt-1" style="border-color: #3E7B9D; color: #3E7B9D;">
-                      expand
-                    </span>
-                  </div>
-
-                  <!-- Expanded Details -->
-                  <div class="event-details hidden my-4 text-base text-text-dark dark:text-darkmode-light pl-6 leading-relaxed space-y-1.5">
-                    <p>Distinguished guest lecture and interactive Q&amp;A session with world-renowned theoretical physicist Sir Michael Berry (discoverer of the Berry Phase in quantum mechanics).</p>
-                    <p class="font-medium text-sm pt-1" style="color: #3E7B9D;">Venue: Hybrid / Lecture Hall &amp; Online Stream</p>
-                  </div>
-
-                  <!-- Time & Date -->
-                  <div class="text-base text-text-dark/80 dark:text-white/80 pl-6 font-normal flex items-center gap-10 mt-2">
-                    <span>3 pm</span>
-                    <span>7-08-2026</span>
-                  </div>
-                </li>
-
-              </ul>
-            </div>
-          </div>
-
-        </div>
-      </section>
-
-      <!-- Bottom Divider Line above Footer -->
-      <div class="border-b border-border/60 dark:border-darkmode-border/60 w-full"></div>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        
+      </div>
+    </div>
+  </section>
 
     </main>
 
