@@ -855,89 +855,58 @@
           </ul>
         </div>
 
-        <!-- Google Calendar Auto-Sync Engine -->
+        <!-- Google Calendar Live Sync Engine (HTML Agenda Parser) -->
         <script>
         document.addEventListener("DOMContentLoaded", function() {
           const calId = "409587cb401864dd7f1f5d6dfd125ad3c3b4bf13018a20940bd4d6809d12ff13@group.calendar.google.com";
-          const baseIcsUrl = "https://calendar.google.com/calendar/ical/" + encodeURIComponent(calId) + "/public/basic.ics";
+          const targetUrl = "https://calendar.google.com/calendar/htmlembed?src=" + encodeURIComponent(calId) + "&mode=AGENDA&ctz=Asia%2FKolkata&t=" + Date.now();
+          const proxyUrl = "https://api.allorigins.win/get?url=" + encodeURIComponent(targetUrl);
 
-          async function fetchCalendarICS() {
-            const cacheBustUrl = baseIcsUrl + "?t=" + Date.now();
+          async function fetchLiveEvents() {
             try {
-              const res = await fetch(cacheBustUrl, { cache: "no-store" });
-              if (res.ok) return await res.text();
-            } catch(e){}
-
-            const proxies = [
-              "https://api.allorigins.win/raw?url=",
-              "https://api.codetabs.com/v1/proxy?quest="
-            ];
-
-            for (const proxy of proxies) {
-              try {
-                const res = await fetch(proxy + encodeURIComponent(cacheBustUrl), { cache: "no-store" });
-                if (res.ok) {
-                  const text = await res.text();
-                  if (text.includes("BEGIN:VCALENDAR")) return text;
+              const res = await fetch(proxyUrl, { cache: "no-store" });
+              if (res.ok) {
+                const data = await res.json();
+                if (data && data.contents) {
+                  return parseAgendaHTML(data.contents);
                 }
-              } catch(e){}
+              }
+            } catch(e) {
+              console.log("Agenda fetch error:", e);
             }
             return null;
           }
 
-          function parseICS(icsData) {
-            if (!icsData) return [];
-            const unfolded = icsData.replace(/\r\n\s/g, '').replace(/\n\s/g, '');
-            const eventBlocks = unfolded.split("BEGIN:VEVENT");
+          function parseAgendaHTML(htmlText) {
+            const parser = new DOMParser();
+            const doc = parser.parseFromString(htmlText, "text/html");
+            const sections = doc.querySelectorAll(".date-section");
             const events = [];
 
-            for (let i = 1; i < eventBlocks.length; i++) {
-              const block = eventBlocks[i].split("END:VEVENT")[0];
-              const summaryMatch = block.match(/SUMMARY:(.*)/);
-              const dtstartMatch = block.match(/DTSTART(?:;VALUE=DATE)?:(.*)/);
-              const descMatch = block.match(/DESCRIPTION:(.*)/);
-              const locMatch = block.match(/LOCATION:(.*)/);
-
-              if (!summaryMatch || !dtstartMatch) continue;
-
-              let title = summaryMatch[1].trim().replace(/\\,/g, ',').replace(/\\;/g, ';');
-              let dtstart = dtstartMatch[1].trim();
-              let description = descMatch ? descMatch[1].trim().replace(/\\,/g, ',').replace(/\\;/g, ';').replace(/\\n/g, ' ') : '';
-              let location = locMatch ? locMatch[1].trim().replace(/\\,/g, ',').replace(/\\;/g, ';') : '';
-
-              if (!title) continue;
-
-              let dateObj;
-              let timeStr = "";
-              let dateStr = "";
-
-              if (dtstart.length >= 8) {
-                const year = dtstart.substring(0, 4);
-                const month = dtstart.substring(4, 6);
-                const day = dtstart.substring(6, 8);
-                dateObj = new Date(year, month - 1, day);
-                dateStr = `${day}-${month}-${year}`;
-
-                if (dtstart.includes("T")) {
-                  const hour = parseInt(dtstart.substring(9, 11), 10);
-                  const min = dtstart.substring(11, 13);
-                  const ampm = hour >= 12 ? 'pm' : 'am';
-                  const h12 = hour % 12 || 12;
-                  timeStr = `${h12}:${min} ${ampm}`;
+            sections.forEach(sec => {
+              const dateEl = sec.querySelector(".date");
+              const dateStr = dateEl ? dateEl.textContent.trim() : "";
+              
+              const rows = sec.querySelectorAll("tr.event");
+              rows.forEach(row => {
+                const timeEl = row.querySelector(".event-time");
+                const summaryEl = row.querySelector(".event-summary");
+                
+                if (summaryEl) {
+                  const title = summaryEl.textContent.trim();
+                  const timeStr = timeEl ? timeEl.textContent.trim() : "";
+                  if (title) {
+                    events.push({
+                      title: title,
+                      dateStr: dateStr,
+                      timeStr: timeStr,
+                      description: "Official PhySoc Event. Check Google Calendar embed for full venue & details!"
+                    });
+                  }
                 }
-              }
-
-              events.push({
-                title,
-                dateStr,
-                timeStr,
-                location,
-                description,
-                timestamp: dateObj ? dateObj.getTime() : 0
               });
-            }
+            });
 
-            events.sort((a, b) => b.timestamp - a.timestamp);
             return events;
           }
 
@@ -976,7 +945,6 @@
 
                   <div class="event-details hidden my-4 text-base text-text-dark dark:text-darkmode-light pl-6 leading-relaxed space-y-1.5">
                     ${ev.description ? `<p>${ev.description}</p>` : `<p>Official PhySoc Event. Check calendar for details!</p>`}
-                    ${ev.location ? `<p class="font-medium text-sm pt-1" style="color: #3E7B9D;">Venue: ${ev.location}</p>` : ''}
                   </div>
 
                   <div class="text-base text-text-dark/80 dark:text-white/80 pl-6 font-normal flex items-center gap-10 mt-2">
@@ -990,16 +958,15 @@
             listContainer.innerHTML = html;
           }
 
-          // Fetch live events from Google Calendar with cache-busting
-          fetchCalendarICS().then(icsText => {
-            if (icsText !== null) {
-              const events = parseICS(icsText);
+          // Fetch live events from Google Calendar Agenda view
+          fetchLiveEvents().then(events => {
+            if (events !== null) {
               renderEvents(events);
               try {
                 localStorage.setItem("physoc_gcal_events", JSON.stringify(events));
               } catch(e){}
             }
-          }).catch(err => console.log("Google Calendar auto-sync offline:", err));
+          });
         });
         </script>
       </div>
