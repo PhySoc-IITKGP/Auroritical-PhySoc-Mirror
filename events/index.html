@@ -846,28 +846,12 @@
         <!-- Left Side: Open Bulleted Events List (Auto-Synced with Google Calendar) -->
         <div class="w-full lg:w-[50%] mb-12 lg:mb-0">
           <ul id="events-list" class="space-y-10 text-text-dark dark:text-white">
-
-            <!-- Real Calendar Item 1 -->
-            <li class="event-item pb-4">
-              <div class="flex items-center justify-between gap-4 cursor-pointer select-none group" onclick="this.closest('.event-item').classList.toggle('expanded')">
-                <h3 class="text-xl md:text-2xl font-semibold text-text-dark dark:text-white flex items-center gap-2 group-hover:text-[#3E7B9D] transition-colors">
-                  <span class="text-black dark:text-white font-bold select-none text-2xl leading-none mr-1">•</span>
-                  <span>Intra Department Badminton Tournament</span>
-                </h3>
-                <span class="chevron-icon text-xl font-bold transition-transform duration-300 inline-block text-right pr-2" style="color: #3E7B9D;">
-                  &lt;
-                </span>
-              </div>
-              <div class="event-details hidden my-4 text-base text-text-dark dark:text-darkmode-light pl-6 leading-relaxed space-y-1.5">
-                <p>Official PhySoc Event. Check calendar for details!</p>
-                <p class="font-medium text-sm pt-1" style="color: #3E7B9D;">Venue: Technology Students' Gymkhana, IIT Kharagpur</p>
-              </div>
-              <div class="text-base text-text-dark/80 dark:text-white/80 pl-6 font-normal flex items-center gap-10 mt-2">
-                <span>2:30 pm</span>
-                <span>23-08-2026</span>
+            <li class="event-item py-6">
+              <div class="flex items-center gap-3 text-text-dark/70 dark:text-white/70">
+                <span class="text-[#3E7B9D] font-bold text-2xl">•</span>
+                <span class="text-lg font-medium">Loading upcoming events from Google Calendar...</span>
               </div>
             </li>
-
           </ul>
         </div>
 
@@ -875,21 +859,23 @@
         <script>
         document.addEventListener("DOMContentLoaded", function() {
           const calId = "409587cb401864dd7f1f5d6dfd125ad3c3b4bf13018a20940bd4d6809d12ff13@group.calendar.google.com";
-          const icsUrl = "https://calendar.google.com/calendar/ical/" + encodeURIComponent(calId) + "/public/basic.ics";
-          const proxies = [
-            "https://api.allorigins.win/raw?url=",
-            "https://api.codetabs.com/v1/proxy?quest="
-          ];
+          const baseIcsUrl = "https://calendar.google.com/calendar/ical/" + encodeURIComponent(calId) + "/public/basic.ics";
 
           async function fetchCalendarICS() {
+            const cacheBustUrl = baseIcsUrl + "?t=" + Date.now();
             try {
-              const res = await fetch(icsUrl);
+              const res = await fetch(cacheBustUrl, { cache: "no-store" });
               if (res.ok) return await res.text();
             } catch(e){}
 
+            const proxies = [
+              "https://api.allorigins.win/raw?url=",
+              "https://api.codetabs.com/v1/proxy?quest="
+            ];
+
             for (const proxy of proxies) {
               try {
-                const res = await fetch(proxy + encodeURIComponent(icsUrl));
+                const res = await fetch(proxy + encodeURIComponent(cacheBustUrl), { cache: "no-store" });
                 if (res.ok) {
                   const text = await res.text();
                   if (text.includes("BEGIN:VCALENDAR")) return text;
@@ -918,6 +904,8 @@
               let dtstart = dtstartMatch[1].trim();
               let description = descMatch ? descMatch[1].trim().replace(/\\,/g, ',').replace(/\\;/g, ';').replace(/\\n/g, ' ') : '';
               let location = locMatch ? locMatch[1].trim().replace(/\\,/g, ',').replace(/\\;/g, ';') : '';
+
+              if (!title) continue;
 
               let dateObj;
               let timeStr = "";
@@ -954,13 +942,24 @@
           }
 
           function renderEvents(events) {
-            if (!events || events.length === 0) return;
             const listContainer = document.getElementById("events-list");
             if (!listContainer) return;
 
+            if (!events || events.length === 0) {
+              listContainer.innerHTML = `
+                <li class="event-item py-6">
+                  <div class="flex items-center gap-3 text-text-dark/70 dark:text-white/70">
+                    <span class="text-[#3E7B9D] font-bold text-2xl">•</span>
+                    <span class="text-lg font-medium">No upcoming events scheduled right now. Check calendar for updates!</span>
+                  </div>
+                </li>
+              `;
+              return;
+            }
+
             let html = "";
-            events.slice(0, 8).forEach((ev, idx) => {
-              const isLast = idx === Math.min(events.length, 8) - 1;
+            events.slice(0, 10).forEach((ev, idx) => {
+              const isLast = idx === Math.min(events.length, 10) - 1;
               const borderClass = isLast ? "pb-4" : "border-b border-border/50 dark:border-darkmode-border/50 pb-8";
               
               html += `
@@ -991,20 +990,14 @@
             listContainer.innerHTML = html;
           }
 
-          // Check cached events first for instant load
-          try {
-            const cached = localStorage.getItem("physoc_gcal_events");
-            if (cached) renderEvents(JSON.parse(cached));
-          } catch(e){}
-
-          // Fetch live events from Google Calendar
+          // Fetch live events from Google Calendar with cache-busting
           fetchCalendarICS().then(icsText => {
-            if (icsText) {
+            if (icsText !== null) {
               const events = parseICS(icsText);
-              if (events.length > 0) {
-                renderEvents(events);
+              renderEvents(events);
+              try {
                 localStorage.setItem("physoc_gcal_events", JSON.stringify(events));
-              }
+              } catch(e){}
             }
           }).catch(err => console.log("Google Calendar auto-sync offline:", err));
         });
