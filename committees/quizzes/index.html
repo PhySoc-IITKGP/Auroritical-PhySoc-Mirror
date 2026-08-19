@@ -217,12 +217,7 @@
 
 
 
-<script>
-  let indexURL = "../../searchindex.json";
-  let includeSectionsInSearch = ["all", "events", "about", "resources", "quizzes", "seminars", "socials", "sponsors", "academics"];
-  let search_no_results = "No results for";
-  let search_initial_message = "Type something to search..";
-</script>
+
 
 
 
@@ -679,20 +674,7 @@
         
       
       
-    <div class="order-1 ml-auto flex items-center md:order-2 lg:ml-6">
-      
-        
-          <button
-            aria-label="search"
-            class="border-border text-text-dark hover:text-primary
-            dark:border-darkmode-border inline-block text-xl dark:text-white cursor-pointer dark:hover:text-darkmode-primary
-            "
-            data-target="search-modal" onclick="openSearchModal()">
-            <i class="fa-solid fa-search"></i>
-          </button>
-        
-      
-    </div>
+    
   </nav>
 </header>
     
@@ -701,107 +683,7 @@
 
 
   
-    <div
-      class="search-modal "
-      aria-hidden="true"
-      style="--color-primary: #121212">
-      <div data-target="close-search-modal" onclick="closeSearchModal()" class="search-modal-overlay"></div>
-      <div
-        class="search-wrapper"
-        data-image="true"
-        data-description="true"
-        data-tags="true"
-        data-categories="true">
-        <div class="search-wrapper-header">
-          <label for="search-modal-input" style="margin-top:-1px">
-            <span class="sr-only">search icon</span>
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 512 512"
-              height="18"
-              width="18"
-              class="search-icon"
-              data-type="search">
-              <path
-                fill="currentColor"
-                d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352a144 144 0 1 0 0-288 144 144 0 1 0 0 288z" />
-            </svg>
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 512 512"
-              height="18"
-              width="18"
-              class="search-reset"
-              data-type="reset">
-              <path
-                fill="currentColor"
-                d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM175 175c9.4-9.4 24.6-9.4 33.9 0l47 47 47-47c9.4-9.4 24.6-9.4 33.9 0s9.4 24.6 0 33.9l-47 47 47 47c9.4 9.4 9.4 24.6 0 33.9s-24.6 9.4-33.9 0l-47-47-47 47c-9.4 9.4-24.6 9.4-33.9 0s-9.4-24.6 0-33.9l47-47-47-47c-9.4-9.4-9.4-24.6 0-33.9z" />
-            </svg>
-          </label>
-          <input
-            id="search-modal-input"
-            type="text"
-            data-search-input
-            autocomplete="off"
-            aria-label="Search"
-            placeholder="Search Post..." />
-        </div>
-        <div class="search-wrapper-body">
-          <div class="search-result" data-search-result></div>
-          <span class="search-result-empty">
-            Type something to search..
-          </span>
-        </div>
-        <div class="search-wrapper-footer">
-          <span>
-            <kbd>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="14"
-                height="14"
-                fill="currentColor"
-                viewBox="0 0 16 16">
-                <path
-                  d="M3.204 11h9.592L8 5.519 3.204 11zm-.753-.659 4.796-5.48a1 1 0 0 1 1.506 0l4.796 5.48c.566.647.106 1.659-.753 1.659H3.204a1 1 0 0 1-.753-1.659z" />
-              </svg>
-            </kbd>
-            <kbd>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="14"
-                height="14"
-                fill="currentColor"
-                style="margin-top:1px;"
-                viewBox="0 0 16 16">
-                <path
-                  d="M3.204 5h9.592L8 10.481 3.204 5zm-.753.659 4.796 5.48a1 1 0 0 0 1.506 0l4.796-5.48c.566-.647.106-1.659-.753-1.659H3.204a1 1 0 0 0-.753 1.659z" />
-              </svg>
-            </kbd>
-            to navigate
-          </span>
-          <span>
-            <kbd>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="12"
-                height="12"
-                fill="currentColor"
-                style="display:inline-block;"
-                viewBox="0 0 16 16">
-                <path
-                  fill-rule="evenodd"
-                  d="M14.5 1.5a.5.5 0 0 1 .5.5v4.8a2.5 2.5 0 0 1-2.5 2.5H2.707l3.347 3.346a.5.5 0 0 1-.708.708l-4.2-4.2a.5.5 0 0 1 0-.708l4-4a.5.5 0 1 1 .708.708L2.707 8.3H12.5A1.5 1.5 0 0 0 14 6.8V2a.5.5 0 0 1 .5-.5z" />
-              </svg>
-            </kbd>
-            to select
-          </span>
-          <span class="search-result-info"></span>
-          <span data-target="close-search-modal" onclick="closeSearchModal()">
-            <kbd>ESC</kbd> to close
-          </span>
-        </div>
-      </div>
-    </div>
+    
   
 
   
@@ -1070,126 +952,7 @@ PhySoc is hosting weekly sessions focused on problem-solving, competition prep, 
 
   
 <!-- PhySoc Instant Search Engine -->
-<script id="physoc-search-engine">
-(function() {
-  window.openSearchModal = function() {
-    const modal = document.querySelector('.search-modal');
-    if (modal) {
-      modal.classList.add('show');
-      document.body.style.overflow = 'hidden';
-      const input = document.getElementById('search-modal-input');
-      if (input) {
-        setTimeout(function() { input.focus(); }, 100);
-      }
-      if (!window.physocSearchLoaded) {
-        fetchSearchIndex();
-      }
-    }
-  };
 
-  window.closeSearchModal = function() {
-    const modal = document.querySelector('.search-modal');
-    if (modal) {
-      modal.classList.remove('show');
-      document.body.style.overflow = '';
-    }
-  };
-
-  window.physocSearchData = [];
-  window.physocSearchLoaded = false;
-
-  async function fetchSearchIndex() {
-    const indexPath = window.indexURL || '/searchindex.json';
-    try {
-      const res = await fetch(indexPath);
-      if (res.ok) {
-        window.physocSearchData = await res.json();
-        window.physocSearchLoaded = true;
-      }
-    } catch(e) {
-      console.log('Search index fetch error:', e);
-    }
-  }
-
-  document.addEventListener('DOMContentLoaded', function() {
-    fetchSearchIndex();
-
-    document.querySelectorAll('[data-target="search-modal"]').forEach(function(btn) {
-      btn.onclick = function(e) {
-        e.preventDefault();
-        openSearchModal();
-      };
-    });
-
-    document.querySelectorAll('[data-target="close-search-modal"]').forEach(function(btn) {
-      btn.onclick = function(e) {
-        e.preventDefault();
-        closeSearchModal();
-      };
-    });
-
-    document.addEventListener('keydown', function(e) {
-      if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'k') {
-        e.preventDefault();
-        const modal = document.querySelector('.search-modal');
-        if (modal && modal.classList.contains('show')) {
-          closeSearchModal();
-        } else {
-          openSearchModal();
-        }
-      }
-      if (e.key === 'Escape') {
-        closeSearchModal();
-      }
-    });
-
-    const searchInput = document.getElementById('search-modal-input');
-    const resultContainer = document.querySelector('[data-search-result]');
-    const emptyMsg = document.querySelector('.search-result-empty');
-
-    if (searchInput) {
-      searchInput.addEventListener('input', function(e) {
-        const query = e.target.value.trim().toLowerCase();
-        
-        if (!query) {
-          if (resultContainer) resultContainer.innerHTML = '';
-          if (emptyMsg) {
-            emptyMsg.style.display = 'block';
-            emptyMsg.innerHTML = 'Type something to search..';
-          }
-          return;
-        }
-
-        if (emptyMsg) emptyMsg.style.display = 'none';
-
-        const matches = window.physocSearchData.filter(function(item) {
-          const title = (item.title || '').toLowerCase();
-          const desc = (item.description || '').toLowerCase();
-          const tags = (item.tags || []).join(' ').toLowerCase();
-          const cats = (item.categories || []).join(' ').toLowerCase();
-          return title.includes(query) || desc.includes(query) || tags.includes(query) || cats.includes(query);
-        });
-
-        if (!resultContainer) return;
-
-        if (matches.length === 0) {
-          resultContainer.innerHTML = '<div style="padding: 24px; text-align: center; opacity: 0.7;">No results found for "' + query + '"</div>';
-          return;
-        }
-
-        let html = '';
-        matches.forEach(function(item) {
-          html += '<a href="' + item.url + '" class="search-result-item" style="display: block; padding: 16px; margin-bottom: 12px; border-radius: 8px; border: 1px solid rgba(128,128,128,0.2); text-decoration: none;">' +
-            '<div style="font-weight: 600; font-size: 1.1rem; color: #3E7B9D; margin-bottom: 4px;">' + item.title + '</div>' +
-            '<div style="font-size: 0.9rem; opacity: 0.8; line-height: 1.4;">' + item.description + '</div>' +
-          '</a>';
-        });
-        resultContainer.innerHTML = html;
-      });
-    }
-  });
-})();
-</script>
 
 </body>
 </html>
