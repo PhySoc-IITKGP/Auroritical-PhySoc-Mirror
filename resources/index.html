@@ -687,7 +687,7 @@
             class="border-border text-text-dark hover:text-primary
             dark:border-darkmode-border inline-block text-xl dark:text-white cursor-pointer dark:hover:text-darkmode-primary
             "
-            data-target="search-modal">
+            data-target="search-modal" onclick="openSearchModal()">
             <i class="fa-solid fa-search"></i>
           </button>
         
@@ -705,7 +705,7 @@
       class="search-modal "
       aria-hidden="true"
       style="--color-primary: #121212">
-      <div data-target="close-search-modal" class="search-modal-overlay"></div>
+      <div data-target="close-search-modal" onclick="closeSearchModal()" class="search-modal-overlay"></div>
       <div
         class="search-wrapper"
         data-image="true"
@@ -796,7 +796,7 @@
             to select
           </span>
           <span class="search-result-info"></span>
-          <span data-target="close-search-modal">
+          <span data-target="close-search-modal" onclick="closeSearchModal()">
             <kbd>ESC</kbd> to close
           </span>
         </div>
@@ -1143,5 +1143,128 @@
 
 
 
-  </body>
+  
+<!-- PhySoc Instant Search Engine -->
+<script id="physoc-search-engine">
+(function() {
+  window.openSearchModal = function() {
+    const modal = document.querySelector('.search-modal');
+    if (modal) {
+      modal.classList.add('show');
+      document.body.style.overflow = 'hidden';
+      const input = document.getElementById('search-modal-input');
+      if (input) {
+        setTimeout(function() { input.focus(); }, 100);
+      }
+      if (!window.physocSearchLoaded) {
+        fetchSearchIndex();
+      }
+    }
+  };
+
+  window.closeSearchModal = function() {
+    const modal = document.querySelector('.search-modal');
+    if (modal) {
+      modal.classList.remove('show');
+      document.body.style.overflow = '';
+    }
+  };
+
+  window.physocSearchData = [];
+  window.physocSearchLoaded = false;
+
+  async function fetchSearchIndex() {
+    const indexPath = window.indexURL || '/searchindex.json';
+    try {
+      const res = await fetch(indexPath);
+      if (res.ok) {
+        window.physocSearchData = await res.json();
+        window.physocSearchLoaded = true;
+      }
+    } catch(e) {
+      console.log('Search index fetch error:', e);
+    }
+  }
+
+  document.addEventListener('DOMContentLoaded', function() {
+    fetchSearchIndex();
+
+    document.querySelectorAll('[data-target="search-modal"]').forEach(function(btn) {
+      btn.onclick = function(e) {
+        e.preventDefault();
+        openSearchModal();
+      };
+    });
+
+    document.querySelectorAll('[data-target="close-search-modal"]').forEach(function(btn) {
+      btn.onclick = function(e) {
+        e.preventDefault();
+        closeSearchModal();
+      };
+    });
+
+    document.addEventListener('keydown', function(e) {
+      if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'k') {
+        e.preventDefault();
+        const modal = document.querySelector('.search-modal');
+        if (modal && modal.classList.contains('show')) {
+          closeSearchModal();
+        } else {
+          openSearchModal();
+        }
+      }
+      if (e.key === 'Escape') {
+        closeSearchModal();
+      }
+    });
+
+    const searchInput = document.getElementById('search-modal-input');
+    const resultContainer = document.querySelector('[data-search-result]');
+    const emptyMsg = document.querySelector('.search-result-empty');
+
+    if (searchInput) {
+      searchInput.addEventListener('input', function(e) {
+        const query = e.target.value.trim().toLowerCase();
+        
+        if (!query) {
+          if (resultContainer) resultContainer.innerHTML = '';
+          if (emptyMsg) {
+            emptyMsg.style.display = 'block';
+            emptyMsg.innerHTML = 'Type something to search..';
+          }
+          return;
+        }
+
+        if (emptyMsg) emptyMsg.style.display = 'none';
+
+        const matches = window.physocSearchData.filter(function(item) {
+          const title = (item.title || '').toLowerCase();
+          const desc = (item.description || '').toLowerCase();
+          const tags = (item.tags || []).join(' ').toLowerCase();
+          const cats = (item.categories || []).join(' ').toLowerCase();
+          return title.includes(query) || desc.includes(query) || tags.includes(query) || cats.includes(query);
+        });
+
+        if (!resultContainer) return;
+
+        if (matches.length === 0) {
+          resultContainer.innerHTML = '<div style="padding: 24px; text-align: center; opacity: 0.7;">No results found for "' + query + '"</div>';
+          return;
+        }
+
+        let html = '';
+        matches.forEach(function(item) {
+          html += '<a href="' + item.url + '" class="search-result-item" style="display: block; padding: 16px; margin-bottom: 12px; border-radius: 8px; border: 1px solid rgba(128,128,128,0.2); text-decoration: none;">' +
+            '<div style="font-weight: 600; font-size: 1.1rem; color: #3E7B9D; margin-bottom: 4px;">' + item.title + '</div>' +
+            '<div style="font-size: 0.9rem; opacity: 0.8; line-height: 1.4;">' + item.description + '</div>' +
+          '</a>';
+        });
+        resultContainer.innerHTML = html;
+      });
+    }
+  });
+})();
+</script>
+
+</body>
 </html>
