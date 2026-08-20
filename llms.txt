@@ -1,0 +1,24 @@
+# PhySoc - Physics Society, IIT Kharagpur
+> Official departmental society of the Department of Physics at the Indian Institute of Technology Kharagpur (IIT KGP).
+
+## Overview
+PhySoc (Physics Society) represents the undergraduate, postgraduate, and research scholar student community of the Department of Physics at IIT Kharagpur. We host academic seminars, national research conferences, outreach sessions, quizzes, hackathons, and curated study archives.
+
+## Website & Domain
+- Canonical URL: https://physoc.me/
+- Organization: Department of Physics, Indian Institute of Technology Kharagpur (IIT Kharagpur), West Bengal, India - 721302.
+
+## Key Sections & Pages
+- [Home](https://physoc.me/): Society overview, featured initiatives, active announcements, and upcoming events.
+- [About Us](https://physoc.me/about/): History, vision, governance structure, faculty advisors, and departmental leadership.
+- [Events](https://physoc.me/events/): Annual symposiums, guest colloquiums, student lectures, quantum computing workshops, and astrophysics stargazing sessions.
+- [Resources](https://physoc.me/resources/): Physics course notes, exam archives, curated study sheets, computational physics scripts, and research guides.
+- [Seminars Committee](https://physoc.me/committees/seminars/): Organization of weekly academic colloquia, faculty lectures, and student research presentations.
+- [Quizzes Committee](https://physoc.me/committees/quizzes/): Competitive physics quizzes, scientific brain teasers, and inter-hall physics competitions.
+- [Socials Committee](https://physoc.me/committees/socials/): Departmental meetups, orientation, sports fests, and cultural gatherings.
+- [Sponsorship & Outreach](https://physoc.me/committees/sponsors/): Industry partnerships, corporate outreach, research sponsorships, and high-school scientific mentorship.
+
+## Contact & Connect
+- Website: https://physoc.me/
+- Email: contact@physoc.me
+- Location: Department of Physics, IIT Kharagpur, Kharagpur, WB 721302, India
