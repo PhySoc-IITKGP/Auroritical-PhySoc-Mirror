@@ -2,6 +2,6 @@ User-agent: *
 Allow: /
 
 # Sitemaps & LLM Context Files
-Sitemap: https://physoc.me/sitemap.xml
-LLMs-Txt: https://physoc.me/llms.txt
-LLMs-Full-Txt: https://physoc.me/llms-full.txt
+Sitemap: https://physoc-iitkgp.vercel.app/sitemap.xml
+LLMs-Txt: https://physoc-iitkgp.vercel.app/llms.txt
+LLMs-Full-Txt: https://physoc-iitkgp.vercel.app/llms-full.txt
