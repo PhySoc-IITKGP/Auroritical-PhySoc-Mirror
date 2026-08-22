@@ -110,6 +110,8 @@ const showToast = (message, type = "info", options = {}) => {
       padding: "14px 16px",
       minWidth: "320px",
       maxWidth: "420px",
+      transform: "translate(-50%, 0)",
+      willChange: "transform, opacity",
     },
   });
 

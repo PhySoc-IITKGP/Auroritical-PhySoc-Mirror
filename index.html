@@ -69,33 +69,21 @@
     <link rel="stylesheet" href="./vendor/swiper-bundle.min.css" />
 
     <meta http-equiv="x-dns-prefetch-control" content="on" />
-    <link rel="preconnect" href="https://use.fontawesome.com" crossorigin />
-    <link rel="preconnect" href="//cdnjs.cloudflare.com" />
-    <link rel="preconnect" href="//www.googletagmanager.com" />
-    <link rel="preconnect" href="//www.google-analytics.com" />
-    <link rel="dns-prefetch" href="https://use.fontawesome.com" />
-    <link rel="dns-prefetch" href="//ajax.googleapis.com" />
-    <link rel="dns-prefetch" href="//cdnjs.cloudflare.com" />
-    <link rel="dns-prefetch" href="//www.googletagmanager.com" />
-    <link rel="dns-prefetch" href="//www.google-analytics.com" />
-    <link rel="dns-prefetch" href="//fonts.googleapis.com" />
-    <link rel="dns-prefetch" href="//connect.facebook.net" />
-    <link rel="dns-prefetch" href="//platform.linkedin.com" />
-    <link rel="dns-prefetch" href="//platform.twitter.com" />
-
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com" />
 
-    <script>
-      (function () {
-        const googleFont = document.createElement("link");
-        googleFont.href =
-          "https://fonts.googleapis.com/css2?family=IBM\u002bPlex\u002bSerif:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&family=IBM\u002bPlex\u002bSans:ital,wght@0,100..700;1,100..700&display=swap";
-        googleFont.type = "text/css";
-        googleFont.rel = "stylesheet";
-        document.head.appendChild(googleFont);
-      })();
-    </script>
+    <link
+      rel="preload"
+      as="image"
+      href="./images/gallery/group.JPG"
+      fetchpriority="high"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Serif:ital,wght@0,400;0,600;0,700;1,400&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap"
+    />
 
     <!-- Note: For notification. Do not remove -->
     <script type="module" src="./js/notification.js"></script>
@@ -107,20 +95,21 @@
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css"
+      media="print"
+      onload="this.media='all'"
     />
-    <script src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
-    <script src="./js/toast.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/toastify-js" defer></script>
+    <script src="./js/toast.js" defer></script>
 
     <link
       href="./css/style.min.75408a616c8d64a93d3b03e345cadd04f72b1cded1cd7b9819149db1a7264234.css"
       rel="stylesheet"
     />
     <link
-      defer
-      async
       rel="stylesheet"
       href="./css/style-lazy.min.1891ab9d1988b9b19756de1bbea47aecb95c7b5ab195f6fe52244b6eca5d8154.css"
-      media="all"
+      media="print"
+      onload="this.media='all'"
     />
     <link rel="canonical" href="https://physoc-iitkgp.vercel.app/" />
   </head>
@@ -189,7 +178,7 @@
               fetchpriority="high"
               decoding="async"
               class="img img-dark"
-              width="250"
+              width="206"
               height="40"
               src="./images/logo-darkmode_hu_ce06e59bade57f0d.webp"
               alt="PhySoc IITKGP"
@@ -293,18 +282,21 @@
             <div class="swiper-slide">
               <img
                 src="./images/gallery/group.JPG"
+                alt="PhySoc IIT Kharagpur members and student community"
                 class="w-full h-full object-cover"
               />
             </div>
             <div class="swiper-slide">
               <img
                 src="./images/gallery/calday.JPG"
+                alt="PhySoc event celebrations and departmental activities"
                 class="w-full h-full object-cover"
               />
             </div>
             <div class="swiper-slide">
               <img
                 src="./images/gallery/officer.JPG"
+                alt="PhySoc IIT Kharagpur team and officers"
                 class="w-full h-full object-cover"
               />
             </div>
@@ -377,6 +369,8 @@
               <img
                 src="./images/gallery/carnival1.jpeg"
                 alt="Welcome to IITKGP’s undergraduate physics community!"
+                width="900"
+                height="677"
                 class="w-full h-auto rounded-md shadow-md"
               />
             </div>
@@ -392,6 +386,8 @@
             <img
               src="./images/ocf-hosted-penguin.svg"
               alt="PhySoc"
+              width="482"
+              height="309"
               style="border: 0"
             />
           </div>
@@ -447,35 +443,20 @@
       src="./js/script-lazy.min.c3e692e360f6f81f898b1fa3a19ee902e6b5bdbbbfa512bf221a0fe796fc9f7c.js"
     ></script>
 
-    <script>
-      document.addEventListener("DOMContentLoaded", () => {
-        const swiper = new Swiper(".mySwiper", {
-          loop: true,
-          autoplay: {
-            delay: 5000,
-            disableOnInteraction: false,
-          },
-          pagination: {
-            el: ".swiper-pagination",
-            clickable: true,
-          },
-          navigation: {
-            nextEl: ".swiper-button-next",
-            prevEl: ".swiper-button-prev",
-          },
-        });
-      });
-    </script>
-
     <script src="./vendor/swiper-bundle.min.js"></script>
     <script>
       const swiper = new Swiper(".swiper", {
         loop: true,
         autoplay: {
-          delay: 4000,
+          delay: 5000,
+          disableOnInteraction: false,
+        },
+        pagination: {
+          el: ".swiper-pagination",
+          clickable: true,
         },
         effect: "fade",
-        speed: 1000,
+        speed: 800,
       });
     </script>
 
